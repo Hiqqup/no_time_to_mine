@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=3 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="1_8r8ln"]
+[ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/haravestable_base.gd" id="1_w6v5p"]
 
 [node name="HaravestableBase" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_w6v5p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 region_rect = Rect2(0, 0, 256, 64)
@@ -10,10 +13,13 @@ region_rect = Rect2(0, 0, 256, 64)
 [node name="ClickDetection" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetection"]
+position = Vector2(0, 8)
 
 [node name="PlayerCollider" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerCollider"]
-position = Vector2(0, 3)
+position = Vector2(0, 8)
 
 [node name="GridVectorToPositionConverter" parent="." instance=ExtResource("1_8r8ln")]
+
+[connection signal="input_event" from="ClickDetection" to="." method="_on_click_detection_input_event"]

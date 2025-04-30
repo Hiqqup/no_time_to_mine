@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=4 uid="uid://mq0wb5hf2lra"]
+[gd_scene load_steps=4 format=4 uid="uid://mq0wb5hf2lra"]
 
+[ext_resource type="PackedScene" uid="uid://dji7xejgxhg1e" path="res://src/scenes/harvestables/harvestables.tscn" id="2_1bjje"]
 [ext_resource type="PackedScene" uid="uid://bd1ftd4mp5yyb" path="res://src/scenes/floor.tscn" id="2_hxspv"]
 [ext_resource type="PackedScene" uid="uid://d1i8mon4i40ff" path="res://src/scenes/player.tscn" id="2_wu3x7"]
 
@@ -10,6 +11,9 @@ tile_map_data = PackedByteArray("AAD7//3/AAADAAAAAAD7//7/AAADAAAAAAD7////AAADAAA
 
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Harvestabels" parent="YSorted" instance=ExtResource("2_1bjje")]
+tile_map_data = PackedByteArray("AAAAAAIAAAAGAAAAAAD+//n/AAAGAAAAAAATAPn/AAAGAAAAAAA=")
 
 [node name="Player" parent="YSorted" instance=ExtResource("2_wu3x7")]
 y_sort_enabled = true
