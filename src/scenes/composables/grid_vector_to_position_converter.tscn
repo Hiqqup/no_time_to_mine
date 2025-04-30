@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2igyp8fdxcft"]
+
+[ext_resource type="Script" uid="uid://dhij23qhppwqs" path="res://src/scripts/grid_vector_to_position_converter.gd" id="1_a0sbc"]
+
+[node name="GridVectorToPositionConverter" type="Node"]
+script = ExtResource("1_a0sbc")

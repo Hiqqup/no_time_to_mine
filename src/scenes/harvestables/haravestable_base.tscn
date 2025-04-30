@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk6ps468q2o3x"]
+
+[ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="1_8r8ln"]
+
+[node name="HaravestableBase" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+region_rect = Rect2(0, 0, 256, 64)
+
+[node name="ClickDetection" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClickDetection"]
+
+[node name="PlayerCollider" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerCollider"]
+position = Vector2(0, 3)
+
+[node name="GridVectorToPositionConverter" parent="." instance=ExtResource("1_8r8ln")]
