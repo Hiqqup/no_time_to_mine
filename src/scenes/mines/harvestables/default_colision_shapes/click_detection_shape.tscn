@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://5dwpbnrebtj5"]
+
+[node name="ClickDetectionShape" type="CollisionPolygon2D"]
+scale = Vector2(0.892826, 1.01369)
+polygon = PackedVector2Array(-17.9206, 8.87843, 0, 16.7704, 17.9206, 8.87843, 17.9206, -1.97299, 0, -9.86493, -17.9206, -1.97299)

@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2l67njsqn515"]
+
+[ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_8myw7"]
+[ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="2_didvc"]
+[ext_resource type="PackedScene" uid="uid://dlmby0s43l6ro" path="res://src/scenes/drops/biome_1/orange_drop.tscn" id="2_xk248"]
+[ext_resource type="PackedScene" uid="uid://bb1jbf035g1y5" path="res://src/scenes/mines/harvestables/default_colision_shapes/mining_range_shape.tscn" id="3_oka3m"]
+[ext_resource type="PackedScene" uid="uid://5dwpbnrebtj5" path="res://src/scenes/mines/harvestables/default_colision_shapes/click_detection_shape.tscn" id="4_8h16w"]
+[ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="5_hn0q8"]
+
+[node name="Orange" instance=ExtResource("1_8myw7")]
+health = 10.0
+drop_scene = ExtResource("2_xk248")
+
+[node name="Sprite2D" parent="Visuals" index="0"]
+texture = ExtResource("2_didvc")
+region_enabled = true
+region_rect = Rect2(192, 0, 32, 32)
+
+[node name="MiningRangeShape" parent="MiningRange" index="0" instance=ExtResource("3_oka3m")]
+
+[node name="ClickDetectionShape" parent="ClickDetection" index="0" instance=ExtResource("4_8h16w")]
+
+[node name="ColliderShape" parent="PlayerCollider" index="0" instance=ExtResource("5_hn0q8")]
+
+[node name="DropTable" type="Node2D" parent="." index="5"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnh5nnknlnh0j"]
+
+[ext_resource type="Script" uid="uid://bc536tbroruyr" path="res://src/scripts/item_drop_base.gd" id="1_d0exs"]
+[ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="2_tqkqc"]
+[ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="3_tqkqc"]
+
+[node name="ItemDropBase" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_d0exs")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 6)
+region_rect = Rect2(200, 12, 16, 14)
+
+[node name="CollectionRange" type="Area2D" parent="."]
+
+[node name="CollectionRangeShape" parent="CollectionRange" instance=ExtResource("2_tqkqc")]
+
+[node name="GridVectorToPositionConverter" parent="." instance=ExtResource("3_tqkqc")]
+
+[connection signal="body_entered" from="CollectionRange" to="." method="_on_collection_range_body_entered"]

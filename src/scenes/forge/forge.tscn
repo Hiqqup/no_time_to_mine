@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://js0scijtcqyj"]
+
+[ext_resource type="Script" uid="uid://kiphvgxfe0pn" path="res://src/scenes/forge/forge.gd" id="1_oc1b2"]
+[ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_gjnd3"]
+[ext_resource type="PackedScene" uid="uid://bktks85fbuoip" path="res://src/scenes/forge/skill_tree.tscn" id="2_oc1b2"]
+[ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="4_3sx3x"]
+
+[node name="Forge" type="Control" groups=["forge"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_oc1b2")
+_mine_scene = ExtResource("2_gjnd3")
+
+[node name="SkillTree" parent="." instance=ExtResource("2_oc1b2")]
+
+[node name="CameraIndependent" type="CanvasLayer" parent="."]
+
+[node name="TryButton" type="Button" parent="CameraIndependent"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -58.0
+offset_right = -30.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "try"
+
+[node name="Storage" parent="." instance=ExtResource("4_3sx3x")]
+
+[connection signal="pressed" from="CameraIndependent/TryButton" to="." method="_on_try_button_pressed"]

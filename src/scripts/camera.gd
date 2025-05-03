@@ -1,0 +1,49 @@
+extends Camera2D
+
+
+const _SCROLL_FACTOR = 0.1;
+const _SHAKE_FADE: float = 10.0;
+
+var _dragging: bool = false;
+var _dragging_start_position: Vector2;
+var _shake_strength: float = 0.0;
+
+enum CameraLocation{
+	MINES,
+	FORGE,
+}
+var location: CameraLocation = CameraLocation.FORGE;
+
+
+func _ready() -> void:
+	zoom = Vector2.ONE * 3;
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			if zoom.x > (_SCROLL_FACTOR + _SCROLL_FACTOR/10):
+				zoom -= Vector2.ONE * _SCROLL_FACTOR ;
+			
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			zoom+= Vector2.ONE * _SCROLL_FACTOR;
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not _dragging:
+			_dragging = true;
+			_dragging_start_position = event.position
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and _dragging:
+			_dragging = false;
+
+func _process(delta: float) -> void:
+	if location == CameraLocation.MINES:
+		global_position = get_tree().get_first_node_in_group("controllable_player").global_position
+	if(_dragging and location == CameraLocation.FORGE):
+		var mouse_position = get_viewport().get_mouse_position()
+		position -=( mouse_position - _dragging_start_position)/zoom;
+		_dragging_start_position = mouse_position;
+	if(_shake_strength):
+		_shake_strength = lerp(_shake_strength, 0.0, _SHAKE_FADE*delta);
+		offset = Vector2(randf_range(-_shake_strength , _shake_strength),randf_range(-_shake_strength , _shake_strength))
+	
+
+func shake(strength: float):
+	_shake_strength = strength;

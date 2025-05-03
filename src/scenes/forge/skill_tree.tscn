@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://bktks85fbuoip"]
+
+[ext_resource type="PackedScene" uid="uid://dvq4yj1q1oxt" path="res://src/scenes/forge/upgrade_button_base.tscn" id="1_afy6t"]
+[ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_llldc")
+
+[node name="Damage" parent="." groups=["root"] instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 92.0
+offset_right = 250.0
+offset_bottom = 132.0
+max_level = 100
+skill_name = "Damage"
+
+[node name="UpgradeButtonBase" parent="Damage" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = 73.0
+offset_top = -74.0
+offset_right = 113.0
+offset_bottom = -34.0
+max_level = 5
+
+[node name="UpgradeButtonBase" parent="Damage/UpgradeButtonBase" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -66.0
+offset_right = -48.0
+offset_bottom = -26.0
+
+[node name="UpgradeButtonBase2" parent="Damage/UpgradeButtonBase" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 69.0
+offset_right = 150.0
+offset_bottom = 109.0
+
+[node name="UpgradeButtonBase3" parent="Damage/UpgradeButtonBase" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -61.0
+offset_right = 120.0
+offset_bottom = -21.0
+
+[node name="UpgradeButtonBase2" parent="Damage" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = -64.0
+offset_top = 72.0
+offset_right = -24.0
+offset_bottom = 112.0
+max_level = 5
+
+[node name="UpgradeButtonBase3" parent="Damage" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 62.0
+offset_right = 118.0
+offset_bottom = 102.0
+max_level = 5
+
+[node name="UpgradeButtonBase4" parent="Damage" instance=ExtResource("1_afy6t")]
+layout_mode = 0
+offset_left = -81.0
+offset_top = -56.0
+offset_right = -41.0
+offset_bottom = -16.0
+max_level = 5

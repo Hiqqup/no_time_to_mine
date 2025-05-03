@@ -2,9 +2,9 @@ extends Node
 
 var grid_vector: Vector2i = Vector2i.ZERO
 
-func grid_vector_to_real_coordinates(grid_vector: Vector2i) -> Vector2:
-	var vector_x = Vector2(grid_vector.x, grid_vector.x)* GlobalConstants.TILE_SIZE ;
-	var vector_y = Vector2(-grid_vector.y, grid_vector.y)* GlobalConstants.TILE_SIZE ;
+func grid_vector_to_real_coordinates(gv: Vector2i) -> Vector2:
+	var vector_x = Vector2(gv.x, gv.x)* GlobalConstants.TILE_SIZE ;
+	var vector_y = Vector2(-gv.y, gv.y)* GlobalConstants.TILE_SIZE ;
 	return vector_x  + vector_y 
 
 

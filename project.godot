@@ -17,6 +17,14 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 [autoload]
 
 GlobalConstants="*res://src/scripts/global_constants.gd"
+Camera="*res://src/scripts/camera.gd"
+
+[global_group]
+
+controllable_player=""
+current_mines=""
+upgrade_stats=""
+forge=""
 
 [input]
 

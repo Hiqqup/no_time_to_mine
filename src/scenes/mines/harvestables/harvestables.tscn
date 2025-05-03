@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dji7xejgxhg1e"]
+[gd_scene load_steps=7 format=3 uid="uid://dji7xejgxhg1e"]
 
 [ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="1_25hys"]
-[ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scenes/harvestables/harvestables.gd" id="2_fuq1y"]
-[ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/harvestables/haravestable_base.tscn" id="3_50asn"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black.tscn" id="1_ymg13"]
+[ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scripts/harvestables.gd" id="2_fuq1y"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange.tscn" id="2_q64qn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuq1y"]
 texture = ExtResource("1_25hys")
@@ -32,6 +33,7 @@ texture_region_size = Vector2i(32, 32)
 4:0/0/y_sort_origin = -9
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
 4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
+4:0/0/custom_data_0 = ExtResource("1_ymg13")
 5:0/0 = 0
 5:0/0/texture_origin = Vector2i(0, 8)
 5:0/0/y_sort_origin = -9
@@ -42,6 +44,7 @@ texture_region_size = Vector2i(32, 32)
 6:0/0/y_sort_origin = -9
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
 6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
+6:0/0/custom_data_0 = ExtResource("2_q64qn")
 
 [sub_resource type="TileSet" id="TileSet_qvufr"]
 tile_shape = 1
@@ -50,10 +53,11 @@ tile_offset_axis = 1
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 2
+custom_data_layer_0/name = "scene"
+custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_fuq1y")
 
 [node name="Harvestabels" type="TileMapLayer"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_qvufr")
 script = ExtResource("2_fuq1y")
-_harvestable_base_scene = ExtResource("3_50asn")

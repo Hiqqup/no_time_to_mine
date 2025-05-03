@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3inm7ms7ivqf"]
+
+[ext_resource type="Script" uid="uid://cu0u7p6qftnda" path="res://src/scenes/mines/player/storage.gd" id="1_fryj3"]
+
+[node name="Storage" type="Node"]
+script = ExtResource("1_fryj3")
