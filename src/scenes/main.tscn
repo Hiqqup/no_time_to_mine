@@ -1,17 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://spyc82xpyw3c"]
+[gd_scene load_steps=5 format=3 uid="uid://spyc82xpyw3c"]
 
 [ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_32aa5"]
 [ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_rr2wm"]
 [ext_resource type="PackedScene" uid="uid://bfvoq0bvjqdem" path="res://src/scenes/mines/player/upgrade_stats.tscn" id="4_5dlwx"]
+[ext_resource type="PackedScene" uid="uid://cam16g86sc3tq" path="res://src/scenes/drops/item_types.tscn" id="4_o81g6"]
 
 [node name="Main" type="Node"]
+
+[node name="ItemTypes" parent="." node_paths=PackedStringArray("item_sprites") instance=ExtResource("4_o81g6")]
+item_sprites = {
+1: NodePath("Biome1/OrangeDrop"),
+2: NodePath("Biome1/BlackDrop")
+}
 
 [node name="UpgradeStats" parent="." groups=["upgrade_stats"] instance=ExtResource("4_5dlwx")]
 
 [node name="Forge" parent="." instance=ExtResource("1_32aa5")]
-offset_left = -325.0
-offset_top = -177.0
-offset_right = -325.0
-offset_bottom = -177.0
+offset_right = -1152.0
+offset_bottom = -648.0
 
 [node name="Camera" parent="." instance=ExtResource("2_rr2wm")]

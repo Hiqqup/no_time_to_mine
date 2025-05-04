@@ -2,15 +2,16 @@ class_name HarvestableBase
 extends Node2D
 
 @export var health: float;
-@export var drop_scene: PackedScene;
+@export var drop_table: Dictionary[ItemTypes.types, float];
+
+@export var _drop_base_scene: PackedScene;
+
 var player_in_range: bool = false;
+var mines;
 
 
 func get_destroyed():
-	var mines = get_tree().get_first_node_in_group("current_mines");
-	var drop = drop_scene.instantiate();
-	drop.get_node("GridVectorToPositionConverter").set_grid_vector($GridVectorToPositionConverter.grid_vector)
-	mines.get_node("YSorted/Drops").add_child(drop)
+	_spawn_drop(_drop_table_float_to_int(drop_table));
 	queue_free();	
 
 
@@ -26,10 +27,44 @@ func mine_visual_feedback():
 	#temporary end
 
 
+func _drop_table_float_to_int(drop_table: Dictionary[ItemTypes.types, float]):
+	var item_drops : Dictionary[ItemTypes.types, int];
+	for type in drop_table.keys():
+		var i = drop_table[type];
+		item_drops[type] = int(floor(i));
+		if randf() <= (i - floor(i)):
+			item_drops[type] += 1;
+	return item_drops;
+
+
+func _spawn_drop(item_drops: Dictionary[ItemTypes.types, int]):
+	var drop: ItemDropBase= _drop_base_scene.instantiate();
+	drop.item_drops = item_drops;
+	drop.get_node("GridVectorToPositionConverter").set_grid_vector($GridVectorToPositionConverter.grid_vector)
+	mines.get_node("YSorted/Drops").add_child(drop)
+
+
+func _handle_clicked_on():
+	var player =  get_tree().get_first_node_in_group("controllable_player")
+	if player_in_range :
+		player.currently_mining = self;
+
+
+func _ready() -> void:
+	mines = get_tree().get_first_node_in_group("current_mines");
+	
+	# setup a colison body with the same shape as click detection for player
+	# targeting ray to collide with
+	var player_targeting_colision_body := StaticBody2D.new();
+	player_targeting_colision_body.collision_layer = 2; # targeting colision layer
+	player_targeting_colision_body.add_child($ClickDetection/ClickDetectionShape.duplicate());
+	add_child(player_targeting_colision_body)
+
+
+
 func _enter_tree() -> void:
 	var upgrade_stats: PlayerUpgradeStats = get_tree().get_first_node_in_group("upgrade_stats")
 	$MiningRange/MiningRangeShape.scale*= upgrade_stats.mining_range
-	
 
 
 func _on_click_detection_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -37,11 +72,6 @@ func _on_click_detection_input_event(_viewport: Node, event: InputEvent, _shape_
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			_handle_clicked_on();
 
-
-func _handle_clicked_on():
-	var player =  get_tree().get_first_node_in_group("controllable_player")
-	if player_in_range :
-		player.currently_mining = self;
 
 
 func _on_mining_range_body_entered(body: Node2D) -> void:

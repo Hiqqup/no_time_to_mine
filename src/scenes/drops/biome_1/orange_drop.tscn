@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlmby0s43l6ro"]
+[gd_scene load_steps=3 format=3 uid="uid://bpuid0vwc3pnq"]
 
 [ext_resource type="PackedScene" uid="uid://dnh5nnknlnh0j" path="res://src/scenes/drops/item_drop_base.tscn" id="1_evq5b"]
 [ext_resource type="Texture2D" uid="uid://duv540dmtunak" path="res://assets/visuals/drops_tileset.png" id="2_d8sh6"]

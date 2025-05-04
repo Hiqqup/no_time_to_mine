@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2l67njsqn515"]
+
+[ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_gosno"]
+
+[node name="OrangeHarvestable" instance=ExtResource("1_gosno")]
+health = 10.0
+drop_table = Dictionary[int, float]({
+1: 2.0,
+2: 3.0
+})

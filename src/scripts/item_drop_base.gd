@@ -1,9 +1,11 @@
+class_name  ItemDropBase
 extends Node2D
 
-@export var item_type: ItemTypes.types;
-@export var amount: float;
-@export var drop_table: Dictionary;
+var item_drops :Dictionary[ItemTypes.types, int];
 
+func _ready() -> void:
+	$GuiItemListDisplayer.generate_or_update_mod_label(
+		$Visuals/GreenToBlueWrapper/VBoxContainer,item_drops);
 func _enter_tree() -> void:
 	var player = get_tree().get_first_node_in_group("controllable_player") as Player
 	$CollectionRange/CollectionRangeShape.scale*= player.upgrade_stats.mining_range
@@ -11,6 +13,8 @@ func _enter_tree() -> void:
 
 func _on_collection_range_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.get_node("Storage").contents[item_type] += 1;
+		var player_storage = body.get_node("Storage").contents;
+		for type in item_drops.keys():
+			player_storage[type] += item_drops[type]
 		queue_free()
 		

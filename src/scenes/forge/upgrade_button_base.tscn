@@ -1,37 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvq4yj1q1oxt"]
+[gd_scene load_steps=5 format=3 uid="uid://dvq4yj1q1oxt"]
 
 [ext_resource type="Texture2D" uid="uid://borsf58fk1c5q" path="res://assets/visuals/upgrade.png" id="1_vahct"]
 [ext_resource type="Script" uid="uid://d0nt5c4w6emvj" path="res://src/scripts/upgrade_button_base.gd" id="2_uat7v"]
 [ext_resource type="Script" uid="uid://b0qjrf2j4rjqp" path="res://src/scripts/uprade_button_base_child_getter.gd" id="3_jg7ue"]
-[ext_resource type="Texture2D" uid="uid://duv540dmtunak" path="res://assets/visuals/drops_tileset.png" id="3_uat7v"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg7ue"]
-atlas = ExtResource("3_uat7v")
-region = Rect2(200, 12, 16, 14)
+[ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="4_jg7ue"]
 
 [node name="UpgradeButtonBase" type="TextureButton"]
-modulate = Color(0.577008, 0.577008, 0.577008, 1)
-offset_right = 40.0
-offset_bottom = 40.0
+modulate = Color(0.605274, 0.605274, 0.605274, 1)
+offset_left = -19.0
+offset_top = -18.0
+offset_right = 21.0
+offset_bottom = 22.0
 texture_normal = ExtResource("1_vahct")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_uat7v")
-max_level = 3
 
 [node name="ChildGetter" type="Node" parent="." node_paths=PackedStringArray("info_label", "skill_name", "skill_progress", "skill_cost", "connection_to_parent")]
 script = ExtResource("3_jg7ue")
 info_label = NodePath("../InfoLabel")
-skill_name = NodePath("../InfoLabel/VBoxContainer/SkillName")
-skill_progress = NodePath("../InfoLabel/VBoxContainer/Progress")
-skill_cost = NodePath("../InfoLabel/VBoxContainer/Cost")
+skill_name = NodePath("../InfoLabel/MarginContainer/VBoxContainer/SkillName")
+skill_progress = NodePath("../InfoLabel/MarginContainer/VBoxContainer/Progress")
+skill_cost = NodePath("../InfoLabel/MarginContainer/VBoxContainer/Cost")
 connection_to_parent = NodePath("../ConnectionToParent")
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_bottom = 4
 
 [node name="ConnectionToParent" type="Line2D" parent="."]
 top_level = true
@@ -39,47 +30,49 @@ z_index = -1
 width = 3.0
 default_color = Color(0.151276, 0.151276, 0.151276, 1)
 
-[node name="InfoLabel" type="Panel" parent="."]
+[node name="InfoLabel" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -41.0
-offset_top = -86.0
-offset_right = 81.0
-offset_bottom = -3.0
+offset_left = -3.0
+offset_top = -82.0
+offset_right = 42.0
+offset_bottom = -38.0
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoLabel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Panel" type="Panel" parent="InfoLabel"]
+layout_mode = 2
+mouse_filter = 2
 
-[node name="SkillName" type="Label" parent="InfoLabel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="InfoLabel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoLabel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SkillName" type="Label" parent="InfoLabel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 9
 text = "damage"
 horizontal_alignment = 1
 
-[node name="Progress" type="Label" parent="InfoLabel/VBoxContainer"]
+[node name="Progress" type="Label" parent="InfoLabel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 9
 text = "0/3"
 horizontal_alignment = 1
 
-[node name="Cost" type="HBoxContainer" parent="InfoLabel/VBoxContainer"]
+[node name="Cost" type="VBoxContainer" parent="InfoLabel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="InfoLabel/VBoxContainer/Cost"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_jg7ue")
-expand_mode = 2
-
-[node name="Label" type="Label" parent="InfoLabel/VBoxContainer/Cost"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 9
-text = "2"
+[node name="GuiItemListDisplayer" parent="." instance=ExtResource("4_jg7ue")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

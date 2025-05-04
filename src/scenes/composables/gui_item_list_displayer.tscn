@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://yrnc5t2rwa3j"]
+
+[ext_resource type="Script" uid="uid://dx0hb3hv47va4" path="res://src/scenes/composables/gui_item_list_displayer.gd" id="1_0sewn"]
+
+[node name="GuiItemListDisplayer" type="Node"]
+script = ExtResource("1_0sewn")

@@ -1,10 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-const _SPEED: float = 150;
-const _ACCELERATION: float = _SPEED /10;
-const _MAX_LIFETIME:= 10.0#60.0;
-
 var currently_mining: HarvestableBase = null;
 
 var _mine_cooldown: float = 0;
@@ -19,10 +15,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_mine_cooldown -= delta;
 	_lifetime+= delta;
-	if _lifetime >= _MAX_LIFETIME:
+	if _lifetime >= upgrade_stats.max_life_time:
 		_die();
 	_try_mine();
 	_handle_movement_input()
+	_handle_targeting();
 	move_and_slide();
 
 func _die():
@@ -31,14 +28,15 @@ func _die():
 		for i in ItemTypes.types.size():
 			forge_storage.contents[i] += $Storage.contents[i];
 		forge.visible = true;
+		forge.update_and_generate_storage_display();
 		Camera.location = Camera.CameraLocation.FORGE;
 		get_tree().get_first_node_in_group("current_mines").queue_free()
 
 
 func _handle_movement_input():
 	var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");
-	velocity.x = move_toward(velocity.x, _SPEED* direction.x, _ACCELERATION);
-	velocity.y = move_toward(velocity.y, _SPEED* direction.y, _ACCELERATION);
+	velocity.x = move_toward(velocity.x, upgrade_stats.movement_speed* direction.x, upgrade_stats.movement_speed/10);
+	velocity.y = move_toward(velocity.y, upgrade_stats.movement_speed* direction.y, upgrade_stats.movement_speed/10);
 	
 
 
@@ -73,3 +71,16 @@ func _on_button_pressed() -> void:
 	_die();
 
 	#temporary end
+
+func _handle_targeting():
+	var targeting = $Targeting
+	var mouse_position = get_local_mouse_position()
+	var angle = mouse_position.angle()
+	targeting.rotation = angle - PI/ 2;
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) 
+		and targeting.is_colliding() 
+		and targeting.get_collider()):
+		var collider_parent = targeting.get_collider().get_parent();
+		if (collider_parent is HarvestableBase 
+			and collider_parent.player_in_range):
+			currently_mining = collider_parent;

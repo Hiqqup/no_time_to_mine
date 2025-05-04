@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dji7xejgxhg1e"]
 
 [ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="1_25hys"]
-[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black.tscn" id="1_ymg13"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="1_ymg13"]
 [ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scripts/harvestables.gd" id="2_fuq1y"]
-[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange.tscn" id="2_q64qn"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="2_q64qn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuq1y"]
 texture = ExtResource("1_25hys")

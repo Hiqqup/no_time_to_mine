@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://cam16g86sc3tq"]
+
+[ext_resource type="Script" uid="uid://0ex8cylx6772" path="res://src/scripts/item_types.gd" id="1_tmtek"]
+[ext_resource type="Texture2D" uid="uid://duv540dmtunak" path="res://assets/visuals/drops_tileset.png" id="2_xsi8k"]
+[ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="3_nag8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nag8k"]
+
+[node name="ItemTypes" type="Node" node_paths=PackedStringArray("item_sprites") groups=["item_types"]]
+script = ExtResource("1_tmtek")
+item_sprites = {
+1: NodePath("Biome1/OrangeDrop"),
+2: NodePath("Biome1/BlackDrop")
+}
+
+[node name="Biome1" type="Node2D" parent="."]
+
+[node name="BlueDrop" type="Sprite2D" parent="Biome1"]
+visible = false
+position = Vector2(0, 6)
+texture = ExtResource("2_xsi8k")
+region_enabled = true
+region_rect = Rect2(8, 12, 16, 14)
+
+[node name="RedDrop" type="Sprite2D" parent="Biome1"]
+visible = false
+position = Vector2(0, 6)
+texture = ExtResource("2_xsi8k")
+region_enabled = true
+region_rect = Rect2(40, 12, 16, 14)
+
+[node name="GreenDrop" type="Sprite2D" parent="Biome1"]
+visible = false
+position = Vector2(0, 6)
+texture = ExtResource("2_xsi8k")
+region_enabled = true
+region_rect = Rect2(72, 12, 16, 14)
+
+[node name="OrangeDrop" type="Sprite2D" parent="Biome1"]
+visible = false
+position = Vector2(0, 6)
+texture = ExtResource("2_xsi8k")
+region_enabled = true
+region_rect = Rect2(200, 12, 16, 14)
+
+[node name="BlackDrop" type="Sprite2D" parent="Biome1"]
+visible = false
+position = Vector2(0, 6)
+texture = ExtResource("2_xsi8k")
+region_enabled = true
+region_rect = Rect2(136, 12, 16, 14)
+
+[node name="CollectionRangeShape" parent="." instance=ExtResource("3_nag8k")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture = SubResource("AtlasTexture_nag8k")
+expand_mode = 3
+stretch_mode = 4
