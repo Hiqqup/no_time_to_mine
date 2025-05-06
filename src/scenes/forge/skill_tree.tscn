@@ -49,29 +49,28 @@ offset_top = -61.0
 offset_right = 120.0
 offset_bottom = -21.0
 
-[node name="UpgradeButtonBase2" parent="Damage" instance=ExtResource("1_afy6t")]
+[node name="OrangeDropModifier" parent="Damage" instance=ExtResource("1_afy6t")]
 layout_mode = 0
 offset_left = -64.0
 offset_top = 72.0
 offset_right = -24.0
 offset_bottom = 112.0
-max_level = 5
 
-[node name="UpgradeButtonBase" parent="Damage/UpgradeButtonBase2" instance=ExtResource("1_afy6t")]
+[node name="UpgradeButtonBase" parent="Damage/OrangeDropModifier" instance=ExtResource("1_afy6t")]
 layout_mode = 0
 offset_left = -94.0
 offset_top = -61.0
 offset_right = -54.0
 offset_bottom = -21.0
 
-[node name="UpgradeButtonBase2" parent="Damage/UpgradeButtonBase2" instance=ExtResource("1_afy6t")]
+[node name="UpgradeButtonBase2" parent="Damage/OrangeDropModifier" instance=ExtResource("1_afy6t")]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 66.0
 offset_right = 130.0
 offset_bottom = 106.0
 
-[node name="UpgradeButtonBase3" parent="Damage/UpgradeButtonBase2" instance=ExtResource("1_afy6t")]
+[node name="UpgradeButtonBase3" parent="Damage/OrangeDropModifier" instance=ExtResource("1_afy6t")]
 layout_mode = 0
 offset_left = -76.0
 offset_top = 96.0

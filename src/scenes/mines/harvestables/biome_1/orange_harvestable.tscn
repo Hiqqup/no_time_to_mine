@@ -5,6 +5,5 @@
 [node name="OrangeHarvestable" instance=ExtResource("1_gosno")]
 health = 10.0
 drop_table = Dictionary[int, float]({
-1: 2.0,
-2: 3.0
+1: 1.0
 })

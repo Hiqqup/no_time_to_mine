@@ -27,6 +27,7 @@ current_mines=""
 upgrade_stats=""
 forge=""
 item_types=""
+harvestable_types=""
 
 [input]
 

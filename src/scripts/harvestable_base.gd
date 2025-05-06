@@ -27,10 +27,10 @@ func mine_visual_feedback():
 	#temporary end
 
 
-func _drop_table_float_to_int(drop_table: Dictionary[ItemTypes.types, float]):
+func _drop_table_float_to_int(dt: Dictionary[ItemTypes.types, float]):
 	var item_drops : Dictionary[ItemTypes.types, int];
-	for type in drop_table.keys():
-		var i = drop_table[type];
+	for type in dt.keys():
+		var i = dt[type];
 		item_drops[type] = int(floor(i));
 		if randf() <= (i - floor(i)):
 			item_drops[type] += 1;
@@ -64,6 +64,8 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	var upgrade_stats: PlayerUpgradeStats = get_tree().get_first_node_in_group("upgrade_stats")
+	if not upgrade_stats:
+		return;
 	$MiningRange/MiningRangeShape.scale*= upgrade_stats.mining_range
 
 
