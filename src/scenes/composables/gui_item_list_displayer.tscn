@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://yrnc5t2rwa3j"]
+[gd_scene load_steps=7 format=3 uid="uid://yrnc5t2rwa3j"]
 
 [ext_resource type="Script" uid="uid://dx0hb3hv47va4" path="res://src/scripts/gui_item_list_displayer.gd" id="1_0sewn"]
+[ext_resource type="Texture2D" uid="uid://duv540dmtunak" path="res://assets/visuals/drops_tileset.png" id="2_upvrg"]
+[ext_resource type="Script" uid="uid://dky4gr1pdok6y" path="res://src/scripts/resources/item_types.gd" id="3_w1opg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr57h"]
+atlas = ExtResource("2_upvrg")
+region = Rect2(200, 12, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdpng"]
+atlas = ExtResource("2_upvrg")
+region = Rect2(136, 12, 16, 14)
+
+[sub_resource type="Resource" id="Resource_01s58"]
+script = ExtResource("3_w1opg")
+map = Dictionary[int, Texture2D]({
+1: SubResource("AtlasTexture_vr57h"),
+2: SubResource("AtlasTexture_mdpng")
+})
 
 [node name="GuiItemListDisplayer" type="Node"]
 script = ExtResource("1_0sewn")
+_item_sprite_mapper = SubResource("Resource_01s58")

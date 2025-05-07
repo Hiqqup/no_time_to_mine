@@ -4,12 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="2_xxqhm"]
 [ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="3_thfyk"]
 
-[node name="HarvestableTypes" type="Node" node_paths=PackedStringArray("harvestable_bases")]
+[node name="HarvestableTypes" type="Node"]
 script = ExtResource("1_44loh")
-harvestable_bases = {
-1: NodePath("Biome1/OrangeHarvestable"),
-2: NodePath("Biome1/BlackHarvestable")
-}
 
 [node name="Biome1" type="Node2D" parent="."]
 

@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dji7xejgxhg1e"]
+[gd_scene load_steps=8 format=3 uid="uid://dji7xejgxhg1e"]
 
-[ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="1_25hys"]
-[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="1_ymg13"]
-[ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scripts/harvestables.gd" id="2_fuq1y"]
-[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="2_q64qn"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="1_seflx"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="2_knevs"]
+[ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="3_bi2h1"]
+[ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scripts/harvestables_layer.gd" id="4_qoljb"]
+[ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="5_knevs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuq1y"]
-texture = ExtResource("1_25hys")
+texture = ExtResource("3_bi2h1")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 8)
@@ -33,7 +34,7 @@ texture_region_size = Vector2i(32, 32)
 4:0/0/y_sort_origin = -9
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
 4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-4:0/0/custom_data_0 = ExtResource("1_ymg13")
+4:0/0/custom_data_0 = ExtResource("1_seflx")
 5:0/0 = 0
 5:0/0/texture_origin = Vector2i(0, 8)
 5:0/0/y_sort_origin = -9
@@ -44,7 +45,7 @@ texture_region_size = Vector2i(32, 32)
 6:0/0/y_sort_origin = -9
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
 6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-6:0/0/custom_data_0 = ExtResource("2_q64qn")
+6:0/0/custom_data_0 = ExtResource("2_knevs")
 
 [sub_resource type="TileSet" id="TileSet_qvufr"]
 tile_shape = 1
@@ -57,7 +58,8 @@ custom_data_layer_0/name = "scene"
 custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_fuq1y")
 
-[node name="Harvestabels" type="TileMapLayer"]
+[node name="HarvestablesLayer" type="TileMapLayer"]
 y_sort_enabled = true
 tile_set = SubResource("TileSet_qvufr")
-script = ExtResource("2_fuq1y")
+script = ExtResource("4_qoljb")
+_harvestable_types = ExtResource("5_knevs")

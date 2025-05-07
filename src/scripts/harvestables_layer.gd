@@ -2,6 +2,7 @@ extends TileMapLayer
 
 
 @export var floor_layer: MineFloor;
+@export var _harvestable_types: HarvestableTypes;
 
 const _OFFSETS = [
 		Vector2i(1,1),
@@ -11,11 +12,9 @@ const _OFFSETS = [
 	];
 
 
-var _harvestable_types;
 
 
 func _ready() -> void:
-	_harvestable_types = get_tree().get_first_node_in_group("harvestable_types");
 	generate_cells({
 		HarvestableTypes.types.ORANGE: 6,
 		HarvestableTypes.types.BLACK: 4,

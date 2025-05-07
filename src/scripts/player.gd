@@ -1,12 +1,15 @@
 class_name Player
 extends CharacterBody2D
 
+signal died;
+
 var currently_mining: HarvestableBase = null;
 
 var _mine_cooldown: float = 0;
 var _lifetime:= 0.0;
 var upgrade_stats: PlayerUpgradeStats
 
+var do_lifetime_calculation: bool = true;
 
 func _ready() -> void:
 	upgrade_stats = get_tree().get_first_node_in_group("upgrade_stats");
@@ -14,7 +17,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_mine_cooldown -= delta;
-	_lifetime+= delta;
+	if do_lifetime_calculation:
+		_lifetime+= delta;
 	if _lifetime >= upgrade_stats.max_life_time:
 		_die();
 	_try_mine();
@@ -30,7 +34,9 @@ func _die():
 		forge.visible = true;
 		forge.update_and_generate_storage_display();
 		Camera.location = Camera.CameraLocation.FORGE;
+		died.emit();
 		get_tree().get_first_node_in_group("current_mines").queue_free()
+		
 
 
 func _handle_movement_input():
@@ -74,8 +80,9 @@ func _on_button_pressed() -> void:
 
 func _handle_targeting():
 	var targeting = $Targeting
-	var mouse_position = get_local_mouse_position()
-	var angle = mouse_position.angle()
+	var mouse_position = get_local_mouse_position() 
+	
+	var angle = (mouse_position - targeting.position).angle()
 	targeting.rotation = angle - PI/ 2;
 	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) 
 		and targeting.is_colliding() 

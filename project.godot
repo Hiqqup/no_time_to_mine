@@ -18,7 +18,6 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 GlobalConstants="*res://src/scripts/global_constants.gd"
 Camera="*res://src/scripts/camera.gd"
-ItemTypesScript="*res://src/scripts/item_types.gd"
 
 [global_group]
 
@@ -26,8 +25,6 @@ controllable_player=""
 current_mines=""
 upgrade_stats=""
 forge=""
-item_types=""
-harvestable_types=""
 
 [input]
 

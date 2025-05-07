@@ -1,17 +1,13 @@
 class_name  HarvestableTypes
-extends Node
+extends Resource
 
-@export var harvestable_bases: Dictionary[types, HarvestableBase]
+@export var harvestable_bases: Dictionary[types, PackedScene]
 enum types{
 	BASE,
 	ORANGE,
 	BLACK,
 }
 
-func _ready() -> void:
-	$Biome1.position.x = 5000.0;
-
 func get_copy(type : types) ->HarvestableBase:
-	var base = harvestable_bases[type].duplicate();
-	base.visible = true;
+	var base = harvestable_bases[type].instantiate();
 	return base;

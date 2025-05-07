@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://mq0wb5hf2lra"]
 
 [ext_resource type="Script" uid="uid://dlns6x22rucix" path="res://src/scripts/mines.gd" id="1_5ay12"]
-[ext_resource type="PackedScene" uid="uid://dji7xejgxhg1e" path="res://src/scenes/mines/harvestables/harvestables.tscn" id="2_1bjje"]
+[ext_resource type="PackedScene" uid="uid://dji7xejgxhg1e" path="res://src/scenes/mines/harvestables/harvestables_layer.tscn" id="2_1bjje"]
 [ext_resource type="PackedScene" uid="uid://bd1ftd4mp5yyb" path="res://src/scenes/mines/floor.tscn" id="2_hxspv"]
 [ext_resource type="PackedScene" uid="uid://d1i8mon4i40ff" path="res://src/scenes/mines/player/player.tscn" id="2_wu3x7"]
 
@@ -16,7 +16,7 @@ y_sort_enabled = true
 [node name="Drops" type="Node2D" parent="YSorted"]
 y_sort_enabled = true
 
-[node name="Harvestabels" parent="YSorted" node_paths=PackedStringArray("floor_layer") instance=ExtResource("2_1bjje")]
+[node name="HarvestabelsLayer" parent="YSorted" node_paths=PackedStringArray("floor_layer") instance=ExtResource("2_1bjje")]
 floor_layer = NodePath("../../Floor")
 
 [node name="Player" parent="YSorted" instance=ExtResource("2_wu3x7")]

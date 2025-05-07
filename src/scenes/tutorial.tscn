@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpu4eexbhm1e7"]
+
+[ext_resource type="Script" uid="uid://dv3e1x3knx7hf" path="res://src/scripts/tutorial.gd" id="1_io05x"]
+[ext_resource type="Texture2D" uid="uid://d4jeuxr50sjgg" path="res://assets/visuals/movement_guide.png" id="2_ihko7"]
+[ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_io05x"]
+[ext_resource type="FontFile" uid="uid://c1vtk4es625tx" path="res://assets/visuals/fonts/EXEPixelPerfect.ttf" id="3_gqjuj"]
+[ext_resource type="Texture2D" uid="uid://b7yibd7vu2s0m" path="res://assets/visuals/mining_guide.png" id="4_l4gex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqjuj"]
+atlas = ExtResource("2_ihko7")
+region = Rect2(4, 5, 39, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4gex"]
+atlas = ExtResource("4_l4gex")
+region = Rect2(1, 0, 22, 32)
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_io05x")
+
+[node name="PlayerMovementGuide" type="Node2D" parent="."]
+visible = false
+position = Vector2(16, 0)
+
+[node name="GreenToBlueWrapper" type="Node2D" parent="PlayerMovementGuide"]
+position = Vector2(-8, 13)
+scale = Vector2(0.61, 0.61)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerMovementGuide/GreenToBlueWrapper"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -86.0
+offset_right = 44.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gqjuj")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 12.0
+offset_right = 531.0
+offset_bottom = 324.0
+theme_override_constants/line_spacing = -20
+theme_override_fonts/font = ExtResource("3_gqjuj")
+theme_override_font_sizes/font_size = 16
+text = "       w
+   a      s
+       d"
+
+[node name="Label" type="Label" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gqjuj")
+text = "to move"
+horizontal_alignment = 1
+
+[node name="MiningGuide" type="Node2D" parent="."]
+position = Vector2(16, -15)
+
+[node name="GreenToBlueWrapper" type="Node2D" parent="MiningGuide"]
+position = Vector2(-8, 13)
+scale = Vector2(0.61, 0.61)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MiningGuide/GreenToBlueWrapper"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -86.0
+offset_right = 44.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MiningGuide/GreenToBlueWrapper/VBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_l4gex")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MiningGuide/GreenToBlueWrapper/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_gqjuj")
+text = "to mine"
+horizontal_alignment = 1
+
+[node name="Mines" parent="." instance=ExtResource("2_io05x")]
+
+[node name="ForgeGuide" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="ForgeGuide"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.5
+offset_right = 104.5
+offset_bottom = 49.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="ForgeGuide/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ForgeGuide/MarginContainer"]
+layout_mode = 2
+text = "Click upgrades to purchase
+ scroll to zoom"
+horizontal_alignment = 1

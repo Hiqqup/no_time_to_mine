@@ -1,5 +1,7 @@
 extends Node
 
+@export var _item_sprite_mapper: ItemTypes;
+
 var _already_displaying: Dictionary[ItemTypes.types, bool];
 
 var _generated_labels: Array[Label]
@@ -24,7 +26,7 @@ func generate_or_update(
 	item_list: Dictionary[ItemTypes.types, int]):
 	
 	const label_name:="Label"
-	var item_sprites = get_tree().get_first_node_in_group("item_types");
+	var item_sprites = _item_sprite_mapper;
 	for type in item_list.keys():
 		if item_list[type] > 0:
 			if not _already_displaying[type]:
