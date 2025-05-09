@@ -53,18 +53,23 @@ offset_bottom = 324.0
 theme_override_constants/line_spacing = -20
 theme_override_fonts/font = ExtResource("3_gqjuj")
 theme_override_font_sizes/font_size = 16
-text = "       w
-   a      s
-       d"
+text = "       s
+   a      d
+       w"
 
 [node name="Label" type="Label" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_gqjuj")
 text = "to move"
 horizontal_alignment = 1
 
 [node name="MiningGuide" type="Node2D" parent="."]
+visible = false
 position = Vector2(16, -15)
 
 [node name="GreenToBlueWrapper" type="Node2D" parent="MiningGuide"]
@@ -93,6 +98,10 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="MiningGuide/GreenToBlueWrapper/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_gqjuj")
 text = "to mine"
 horizontal_alignment = 1
@@ -101,20 +110,62 @@ horizontal_alignment = 1
 
 [node name="ForgeGuide" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="ForgeGuide"]
+[node name="NavigationGuide" type="MarginContainer" parent="ForgeGuide"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -104.5
-offset_right = 104.5
-offset_bottom = 49.0
+offset_left = -56.5
+offset_right = 56.5
+offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="ForgeGuide/MarginContainer"]
+[node name="Panel" type="Panel" parent="ForgeGuide/NavigationGuide"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ForgeGuide/MarginContainer"]
+[node name="Label" type="Label" parent="ForgeGuide/NavigationGuide"]
 layout_mode = 2
-text = "Click upgrades to purchase
- scroll to zoom"
+text = " scroll to zoom"
+horizontal_alignment = 1
+
+[node name="RetryGuide" type="MarginContainer" parent="ForgeGuide"]
+anchors_preset = -1
+anchor_left = 0.963
+anchor_top = 0.911
+anchor_right = 0.963
+anchor_bottom = 0.911
+offset_left = -79.3761
+offset_top = -38.8281
+offset_right = 17.6239
+offset_bottom = -15.8281
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ForgeGuide/RetryGuide"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ForgeGuide/RetryGuide"]
+layout_mode = 2
+text = "click to retry"
+horizontal_alignment = 1
+
+[node name="PurchaseGuide" type="MarginContainer" parent="ForgeGuide"]
+anchors_preset = -1
+anchor_top = 0.007
+anchor_bottom = 0.007
+offset_left = -98.0
+offset_top = -39.036
+offset_right = 101.0
+offset_bottom = -16.036
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(98, 11.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="ForgeGuide/PurchaseGuide"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ForgeGuide/PurchaseGuide"]
+layout_mode = 2
+text = "click to purchase upgrade"
 horizontal_alignment = 1

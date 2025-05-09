@@ -1,12 +1,17 @@
 extends Control
 
+signal upgrade_purchased
+
 @export var _mine_scene: PackedScene
 @export var _vcontainer: VBoxContainer;
 
+var skill_tree_root:UpgradeButtonBase;
+
 func _ready() -> void:
 	visibility_changed.connect(func(): $CameraIndependent.visible = visible)
-
-	_hide_all_nodes($SkillTree/Damage)
+	
+	skill_tree_root = $SkillTree/Damage;
+	_hide_all_nodes(skill_tree_root)
 	
 	update_and_generate_storage_display()
 

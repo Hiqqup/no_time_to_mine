@@ -1,18 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1i8mon4i40ff"]
+[gd_scene load_steps=6 format=3 uid="uid://d1i8mon4i40ff"]
 
 [ext_resource type="Texture2D" uid="uid://rmsnpx80yd3e" path="res://assets/visuals/player.png" id="1_cusn3"]
 [ext_resource type="Script" uid="uid://d56qvy3tgwpl" path="res://src/scripts/player.gd" id="1_v4rts"]
+[ext_resource type="Texture2D" uid="uid://blkuvgc2hc4fi" path="res://assets/visuals/lifetime_bar/background.png" id="2_mb1oq"]
+[ext_resource type="Texture2D" uid="uid://cs48iv23xtbgq" path="res://assets/visuals/lifetime_bar/progress.png" id="3_0weng"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
 
 [node name="Player" type="CharacterBody2D" groups=["controllable_player"]]
 script = ExtResource("1_v4rts")
 
-[node name="tmp" type="CanvasLayer" parent="."]
+[node name="CameraIndependet" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="tmp"]
+[node name="Button" type="Button" parent="CameraIndependet"]
 offset_right = 8.0
 offset_bottom = 8.0
+size_flags_vertical = 8
 text = "die"
+
+[node name="LifetimeBar" type="TextureProgressBar" parent="CameraIndependet"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(5, 4)
+max_value = 10.0
+step = 0.01
+fill_mode = 6
+nine_patch_stretch = true
+texture_under = ExtResource("2_mb1oq")
+texture_progress = ExtResource("3_0weng")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -34,4 +53,4 @@ points = PackedVector2Array(0, 0, 0, 49)
 width = 1.0
 default_color = Color(0, 0, 0, 0.372549)
 
-[connection signal="pressed" from="tmp/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CameraIndependet/Button" to="." method="_on_button_pressed"]

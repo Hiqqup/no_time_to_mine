@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 signal died;
 
+var lifetime_bar: TextureProgressBar;
+
 var currently_mining: HarvestableBase = null;
 
 var _mine_cooldown: float = 0;
@@ -13,12 +15,15 @@ var do_lifetime_calculation: bool = true;
 
 func _ready() -> void:
 	upgrade_stats = get_tree().get_first_node_in_group("upgrade_stats");
-
+	lifetime_bar = $CameraIndependet/LifetimeBar
+	lifetime_bar.max_value = upgrade_stats.max_life_time;
+	
 
 func _physics_process(delta: float) -> void:
 	_mine_cooldown -= delta;
 	if do_lifetime_calculation:
 		_lifetime+= delta;
+		lifetime_bar.value = _lifetime;
 	if _lifetime >= upgrade_stats.max_life_time:
 		_die();
 	_try_mine();

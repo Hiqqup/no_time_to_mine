@@ -7,8 +7,8 @@ func _ready() -> void:
 	$GuiItemListDisplayer.generate_or_update_mod_label(
 		$Visuals/GreenToBlueWrapper/VBoxContainer,item_drops);
 func _enter_tree() -> void:
-	var player = get_tree().get_first_node_in_group("controllable_player") as Player
-	$CollectionRange/CollectionRangeShape.scale*= player.upgrade_stats.mining_range
+	var upgrade_stats = get_tree().get_first_node_in_group("upgrade_stats")
+	$CollectionRange/CollectionRangeShape.scale*= upgrade_stats.mining_range
 
 
 func _on_collection_range_body_entered(body: Node2D) -> void:

@@ -51,7 +51,9 @@ func _on_pressed() -> void:
 	if not _check_affordable() or level == max_level:
 		return;
 	_appy_cost()
-	get_tree().get_first_node_in_group("forge").update_and_generate_storage_display();
+	var forge = get_tree().get_first_node_in_group("forge")
+	forge.update_and_generate_storage_display();
+	forge.upgrade_purchased.emit();
 	level += 1;
 	cost = cost_func.call(level);
 	apply_upgrade.call();
