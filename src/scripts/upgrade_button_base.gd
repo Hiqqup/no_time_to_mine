@@ -1,10 +1,15 @@
 class_name UpgradeButtonBase
 extends TextureButton
 
-@export var max_level: int;
-@export var skill_name: String;
+
+@export var upgrade_properties: UpgradeProperties:
+	set(val):
+		upgrade_properties = val;
+		setup();
 
 # set from outside
+var max_level: int;
+var skill_name: String;
 var apply_upgrade: Callable;
 var cost_func: Callable:
 	set(call):
@@ -17,6 +22,7 @@ var cost: Dictionary[ItemTypes.types, int]:
 		cost = value;
 		_generate_cost_display();
 var _forge_storage_contents: Dictionary[ItemTypes.types, int];
+var _forge: Control;
 
 var level : int = 0:
 	set(value):
@@ -26,16 +32,24 @@ var level : int = 0:
 		$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level)
 
 
-func _ready() -> void:
-	_forge_storage_contents = (
-		get_tree()
-		.get_first_node_in_group("forge")
-		.get_node("Storage")
-		.contents);
+func setup():
+	if upgrade_properties == null:
+		print(upgrade_properties)
+		queue_free();
+		return;
+	cost_func = upgrade_properties.cost_func;
+	apply_upgrade = upgrade_properties.apply_upgrade;
+	skill_name = upgrade_properties.skill_name;
+	max_level = upgrade_properties.max_level;
 	
 	$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level);
 	$ChildGetter.skill_name.text = skill_name;
 	
+
+func _ready() -> void:
+	_forge = get_tree().get_first_node_in_group("forge")
+	_forge_storage_contents = (_forge.get_node("Storage").contents);
+
 	$ChildGetter.info_label.visible = false;
 	var parent = get_parent();
 	if parent is UpgradeButtonBase:
@@ -51,9 +65,8 @@ func _on_pressed() -> void:
 	if not _check_affordable() or level == max_level:
 		return;
 	_appy_cost()
-	var forge = get_tree().get_first_node_in_group("forge")
-	forge.update_and_generate_storage_display();
-	forge.upgrade_purchased.emit();
+	_forge.update_and_generate_storage_display();
+	_forge.upgrade_purchased.emit();
 	level += 1;
 	cost = cost_func.call(level);
 	apply_upgrade.call();

@@ -10,5 +10,7 @@ script = ExtResource("1_44loh")
 [node name="Biome1" type="Node2D" parent="."]
 
 [node name="OrangeHarvestable" parent="Biome1" instance=ExtResource("2_xxqhm")]
+_upgrade_stats = null
 
 [node name="BlackHarvestable" parent="Biome1" instance=ExtResource("3_thfyk")]
+_upgrade_stats = null

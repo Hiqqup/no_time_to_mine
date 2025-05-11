@@ -1,0 +1,27 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3rpcim20exhr"]
+
+[ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_x0tfb"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_xn4g8"]
+[ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="3_ek4bv"]
+[ext_resource type="Texture2D" uid="uid://duv540dmtunak" path="res://assets/visuals/drops_tileset.png" id="4_dril8"]
+[ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="5_skt7l"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="6_vrlxb"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="7_8fqf3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr5wj"]
+atlas = ExtResource("4_dril8")
+region = Rect2(200, 12, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nol8j"]
+atlas = ExtResource("4_dril8")
+region = Rect2(136, 12, 16, 14)
+
+[node name="TypePopulater" type="Node"]
+script = ExtResource("1_x0tfb")
+items = ExtResource("3_ek4bv")
+orange_drop = SubResource("AtlasTexture_sr5wj")
+black_drop = SubResource("AtlasTexture_nol8j")
+harvestables = ExtResource("5_skt7l")
+orange_harvestable = ExtResource("6_vrlxb")
+black_harvestable = ExtResource("7_8fqf3")
+levels = ExtResource("2_xn4g8")

@@ -8,7 +8,9 @@ enum types{
 	BASE_DROP,
 	ORANGE_DROP,
 	BLACK_DROP,
+	NEW_DROP,
 }
+
 
 
 func get_copy_texture_rect(type: ItemTypes.types) -> TextureRect:

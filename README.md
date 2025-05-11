@@ -5,6 +5,7 @@
 - durindir's smithing
 - the way of the looming whisps
 - Chromatic Ascent
+- No Time to Mine
 
 ## Concept:
 

@@ -4,6 +4,14 @@ extends TileMapLayer
 @export var floor_layer: MineFloor;
 @export var _harvestable_types: HarvestableTypes;
 
+var _harvestables: Array[HarvestableBase];
+
+var cells_to_generate: Dictionary[HarvestableTypes.types, int]:
+	set(val):
+		cells_to_generate = val;
+		generate_cells(cells_to_generate);
+
+
 const _OFFSETS = [
 		Vector2i(1,1),
 		Vector2i(-1,1),
@@ -15,11 +23,7 @@ const _OFFSETS = [
 
 
 func _ready() -> void:
-	generate_cells({
-		HarvestableTypes.types.ORANGE: 6,
-		HarvestableTypes.types.BLACK: 4,
-	});
-	_convert_used_cells();
+	pass;
 
 func generate_cells(amount: Dictionary[HarvestableTypes.types, int]):
 	for type in amount.keys():
@@ -28,11 +32,19 @@ func generate_cells(amount: Dictionary[HarvestableTypes.types, int]):
 	pass;
 
 func _generate_one_cell_of_type(type: HarvestableTypes.types):
-	var base = _harvestable_types.get_copy(type);
+	var base: HarvestableBase = _harvestable_types.get_copy(type);
 	var pos =floor_layer.get_random_free_spot();
 	floor_layer.used[pos] = true;
+	_harvestables.push_back(base)
+	base.harvested.connect(func(): _remove_from_harvestables_check_empty(base));
 	base.get_node("GridVectorToPositionConverter").set_grid_vector(pos);
 	add_child(base);
+
+
+func _remove_from_harvestables_check_empty(base: HarvestableBase):
+	_harvestables.erase(base);
+	if _harvestables.is_empty():
+		get_tree().get_first_node_in_group("forge").increment_level();
 
 
 func _convert_used_cells():

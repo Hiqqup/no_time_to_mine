@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ItemTypes" load_steps=2 format=3 uid="uid://583tc2mf1eco"]
+
+[ext_resource type="Script" uid="uid://dky4gr1pdok6y" path="res://src/scripts/resources/item_types.gd" id="1_iybvb"]
+
+[resource]
+script = ExtResource("1_iybvb")
+map = Dictionary[int, Texture2D]({})
+metadata/_custom_type_script = "uid://dky4gr1pdok6y"

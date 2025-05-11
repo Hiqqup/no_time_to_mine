@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf2j4a0nggs3h"]
+
+[ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_yufto"]
+[ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_276xm"]
+[ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial.tscn" id="3_lcg6w"]
+[ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="4_gh3at"]
+
+[node name="Game" type="Node"]
+
+[node name="Forge" parent="." instance=ExtResource("1_yufto")]
+offset_right = -1152.0
+offset_bottom = -648.0
+
+[node name="Camera" parent="." instance=ExtResource("2_276xm")]
+
+[node name="Tutorial" parent="." instance=ExtResource("3_lcg6w")]
+
+[node name="Mines" parent="." instance=ExtResource("4_gh3at")]

@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://mq0wb5hf2lra"]
+[gd_scene load_steps=6 format=3 uid="uid://mq0wb5hf2lra"]
 
 [ext_resource type="Script" uid="uid://dlns6x22rucix" path="res://src/scripts/mines.gd" id="1_5ay12"]
 [ext_resource type="PackedScene" uid="uid://dji7xejgxhg1e" path="res://src/scenes/mines/harvestables/harvestables_layer.tscn" id="2_1bjje"]
 [ext_resource type="PackedScene" uid="uid://bd1ftd4mp5yyb" path="res://src/scenes/mines/floor.tscn" id="2_hxspv"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_wonyy"]
 [ext_resource type="PackedScene" uid="uid://d1i8mon4i40ff" path="res://src/scenes/mines/player/player.tscn" id="2_wu3x7"]
 
-[node name="Mines" type="Node2D" groups=["current_mines"]]
+[node name="Mines" type="Node2D" node_paths=PackedStringArray("player", "harvestable_layer", "floor") groups=["current_mines"]]
 script = ExtResource("1_5ay12")
+player = NodePath("YSorted/Player")
+harvestable_layer = NodePath("YSorted/HarvestabelsLayer")
+floor = NodePath("Floor")
+levels = ExtResource("2_wonyy")
+metadata/_edit_horizontal_guides_ = [-104.0]
 
 [node name="Floor" parent="." instance=ExtResource("2_hxspv")]
 
@@ -22,3 +28,5 @@ floor_layer = NodePath("../../Floor")
 [node name="Player" parent="YSorted" instance=ExtResource("2_wu3x7")]
 y_sort_enabled = true
 position = Vector2(16, 0)
+
+[connection signal="died" from="YSorted/Player" to="." method="_on_player_died"]

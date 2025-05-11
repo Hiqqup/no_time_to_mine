@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://spyc82xpyw3c"]
+[gd_scene load_steps=6 format=3 uid="uid://spyc82xpyw3c"]
 
 [ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_32aa5"]
 [ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_rr2wm"]
 [ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial.tscn" id="3_5dlwx"]
-[ext_resource type="PackedScene" uid="uid://bfvoq0bvjqdem" path="res://src/scenes/mines/player/upgrade_stats.tscn" id="4_5dlwx"]
+[ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="4_5dlwx"]
+[ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://src/scenes/type_populater.tscn" id="5_o81g6"]
 
 [node name="Main" type="Node"]
 
-[node name="UpgradeStats" parent="." groups=["upgrade_stats"] instance=ExtResource("4_5dlwx")]
+[node name="TypePopulater" parent="." instance=ExtResource("5_o81g6")]
 
 [node name="Forge" parent="." instance=ExtResource("1_32aa5")]
 offset_right = -1152.0
@@ -16,3 +17,5 @@ offset_bottom = -648.0
 [node name="Camera" parent="." instance=ExtResource("2_rr2wm")]
 
 [node name="Tutorial" parent="." instance=ExtResource("3_5dlwx")]
+
+[node name="Mines" parent="." instance=ExtResource("4_5dlwx")]

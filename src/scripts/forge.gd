@@ -7,6 +7,8 @@ signal upgrade_purchased
 
 var skill_tree_root:UpgradeButtonBase;
 
+var selected_level: Level.levels = Level.levels.FIRST;
+
 func _ready() -> void:
 	visibility_changed.connect(func(): $CameraIndependent.visible = visible)
 	
@@ -15,6 +17,11 @@ func _ready() -> void:
 	
 	update_and_generate_storage_display()
 
+
+func increment_level():
+	if (Level.levels.find_key(selected_level + 1) != null 
+		and selected_level != Level.levels.TUTORIAL):
+		selected_level += 1
 
 func update_and_generate_storage_display():
 	$GuiItemListDisplayer.generate_or_update(_vcontainer, $Storage.contents)

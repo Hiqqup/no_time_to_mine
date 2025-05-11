@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnh5nnknlnh0j"]
+[gd_scene load_steps=6 format=3 uid="uid://dnh5nnknlnh0j"]
 
 [ext_resource type="Script" uid="uid://bc536tbroruyr" path="res://src/scripts/item_drop_base.gd" id="1_d0exs"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_kqcy0"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="2_tqkqc"]
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="3_tqkqc"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="4_paxva"]
@@ -8,6 +9,7 @@
 [node name="ItemDropBase" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_d0exs")
+upgrade_stats = ExtResource("2_kqcy0")
 
 [node name="Visuals" type="Node2D" parent="."]
 

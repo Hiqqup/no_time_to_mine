@@ -1,7 +1,7 @@
 class_name  HarvestableTypes
 extends Resource
 
-@export var harvestable_bases: Dictionary[types, PackedScene]
+@export var map: Dictionary[types, PackedScene]
 enum types{
 	BASE,
 	ORANGE,
@@ -9,5 +9,5 @@ enum types{
 }
 
 func get_copy(type : types) ->HarvestableBase:
-	var base = harvestable_bases[type].instantiate();
+	var base = map[type].instantiate();
 	return base;

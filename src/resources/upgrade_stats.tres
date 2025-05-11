@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerUpgradeStats" load_steps=2 format=3 uid="uid://ckfbt77vgwqy3"]
+
+[ext_resource type="Script" uid="uid://cv23qugy64rui" path="res://src/scripts/resources/upgrade_stats.gd" id="1_n5t55"]
+
+[resource]
+script = ExtResource("1_n5t55")
+metadata/_custom_type_script = "uid://cv23qugy64rui"

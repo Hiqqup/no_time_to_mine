@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1i8mon4i40ff"]
+[gd_scene load_steps=8 format=3 uid="uid://d1i8mon4i40ff"]
 
 [ext_resource type="Texture2D" uid="uid://rmsnpx80yd3e" path="res://assets/visuals/player.png" id="1_cusn3"]
 [ext_resource type="Script" uid="uid://d56qvy3tgwpl" path="res://src/scripts/player.gd" id="1_v4rts"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_0weng"]
 [ext_resource type="Texture2D" uid="uid://blkuvgc2hc4fi" path="res://assets/visuals/lifetime_bar/background.png" id="2_mb1oq"]
 [ext_resource type="Texture2D" uid="uid://cs48iv23xtbgq" path="res://assets/visuals/lifetime_bar/progress.png" id="3_0weng"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
+[ext_resource type="Texture2D" uid="uid://rsggqvvxktah" path="res://assets/visuals/procreate/Player.png" id="6_bucnn"]
 
-[node name="Player" type="CharacterBody2D" groups=["controllable_player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar")]
 script = ExtResource("1_v4rts")
+_upgrade_stats = ExtResource("2_0weng")
+lifetime_bar = NodePath("CameraIndependet/LifetimeBar")
 
 [node name="CameraIndependet" type="CanvasLayer" parent="."]
 
@@ -36,7 +40,11 @@ texture_progress = ExtResource("3_0weng")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+visible = false
 texture = ExtResource("1_cusn3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("6_bucnn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(14, 10, 0, 17, -14, 10, -14, 9, 0, 4, 14, 9)

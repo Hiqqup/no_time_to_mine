@@ -13,6 +13,7 @@ var velocity:= Vector2.ZERO;
 enum CameraLocation{
 	MINES,
 	FORGE,
+	LOCKED_FORGE,
 }
 var location: CameraLocation = CameraLocation.FORGE;
 
@@ -38,10 +39,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	global_position += velocity;
+	if location == CameraLocation.LOCKED_FORGE:
+		global_position = Vector2.ZERO;
 	if location == CameraLocation.FORGE:
 		_handle_movement_input()
 	if location == CameraLocation.MINES:
-		global_position = get_tree().get_first_node_in_group("controllable_player").global_position
+		global_position = get_tree().get_first_node_in_group("current_mines").player.global_position
 	if(_dragging and location == CameraLocation.FORGE):
 		var mouse_position = get_viewport().get_mouse_position()
 		position -=( mouse_position - _dragging_start_position)/zoom;

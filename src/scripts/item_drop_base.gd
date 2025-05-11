@@ -1,13 +1,14 @@
 class_name  ItemDropBase
 extends Node2D
 
+@export var upgrade_stats: PlayerUpgradeStats;
+
 var item_drops :Dictionary[ItemTypes.types, int];
 
 func _ready() -> void:
 	$GuiItemListDisplayer.generate_or_update_mod_label(
 		$Visuals/GreenToBlueWrapper/VBoxContainer,item_drops);
 func _enter_tree() -> void:
-	var upgrade_stats = get_tree().get_first_node_in_group("upgrade_stats")
 	$CollectionRange/CollectionRangeShape.scale*= upgrade_stats.mining_range
 
 

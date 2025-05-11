@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=9 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
 [ext_resource type="PackedScene" uid="uid://bb1jbf035g1y5" path="res://src/scenes/mines/harvestables/default_colision_shapes/mining_range_shape.tscn" id="2_h3lbi"]
 [ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="2_os4bl"]
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="2_pmh5g"]
@@ -11,6 +12,7 @@
 [node name="HarvestableBase" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_u76sd")
+_upgrade_stats = ExtResource("2_c6o4m")
 _drop_base_scene = ExtResource("2_wnspo")
 
 [node name="Visuals" type="Node2D" parent="."]

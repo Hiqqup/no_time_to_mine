@@ -1,9 +1,12 @@
 class_name HarvestableBase
 extends Node2D
 
+signal harvested;
+
 @export var health: float;
 @export var drop_table: Dictionary[ItemTypes.types, float];
 
+@export var _upgrade_stats: PlayerUpgradeStats;
 @export var _drop_base_scene: PackedScene;
 
 var player_in_range: bool = false;
@@ -12,6 +15,7 @@ var mines;
 
 func get_destroyed():
 	_spawn_drop(_drop_table_float_to_int(drop_table));
+	harvested.emit();
 	queue_free();	
 
 
@@ -45,7 +49,7 @@ func _spawn_drop(item_drops: Dictionary[ItemTypes.types, int]):
 
 
 func _handle_clicked_on():
-	var player =  get_tree().get_first_node_in_group("controllable_player")
+	var player: Player =  get_tree().get_first_node_in_group("current_mines").player;
 	if player_in_range :
 		player.currently_mining = self;
 
@@ -63,10 +67,7 @@ func _ready() -> void:
 
 
 func _enter_tree() -> void:
-	var upgrade_stats: PlayerUpgradeStats = get_tree().get_first_node_in_group("upgrade_stats")
-	if not upgrade_stats:
-		return;
-	$MiningRange/MiningRangeShape.scale*= upgrade_stats.mining_range
+	$MiningRange/MiningRangeShape.scale*= _upgrade_stats.mining_range
 
 
 func _on_click_detection_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd1ftd4mp5yyb"]
+[gd_scene load_steps=7 format=3 uid="uid://bd1ftd4mp5yyb"]
 
 [ext_resource type="Texture2D" uid="uid://br6hl4tjyt36x" path="res://assets/visuals/iso_tileset.png" id="1_olpso"]
 [ext_resource type="Script" uid="uid://cblsr1nqyg2nq" path="res://src/scripts/floor.gd" id="2_jet0m"]
+[ext_resource type="Texture2D" uid="uid://buiakxgjkvvu6" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_jikio"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jet0m"]
 texture = ExtResource("1_olpso")
@@ -25,6 +26,19 @@ texture_region_size = Vector2i(32, 32)
 7:0/0/texture_origin = Vector2i(0, -8)
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 0, 8, 16, 0, 0, -8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5c50m"]
+texture = ExtResource("2_jikio")
+separation = Vector2i(1, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -8)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -8)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -8)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -8)
+
 [sub_resource type="TileSet" id="TileSet_5mqaa"]
 tile_shape = 1
 tile_layout = 5
@@ -32,6 +46,7 @@ tile_offset_axis = 1
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jet0m")
+sources/1 = SubResource("TileSetAtlasSource_5c50m")
 
 [node name="Floor" type="TileMapLayer"]
 tile_set = SubResource("TileSet_5mqaa")

@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2l67njsqn515"]
+[gd_scene load_steps=3 format=3 uid="uid://b2l67njsqn515"]
 
 [ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_gosno"]
+[ext_resource type="Texture2D" uid="uid://buiakxgjkvvu6" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_ujvdm"]
 
 [node name="OrangeHarvestable" instance=ExtResource("1_gosno")]
 health = 10.0
 drop_table = Dictionary[int, float]({
 1: 1.0
 })
+
+[node name="Sprite2D" parent="Visuals" index="0"]
+texture = ExtResource("2_ujvdm")
+region_rect = Rect2(132, 0, 32, 32)

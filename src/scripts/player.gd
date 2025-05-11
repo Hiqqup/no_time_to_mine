@@ -3,20 +3,19 @@ extends CharacterBody2D
 
 signal died;
 
-var lifetime_bar: TextureProgressBar;
+@export var _upgrade_stats: PlayerUpgradeStats
+
+@export var lifetime_bar: TextureProgressBar;
 
 var currently_mining: HarvestableBase = null;
 
 var _mine_cooldown: float = 0;
 var _lifetime:= 0.0;
-var upgrade_stats: PlayerUpgradeStats
 
 var do_lifetime_calculation: bool = true;
 
 func _ready() -> void:
-	upgrade_stats = get_tree().get_first_node_in_group("upgrade_stats");
-	lifetime_bar = $CameraIndependet/LifetimeBar
-	lifetime_bar.max_value = upgrade_stats.max_life_time;
+	lifetime_bar.max_value = _upgrade_stats.max_life_time;
 	
 
 func _physics_process(delta: float) -> void:
@@ -24,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	if do_lifetime_calculation:
 		_lifetime+= delta;
 		lifetime_bar.value = _lifetime;
-	if _lifetime >= upgrade_stats.max_life_time:
+	if _lifetime >= _upgrade_stats.max_life_time:
 		_die();
 	_try_mine();
 	_handle_movement_input()
@@ -40,14 +39,13 @@ func _die():
 		forge.update_and_generate_storage_display();
 		Camera.location = Camera.CameraLocation.FORGE;
 		died.emit();
-		get_tree().get_first_node_in_group("current_mines").queue_free()
 		
 
 
 func _handle_movement_input():
 	var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");
-	velocity.x = move_toward(velocity.x, upgrade_stats.movement_speed* direction.x, upgrade_stats.movement_speed/10);
-	velocity.y = move_toward(velocity.y, upgrade_stats.movement_speed* direction.y, upgrade_stats.movement_speed/10);
+	velocity.x = move_toward(velocity.x, _upgrade_stats.movement_speed* direction.x, _upgrade_stats.movement_speed/10);
+	velocity.y = move_toward(velocity.y, _upgrade_stats.movement_speed* direction.y, _upgrade_stats.movement_speed/10);
 	
 
 
@@ -59,10 +57,10 @@ func _try_mine() -> void:
 	if not currently_mining.player_in_range:
 		currently_mining = null;
 		return;
-	currently_mining.health -= upgrade_stats.mining_damage;
+	currently_mining.health -= _upgrade_stats.mining_damage;
 	currently_mining.mine_visual_feedback();
 	mine_visual_feedback()
-	_mine_cooldown = upgrade_stats.mining_cooldown_duration;
+	_mine_cooldown = _upgrade_stats.mining_cooldown_duration;
 	if(currently_mining.health <= 0):
 		currently_mining.get_destroyed();
 

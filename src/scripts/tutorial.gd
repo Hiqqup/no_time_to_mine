@@ -15,6 +15,7 @@ var _player_moved_once: bool = false;
 var _player_mined_once: bool = false;
 var _mining_guide_displaying: bool = false;
 var _first_upgrade_bought: bool = false;
+var _forge_camera_locked: bool = false;
 var _tutorial_section: TutorialSection = TutorialSection.MINES;
 
 enum TutorialSection{
@@ -24,19 +25,19 @@ enum TutorialSection{
 }
 
 func _ready() -> void:
-	var forge = get_tree().get_first_node_in_group("forge")
+	_forge = get_tree().get_first_node_in_group("forge")
 	call_deferred("_hide_forge");
+	_mines = get_tree().get_first_node_in_group("current_mines");
 	
 	_movement_guide = $PlayerMovementGuide
 	_mining_guide = $MiningGuide
-	_player= $Mines/YSorted/Player
+	_player= _mines.get_node("YSorted/Player")
+
+	
 	_targeting = _player.get_node("Targeting");
 	_forge_gudie = $ForgeGuide;
 	_purchase_guide = $ForgeGuide/PurchaseGuide;
 	_retry_guide = $ForgeGuide/RetryGuide;
-	
-	_forge = get_tree().get_first_node_in_group("forge");
-	_mines = $Mines;
 	
 	_player.do_lifetime_calculation = false;
 	_player.lifetime_bar.visible = false;
@@ -54,9 +55,12 @@ func _ready() -> void:
 	_mining_guide.reparent(_player);
 	_purchase_guide.reparent(_forge.skill_tree_root);
 	
+	_forge.selected_level = Level.levels.TUTORIAL;
 	_forge.upgrade_purchased.connect( func():
 		if not _first_upgrade_bought:
 			_fade_in( _retry_guide);
+			Camera.location = Camera.CameraLocation.FORGE;
+			$ForgeGuide/NavigationGuide/Label.text = "wasd and drag to move around"
 			_fade_out(_purchase_guide)
 			_first_upgrade_bought = true;
 		);
@@ -84,7 +88,7 @@ func _fade_in(node):
 	create_tween().tween_property(node, "modulate", Color.WHITE,1);
 
 func _hide_forge():
-	get_tree().get_first_node_in_group("forge").visible = false;
+	_forge.visible = false;
 
 func _hide_key_display_show_targeting():
 	_timeout_callback(1.5, (func(): _fade_in(_targeting)));
@@ -103,6 +107,9 @@ func _check_player_storage_empty():
 	return storage.contents[GlobalConstants.FIRST_DROP] != 0;
 	
 func _check_for_new_forge():
+	if not is_instance_valid(_mines) and not _forge_camera_locked:
+		Camera.location = Camera.CameraLocation.LOCKED_FORGE; 
+		_forge_camera_locked = true;
 	return (not is_instance_valid(_mines) 
 		and is_instance_valid(get_tree().get_first_node_in_group("current_mines")))
 
@@ -112,6 +119,7 @@ func _set_to_normal_mine():
 	_fade_in(_player.lifetime_bar)
 	_mines.reparent(get_parent()); # add to root
 	_tutorial_section = TutorialSection.NONE;
+	_forge.selected_level = Level.levels.FIRST;
 	_player.died.connect(_setup_forge_guide)
 
 func _setup_forge_guide():	
