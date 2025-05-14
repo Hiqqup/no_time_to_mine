@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://n02e2v8cauvx"]
+[gd_scene load_steps=3 format=3 uid="uid://n02e2v8cauvx"]
 
 [ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_o4fsm"]
+[ext_resource type="Texture2D" uid="uid://buiakxgjkvvu6" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_o4fsm"]
 
 [node name="BlackHarvestable" instance=ExtResource("1_o4fsm")]
 health = 100.0
-drop_table = Dictionary[int, float]({
-2: 1.0
-})
 
 [node name="Sprite2D" parent="Visuals" index="0"]
-region_rect = Rect2(128, 0, 32, 32)
+position = Vector2(0, 6)
+texture = ExtResource("2_o4fsm")
+region_rect = Rect2(198, 12, 31, 19)

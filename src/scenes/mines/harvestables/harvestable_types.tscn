@@ -1,11 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4n68xwv48ec6"]
+[gd_scene load_steps=4 format=3 uid="uid://d4dka06ew0n0f"]
 
-[ext_resource type="Script" uid="uid://dgs3yw218rwn3" path="res://src/scripts/harvestable_types.gd" id="1_44loh"]
 [ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="2_xxqhm"]
 [ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="3_thfyk"]
 
+[sub_resource type="GDScript" id="GDScript_5rw77"]
+script/source = "class_name  HarvestableTypes
+extends Resource
+
+@export var map: Dictionary[types, PackedScene]
+@export var drop_tables: Dictionary[types, DropTable];
+
+class DropTable extends Resource:
+	@export var table: Dictionary[ItemTypes.types, float];
+
+
+enum types{
+	BASE,
+	ORANGE,
+	BLACK,
+}
+
+func get_copy(type : types) ->HarvestableBase:
+	var base = map[type].instantiate();
+	base.drop_table = drop_tables[type].table;
+	return base;
+"
+
 [node name="HarvestableTypes" type="Node"]
-script = ExtResource("1_44loh")
+script = SubResource("GDScript_5rw77")
 
 [node name="Biome1" type="Node2D" parent="."]
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DropTableTypes" load_steps=3 format=3 uid="uid://bm0i213wmr0xu"]
+
+[sub_resource type="GDScript" id="GDScript_msq8p"]
+
+[sub_resource type="GDScript" id="GDScript_nnsqc"]
+script/source = "extends Resource
+class_name DropTableTypes
+
+@export var map: Dictionary[HarvestableTypes.types, DropTable]
+
+class DropTable extends Resource:
+	@export var table: Dictionary[ItemTypes.types, int];
+"
+
+[resource]
+script = SubResource("GDScript_nnsqc")
+map = Dictionary[int, SubResource("GDScript_msq8p")]({})

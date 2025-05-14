@@ -1,17 +1,200 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1i8mon4i40ff"]
+[gd_scene load_steps=17 format=3 uid="uid://d1i8mon4i40ff"]
 
-[ext_resource type="Texture2D" uid="uid://rmsnpx80yd3e" path="res://assets/visuals/player.png" id="1_cusn3"]
 [ext_resource type="Script" uid="uid://d56qvy3tgwpl" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_0weng"]
 [ext_resource type="Texture2D" uid="uid://blkuvgc2hc4fi" path="res://assets/visuals/lifetime_bar/background.png" id="2_mb1oq"]
 [ext_resource type="Texture2D" uid="uid://cs48iv23xtbgq" path="res://assets/visuals/lifetime_bar/progress.png" id="3_0weng"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
-[ext_resource type="Texture2D" uid="uid://rsggqvvxktah" path="res://assets/visuals/procreate/Player.png" id="6_bucnn"]
+[ext_resource type="Texture2D" uid="uid://vwhjg33tprtt" path="res://assets/visuals/procreate/Player/Die Animation/Char-1.png" id="5_40n00"]
+[ext_resource type="Texture2D" uid="uid://yy4t302rrdfm" path="res://assets/visuals/procreate/Eyes.png" id="5_u8duq"]
+[ext_resource type="Texture2D" uid="uid://3f1kmtgt1p6" path="res://assets/visuals/procreate/Player/Die Animation/Char-2.png" id="6_30jnj"]
+[ext_resource type="Texture2D" uid="uid://bej0j8p2up5xb" path="res://assets/visuals/procreate/Player/Die Animation/Char-3.png" id="7_u8duq"]
+[ext_resource type="Texture2D" uid="uid://cb0rl6xjcloea" path="res://assets/visuals/procreate/Player/Die Animation/Char-4.png" id="8_3keol"]
+[ext_resource type="Texture2D" uid="uid://cnm4npohe58b1" path="res://assets/visuals/procreate/Player/Die Animation/Char-5.png" id="9_egn81"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_gv1p7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_egn81")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_40n00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_40n00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_30jnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u8duq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3keol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_egn81")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_u8duq"]
+offsets = PackedFloat32Array(0, 0.407407, 1)
+colors = PackedColorArray(0.964706, 0.803922, 0.14902, 1, 0.964706, 0.803922, 0.14902, 1, 1, 1, 1, 0.2)
+
+[sub_resource type="Animation" id="Animation_30jnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Eyes:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Particles/LeftEyeParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Particles/RightEyeParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_40n00"]
+resource_name = "die"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"die", &"dead"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.43333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_die"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Eyes:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Particles/LeftEyeParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/Particles/RightEyeParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333334, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Visuals/Particles/SpiritParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8duq"]
+_data = {
+&"RESET": SubResource("Animation_30jnj"),
+&"die": SubResource("Animation_40n00")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar", "_walking_particles")]
 script = ExtResource("1_v4rts")
 _upgrade_stats = ExtResource("2_0weng")
 lifetime_bar = NodePath("CameraIndependet/LifetimeBar")
+_walking_particles = NodePath("Visuals/WalkingParticles")
 
 [node name="CameraIndependet" type="CanvasLayer" parent="."]
 
@@ -37,22 +220,8 @@ nine_patch_stretch = true
 texture_under = ExtResource("2_mb1oq")
 texture_progress = ExtResource("3_0weng")
 
-[node name="Visuals" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-visible = false
-texture = ExtResource("1_cusn3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("6_bucnn")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(14, 10, 0, 17, -14, 10, -14, 9, 0, 4, 14, 9)
-
-[node name="Storage" parent="." instance=ExtResource("3_rek1o")]
-
 [node name="Targeting" type="RayCast2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 3)
 collision_mask = 2
 hit_from_inside = true
 
@@ -60,5 +229,87 @@ hit_from_inside = true
 points = PackedVector2Array(0, 0, 0, 49)
 width = 1.0
 default_color = Color(0, 0, 0, 0.372549)
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Eyes" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("5_u8duq")
+
+[node name="WalkingParticles" type="CPUParticles2D" parent="Visuals"]
+position = Vector2(0, 12)
+emitting = false
+lifetime = 0.4
+lifetime_randomness = 0.53
+emission_shape = 3
+emission_rect_extents = Vector2(4, 1)
+gravity = Vector2(0, 0)
+angular_velocity_min = -40.0
+angular_velocity_max = 40.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.301961, 0.207843, 0.196078, 1)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Visuals"]
+sprite_frames = SubResource("SpriteFrames_gv1p7")
+autoplay = "default"
+
+[node name="Particles" type="Node2D" parent="Visuals"]
+
+[node name="SpiritParticles" type="CPUParticles2D" parent="Visuals/Particles"]
+position = Vector2(0, -11)
+rotation = -2.44346
+scale = Vector2(0.994154, 1.00358)
+emitting = false
+amount = 32
+lifetime = 0.5
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_u8duq")
+
+[node name="LeftEyeParticles" type="CPUParticles2D" parent="Visuals/Particles"]
+position = Vector2(-4, -8)
+rotation = -2.44346
+scale = Vector2(0.994154, 1.00358)
+lifetime = 0.3
+lifetime_randomness = 1.0
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_u8duq")
+
+[node name="RightEyeParticles" type="CPUParticles2D" parent="Visuals/Particles"]
+position = Vector2(3, -8)
+rotation = -2.44346
+scale = Vector2(0.994154, 1.00358)
+lifetime = 0.3
+lifetime_randomness = 1.0
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_u8duq")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 17, -1, 17, -9, 10, -1, 4, 0, 4, 8, 10)
+
+[node name="Storage" parent="." instance=ExtResource("3_rek1o")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u8duq")
+}
 
 [connection signal="pressed" from="CameraIndependet/Button" to="." method="_on_button_pressed"]

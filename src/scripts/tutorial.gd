@@ -4,7 +4,7 @@ var _movement_guide : Node2D;
 var _targeting: Node2D;
 var _player: Player;
 var _mining_guide: Node2D;
-var _forge_gudie: CanvasLayer;
+var _forge_guide: CanvasLayer;
 var _retry_guide: Control;
 var _purchase_guide: Control;
 
@@ -35,7 +35,7 @@ func _ready() -> void:
 
 	
 	_targeting = _player.get_node("Targeting");
-	_forge_gudie = $ForgeGuide;
+	_forge_guide = $ForgeGuide;
 	_purchase_guide = $ForgeGuide/PurchaseGuide;
 	_retry_guide = $ForgeGuide/RetryGuide;
 	
@@ -44,7 +44,7 @@ func _ready() -> void:
 	_targeting.visible = false;
 	_movement_guide.visible = false;
 	_mining_guide.visible = false;
-	_forge_gudie.visible = false;
+	_forge_guide.visible = false;
 	_purchase_guide.visible = false;
 	_retry_guide.visible = false;
 	
@@ -62,6 +62,7 @@ func _ready() -> void:
 			Camera.location = Camera.CameraLocation.FORGE;
 			$ForgeGuide/NavigationGuide/Label.text = "wasd and drag to move around"
 			_fade_out(_purchase_guide)
+			_timeout_callback(1, func(): _purchase_guide.queue_free());
 			_first_upgrade_bought = true;
 		);
 	
@@ -124,7 +125,7 @@ func _set_to_normal_mine():
 
 func _setup_forge_guide():	
 	_tutorial_section = TutorialSection.FORGE
-	_forge_gudie.visible = true;
+	_forge_guide.visible = true;
 	_fade_in(_purchase_guide);
 	
 

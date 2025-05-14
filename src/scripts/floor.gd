@@ -23,8 +23,9 @@ func setup(radius: int):
 		for j in radius:
 			for offset in offsets:
 				var atlas_cords = Vector2i.ZERO;
-				if randf() < 0.15:
+				if randf() < 0.1:
 					atlas_cords = [Vector2i(2,0) ,Vector2i(3,0)].pick_random()
+					pass
 				if j == radius-1 :
 					atlas_cords = Vector2i(1,0)
 				set_cell(Vector2i(i,j) * offset, _STONE_FLOOR_SOURCE, atlas_cords)

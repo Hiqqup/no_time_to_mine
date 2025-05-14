@@ -14,9 +14,12 @@ extends Node
 @export var levels: LevelTypes;
 
 
+
 func _ready() -> void:
 		# Items
 	items.map[ItemTypes.types.ORANGE_DROP] = orange_drop;
+	
+	#print(items.map)
 	items.map[ItemTypes.types.BLACK_DROP] = black_drop;
 	
 	# Harvestables
@@ -24,6 +27,19 @@ func _ready() -> void:
 	harvestables.map[HarvestableTypes.types.BLACK] = black_harvestable;
 	
 	
+	# DropTables
+
+	harvestables.drop_tables[HarvestableTypes.types.ORANGE] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[HarvestableTypes.types.ORANGE].table = {
+		ItemTypes.types.ORANGE_DROP: 1
+	}
+	
+	harvestables.drop_tables[HarvestableTypes.types.BLACK] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[HarvestableTypes.types.BLACK].table = {
+		ItemTypes.types.BLACK_DROP: 1
+	}
+	
+	# Levels
 	var l : Level
 	
 	# FIRST

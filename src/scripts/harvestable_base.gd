@@ -4,7 +4,7 @@ extends Node2D
 signal harvested;
 
 @export var health: float;
-@export var drop_table: Dictionary[ItemTypes.types, float];
+var drop_table: Dictionary[ItemTypes.types, float];
 
 @export var _upgrade_stats: PlayerUpgradeStats;
 @export var _drop_base_scene: PackedScene;
@@ -16,6 +16,7 @@ var mines;
 func get_destroyed():
 	_spawn_drop(_drop_table_float_to_int(drop_table));
 	harvested.emit();
+	Camera.shake(2.5)
 	queue_free();	
 
 

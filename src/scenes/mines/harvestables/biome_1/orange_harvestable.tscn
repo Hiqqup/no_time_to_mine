@@ -5,10 +5,13 @@
 
 [node name="OrangeHarvestable" instance=ExtResource("1_gosno")]
 health = 10.0
-drop_table = Dictionary[int, float]({
-1: 1.0
-})
 
 [node name="Sprite2D" parent="Visuals" index="0"]
 texture = ExtResource("2_ujvdm")
 region_rect = Rect2(132, 0, 32, 32)
+
+[node name="MiningRangeShape" parent="MiningRange" index="0"]
+visible = false
+
+[node name="ClickDetection" parent="." index="2"]
+visible = false

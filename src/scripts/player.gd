@@ -6,8 +6,12 @@ signal died;
 @export var _upgrade_stats: PlayerUpgradeStats
 
 @export var lifetime_bar: TextureProgressBar;
+@export var _walking_particles: CPUParticles2D;
 
 var currently_mining: HarvestableBase = null;
+
+
+var _alive: bool = true;
 
 var _mine_cooldown: float = 0;
 var _lifetime:= 0.0;
@@ -19,12 +23,14 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if not _alive:
+		return; 
 	_mine_cooldown -= delta;
 	if do_lifetime_calculation:
 		_lifetime+= delta;
 		lifetime_bar.value = _lifetime;
 	if _lifetime >= _upgrade_stats.max_life_time:
-		_die();
+		_die_feedback()
 	_try_mine();
 	_handle_movement_input()
 	_handle_targeting();
@@ -44,6 +50,7 @@ func _die():
 
 func _handle_movement_input():
 	var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");
+	_walking_particles.emitting = direction != Vector2.ZERO;
 	velocity.x = move_toward(velocity.x, _upgrade_stats.movement_speed* direction.x, _upgrade_stats.movement_speed/10);
 	velocity.y = move_toward(velocity.y, _upgrade_stats.movement_speed* direction.y, _upgrade_stats.movement_speed/10);
 	
@@ -76,9 +83,14 @@ func mine_visual_feedback():
 		.from(middle_scale).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT));
 
 
-func _on_button_pressed() -> void:
-	_die();
+func _die_feedback():
+	Camera.shake(20.0)
+	$AnimationPlayer.play("die");
+	_alive = false;
 
+
+func _on_button_pressed() -> void:
+	_die_feedback()
 	#temporary end
 
 func _handle_targeting():
