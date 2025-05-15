@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwd0rw2sk5jvl"]
+
+[ext_resource type="Script" uid="uid://ce701uc33yrf4" path="res://misc_scripts/image_conversion/image_recolorer/image_recolorer.gd" id="1_jjs0o"]
+[ext_resource type="Texture2D" uid="uid://dwr7m4dgya7s8" path="res://assets/visuals/Floor-tileset-recolored.png" id="2_6naxh"]
+[ext_resource type="Shader" uid="uid://dppbl3mdcn443" path="res://misc_scripts/image_conversion/image_recolorer/recolor.gdshader" id="3_f2sqo"]
+[ext_resource type="Resource" uid="uid://dnkajnl4wnd7y" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_silver.tres" id="3_yyp0o"]
+
+[node name="ImageRecolorer" type="Node"]
+script = ExtResource("1_jjs0o")
+input_image = ExtResource("2_6naxh")
+recolor_map = ExtResource("3_yyp0o")
+recolor_shader = ExtResource("3_f2sqo")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+centered = false
+
+[node name="ViewportDiplay" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "convert"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

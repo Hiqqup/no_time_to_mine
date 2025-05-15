@@ -7,6 +7,7 @@ func _ready() -> void:
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Damage";
+	u.upgrade_type = UpgradeTypes.types.DAMAGE;
 	u.max_level = 100;
 	u.apply_upgrade = (func():upgrade_stats.mining_damage += 1.0);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
@@ -17,6 +18,7 @@ func _ready() -> void:
 	
 	u = UpgradeProperties.new();
 	u.skill_name = "Mining Speed"
+	u.upgrade_type = UpgradeTypes.types.MINING_SPEED;
 	u.max_level = 10
 	u.apply_upgrade = (func():upgrade_stats.mining_cooldown_duration *= 0.9);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
