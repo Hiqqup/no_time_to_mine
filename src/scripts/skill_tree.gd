@@ -12,7 +12,7 @@ func _ready() -> void:
 	u.apply_upgrade = (func():upgrade_stats.mining_damage += 1.0);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
-		ItemTypes.types.ORANGE_DROP: 1+ floor(0.5 * level), 
+		ItemTypes.types.RED_CAP_STONE: 1+ floor(0.5 * level), 
 		});
 	$Damage.upgrade_properties = u;
 	
@@ -23,8 +23,8 @@ func _ready() -> void:
 	u.apply_upgrade = (func():upgrade_stats.mining_cooldown_duration *= 0.9);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
-		ItemTypes.types.ORANGE_DROP: 2,
-		ItemTypes.types.BLACK_DROP: 1+level,
+		ItemTypes.types.RED_CAP_STONE: 2,
+		ItemTypes.types.GOLD_ORE: 1+level,
 		});
 	$Damage/MiningSpeed.upgrade_properties = u;
 	

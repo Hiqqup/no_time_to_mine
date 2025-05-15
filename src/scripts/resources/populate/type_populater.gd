@@ -17,26 +17,26 @@ extends Node
 
 func _ready() -> void:
 		# Items
-	items.map[ItemTypes.types.ORANGE_DROP] = orange_drop;
+	items.map[ItemTypes.types.RED_CAP_STONE] = orange_drop;
 	
 	#print(items.map)
-	items.map[ItemTypes.types.BLACK_DROP] = black_drop;
+	items.map[ItemTypes.types.GOLD_ORE] = black_drop;
 	
 	# Harvestables
-	harvestables.map[HarvestableTypes.types.ORANGE] = orange_harvestable;
-	harvestables.map[HarvestableTypes.types.BLACK] = black_harvestable;
+	harvestables.map[HarvestableTypes.types.RED_CAP_STONE] = orange_harvestable;
+	harvestables.map[HarvestableTypes.types.GOLD_ORE] = black_harvestable;
 	
 	
 	# DropTables
 
-	harvestables.drop_tables[HarvestableTypes.types.ORANGE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.ORANGE].table = {
-		ItemTypes.types.ORANGE_DROP: 1
+	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE].table = {
+		ItemTypes.types.RED_CAP_STONE: 1
 	}
 	
-	harvestables.drop_tables[HarvestableTypes.types.BLACK] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.BLACK].table = {
-		ItemTypes.types.BLACK_DROP: 1
+	harvestables.drop_tables[HarvestableTypes.types.GOLD_ORE] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[HarvestableTypes.types.GOLD_ORE].table = {
+		ItemTypes.types.GOLD_ORE: 1
 	}
 	
 	# Levels
@@ -46,8 +46,8 @@ func _ready() -> void:
 	l = Level.new()
 	l.platform_radius = 5
 	l. harvestables = {
-		HarvestableTypes.types.ORANGE: 4,
-		HarvestableTypes.types.BLACK: 1,
+		HarvestableTypes.types.RED_CAP_STONE: 4,
+		HarvestableTypes.types.GOLD_ORE: 1,
 	}
 	levels.map[Level.levels.FIRST] = l;
 	
@@ -55,8 +55,8 @@ func _ready() -> void:
 	l = Level.new()
 	l.platform_radius = 5
 	l. harvestables = {
-		HarvestableTypes.types.ORANGE: 8,
-		HarvestableTypes.types.BLACK: 0,
+		HarvestableTypes.types.RED_CAP_STONE: 8,
+		HarvestableTypes.types.GOLD_ORE: 0,
 	}
 	levels.map[Level.levels.TUTORIAL] = l;
 	
@@ -64,8 +64,8 @@ func _ready() -> void:
 	l = Level.new()
 	l.platform_radius = 5
 	l. harvestables = {
-		HarvestableTypes.types.ORANGE: 1,
-		HarvestableTypes.types.BLACK: 5,
+		HarvestableTypes.types.RED_CAP_STONE: 1,
+		HarvestableTypes.types.GOLD_ORE: 5,
 	}
 	levels.map[Level.levels.SECOND] = l;
 	

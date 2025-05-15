@@ -5,8 +5,8 @@ extends Resource
 
 
 enum types{
-	BLACK_DROP,
-	ORANGE_DROP,
+	GOLD_ORE,
+	RED_CAP_STONE,
 }
 
 

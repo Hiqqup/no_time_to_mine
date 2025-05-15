@@ -16,3 +16,13 @@
 Genres: [Survival]() [Exploration]() [Resource Collection]() [Casual]() [Isometric Pixelart]()
 
 Inspired by [Forager](https://store.steampowered.com/app/751780/Forager/)and [Nodebuster](https://store.steampowered.com/app/3107330/Nodebuster/)
+
+
+Todos:
+- Titlescreen
+- Savegame
+- Soundeffects
+- Git Lfs
+- More Content
+- Music
+- Shaders
