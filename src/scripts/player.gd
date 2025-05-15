@@ -42,7 +42,6 @@ func _die():
 		for i in ItemTypes.types.size():
 			forge_storage.contents[i] += $Storage.contents[i];
 		forge.visible = true;
-		forge.save_game();
 		forge.update_and_generate_storage_display();
 		Camera.location = Camera.CameraLocation.FORGE;
 		died.emit();

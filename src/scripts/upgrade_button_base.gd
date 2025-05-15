@@ -67,9 +67,6 @@ func _on_pressed() -> void:
 	_appy_cost()
 	_forge.update_and_generate_storage_display();
 	_forge.upgrade_purchased.emit();
-	var save_state: SaveState = _forge.save_state;
-	save_state.purchased_upgrades[upgrade_properties.upgrade_type]+=1;
-	_forge.save_game();
 	level += 1;
 	cost = cost_func.call(level);
 	apply_upgrade.call();

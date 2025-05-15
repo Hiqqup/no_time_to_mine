@@ -6,11 +6,9 @@ signal upgrade_purchased
 @export var _vcontainer: VBoxContainer;
 
 var skill_tree_root:UpgradeButtonBase;
-const _SAVE_PATH = "user://save_file1.tres";
 
 var selected_level: Level.levels = Level.levels.FIRST;
 
-var save_file: SaveState;
 
 func _ready() -> void:
 	visibility_changed.connect(func(): $CameraIndependent.visible = visible)
@@ -19,16 +17,10 @@ func _ready() -> void:
 	_hide_all_nodes(skill_tree_root)
 	
 	update_and_generate_storage_display()
-	if (FileAccess.open(_SAVE_PATH, FileAccess.READ) != null ): #insert check that file doesnt exist here
-		save_file = load(_SAVE_PATH)
-		$Storage.contents = save_file.storage;
-	else:
-		save_file = SaveState.new();
-		save_file.storage = $Storage.contents;
 
 
-func save_game():
-	ResourceSaver.save(save_file, _SAVE_PATH);
+
+
 
 func increment_level():
 	if (Level.levels.find_key(selected_level + 1) != null 
