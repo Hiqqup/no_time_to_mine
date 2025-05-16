@@ -9,7 +9,7 @@ var _retry_guide: Control;
 var _purchase_guide: Control;
 
 var _mines: Node2D;
-var _forge: Control;
+var _forge: Forge;
 
 var _player_moved_once: bool = false;
 var _player_mined_once: bool = false;
@@ -28,6 +28,11 @@ func _ready() -> void:
 	_forge = get_tree().get_first_node_in_group("forge")
 	call_deferred("_hide_forge");
 	_mines = get_tree().get_first_node_in_group("current_mines");
+	if _forge._save_state.tutorial_completed:
+		Camera.location = Camera.CameraLocation.MINES;
+		queue_free();
+		return
+	
 	
 	_movement_guide = $PlayerMovementGuide
 	_mining_guide = $MiningGuide
@@ -53,7 +58,7 @@ func _ready() -> void:
 	
 	_movement_guide.reparent(_player);
 	_mining_guide.reparent(_player);
-	_purchase_guide.reparent(_forge.skill_tree_root);
+	_purchase_guide.reparent(_forge._skill_tree_root);
 	
 	_forge.selected_level = Level.levels.TUTORIAL;
 	_forge.upgrade_purchased.connect( func():
@@ -148,4 +153,6 @@ func  _process(delta: float) -> void:
 			_set_to_normal_mine();
 	if _tutorial_section == TutorialSection.FORGE:
 		if _check_for_new_forge():
+			_forge._save_state.tutorial_completed = true;
+			_forge.save_game();
 			queue_free();

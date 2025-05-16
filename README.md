@@ -17,12 +17,15 @@ Genres: [Survival]() [Exploration]() [Resource Collection]() [Casual]() [Isometr
 
 Inspired by [Forager](https://store.steampowered.com/app/751780/Forager/)and [Nodebuster](https://store.steampowered.com/app/3107330/Nodebuster/)
 
+Completed Todos:
+- Savegame
+- Git Lfs
 
 Todos:
+- tutorial try again clearer visual queues
+- Level Selector in forge
 - Titlescreen
-- Savegame
 - Soundeffects
-- Git Lfs
 - More Content
 - Music
 - Shaders

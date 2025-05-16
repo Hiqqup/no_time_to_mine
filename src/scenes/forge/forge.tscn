@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://js0scijtcqyj"]
+[gd_scene load_steps=7 format=3 uid="uid://js0scijtcqyj"]
 
 [ext_resource type="Script" uid="uid://kiphvgxfe0pn" path="res://src/scripts/forge.gd" id="1_oc1b2"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_gjnd3"]
 [ext_resource type="PackedScene" uid="uid://bktks85fbuoip" path="res://src/scenes/forge/skill_tree.tscn" id="2_oc1b2"]
+[ext_resource type="Resource" uid="uid://4muqg6upls0n" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="4_3sx3x"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="5_ytak3"]
 
@@ -21,6 +22,7 @@ mouse_filter = 2
 script = ExtResource("1_oc1b2")
 _mine_scene = ExtResource("2_gjnd3")
 _vcontainer = NodePath("CameraIndependent/StorageDisplay/MarginContainer/VBoxContainer")
+_save_state = ExtResource("3_fjp4y")
 
 [node name="SkillTree" parent="." instance=ExtResource("2_oc1b2")]
 offset_left = -8.0

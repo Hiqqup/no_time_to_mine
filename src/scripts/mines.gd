@@ -10,7 +10,7 @@ class_name Mines
 
 func _ready() -> void:
 	var d : Dictionary[HarvestableTypes.types, int]
-	var forge = get_tree().get_first_node_in_group("forge");
+	var forge: Forge = get_tree().get_first_node_in_group("forge");
 	var level: Level = levels.map[forge.selected_level];
 	floor.setup(level.platform_radius);
 	d=level.harvestables;

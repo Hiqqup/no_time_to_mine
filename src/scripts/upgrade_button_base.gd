@@ -22,11 +22,13 @@ var cost: Dictionary[ItemTypes.types, int]:
 		cost = value;
 		_generate_cost_display();
 var _forge_storage_contents: Dictionary[ItemTypes.types, int];
-var _forge: Control;
+var _forge: Forge;
+var _children_visible: bool = false;
 
 var level : int = 0:
 	set(value):
-		if level == 0:
+		if value != 0:
+			_show_all_children();
 			modulate = Color.WHITE;
 		level = value;
 		$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level)
@@ -34,13 +36,17 @@ var level : int = 0:
 
 func setup():
 	if upgrade_properties == null:
-		print(upgrade_properties)
+		print("missing upgrade poperties")
 		queue_free();
 		return;
+	
+	level = _forge.upgrades_purchased[upgrade_properties.upgrade_type];
+	
 	cost_func = upgrade_properties.cost_func;
 	apply_upgrade = upgrade_properties.apply_upgrade;
 	skill_name = upgrade_properties.skill_name;
 	max_level = upgrade_properties.max_level;
+	
 	
 	$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level);
 	$ChildGetter.skill_name.text = skill_name;
@@ -49,7 +55,9 @@ func setup():
 func _ready() -> void:
 	_forge = get_tree().get_first_node_in_group("forge")
 	_forge_storage_contents = (_forge.get_node("Storage").contents);
-
+	
+	visible = false;
+	
 	$ChildGetter.info_label.visible = false;
 	var parent = get_parent();
 	if parent is UpgradeButtonBase:
@@ -66,13 +74,20 @@ func _on_pressed() -> void:
 		return;
 	_appy_cost()
 	_forge.update_and_generate_storage_display();
-	_forge.upgrade_purchased.emit();
+	_forge.purchase_upgrade(upgrade_properties.upgrade_type);
 	level += 1;
 	cost = cost_func.call(level);
 	apply_upgrade.call();
+	_show_all_children();
+
+
+func _show_all_children():
+	if _children_visible:
+		return
 	for child in get_children():
 		if child is UpgradeButtonBase:
 			child.visible = true;
+	_children_visible = true;
 
 
 func _on_mouse_entered() -> void:
