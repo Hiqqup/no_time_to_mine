@@ -1,15 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf2j4a0nggs3h"]
+[gd_scene load_steps=6 format=3 uid="uid://4ex5fmxd3f5i"]
 
+[ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://src/scenes/type_populater.tscn" id="1_276xm"]
 [ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_yufto"]
 [ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_276xm"]
 [ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial.tscn" id="3_lcg6w"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="4_gh3at"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node2D"]
+
+[node name="TypePopulater" parent="." instance=ExtResource("1_276xm")]
 
 [node name="Forge" parent="." instance=ExtResource("1_yufto")]
-offset_right = -1152.0
-offset_bottom = -648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 4.5
+offset_top = 2.0
+offset_right = 4.5
+offset_bottom = 2.0
 
 [node name="Camera" parent="." instance=ExtResource("2_276xm")]
 

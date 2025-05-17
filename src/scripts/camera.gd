@@ -14,8 +14,9 @@ enum CameraLocation{
 	MINES,
 	FORGE,
 	LOCKED_FORGE,
+	LOCKED_TITLE_SCREEN,
 }
-var location: CameraLocation = CameraLocation.FORGE;
+var location: CameraLocation = CameraLocation.LOCKED_TITLE_SCREEN;
 
 
 func _ready() -> void:
@@ -23,6 +24,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if location == CameraLocation.LOCKED_TITLE_SCREEN:
+		return;
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
 			if zoom.x > (_SCROLL_FACTOR + _SCROLL_FACTOR/10):
@@ -38,6 +41,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	if location == CameraLocation.LOCKED_TITLE_SCREEN:
+		return;
 	global_position += velocity;
 	if location == CameraLocation.LOCKED_FORGE:
 		global_position = Vector2.ZERO;

@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://h6kjdc8gvtgs"]
+
+[ext_resource type="Script" uid="uid://wyjwsbx5gwkh" path="res://src/scripts/titlescreen.gd" id="1_do2c8"]
+[ext_resource type="PackedScene" uid="uid://4ex5fmxd3f5i" path="res://src/scenes/game.tscn" id="2_twdxa"]
+[ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="3_012ps"]
+
+[node name="Titlescreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_do2c8")
+_game_scene = ExtResource("2_twdxa")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -29.0
+offset_right = 88.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "No Time to Mine"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Continue
+"
+
+[node name="NewGame" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "New Game
+"
+
+[node name="Camera" parent="." instance=ExtResource("3_012ps")]
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]

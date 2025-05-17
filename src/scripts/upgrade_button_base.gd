@@ -41,11 +41,15 @@ func setup():
 		return;
 	
 	level = _forge.upgrades_purchased[upgrade_properties.upgrade_type];
+		
 	
 	cost_func = upgrade_properties.cost_func;
 	apply_upgrade = upgrade_properties.apply_upgrade;
 	skill_name = upgrade_properties.skill_name;
 	max_level = upgrade_properties.max_level;
+	
+	for i in level:
+		apply_upgrade.call();
 	
 	
 	$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level);
