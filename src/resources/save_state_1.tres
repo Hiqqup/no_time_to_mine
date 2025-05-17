@@ -4,13 +4,7 @@
 
 [resource]
 script = ExtResource("1_44kjf")
-forge_storage = Dictionary[int, int]({
-0: 0,
-1: 1
-})
-upgrades_purchased = Dictionary[int, int]({
-0: 5,
-1: 0
-})
-tutorial_completed = true
+forge_storage = Dictionary[int, int]({})
+upgrades_purchased = Dictionary[int, int]({})
+tutorial_completed = false
 metadata/_custom_type_script = "uid://b7y8da7g4j8l"
