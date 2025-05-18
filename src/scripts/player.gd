@@ -39,12 +39,11 @@ func _physics_process(delta: float) -> void:
 func _die():
 		var forge: Forge = get_tree().get_first_node_in_group("forge");
 		var forge_storage = forge.get_node("Storage");
-		for i in ItemTypes.types.size():
-			forge_storage.contents[i] += $Storage.contents[i];
-		forge.visible = true;
-		forge.update_and_generate_storage_display();
-		forge.save_game();
-		Camera.location = Camera.CameraLocation.FORGE;
+		var player_storage = $Storage;
+		for i in player_storage.contents.size():
+			forge_storage.contents[i] += player_storage.contents[i];
+		forge.switch_from_mines();
+		_alive = false;
 		died.emit();
 		
 

@@ -20,12 +20,13 @@ Inspired by [Forager](https://store.steampowered.com/app/751780/Forager/) and [N
 Completed Todos:
 - Savegame
 - Git Lfs
-- Titlescreenxx
+- Titlescreen
+- Level Selector in forge
 
 Todos:
 - button design
 - tutorial try again clearer visual queues
-- Level Selector in forge
+
 - Soundeffects
 - More Content
 - Music

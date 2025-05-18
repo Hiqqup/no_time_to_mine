@@ -49,7 +49,7 @@ func _ready() -> void:
 		HarvestableTypes.types.RED_CAP_STONE: 4,
 		HarvestableTypes.types.GOLD_ORE: 1,
 	}
-	levels.map[Level.levels.FIRST] = l;
+	levels.map[LevelTypes.types.FIRST] = l;
 	
 	# TUTORIAL
 	l = Level.new()
@@ -58,7 +58,7 @@ func _ready() -> void:
 		HarvestableTypes.types.RED_CAP_STONE: 8,
 		HarvestableTypes.types.GOLD_ORE: 0,
 	}
-	levels.map[Level.levels.TUTORIAL] = l;
+	levels.map[LevelTypes.types.TUTORIAL] = l;
 	
 	# SECOND
 	l = Level.new()
@@ -67,6 +67,6 @@ func _ready() -> void:
 		HarvestableTypes.types.RED_CAP_STONE: 1,
 		HarvestableTypes.types.GOLD_ORE: 5,
 	}
-	levels.map[Level.levels.SECOND] = l;
+	levels.map[LevelTypes.types.SECOND] = l;
 	
 	

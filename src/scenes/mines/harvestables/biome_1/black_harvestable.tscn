@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://n02e2v8cauvx"]
 
 [ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_o4fsm"]
-[ext_resource type="Texture2D" uid="uid://buiakxgjkvvu6" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_o4fsm"]
+[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_o4fsm"]
 
 [node name="BlackHarvestable" instance=ExtResource("1_o4fsm")]
 health = 100.0

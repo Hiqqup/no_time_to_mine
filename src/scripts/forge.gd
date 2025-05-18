@@ -10,7 +10,8 @@ signal upgrade_purchased
 var _skill_tree_root:UpgradeButtonBase;
 
 var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
-var selected_level: Level.levels = Level.levels.FIRST;
+var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
+
 
 
 func _enter_tree() -> void:
@@ -34,15 +35,23 @@ func purchase_upgrade(type : UpgradeTypes.types):
 	upgrade_purchased.emit();
 
 func increment_level():
-	if (Level.levels.find_key(selected_level + 1) != null 
-		and selected_level != Level.levels.TUTORIAL):
-		selected_level += 1
+	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null 
+		and _save_state.max_unlocked_level != LevelTypes.types.TUTORIAL):
+		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
 
 func update_and_generate_storage_display():
 	$GuiItemListDisplayer.generate_or_update(_vcontainer, $Storage.contents)
 
 func save_game():
 	ResourceSaver.save(_save_state, _save_state.resource_path);
+
+func switch_from_mines():
+		visible = true;
+		$CameraIndependent/LevelSelector.update();
+		update_and_generate_storage_display();
+		save_game();
+		Camera.location = Camera.CameraLocation.FORGE;
+
 
 func _load_save_state():
 	if (_save_state.forge_storage == {}):
@@ -56,7 +65,9 @@ func _load_save_state():
 	else:
 		upgrades_purchased = _save_state.upgrades_purchased;
 
-func _on_try_button_pressed() -> void:
+
+func _try_level(level: LevelTypes.types):
+	selected_level = level;
 	visible = false;
 	Camera.location = Camera.CameraLocation.MINES;
 	var mines = _mine_scene.instantiate();

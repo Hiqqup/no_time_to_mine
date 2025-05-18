@@ -1,6 +1,8 @@
 extends TileMapLayer
 
 
+signal emptyed;
+
 @export var floor_layer: MineFloor;
 @export var _harvestable_types: HarvestableTypes;
 
@@ -44,7 +46,7 @@ func _generate_one_cell_of_type(type: HarvestableTypes.types):
 func _remove_from_harvestables_check_empty(base: HarvestableBase):
 	_harvestables.erase(base);
 	if _harvestables.is_empty():
-		get_tree().get_first_node_in_group("forge").increment_level();
+		emptyed.emit();
 
 
 func _convert_used_cells():

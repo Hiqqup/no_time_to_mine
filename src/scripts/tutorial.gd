@@ -26,18 +26,19 @@ enum TutorialSection{
 
 func _ready() -> void:
 	_forge = get_tree().get_first_node_in_group("forge")
-	call_deferred("_hide_forge");
 	_mines = get_tree().get_first_node_in_group("current_mines");
-	if _forge._save_state.tutorial_completed:
-		Camera.location = Camera.CameraLocation.MINES;
-		queue_free();
-		return
+
 	
 	
 	_movement_guide = $PlayerMovementGuide
 	_mining_guide = $MiningGuide
 	_player= _mines.get_node("YSorted/Player")
 
+
+	if _forge._save_state.tutorial_completed:
+		_player._die();
+		queue_free();
+		return
 	
 	_targeting = _player.get_node("Targeting");
 	_forge_guide = $ForgeGuide;
@@ -52,6 +53,9 @@ func _ready() -> void:
 	_forge_guide.visible = false;
 	_purchase_guide.visible = false;
 	_retry_guide.visible = false;
+	_forge.visible = false;
+	#call_deferred("_hide_forge");
+	
 	
 	Camera.zoom = Vector2.ONE * 4;
 	Camera.location = Camera.CameraLocation.MINES;
@@ -60,7 +64,7 @@ func _ready() -> void:
 	_mining_guide.reparent(_player);
 	_purchase_guide.reparent(_forge._skill_tree_root);
 	
-	_forge.selected_level = Level.levels.TUTORIAL;
+	_forge.selected_level = LevelTypes.types.TUTORIAL;
 	_forge.upgrade_purchased.connect( func():
 		if not _first_upgrade_bought:
 			_fade_in( _retry_guide);
@@ -78,13 +82,7 @@ func _ready() -> void:
 
 
 func _timeout_callback(wait_time: float, callback :Callable)->void:
-	# executes set callback $wait_time seconds from now
-	var timer: Timer = Timer.new();
-	add_child(timer) 
-	timer.wait_time = wait_time
-	timer.one_shot = true
-	timer.timeout.connect(callback);
-	timer.start()
+	$TimeoutCallback.timeout_callback(wait_time, callback)
 
 
 
@@ -125,7 +123,7 @@ func _set_to_normal_mine():
 	_fade_in(_player.lifetime_bar)
 	_mines.reparent(get_parent()); # add to root
 	_tutorial_section = TutorialSection.NONE;
-	_forge.selected_level = Level.levels.FIRST;
+	_forge.selected_level = LevelTypes.types.FIRST;
 	_player.died.connect(_setup_forge_guide)
 
 func _setup_forge_guide():	
@@ -134,7 +132,7 @@ func _setup_forge_guide():
 	_fade_in(_purchase_guide);
 	
 
-func  _process(delta: float) -> void:
+func  _process(_delta: float) -> void:
 	#print(_player_mined_once)
 	if _tutorial_section == TutorialSection.MINES:
 		var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");

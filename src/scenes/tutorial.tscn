@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpu4eexbhm1e7"]
+[gd_scene load_steps=8 format=3 uid="uid://bpu4eexbhm1e7"]
 
 [ext_resource type="Script" uid="uid://dv3e1x3knx7hf" path="res://src/scripts/tutorial.gd" id="1_io05x"]
 [ext_resource type="Texture2D" uid="uid://d4jeuxr50sjgg" path="res://assets/visuals/movement_guide.png" id="2_ihko7"]
 [ext_resource type="FontFile" uid="uid://c1vtk4es625tx" path="res://assets/visuals/fonts/EXEPixelPerfect.ttf" id="3_gqjuj"]
 [ext_resource type="Texture2D" uid="uid://b7yibd7vu2s0m" path="res://assets/visuals/mining_guide.png" id="4_l4gex"]
+[ext_resource type="PackedScene" uid="uid://2d3n31s7uoax" path="res://src/scenes/composables/timeout_callback.tscn" id="5_l4gex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqjuj"]
 atlas = ExtResource("2_ihko7")
@@ -125,24 +126,25 @@ text = " scroll to zoom"
 horizontal_alignment = 1
 
 [node name="RetryGuide" type="MarginContainer" parent="ForgeGuide"]
-anchors_preset = -1
-anchor_left = 0.963
-anchor_top = 0.911
-anchor_right = 0.963
-anchor_bottom = 0.911
-offset_left = -79.3761
-offset_top = -38.8281
-offset_right = 17.6239
-offset_bottom = -15.8281
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -249.0
+offset_top = -194.0
+offset_right = -112.0
+offset_bottom = -145.0
 grow_horizontal = 0
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="ForgeGuide/RetryGuide"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ForgeGuide/RetryGuide"]
 layout_mode = 2
-text = "click to retry"
+text = "select the level 
+you want to try ->"
 horizontal_alignment = 1
 
 [node name="PurchaseGuide" type="MarginContainer" parent="ForgeGuide"]
@@ -166,3 +168,5 @@ layout_mode = 2
 layout_mode = 2
 text = "click to purchase upgrade"
 horizontal_alignment = 1
+
+[node name="TimeoutCallback" parent="." instance=ExtResource("5_l4gex")]

@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwd0rw2sk5jvl"]
 
 [ext_resource type="Script" uid="uid://ce701uc33yrf4" path="res://misc_scripts/image_conversion/image_recolorer/image_recolorer.gd" id="1_jjs0o"]
-[ext_resource type="Texture2D" uid="uid://dwr7m4dgya7s8" path="res://assets/visuals/Floor-tileset-recolored.png" id="2_6naxh"]
+[ext_resource type="Texture2D" uid="uid://cqbdpnvbmmxhn" path="res://assets/visuals/procreate/recolored/Floor-tileset-.png" id="2_6naxh"]
+[ext_resource type="Resource" uid="uid://bfhil3x217rhd" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/red_to_orange_saturated.tres" id="3_6naxh"]
 [ext_resource type="Shader" uid="uid://dppbl3mdcn443" path="res://misc_scripts/image_conversion/image_recolorer/recolor.gdshader" id="3_f2sqo"]
-[ext_resource type="Resource" uid="uid://dnkajnl4wnd7y" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_silver.tres" id="3_yyp0o"]
 
 [node name="ImageRecolorer" type="Node"]
 script = ExtResource("1_jjs0o")
 input_image = ExtResource("2_6naxh")
-recolor_map = ExtResource("3_yyp0o")
+recolor_map = ExtResource("3_6naxh")
 recolor_shader = ExtResource("3_f2sqo")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -27,5 +27,9 @@ centered = false
 offset_right = 8.0
 offset_bottom = 8.0
 text = "convert"
+
+[node name="Floor-tileset-" type="Sprite2D" parent="."]
+position = Vector2(-78, 218)
+texture = ExtResource("2_6naxh")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
