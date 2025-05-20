@@ -50,7 +50,13 @@ func _die():
 
 func _handle_movement_input():
 	var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");
-	_walking_particles.emitting = direction != Vector2.ZERO;
+	
+	if direction == Vector2.ZERO:
+		_walking_particles.emitting = false;
+		$Visuals/Sprite.animation = "standing";
+	else:
+		_walking_particles.emitting = true;
+		$Visuals/Sprite.animation = "walking";
 	velocity.x = move_toward(velocity.x, _upgrade_stats.movement_speed* direction.x, _upgrade_stats.movement_speed/10);
 	velocity.y = move_toward(velocity.y, _upgrade_stats.movement_speed* direction.y, _upgrade_stats.movement_speed/10);
 	

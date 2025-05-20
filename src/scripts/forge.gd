@@ -70,5 +70,6 @@ func _try_level(level: LevelTypes.types):
 	selected_level = level;
 	visible = false;
 	Camera.location = Camera.CameraLocation.MINES;
+	Camera.zoom = Vector2(1,1) * 3;
 	var mines = _mine_scene.instantiate();
 	get_parent().add_child(mines);

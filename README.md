@@ -10,7 +10,7 @@
 ## Concept:
 
 - [Fantasy](https://store.steampowered.com/tag/browse/#global_1684) [Dwarf](https://store.steampowered.com/tag/browse/#global_7918) Setting
-- Core-Mechanics: Resource Collection, Upgrading 
+- Core-Mechanics: Resource Collection, Upgrading, Topdown isometric view on mining character
 - Unique Selling Point: finite lifecycles with itteratively increasing the Progress
 
 Genres: [Survival](https://store.steampowered.com/tag/browse/#global_1662) [Exploration](https://store.steampowered.com/tag/browse/#global_3834) [Casual](https://store.steampowered.com/tag/browse/#global_597) [Isometric](https://store.steampowered.com/tag/browse/#global_5851)

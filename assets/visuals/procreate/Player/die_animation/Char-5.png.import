@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb0rl6xjcloea"
-path="res://.godot/imported/Char-4.png-859f9d03cc5fd65d5b55534f4cc83589.ctex"
+uid="uid://cnm4npohe58b1"
+path="res://.godot/imported/Char-5.png-eb1ee70b93cc2b9538e8fd7955488e28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/procreate/Player/Die Animation/Char-4.png"
-dest_files=["res://.godot/imported/Char-4.png-859f9d03cc5fd65d5b55534f4cc83589.ctex"]
+source_file="res://assets/visuals/procreate/Player/die_animation/Char-5.png"
+dest_files=["res://.godot/imported/Char-5.png-eb1ee70b93cc2b9538e8fd7955488e28.ctex"]
 
 [params]
 
