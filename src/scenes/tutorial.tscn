@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpu4eexbhm1e7"]
+[gd_scene load_steps=9 format=3 uid="uid://bpu4eexbhm1e7"]
 
 [ext_resource type="Script" uid="uid://dv3e1x3knx7hf" path="res://src/scripts/tutorial.gd" id="1_io05x"]
 [ext_resource type="Texture2D" uid="uid://d4jeuxr50sjgg" path="res://assets/visuals/movement_guide.png" id="2_ihko7"]
 [ext_resource type="FontFile" uid="uid://c1vtk4es625tx" path="res://assets/visuals/fonts/EXEPixelPerfect.ttf" id="3_gqjuj"]
 [ext_resource type="Texture2D" uid="uid://b7yibd7vu2s0m" path="res://assets/visuals/mining_guide.png" id="4_l4gex"]
+[ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="5_0hv7v"]
 [ext_resource type="PackedScene" uid="uid://2d3n31s7uoax" path="res://src/scenes/composables/timeout_callback.tscn" id="5_l4gex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqjuj"]
@@ -18,8 +19,7 @@ region = Rect2(1, 0, 22, 32)
 script = ExtResource("1_io05x")
 
 [node name="PlayerMovementGuide" type="Node2D" parent="."]
-visible = false
-position = Vector2(16, 0)
+position = Vector2(16, -6)
 
 [node name="GreenToBlueWrapper" type="Node2D" parent="PlayerMovementGuide"]
 position = Vector2(-8, 13)
@@ -47,30 +47,25 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer/TextureRect"]
 layout_mode = 0
 offset_left = -5.0
-offset_top = 12.0
+offset_top = 15.2787
 offset_right = 531.0
-offset_bottom = 324.0
-theme_override_constants/line_spacing = -20
+offset_bottom = 327.279
+theme_override_constants/line_spacing = -22
 theme_override_fonts/font = ExtResource("3_gqjuj")
 theme_override_font_sizes/font_size = 16
 text = "       s
-   a      d
+   a       d
        w"
 
-[node name="Label" type="Label" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer"]
+[node name="Label2" type="Label" parent="PlayerMovementGuide/GreenToBlueWrapper/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("3_gqjuj")
+theme = ExtResource("5_0hv7v")
+theme_override_font_sizes/font_size = 16
 text = "to move"
 horizontal_alignment = 1
 
 [node name="MiningGuide" type="Node2D" parent="."]
-visible = false
-position = Vector2(16, -15)
+position = Vector2(16, -20)
 
 [node name="GreenToBlueWrapper" type="Node2D" parent="MiningGuide"]
 position = Vector2(-8, 13)
@@ -88,6 +83,7 @@ offset_right = 44.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("5_0hv7v")
 
 [node name="TextureRect" type="TextureRect" parent="MiningGuide/GreenToBlueWrapper/VBoxContainer"]
 layout_mode = 2
@@ -97,16 +93,12 @@ stretch_mode = 5
 
 [node name="Label" type="Label" parent="MiningGuide/GreenToBlueWrapper/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("3_gqjuj")
-text = "to mine"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+text = "   to mine"
+vertical_alignment = 1
 
 [node name="ForgeGuide" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="NavigationGuide" type="MarginContainer" parent="ForgeGuide"]
 anchors_preset = 5
@@ -122,6 +114,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="ForgeGuide/NavigationGuide"]
 layout_mode = 2
+theme = ExtResource("5_0hv7v")
 text = " scroll to zoom"
 horizontal_alignment = 1
 
@@ -143,29 +136,26 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="ForgeGuide/RetryGuide"]
 layout_mode = 2
+theme = ExtResource("5_0hv7v")
 text = "select the level 
 you want to try ->"
 horizontal_alignment = 1
 
 [node name="PurchaseGuide" type="MarginContainer" parent="ForgeGuide"]
-anchors_preset = -1
-anchor_top = 0.007
-anchor_bottom = 0.007
-offset_left = -98.0
-offset_top = -39.036
-offset_right = 101.0
-offset_bottom = -16.036
-grow_horizontal = 0
-grow_vertical = 2
+offset_left = -113.0
+offset_top = -40.0
+offset_right = 163.0
+offset_bottom = -14.0
 scale = Vector2(0.4, 0.4)
 pivot_offset = Vector2(98, 11.5)
-metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="ForgeGuide/PurchaseGuide"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ForgeGuide/PurchaseGuide"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("5_0hv7v")
 text = "click to purchase upgrade"
 horizontal_alignment = 1
 

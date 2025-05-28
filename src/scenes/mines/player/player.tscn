@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://d1i8mon4i40ff"]
+[gd_scene load_steps=23 format=3 uid="uid://d1i8mon4i40ff"]
 
 [ext_resource type="Script" uid="uid://d56qvy3tgwpl" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_0weng"]
 [ext_resource type="Texture2D" uid="uid://blkuvgc2hc4fi" path="res://assets/visuals/lifetime_bar/background.png" id="2_mb1oq"]
 [ext_resource type="Texture2D" uid="uid://cs48iv23xtbgq" path="res://assets/visuals/lifetime_bar/progress.png" id="3_0weng"]
+[ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_d4qqj"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
 [ext_resource type="Texture2D" uid="uid://yy4t302rrdfm" path="res://assets/visuals/procreate/Eyes.png" id="5_u8duq"]
 [ext_resource type="Texture2D" uid="uid://vwhjg33tprtt" path="res://assets/visuals/procreate/Player/die_animation/Char-1.png" id="8_3utme"]
@@ -231,10 +232,11 @@ _walking_particles = NodePath("Visuals/WalkingParticles")
 
 [node name="CameraIndependet" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CameraIndependet"]
+[node name="ResetButton" type="Button" parent="CameraIndependet"]
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 8
+theme = ExtResource("3_d4qqj")
 text = "die"
 
 [node name="LifetimeBar" type="TextureProgressBar" parent="CameraIndependet"]
@@ -345,4 +347,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_u8duq")
 }
 
-[connection signal="pressed" from="CameraIndependet/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CameraIndependet/ResetButton" to="." method="_on_button_pressed"]

@@ -61,13 +61,13 @@ mouse_filter = 2
 
 [node name="SkillName" type="Label" parent="InfoLabel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 16
 text = "damage"
 horizontal_alignment = 1
 
 [node name="Progress" type="Label" parent="InfoLabel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 16
 text = "0/3"
 horizontal_alignment = 1
 

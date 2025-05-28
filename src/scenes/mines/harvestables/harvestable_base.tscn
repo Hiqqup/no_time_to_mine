@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bb1jbf035g1y5" path="res://src/scenes/mines/harvestables/default_colision_shapes/mining_range_shape.tscn" id="2_h3lbi"]
 [ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="2_os4bl"]
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="2_pmh5g"]
-[ext_resource type="PackedScene" uid="uid://dnh5nnknlnh0j" path="res://src/scenes/drops/item_drop_base.tscn" id="2_wnspo"]
+[ext_resource type="PackedScene" uid="uid://dnh5nnknlnh0j" path="res://src/themes/item_drop_base.tscn" id="2_wnspo"]
 [ext_resource type="PackedScene" uid="uid://5dwpbnrebtj5" path="res://src/scenes/mines/harvestables/default_colision_shapes/click_detection_shape.tscn" id="3_os4bl"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_wnspo"]
 

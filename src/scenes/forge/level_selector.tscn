@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://hk0v212smudp"]
+[gd_scene load_steps=3 format=3 uid="uid://hk0v212smudp"]
 
 [ext_resource type="Script" uid="uid://cqu2kkwsovgyg" path="res://src/scripts/level_selector.gd" id="1_1vl5e"]
+[ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="2_gqaxp"]
 
 [node name="LevelSelector" type="Control" node_paths=PackedStringArray("level_list", "original_button")]
 layout_mode = 3
@@ -9,10 +10,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -42.0
+offset_top = -42.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = ExtResource("2_gqaxp")
 script = ExtResource("1_1vl5e")
 level_list = NodePath("PanelContainer/ScrollContainer/LevelList")
 original_button = NodePath("OriginalButton")
@@ -42,3 +46,4 @@ visible = false
 layout_mode = 0
 offset_right = 10.0
 offset_bottom = 10.0
+theme = ExtResource("2_gqaxp")

@@ -2,6 +2,8 @@ extends Node
 
 @export var _item_sprite_mapper: ItemTypes;
 
+
+
 var _already_displaying: Dictionary[ItemTypes.types, bool];
 
 var _generated_labels: Array[Label]

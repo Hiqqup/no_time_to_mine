@@ -24,5 +24,8 @@ func _on_new_game_pressed() -> void:
 
 
 func _on_continue_pressed() -> void:
-	get_parent().add_child(_game_scene.instantiate() );
-	queue_free();
+	(get_tree().get_first_node_in_group("screen_transition")
+	.change_scene(func():
+		get_parent().add_child(_game_scene.instantiate() );
+		queue_free();
+		))

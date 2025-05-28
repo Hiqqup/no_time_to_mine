@@ -7,6 +7,7 @@ var _mining_guide: Node2D;
 var _forge_guide: CanvasLayer;
 var _retry_guide: Control;
 var _purchase_guide: Control;
+var _player_reset_button: Button;
 
 var _mines: Node2D;
 var _forge: Forge;
@@ -36,17 +37,20 @@ func _ready() -> void:
 
 
 	if _forge._save_state.tutorial_completed:
-		_player._die();
+		_mines.queue_free();
+		_forge.switch_from_mines();
 		queue_free();
 		return
 	
 	_targeting = _player.get_node("Targeting");
+	_player_reset_button = _player.get_node("CameraIndependet/ResetButton");
 	_forge_guide = $ForgeGuide;
 	_purchase_guide = $ForgeGuide/PurchaseGuide;
 	_retry_guide = $ForgeGuide/RetryGuide;
 	
 	_player.do_lifetime_calculation = false;
 	_player.lifetime_bar.visible = false;
+	_player_reset_button.visible = false;
 	_targeting.visible = false;
 	_movement_guide.visible = false;
 	_mining_guide.visible = false;
@@ -120,6 +124,7 @@ func _check_for_new_forge():
 
 func _set_to_normal_mine():
 	_player.do_lifetime_calculation = true;
+	_fade_in(_player_reset_button);
 	_fade_in(_player.lifetime_bar)
 	_mines.reparent(get_parent()); # add to root
 	_tutorial_section = TutorialSection.NONE;
