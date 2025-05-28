@@ -57,7 +57,7 @@ func _ready() -> void:
 	#call_deferred("_hide_forge");
 	
 	
-	Camera.zoom = Vector2.ONE * 4;
+	Camera.reset_zoom();
 	Camera.location = Camera.CameraLocation.MINES;
 	
 	_movement_guide.reparent(_player);

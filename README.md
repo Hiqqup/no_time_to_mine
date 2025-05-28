@@ -17,6 +17,10 @@ Genres: [Survival](https://store.steampowered.com/tag/browse/#global_1662) [Expl
 
 Inspired by [Forager](https://store.steampowered.com/app/751780/Forager/) and [Nodebuster](https://store.steampowered.com/app/3107330/Nodebuster/)
 
+Other games like that:
+10 seconds ninja
+to the core
+
 Completed Todos:
 - Savegame
 - Git Lfs
@@ -25,9 +29,14 @@ Completed Todos:
 
 Todos:
 - button design
-- tutorial try again clearer visual queues
+- tutorial try again clearersssssssaswwwwwwwwwwwdwaassssssssssssaaaaaaaaaaaaaaa visual queues
 
 - Soundeffects
 - More Content
 - Music
 - Shaders
+
+
+# Wue-Campus
+
+Gruppe 05

@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://spyc82xpyw3c"]
+[gd_scene load_steps=3 format=3 uid="uid://spyc82xpyw3c"]
 
 [ext_resource type="PackedScene" uid="uid://h6kjdc8gvtgs" path="res://src/scenes/titlescreen.tscn" id="1_kkvs4"]
+[ext_resource type="PackedScene" uid="uid://jtkbd6lykgy8" path="res://src/scenes/screen_transition.tscn" id="2_rr2wm"]
 
 [node name="Main" type="Node"]
 
 [node name="Titlescreen" parent="." instance=ExtResource("1_kkvs4")]
+
+[node name="ScreenTransition" parent="." instance=ExtResource("2_rr2wm")]

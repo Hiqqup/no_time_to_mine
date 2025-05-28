@@ -23,10 +23,16 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 GlobalConstants="*res://src/scripts/global_constants.gd"
 Camera="*res://src/scripts/camera.gd"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+
 [global_group]
 
 current_mines=""
 forge=""
+screen_transition=""
 
 [input]
 

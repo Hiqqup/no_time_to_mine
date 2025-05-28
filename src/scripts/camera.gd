@@ -20,7 +20,12 @@ var location: CameraLocation = CameraLocation.LOCKED_TITLE_SCREEN;
 
 
 func _ready() -> void:
-	zoom = Vector2.ONE * 3;
+	reset_zoom()
+
+
+func _handle_zoom():
+	if zoom.x > GlobalConstants.MIN_ZOOM:
+		zoom -= Vector2.ONE * _SCROLL_FACTOR ;
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -28,8 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return;
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			if zoom.x > (_SCROLL_FACTOR + _SCROLL_FACTOR/10):
-				zoom -= Vector2.ONE * _SCROLL_FACTOR ;
+			_handle_zoom();
 			
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			zoom+= Vector2.ONE * _SCROLL_FACTOR;
@@ -49,7 +53,10 @@ func _process(delta: float) -> void:
 	if location == CameraLocation.FORGE:
 		_handle_movement_input()
 	if location == CameraLocation.MINES:
-		global_position = get_tree().get_first_node_in_group("current_mines").player.global_position
+		var player_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
+		var speed = 10
+		global_position.y = lerp(global_position.y, player_position.y, delta*speed)
+		global_position.x = lerp(global_position.x, player_position.x, delta*speed)
 	if(_dragging and location == CameraLocation.FORGE):
 		var mouse_position = get_viewport().get_mouse_position()
 		position -=( mouse_position - _dragging_start_position)/zoom;
@@ -61,6 +68,10 @@ func _process(delta: float) -> void:
 
 func shake(strength: float):
 	_shake_strength = strength;
+
+
+func reset_zoom():
+	zoom = Vector2.ONE * 4;
 
 
 

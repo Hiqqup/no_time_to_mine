@@ -16,9 +16,11 @@ func _ready() -> void:
 	floor_layer.setup(level.platform_radius);
 	d=level.harvestables;
 	harvestable_layer.generate_cells(d)
-	
+
 
 func _on_player_died() -> void:
+	
+	Camera.reset_zoom();
 	queue_free();
 
 

@@ -37,6 +37,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide();
 
 func _die():
+	get_tree().get_first_node_in_group("screen_transition").change_scene(
+	func():
 		var forge: Forge = get_tree().get_first_node_in_group("forge");
 		var forge_storage = forge.get_node("Storage");
 		var player_storage = $Storage;
@@ -45,7 +47,7 @@ func _die():
 		forge.switch_from_mines();
 		_alive = false;
 		died.emit();
-		
+	)
 
 
 func _handle_movement_input():

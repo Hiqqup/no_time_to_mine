@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://mq0wb5hf2lra"]
+[gd_scene load_steps=8 format=3 uid="uid://mq0wb5hf2lra"]
 
 [ext_resource type="Script" uid="uid://dlns6x22rucix" path="res://src/scripts/mines.gd" id="1_5ay12"]
 [ext_resource type="PackedScene" uid="uid://dji7xejgxhg1e" path="res://src/scenes/mines/harvestables/harvestables_layer.tscn" id="2_1bjje"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_wonyy"]
 [ext_resource type="PackedScene" uid="uid://d1i8mon4i40ff" path="res://src/scenes/mines/player/player.tscn" id="2_wu3x7"]
 [ext_resource type="PackedScene" uid="uid://2d3n31s7uoax" path="res://src/scenes/composables/timeout_callback.tscn" id="6_fr8mr"]
+[ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="7_kcaqh"]
 
 [node name="Mines" type="Node2D" node_paths=PackedStringArray("player", "harvestable_layer", "floor_layer") groups=["current_mines"]]
 script = ExtResource("1_5ay12")
@@ -31,6 +32,13 @@ y_sort_enabled = true
 position = Vector2(16, 0)
 
 [node name="TimeoutCallback" parent="." instance=ExtResource("6_fr8mr")]
+
+[node name="Background" parent="." instance=ExtResource("7_kcaqh")]
+offset_left = -505.0
+offset_top = -284.0
+offset_right = 505.0
+offset_bottom = 284.0
+mode = 1
 
 [connection signal="emptyed" from="YSorted/HarvestabelsLayer" to="." method="_on_harvestabels_layer_emptyed"]
 [connection signal="died" from="YSorted/Player" to="." method="_on_player_died"]

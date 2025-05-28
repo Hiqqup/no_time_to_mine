@@ -35,6 +35,8 @@ func purchase_upgrade(type : UpgradeTypes.types):
 	upgrade_purchased.emit();
 
 func increment_level():
+	if selected_level != _save_state.max_unlocked_level:
+		return;
 	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null 
 		and _save_state.max_unlocked_level != LevelTypes.types.TUTORIAL):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
@@ -67,9 +69,12 @@ func _load_save_state():
 
 
 func _try_level(level: LevelTypes.types):
-	selected_level = level;
-	visible = false;
-	Camera.location = Camera.CameraLocation.MINES;
-	Camera.zoom = Vector2(1,1) * 3;
-	var mines = _mine_scene.instantiate();
-	get_parent().add_child(mines);
+	get_tree().get_first_node_in_group("screen_transition").change_scene(
+	func():
+		selected_level = level;
+		visible = false;
+		Camera.location = Camera.CameraLocation.MINES;
+		Camera.reset_zoom();
+		var mines = _mine_scene.instantiate();
+		get_parent().add_child(mines);
+	)
