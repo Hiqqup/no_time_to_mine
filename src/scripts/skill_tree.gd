@@ -2,6 +2,8 @@ extends Control
 
 @export var upgrade_stats: PlayerUpgradeStats;
 
+@onready var damage: UpgradeButtonBase = $Damage
+@onready var mining_speed: UpgradeButtonBase = $Damage/MiningSpeed
 
 func _ready() -> void:
 	var u: UpgradeProperties;
@@ -14,7 +16,7 @@ func _ready() -> void:
 		return {
 		ItemTypes.types.RED_CAP_STONE: 1+ floor(0.5 * level), 
 		});
-	$Damage.upgrade_properties = u;
+	damage.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
 	u.skill_name = "Mining Speed"
@@ -26,5 +28,4 @@ func _ready() -> void:
 		ItemTypes.types.RED_CAP_STONE: 2,
 		ItemTypes.types.GOLD_ORE: 1+level,
 		});
-	$Damage/MiningSpeed.upgrade_properties = u;
-	
+	mining_speed.upgrade_properties = u;

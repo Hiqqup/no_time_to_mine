@@ -14,4 +14,3 @@ void fragment() {
 	COLOR.rgb = mix(defaultColor.rgb, burnColor.rgb, float(dist>radius-borderWidth));
 	COLOR.a *= (float(dist<radius)) * clamp(radius+0.5, 0.5, 1.0);
 }
-

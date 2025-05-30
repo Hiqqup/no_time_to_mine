@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bktks85fbuoip"]
 
-[ext_resource type="PackedScene" uid="uid://dvq4yj1q1oxt" path="res://src/scenes/forge/upgrade_button_base.tscn" id="1_afy6t"]
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
+[ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrade_button_base.tscn" id="3_vcrgi"]
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -12,16 +12,16 @@ offset_bottom = 40.0
 script = ExtResource("1_llldc")
 upgrade_stats = ExtResource("2_vcrgi")
 
-[node name="Damage" parent="." groups=["root"] instance=ExtResource("1_afy6t")]
+[node name="Damage" parent="." instance=ExtResource("3_vcrgi")]
 layout_mode = 0
-offset_left = -20.0
+offset_left = 0.0
 offset_top = 0.0
-offset_right = 20.0
+offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MiningSpeed" parent="Damage" instance=ExtResource("1_afy6t")]
+[node name="MiningSpeed" parent="Damage" instance=ExtResource("3_vcrgi")]
 layout_mode = 0
-offset_left = 73.0
-offset_top = -74.0
-offset_right = 113.0
-offset_bottom = -34.0
+offset_left = 100.0
+offset_top = -48.0
+offset_right = 140.0
+offset_bottom = -8.0

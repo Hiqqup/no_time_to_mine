@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4jaifuw7asa6"]
+
+[ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="1_q42oe"]
+[ext_resource type="Script" uid="uid://detm8xjy0nw0w" path="res://src/scripts/upgrade_button_info_label.gd" id="2_gut0l"]
+[ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="3_xci4c"]
+
+[node name="InfoLabel" type="MarginContainer"]
+offset_right = 46.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme = ExtResource("1_q42oe")
+script = ExtResource("2_gut0l")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SkillName" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "damage"
+horizontal_alignment = 1
+
+[node name="Progress" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "0/3"
+horizontal_alignment = 1
+
+[node name="Cost" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="GuiItemListDisplayer" parent="." instance=ExtResource("3_xci4c")]

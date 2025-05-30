@@ -1,83 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvq4yj1q1oxt"]
+[gd_scene load_steps=4 format=3 uid="uid://rifrgf41kumm"]
 
-[ext_resource type="Texture2D" uid="uid://borsf58fk1c5q" path="res://assets/visuals/upgrade.png" id="1_vahct"]
+[ext_resource type="PackedScene" uid="uid://dvaws6v1mrd76" path="res://src/scenes/forge/skill_tree_button_base.tscn" id="1_vahct"]
 [ext_resource type="Script" uid="uid://d0nt5c4w6emvj" path="res://src/scripts/upgrade_button_base.gd" id="2_uat7v"]
-[ext_resource type="Script" uid="uid://b0qjrf2j4rjqp" path="res://src/scripts/uprade_button_base_child_getter.gd" id="3_jg7ue"]
-[ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="4_jg7ue"]
+[ext_resource type="PackedScene" uid="uid://c4jaifuw7asa6" path="res://src/scenes/forge/upgrade_button_info_label.tscn" id="3_jg7ue"]
 
-[node name="UpgradeButtonBase" type="TextureButton"]
-modulate = Color(0.605274, 0.605274, 0.605274, 1)
-offset_left = -19.0
-offset_top = -18.0
-offset_right = 21.0
-offset_bottom = 22.0
-texture_normal = ExtResource("1_vahct")
-ignore_texture_size = true
-stretch_mode = 0
+[node name="UpgradeButtonBase" instance=ExtResource("1_vahct")]
 script = ExtResource("2_uat7v")
+upgrade_properties = null
 
-[node name="ChildGetter" type="Node" parent="." node_paths=PackedStringArray("info_label", "skill_name", "skill_progress", "skill_cost", "connection_to_parent")]
-script = ExtResource("3_jg7ue")
-info_label = NodePath("../InfoLabel")
-skill_name = NodePath("../InfoLabel/MarginContainer/VBoxContainer/SkillName")
-skill_progress = NodePath("../InfoLabel/MarginContainer/VBoxContainer/Progress")
-skill_cost = NodePath("../InfoLabel/MarginContainer/VBoxContainer/Cost")
-connection_to_parent = NodePath("../ConnectionToParent")
-
-[node name="ConnectionToParent" type="Line2D" parent="."]
-top_level = true
-z_index = -1
-width = 3.0
-default_color = Color(0.151276, 0.151276, 0.151276, 1)
-
-[node name="InfoLabel" type="MarginContainer" parent="."]
-visible = false
+[node name="InfoLabel" parent="." index="1" instance=ExtResource("3_jg7ue")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = -1.2
 anchor_right = 0.5
-anchor_bottom = -0.2
+offset_left = -23.0
+offset_top = -44.0
+offset_right = 23.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="InfoLabel"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="InfoLabel"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InfoLabel/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="SkillName" type="Label" parent="InfoLabel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "damage"
-horizontal_alignment = 1
-
-[node name="Progress" type="Label" parent="InfoLabel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "0/3"
-horizontal_alignment = 1
-
-[node name="Cost" type="VBoxContainer" parent="InfoLabel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="GuiItemListDisplayer" parent="." instance=ExtResource("4_jg7ue")]
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]

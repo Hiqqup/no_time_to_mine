@@ -1,5 +1,5 @@
 class_name UpgradeButtonBase
-extends TextureButton
+extends SkillTreeButtonBase
 
 
 @export var upgrade_properties: UpgradeProperties:
@@ -8,19 +8,12 @@ extends TextureButton
 		setup();
 
 # set from outside
-var max_level: int;
-var skill_name: String;
-var apply_upgrade: Callable;
-var cost_func: Callable:
-	set(call):
-		cost_func = call;
-		cost = cost_func.call(level);
 
 
 var cost: Dictionary[ItemTypes.types, int]:
 	set(value):
 		cost = value;
-		_generate_cost_display();
+		_info_label.generate_cost_display(cost);
 var _forge_storage_contents: Dictionary[ItemTypes.types, int];
 var _forge: Forge;
 var _children_visible: bool = false;
@@ -31,57 +24,51 @@ var level : int = 0:
 			_show_all_children();
 			modulate = Color.WHITE;
 		level = value;
-		$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level)
+		_info_label.update_level(level);
 
+
+# children:
+var _info_label: UpgradeButtonInfoLabel;
+var _gui_item_list_displayer: Node;
 
 func setup():
 	if upgrade_properties == null:
 		print("missing upgrade poperties")
-		queue_free();
 		return;
-	
 	level = _forge.upgrades_purchased[upgrade_properties.upgrade_type];
-		
 	
-	cost_func = upgrade_properties.cost_func;
-	apply_upgrade = upgrade_properties.apply_upgrade;
-	skill_name = upgrade_properties.skill_name;
-	max_level = upgrade_properties.max_level;
-	
+	cost = upgrade_properties.cost_func.call(level);
+
 	for i in level:
-		apply_upgrade.call();
+		upgrade_properties.apply_upgrade.call();
 	
-	
-	$ChildGetter.skill_progress.text = str(level) + "/" + str(max_level);
-	$ChildGetter.skill_name.text = skill_name;
+	_info_label.setup(level, upgrade_properties);
+
 	
 
 func _ready() -> void:
+	super();
 	_forge = get_tree().get_first_node_in_group("forge")
 	_forge_storage_contents = (_forge.get_node("Storage").contents);
 	
+	print(self is SkillTreeButtonBase)
+	# get children:
+	_info_label = $InfoLabel;
+	
 	visible = false;
 	
-	$ChildGetter.info_label.visible = false;
-	var parent = get_parent();
-	if parent is UpgradeButtonBase:
-		$ChildGetter.connection_to_parent.add_point(global_position + size/2)
-		$ChildGetter.connection_to_parent.add_point(parent.global_position + parent.size/2);
-
-
-func _generate_cost_display():
-	$GuiItemListDisplayer.generate_or_update($ChildGetter.skill_cost, cost);
+	_info_label.visible = false;
 
 
 func _on_pressed() -> void:
-	if not _check_affordable() or level == max_level:
+	if not _check_affordable() or level == upgrade_properties.max_level:
 		return;
 	_appy_cost()
 	_forge.update_and_generate_storage_display();
 	_forge.purchase_upgrade(upgrade_properties.upgrade_type);
 	level += 1;
-	cost = cost_func.call(level);
-	apply_upgrade.call();
+	cost = upgrade_properties.cost_func.call(level);
+	upgrade_properties.apply_upgrade.call();
 	_show_all_children();
 
 
@@ -95,11 +82,11 @@ func _show_all_children():
 
 
 func _on_mouse_entered() -> void:
-	$ChildGetter.info_label.visible = true;
+	_info_label.visible = true;
 
 
 func _on_mouse_exited() -> void:
-	$ChildGetter.info_label.visible = false;
+	_info_label.visible = false;
 
 
 func _check_affordable() ->bool:
