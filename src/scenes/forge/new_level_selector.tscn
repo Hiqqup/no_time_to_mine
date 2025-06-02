@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://brqh8uacwf61b"]
+
+[ext_resource type="PackedScene" uid="uid://dvaws6v1mrd76" path="res://src/scenes/forge/skill_tree_button_base.tscn" id="1_0o8tj"]
+[ext_resource type="Script" uid="uid://by08glwocqsyx" path="res://src/scripts/new_level_selector.gd" id="1_hf7mr"]
+
+[node name="NewLevelSelector" type="PanelContainer"]
+script = ExtResource("1_hf7mr")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="LevelConnection" type="Line2D" parent="ScrollContainer"]
+top_level = true
+z_index = -1
+width = 3.0
+default_color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="LevelList" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3000
+
+[node name="SkillTreeButtonBase2" parent="ScrollContainer/LevelList" instance=ExtResource("1_0o8tj")]
+layout_mode = 2
+
+[node name="SkillTreeButtonBase" parent="ScrollContainer/LevelList" instance=ExtResource("1_0o8tj")]
+layout_mode = 2
+
+[node name="SkillTreeButtonBase3" parent="ScrollContainer/LevelList" instance=ExtResource("1_0o8tj")]
+layout_mode = 2

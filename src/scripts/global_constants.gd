@@ -6,3 +6,9 @@ const _GLOW_MODULATE_FACTOR = 1.5;
 const GLOW_MODULATE = Color(_GLOW_MODULATE_FACTOR,_GLOW_MODULATE_FACTOR,_GLOW_MODULATE_FACTOR)
 const FIRST_DROP := ItemTypes.types.RED_CAP_STONE; 
 const MIN_ZOOM:= 1.9;
+
+func COMPILED()->bool:
+	return not OS.has_feature("editor");
+
+
+const USER_PATH := "user://savegame.tres";

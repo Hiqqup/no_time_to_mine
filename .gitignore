@@ -4,3 +4,4 @@
 build
 node_modules
 src/resources/save_state_1.tres
+dist

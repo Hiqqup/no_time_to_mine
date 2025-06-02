@@ -13,15 +13,21 @@ script = ExtResource("1_llldc")
 upgrade_stats = ExtResource("2_vcrgi")
 
 [node name="Damage" parent="." instance=ExtResource("3_vcrgi")]
+modulate = Color(0.603922, 0.603922, 0.603922, 1)
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 40.0
 offset_bottom = 40.0
+ignore_texture_size = false
+stretch_mode = 5
 
 [node name="MiningSpeed" parent="Damage" instance=ExtResource("3_vcrgi")]
+modulate = Color(0.603922, 0.603922, 0.603922, 1)
 layout_mode = 0
 offset_left = 100.0
 offset_top = -48.0
 offset_right = 140.0
 offset_bottom = -8.0
+ignore_texture_size = false
+stretch_mode = 5

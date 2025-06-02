@@ -8,6 +8,9 @@ func _reset_game_save_state():
 	var game_scene = _game_scene.instantiate();
 	var forge: Forge = game_scene.get_node("Forge");
 	var new_save_state =SaveState.new(); 
+	if GlobalConstants.COMPILED():
+		DirAccess.remove_absolute(GlobalConstants.USER_PATH);
+		pass
 	new_save_state.take_over_path(forge._save_state.resource_path);
 	forge._save_state = new_save_state;
 	forge.save_game();

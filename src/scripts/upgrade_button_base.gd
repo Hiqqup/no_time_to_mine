@@ -33,7 +33,7 @@ var _gui_item_list_displayer: Node;
 
 func setup():
 	if upgrade_properties == null:
-		print("missing upgrade poperties")
+		#print("missing upgrade poperties")
 		return;
 	level = _forge.upgrades_purchased[upgrade_properties.upgrade_type];
 	
@@ -50,8 +50,7 @@ func _ready() -> void:
 	super();
 	_forge = get_tree().get_first_node_in_group("forge")
 	_forge_storage_contents = (_forge.get_node("Storage").contents);
-	
-	print(self is SkillTreeButtonBase)
+
 	# get children:
 	_info_label = $InfoLabel;
 	

@@ -46,6 +46,7 @@ func update_and_generate_storage_display():
 
 func save_game():
 	ResourceSaver.save(_save_state, _save_state.resource_path);
+	print(_save_state.resource_path);
 
 func switch_from_mines():
 		visible = true;
@@ -56,6 +57,11 @@ func switch_from_mines():
 
 
 func _load_save_state():
+	if GlobalConstants.COMPILED():
+		if FileAccess.file_exists(GlobalConstants.USER_PATH):
+			_save_state = load(GlobalConstants.USER_PATH);
+		_save_state.take_over_path(GlobalConstants.USER_PATH);
+	
 	if (_save_state.forge_storage == {}):
 		_save_state.forge_storage = $Storage.contents;
 	else:
