@@ -45,6 +45,7 @@ func _die():
 		for i in player_storage.contents.size():
 			forge_storage.contents[i] += player_storage.contents[i];
 		forge.switch_from_mines();
+		forge.update_all_upgrades();
 		_alive = false;
 		died.emit();
 	)

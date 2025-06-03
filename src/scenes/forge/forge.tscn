@@ -29,10 +29,11 @@ _vcontainer = NodePath("CameraIndependent/StorageDisplay/MarginContainer/VBoxCon
 _save_state = ExtResource("3_fjp4y")
 
 [node name="SkillTree" parent="." instance=ExtResource("2_oc1b2")]
-offset_left = -8.0
-offset_top = -19.0
-offset_right = 32.0
-offset_bottom = 21.0
+layout_mode = 1
+offset_left = -29.0
+offset_top = -20.0
+offset_right = 11.0
+offset_bottom = 20.0
 
 [node name="BackgourndLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -51,12 +52,20 @@ offset_bottom = 0.0
 [node name="CameraIndependent" type="CanvasLayer" parent="."]
 
 [node name="LevelSelector" parent="CameraIndependent" instance=ExtResource("5_tf5gd")]
+offset_left = -76.9999
+offset_top = -76.0
+offset_right = -36.9999
+offset_bottom = -36.0
+scale = Vector2(1.5, 1.5)
 
 [node name="StorageDisplay" type="MarginContainer" parent="CameraIndependent"]
-offset_left = 11.0
-offset_right = 21.0
-offset_bottom = 10.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 34.0
+offset_bottom = 34.0
+scale = Vector2(3, 3)
 mouse_filter = 2
+theme = ExtResource("1_3h2d7")
 
 [node name="Panel" type="Panel" parent="CameraIndependent/StorageDisplay"]
 layout_mode = 2

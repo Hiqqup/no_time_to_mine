@@ -2,12 +2,13 @@ class_name UpgradeButtonBase
 extends SkillTreeButtonBase
 
 
+
 @export var upgrade_properties: UpgradeProperties:
 	set(val):
 		upgrade_properties = val;
 		setup();
 
-# set from outside
+@onready var _frame_sprite: TextureRect = $Frame;
 
 
 var cost: Dictionary[ItemTypes.types, int]:
@@ -25,6 +26,8 @@ var level : int = 0:
 			modulate = Color.WHITE;
 		level = value;
 		_info_label.update_level(level);
+		if value == upgrade_properties.max_level:
+			_info_label.remove_cost_display();
 
 
 # children:
@@ -43,8 +46,21 @@ func setup():
 		upgrade_properties.apply_upgrade.call();
 	
 	_info_label.setup(level, upgrade_properties);
-
 	
+	
+	update_frame_sprite();
+
+
+func update_frame_sprite():
+	self_modulate = Color.WHITE;
+	if level == upgrade_properties.max_level:
+		_frame_sprite.modulate = _info_label._yellow
+		return;
+	if _check_affordable():
+		_frame_sprite.modulate =  _info_label._green
+	else:
+		self_modulate = Color.DARK_GRAY;
+		_frame_sprite.modulate =  _info_label._red
 
 func _ready() -> void:
 	super();
@@ -55,9 +71,7 @@ func _ready() -> void:
 	_info_label = $InfoLabel;
 	
 	visible = false;
-	
 	_info_label.visible = false;
-
 
 func _on_pressed() -> void:
 	if not _check_affordable() or level == upgrade_properties.max_level:
@@ -69,6 +83,8 @@ func _on_pressed() -> void:
 	cost = upgrade_properties.cost_func.call(level);
 	upgrade_properties.apply_upgrade.call();
 	_show_all_children();
+	
+	_forge.update_all_upgrades();
 
 
 func _show_all_children():
@@ -90,7 +106,8 @@ func _on_mouse_exited() -> void:
 
 func _check_affordable() ->bool:
 	for key in cost.keys():
-		if cost[key] > _forge_storage_contents[key]:
+		if (not _forge_storage_contents.has(key) 
+			or  cost[key] > _forge_storage_contents[key]):
 			return false;
 	return true;
 

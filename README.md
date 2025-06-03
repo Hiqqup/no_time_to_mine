@@ -29,7 +29,7 @@ Completed Todos:
 
 Todos:
 - button design
-- tutorial try again clearersssssssaswwwwwwwwwwwdwaassssssssssssaaaaaaaaaaaaaaa visual queues
+- tutorial try again clearer visual queues
 
 - Soundeffects
 - More Content

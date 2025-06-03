@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 		_handle_movement_input()
 	if location == CameraLocation.MINES:
 		var player_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
-		var speed = 10
+		var speed = 8
 		global_position.y = lerp(global_position.y, player_position.y, delta*speed)
 		global_position.x = lerp(global_position.x, player_position.x, delta*speed)
 	if(_dragging and location == CameraLocation.FORGE):

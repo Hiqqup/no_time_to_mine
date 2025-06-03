@@ -26,4 +26,4 @@ func _on_player_died() -> void:
 
 func _on_harvestabels_layer_emptyed() -> void:
 	_forge.increment_level();
-	$TimeoutCallback.timeout_callback(0.5,  func():player._die_feedback())
+	$TimeoutCallback.timeout_callback(0.8,  func():player._die_feedback())

@@ -27,7 +27,10 @@ func _ready() -> void:
 
 
 
-
+func update_all_upgrades():
+	var buttons = get_tree().get_nodes_in_group("upgrade_button");
+	for button in buttons:
+		(button as UpgradeButtonBase).update_frame_sprite();
 
 func purchase_upgrade(type : UpgradeTypes.types):
 	upgrades_purchased[type] += 1;
@@ -46,14 +49,14 @@ func update_and_generate_storage_display():
 
 func save_game():
 	ResourceSaver.save(_save_state, _save_state.resource_path);
-	print(_save_state.resource_path);
+	#print(_save_state.resource_path);
 
 func switch_from_mines():
-		visible = true;
-		$CameraIndependent/LevelSelector.update();
-		update_and_generate_storage_display();
-		save_game();
-		Camera.location = Camera.CameraLocation.FORGE;
+	visible = true;
+	$CameraIndependent/LevelSelector.update();
+	update_and_generate_storage_display();
+	save_game();
+	Camera.location = Camera.CameraLocation.FORGE;
 
 
 func _load_save_state():

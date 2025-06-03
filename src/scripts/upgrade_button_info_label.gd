@@ -3,6 +3,11 @@ class_name UpgradeButtonInfoLabel
 
 var upgrade_properties: UpgradeProperties;
 
+@export_category("frame colors")
+@export var _yellow: Color;
+@export var _red: Color;
+@export var _green: Color;
+
 
 @onready var _skill_name: Label = $MarginContainer/VBoxContainer/SkillName;
 @onready var _skill_progress: Label = $MarginContainer/VBoxContainer/Progress;
@@ -11,6 +16,10 @@ var upgrade_properties: UpgradeProperties;
 
 func generate_cost_display(cost: Dictionary[ItemTypes.types, int]):
 	_gui_item_list_displayer.generate_or_update(_cost_container, cost);
+
+func remove_cost_display():
+	_cost_container.queue_free();
+
 
 func update_level(level: int):
 	if not upgrade_properties:
