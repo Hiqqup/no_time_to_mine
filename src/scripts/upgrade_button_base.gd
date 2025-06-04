@@ -8,7 +8,9 @@ extends SkillTreeButtonBase
 		upgrade_properties = val;
 		setup();
 
-@onready var _frame_sprite: TextureRect = $Frame;
+@onready var _frame_sprite: TextureRect = $Visuals/Frame;
+@onready var _button_sprite: TextureRect = $Visuals/Button;
+@onready var _animation_player: AnimationPlayer = $Visuals/AnimationPlayer;
 
 
 var cost: Dictionary[ItemTypes.types, int]:
@@ -52,14 +54,14 @@ func setup():
 
 
 func update_frame_sprite():
-	self_modulate = Color.WHITE;
+	_button_sprite.modulate = Color.WHITE;
 	if level == upgrade_properties.max_level:
 		_frame_sprite.modulate = _info_label._yellow
 		return;
 	if _check_affordable():
 		_frame_sprite.modulate =  _info_label._green
 	else:
-		self_modulate = Color.DARK_GRAY;
+		_button_sprite.modulate = Color.DARK_GRAY;
 		_frame_sprite.modulate =  _info_label._red
 
 func _ready() -> void:
@@ -75,6 +77,7 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	if not _check_affordable() or level == upgrade_properties.max_level:
+		_animation_player.play("denied")
 		return;
 	_appy_cost()
 	_forge.update_and_generate_storage_display();
@@ -83,7 +86,7 @@ func _on_pressed() -> void:
 	cost = upgrade_properties.cost_func.call(level);
 	upgrade_properties.apply_upgrade.call();
 	_show_all_children();
-	
+	_animation_player.play("click")
 	_forge.update_all_upgrades();
 
 
@@ -98,6 +101,8 @@ func _show_all_children():
 
 func _on_mouse_entered() -> void:
 	_info_label.visible = true;
+	_animation_player.play("hover");
+	
 
 
 func _on_mouse_exited() -> void:

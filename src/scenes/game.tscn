@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ex5fmxd3f5i"]
+[gd_scene load_steps=7 format=3 uid="uid://4ex5fmxd3f5i"]
 
 [ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://src/scenes/type_populater.tscn" id="1_276xm"]
 [ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_yufto"]
 [ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_276xm"]
 [ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial.tscn" id="3_lcg6w"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="4_gh3at"]
+
+[sub_resource type="Environment" id="Environment_276xm"]
+background_mode = 3
+tonemap_mode = 3
 
 [node name="Game" type="Node2D"]
 
@@ -26,3 +30,6 @@ offset_bottom = 2.0
 [node name="Tutorial" parent="." instance=ExtResource("3_lcg6w")]
 
 [node name="Mines" parent="." instance=ExtResource("4_gh3at")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_276xm")
