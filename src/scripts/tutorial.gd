@@ -58,7 +58,6 @@ func _ready() -> void:
 	_purchase_guide.visible = false;
 	_retry_guide.visible = false;
 	_forge.visible = false;
-	#call_deferred("_hide_forge");
 	
 	
 	Camera.reset_zoom();
