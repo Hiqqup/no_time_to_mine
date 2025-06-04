@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="SaveState" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SaveState" load_steps=2 format=3 uid="uid://cv40s01y8nbd3"]
 
-[ext_resource type="Script" path="res://src/scripts/resources/save_state.gd" id="1_44kjf"]
+[ext_resource type="Script" uid="uid://b7y8da7g4j8l" path="res://src/scripts/resources/save_state.gd" id="1_44kjf"]
 
 [resource]
 script = ExtResource("1_44kjf")
 forge_storage = Dictionary[int, int]({
-0: 0,
-1: 2
+0: 1,
+1: 5
 })
 upgrades_purchased = Dictionary[int, int]({
-0: 6,
-1: 0
+0: 9,
+1: 1
 })
 tutorial_completed = true
 max_unlocked_level = 3

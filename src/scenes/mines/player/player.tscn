@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1i8mon4i40ff"]
+[gd_scene load_steps=24 format=3 uid="uid://d1i8mon4i40ff"]
 
 [ext_resource type="Script" uid="uid://d56qvy3tgwpl" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_0weng"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cs48iv23xtbgq" path="res://assets/visuals/lifetime_bar/progress.png" id="3_0weng"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_d4qqj"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
+[ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="4_3utme"]
 [ext_resource type="Texture2D" uid="uid://yy4t302rrdfm" path="res://assets/visuals/procreate/Eyes.png" id="5_u8duq"]
 [ext_resource type="Texture2D" uid="uid://vwhjg33tprtt" path="res://assets/visuals/procreate/Player/die_animation/Char-1.png" id="8_3utme"]
 [ext_resource type="Texture2D" uid="uid://3f1kmtgt1p6" path="res://assets/visuals/procreate/Player/die_animation/Char-2.png" id="9_ne33x"]
@@ -241,6 +242,8 @@ scale = Vector2(1.8, 1.8)
 size_flags_vertical = 8
 theme = ExtResource("3_d4qqj")
 text = "die"
+
+[node name="ButtonAnimationWrapperContainer" parent="CameraIndependet/ResetButton" instance=ExtResource("4_3utme")]
 
 [node name="LifetimeBar" type="TextureProgressBar" parent="CameraIndependet"]
 anchors_preset = 12

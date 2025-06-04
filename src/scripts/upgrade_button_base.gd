@@ -8,9 +8,10 @@ extends SkillTreeButtonBase
 		upgrade_properties = val;
 		setup();
 
-@onready var _frame_sprite: TextureRect = $Visuals/Frame;
-@onready var _button_sprite: TextureRect = $Visuals/Button;
-@onready var _animation_player: AnimationPlayer = $Visuals/AnimationPlayer;
+@onready var _frame_sprite: TextureRect = $WrapperButton/Visuals/Frame;
+@onready var _button_sprite: TextureRect = $WrapperButton/Visuals/Button;
+@onready var _animation_player: AnimationPlayer = $WrapperButton/ButtonAnimationWrapperContainer/Wrapper/AnimationPlayer;
+@onready var _wrapper_button: TextureButton = $WrapperButton
 
 
 var cost: Dictionary[ItemTypes.types, int]:
@@ -74,8 +75,10 @@ func _ready() -> void:
 	
 	visible = false;
 	_info_label.visible = false;
+	_wrapper_button.pressed.connect(_on_wrapper_button_pressed);
+	
 
-func _on_pressed() -> void:
+func _on_wrapper_button_pressed() -> void:
 	if not _check_affordable() or level == upgrade_properties.max_level:
 		_animation_player.play("denied")
 		return;
@@ -99,13 +102,13 @@ func _show_all_children():
 	_children_visible = true;
 
 
-func _on_mouse_entered() -> void:
+func _on_wrapper_button_mouse_entered() -> void:
 	_info_label.visible = true;
 	_animation_player.play("hover");
 	
 
 
-func _on_mouse_exited() -> void:
+func _on_wrapper_button_mouse_exited() -> void:
 	_info_label.visible = false;
 
 

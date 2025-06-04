@@ -1,4 +1,4 @@
-extends TextureButton
+extends Control
 class_name SkillTreeButtonBase;
 
 @onready var  _connection_to_parent: Line2D =$ConnectionToParent ;
