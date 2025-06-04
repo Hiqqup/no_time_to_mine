@@ -8,9 +8,6 @@ var _already_displaying: Dictionary[LevelTypes.types, bool];
 var _forge: Forge ; 
 
 func _ready() -> void:
-	var button_in_container = original_button;
-	original_button = original_button.duplicate();
-	button_in_container.queue_free();
 	
 	_forge = get_tree().get_first_node_in_group("forge");
 	for key in LevelTypes.types.size():
