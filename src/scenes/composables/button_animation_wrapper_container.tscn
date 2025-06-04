@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://23tkt68f45bd"]
+[gd_scene load_steps=7 format=3 uid="uid://23tkt68f45bd"]
 
-[ext_resource type="Texture2D" uid="uid://dovkapi7yoarm" path="res://assets/visuals/upgrade.png" id="1_u0167"]
-[ext_resource type="Texture2D" uid="uid://cokckhl03f6ji" path="res://assets/visuals/upgrade_frame.png" id="2_py3ym"]
+[ext_resource type="Script" uid="uid://ciqiy07vfoikc" path="res://src/scripts/button_animation_wrapper_container.gd" id="1_py3ym"]
+
+[sub_resource type="Animation" id="Animation_py3ym"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_u0167"]
 resource_name = "click"
@@ -9,41 +11,14 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Wrapper:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 10), Vector2(0, -5), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_py3ym"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 10), Vector2(0, -5), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_b2gvn"]
@@ -52,132 +27,11 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("Wrapper:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.166667, 0.233333, 0.3, 0.366667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.349066, 0.349066, 0.0, -0.0872665, 0.0523599, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.0916667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4b886"]
-_data = {
-&"RESET": SubResource("Animation_py3ym"),
-&"click": SubResource("Animation_u0167"),
-&"hover": SubResource("Animation_b2gvn")
-}
-
-[sub_resource type="Animation" id="Animation_3e2bp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_tadgf"]
-resource_name = "click"
-length = 0.25
-step = 0.0083
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.158333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 10), Vector2(0, -5), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_37vxu"]
-resource_name = "denied"
-length = 0.3
-step = 0.0083
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.174533, 0.174533, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-15, 0), Vector2(12, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_jg7ue"]
-resource_name = "hover"
-length = 0.6
-step = 0.0083
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0583333, 0.108333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
@@ -185,61 +39,62 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals:rotation")
+tracks/1/path = NodePath("Wrapper:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.425, 0.525),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.166667, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.349066, 0.349066, 0.0, -0.0872665, 0.0523599, 0.0]
+"values": [0.0, -0.349066, 0.349066, 0.0, -0.0872665, 0.0523599]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_37vxu"]
+[sub_resource type="Animation" id="Animation_4b886"]
+resource_name = "denied"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wrapper:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-15, 0), Vector2(12, 0), Vector2(-5, 0), Vector2(5, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wrapper:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.0667667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533, 0.174533, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4b886"]
 _data = {
-&"RESET": SubResource("Animation_3e2bp"),
-&"click": SubResource("Animation_tadgf"),
-&"denied": SubResource("Animation_37vxu"),
-&"hover": SubResource("Animation_jg7ue")
+&"RESET": SubResource("Animation_py3ym"),
+&"click": SubResource("Animation_u0167"),
+&"denied": SubResource("Animation_4b886"),
+&"hover": SubResource("Animation_b2gvn")
 }
 
 [node name="ButtonAnimationWrapperContainer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_py3ym")
 
-[node name="Upgrade" type="Sprite2D" parent="."]
-position = Vector2(3, 1)
-texture = ExtResource("1_u0167")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4b886")
-}
-
-[node name="Visuals" type="Control" parent="."]
-layout_mode = 3
+[node name="Wrapper" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-pivot_offset = Vector2(20, 20)
-mouse_filter = 2
 
-[node name="Button" type="TextureRect" parent="Visuals"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-texture = ExtResource("1_u0167")
-
-[node name="Frame" type="TextureRect" parent="Visuals"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-texture = ExtResource("2_py3ym")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Wrapper"]
 root_node = NodePath("../..")
 libraries = {
-&"": SubResource("AnimationLibrary_37vxu")
+&"": SubResource("AnimationLibrary_4b886")
 }

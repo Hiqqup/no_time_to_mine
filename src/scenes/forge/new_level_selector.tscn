@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://brqh8uacwf61b"]
+[gd_scene load_steps=6 format=3 uid="uid://brqh8uacwf61b"]
 
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="1_2qdn5"]
 [ext_resource type="Script" uid="uid://by08glwocqsyx" path="res://src/scripts/new_level_selector.gd" id="1_hf7mr"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="3_2qdn5"]
+[ext_resource type="Texture2D" uid="uid://dovkapi7yoarm" path="res://assets/visuals/upgrade.png" id="4_icoyf"]
+[ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="5_jh41p"]
 
 [node name="NewLevelSelector" type="Control"]
 layout_mode = 3
@@ -43,3 +45,14 @@ layout_mode = 2
 [node name="LevelList" type="HBoxContainer" parent="Scale/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="OriginalButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 2
+offset_left = -15.0
+offset_top = -56.0
+offset_right = -5.0
+offset_bottom = -56.0
+texture_normal = ExtResource("4_icoyf")
+
+[node name="ButtonAnimationWrapperContainer" parent="OriginalButton" instance=ExtResource("5_jh41p")]
