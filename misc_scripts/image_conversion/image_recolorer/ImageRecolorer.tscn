@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwd0rw2sk5jvl"]
 
 [ext_resource type="Script" uid="uid://ce701uc33yrf4" path="res://misc_scripts/image_conversion/image_recolorer/image_recolorer.gd" id="1_jjs0o"]
-[ext_resource type="Texture2D" uid="uid://cqbdpnvbmmxhn" path="res://assets/visuals/procreate/recolored/Floor-tileset-.png" id="2_6naxh"]
+[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_6naxh"]
 [ext_resource type="Resource" uid="uid://dnkajnl4wnd7y" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_silver.tres" id="3_6naxh"]
 [ext_resource type="Shader" uid="uid://dppbl3mdcn443" path="res://misc_scripts/image_conversion/image_recolorer/recolor.gdshader" id="3_f2sqo"]
 
@@ -27,9 +27,5 @@ centered = false
 offset_right = 8.0
 offset_bottom = 8.0
 text = "convert"
-
-[node name="Floor-tileset-" type="Sprite2D" parent="."]
-position = Vector2(-78, 218)
-texture = ExtResource("2_6naxh")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

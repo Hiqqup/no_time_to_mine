@@ -18,7 +18,10 @@ func _enter_tree() -> void:
 	_load_save_state();
 
 func _ready() -> void:
-	visibility_changed.connect(func(): $CameraIndependent.visible = visible)
+	visibility_changed.connect(func(): 
+		$CameraIndependent.visible = visible
+		$BackgourndLayer.visible = visible;
+		)
 	
 	_skill_tree_root = $SkillTree/Damage;
 	_skill_tree_root.visible = true;
@@ -53,7 +56,8 @@ func save_game():
 
 func switch_from_mines():
 	visible = true;
-	$CameraIndependent/LevelSelector.update();
+	#$CameraIndependent/LevelSelector.update();
+	$CameraIndependent/NewLevelSelector.update();
 	update_and_generate_storage_display();
 	save_game();
 	Camera.location = Camera.CameraLocation.FORGE;

@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://kiphvgxfe0pn" path="res://src/scripts/forge.gd" id="1_oc1b2"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_gjnd3"]
 [ext_resource type="PackedScene" uid="uid://bktks85fbuoip" path="res://src/scenes/forge/skill_tree.tscn" id="2_oc1b2"]
-[ext_resource type="Resource" uid="uid://bt21iepfawum2" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
+[ext_resource type="Resource" uid="uid://sodr6p0l3hy" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="4_3sx3x"]
-[ext_resource type="PackedScene" uid="uid://hk0v212smudp" path="res://src/scenes/forge/level_selector.tscn" id="5_tf5gd"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="5_ytak3"]
 [ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="6_kv1sc"]
+[ext_resource type="PackedScene" uid="uid://brqh8uacwf61b" path="res://src/scenes/forge/new_level_selector.tscn" id="10_1ngb5"]
 
 [node name="Forge" type="Control" node_paths=PackedStringArray("_vcontainer") groups=["forge"]]
 layout_mode = 3
@@ -51,13 +51,6 @@ offset_bottom = 0.0
 
 [node name="CameraIndependent" type="CanvasLayer" parent="."]
 
-[node name="LevelSelector" parent="CameraIndependent" instance=ExtResource("5_tf5gd")]
-offset_left = -76.9999
-offset_top = -76.0
-offset_right = -36.9999
-offset_bottom = -36.0
-scale = Vector2(1.5, 1.5)
-
 [node name="StorageDisplay" type="MarginContainer" parent="CameraIndependent"]
 offset_left = 24.0
 offset_top = 24.0
@@ -83,6 +76,8 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("1_3h2d7")
+
+[node name="NewLevelSelector" parent="CameraIndependent" instance=ExtResource("10_1ngb5")]
 
 [node name="Storage" parent="." instance=ExtResource("4_3sx3x")]
 

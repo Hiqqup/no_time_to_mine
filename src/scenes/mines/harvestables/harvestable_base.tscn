@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
 [ext_resource type="PackedScene" uid="uid://bb1jbf035g1y5" path="res://src/scenes/mines/harvestables/default_colision_shapes/mining_range_shape.tscn" id="2_h3lbi"]
-[ext_resource type="Texture2D" uid="uid://idapp51d35ko" path="res://assets/visuals/halfslab_tileset.png" id="2_os4bl"]
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="2_pmh5g"]
 [ext_resource type="PackedScene" uid="uid://dnh5nnknlnh0j" path="res://src/themes/item_drop_base.tscn" id="2_wnspo"]
 [ext_resource type="PackedScene" uid="uid://5dwpbnrebtj5" path="res://src/scenes/mines/harvestables/default_colision_shapes/click_detection_shape.tscn" id="3_os4bl"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_wnspo"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wnspo"]
+load_path = "res://.godot/imported/halfslab_tileset.png-9704e9b01b571c7f94095a45c960e873.ctex"
 
 [node name="HarvestableBase" type="Node2D"]
 y_sort_enabled = true
@@ -18,7 +20,7 @@ _drop_base_scene = ExtResource("2_wnspo")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("2_os4bl")
+texture = SubResource("CompressedTexture2D_wnspo")
 region_enabled = true
 region_rect = Rect2(192, 0, 32, 32)
 

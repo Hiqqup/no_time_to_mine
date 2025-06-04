@@ -1,0 +1,41 @@
+[gd_scene load_steps=15 format=3 uid="uid://c3rpcim20exhr"]
+
+[ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_brdad"]
+[ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_olalk"]
+[ext_resource type="Texture2D" uid="uid://ce7rk0kevk1rv" path="res://assets/visuals/procreate/drops_tileset.png" id="3_3pqkl"]
+[ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="4_heidj"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="5_0tga4"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="6_llin5"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_ieg1n"]
+[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="8_pgj5n"]
+[ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/Floor-tileset-silver.png" id="9_3pqkl"]
+[ext_resource type="Texture2D" uid="uid://dovkapi7yoarm" path="res://assets/visuals/upgrade.png" id="10_heidj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fqf3"]
+atlas = ExtResource("3_3pqkl")
+region = Rect2(136, 12, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nol8j"]
+atlas = ExtResource("3_3pqkl")
+region = Rect2(168, 13, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tga4"]
+atlas = ExtResource("8_pgj5n")
+region = Rect2(66, 33, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n51tw"]
+atlas = ExtResource("9_3pqkl")
+region = Rect2(66, 33, 32, 32)
+
+[node name="TypePopulater" type="Node"]
+script = ExtResource("1_brdad")
+items = ExtResource("2_olalk")
+orange_drop = SubResource("AtlasTexture_8fqf3")
+black_drop = SubResource("AtlasTexture_nol8j")
+harvestables = ExtResource("4_heidj")
+orange_harvestable = ExtResource("5_0tga4")
+black_harvestable = ExtResource("6_llin5")
+levels = ExtResource("7_ieg1n")
+first_level = SubResource("AtlasTexture_0tga4")
+second_level = SubResource("AtlasTexture_n51tw")
+third_level = ExtResource("10_heidj")

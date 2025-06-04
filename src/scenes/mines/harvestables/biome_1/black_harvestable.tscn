@@ -9,4 +9,4 @@ health = 100.0
 [node name="Sprite2D" parent="Visuals" index="0"]
 position = Vector2(0, 6)
 texture = ExtResource("2_o4fsm")
-region_rect = Rect2(198, 12, 31, 19)
+region_rect = Rect2(165, 12, 31, 19)

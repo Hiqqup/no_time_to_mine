@@ -1,11 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://bd1ftd4mp5yyb"]
 
-[ext_resource type="Texture2D" uid="uid://br6hl4tjyt36x" path="res://assets/visuals/iso_tileset.png" id="1_olpso"]
 [ext_resource type="Script" uid="uid://cblsr1nqyg2nq" path="res://src/scripts/floor.gd" id="2_jet0m"]
 [ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_jikio"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sjvbc"]
+load_path = "res://.godot/imported/iso_tileset.png-9af35f17a161a01f80119c908a5f4fde.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jet0m"]
-texture = ExtResource("1_olpso")
+texture = SubResource("CompressedTexture2D_sjvbc")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)

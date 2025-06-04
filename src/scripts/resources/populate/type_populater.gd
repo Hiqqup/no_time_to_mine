@@ -12,6 +12,9 @@ extends Node
 
 @export_category("Levels")
 @export var levels: LevelTypes;
+@export var first_level: Texture;
+@export var second_level: Texture;
+@export var third_level: Texture;
 
 
 
@@ -38,6 +41,12 @@ func _ready() -> void:
 	harvestables.drop_tables[HarvestableTypes.types.GOLD_ORE].table = {
 		ItemTypes.types.GOLD_ORE: 1
 	}
+	
+	# Level Sprites
+	
+	levels.sprite_map[LevelTypes.types.FIRST] = first_level;
+	levels.sprite_map[LevelTypes.types.SECOND] = second_level;
+	levels.sprite_map[LevelTypes.types.THIRD] = third_level;
 	
 	# Levels
 	var l : Level
