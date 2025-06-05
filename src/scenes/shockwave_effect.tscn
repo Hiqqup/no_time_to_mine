@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://6mw7bgmjxo84"]
 
 [ext_resource type="Shader" uid="uid://dy6in2evtfx4c" path="res://src/shader/shockwave.gdshader" id="1_7pb8k"]
-[ext_resource type="Script" uid="uid://5osgxrcn1yrf" path="res://src/shockwave_effect.gd" id="1_qlih0"]
+[ext_resource type="Script" uid="uid://5osgxrcn1yrf" path="res://src/scripts/shockwave_effect.gd" id="1_qlih0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_saki2"]
 shader = ExtResource("1_7pb8k")
@@ -11,22 +11,6 @@ shader_parameter/radius = 0.0
 shader_parameter/aberration = 0.425
 shader_parameter/width = 0.04
 shader_parameter/feather = 0.135
-
-[sub_resource type="Animation" id="Animation_qlih0"]
-resource_name = "shockwave"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:material:shader_parameter/radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.6]
-}
 
 [sub_resource type="Animation" id="Animation_1ix3n"]
 length = 0.001
@@ -43,13 +27,29 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_qlih0"]
+resource_name = "shockwave"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ix3n"]
 _data = {
 &"RESET": SubResource("Animation_1ix3n"),
 &"shockwave": SubResource("Animation_qlih0")
 }
 
-[node name="ShockwaveEffect" type="CanvasLayer"]
+[node name="ShockwaveEffect" type="CanvasLayer" groups=["shockwave"]]
 script = ExtResource("1_qlih0")
 
 [node name="ColorRect" type="ColorRect" parent="."]

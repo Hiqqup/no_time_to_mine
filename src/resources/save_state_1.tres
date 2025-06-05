@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SaveState" load_steps=2 format=3 uid="uid://c7vs4hekda5lj"]
+[gd_resource type="Resource" script_class="SaveState" load_steps=2 format=3 uid="uid://crqrg4aipu38b"]
 
 [ext_resource type="Script" uid="uid://b7y8da7g4j8l" path="res://src/scripts/resources/save_state.gd" id="1_44kjf"]
 

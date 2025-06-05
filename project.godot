@@ -37,6 +37,7 @@ current_mines=""
 forge=""
 screen_transition=""
 upgrade_button=""
+shockwave=""
 
 [input]
 

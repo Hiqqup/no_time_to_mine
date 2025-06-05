@@ -22,6 +22,7 @@ func after_destroyed_animation():
 
 func get_destroyed():
 	_spawn_drop(_drop_table_float_to_int(drop_table));
+	get_tree().get_first_node_in_group("shockwave").at();
 	harvested.emit();
 	Camera.shake(2.5)
 	$CollisionShapes.queue_free();

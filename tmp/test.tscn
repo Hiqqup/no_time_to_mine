@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/Floor-tileset-silver.png" id="1_lopwu"]
 [ext_resource type="Script" uid="uid://b6lttigj6x0pj" path="res://tmp/test.gd" id="1_sgvlb"]
-[ext_resource type="PackedScene" uid="uid://6mw7bgmjxo84" path="res://src/shockwave_effect.tscn" id="3_hdgi6"]
+[ext_resource type="PackedScene" uid="uid://6mw7bgmjxo84" path="res://src/scenes/shockwave_effect.tscn" id="3_hdgi6"]
 
 [node name="Test" type="Node"]
 script = ExtResource("1_sgvlb")
 
-[node name="Floor-tileset-silver" type="Sprite2D" parent="."]
-position = Vector2(1350.53, 452.75)
-scale = Vector2(13.8538, 13.8538)
-texture = ExtResource("1_lopwu")
-
 [node name="ShockwaveEffect" parent="." instance=ExtResource("3_hdgi6")]
+
+[node name="Floor-tileset-silver" type="Sprite2D" parent="."]
+position = Vector2(142, 7)
+scale = Vector2(4.05382, 4.05382)
+texture = ExtResource("1_lopwu")

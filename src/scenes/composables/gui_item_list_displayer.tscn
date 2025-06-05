@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://yrnc5t2rwa3j"]
+
+[ext_resource type="Script" uid="uid://dx0hb3hv47va4" path="res://src/scripts/gui_item_list_displayer.gd" id="1_0sewn"]
+[ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_80mqm"]
+
+[node name="GuiItemListDisplayer" type="Node"]
+script = ExtResource("1_0sewn")
+_item_sprite_mapper = ExtResource("2_80mqm")
