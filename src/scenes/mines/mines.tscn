@@ -21,11 +21,11 @@ metadata/_edit_horizontal_guides_ = [-104.0]
 [node name="YSorted" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Drops" type="Node2D" parent="YSorted"]
-y_sort_enabled = true
-
 [node name="HarvestabelsLayer" parent="YSorted" node_paths=PackedStringArray("floor_layer") instance=ExtResource("2_1bjje")]
 floor_layer = NodePath("../../Floor")
+
+[node name="Drops" type="Node2D" parent="YSorted"]
+y_sort_enabled = true
 
 [node name="Player" parent="YSorted" instance=ExtResource("2_wu3x7")]
 y_sort_enabled = true

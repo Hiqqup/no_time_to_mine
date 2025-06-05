@@ -75,10 +75,12 @@ func _try_mine() -> void:
 		return;
 	currently_mining.health -= _upgrade_stats.mining_damage;
 	currently_mining.mine_visual_feedback();
-	mine_visual_feedback()
 	_mine_cooldown = _upgrade_stats.mining_cooldown_duration;
 	if(currently_mining.health <= 0):
 		currently_mining.get_destroyed();
+		currently_mining = null;
+	else:
+		mine_visual_feedback()
 
 
 func mine_visual_feedback():
@@ -113,7 +115,8 @@ func _handle_targeting():
 	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) 
 		and targeting.is_colliding() 
 		and targeting.get_collider()):
-		var collider_parent = targeting.get_collider().get_parent();
+		var collider_parent = targeting.get_collider().get_parent().get_parent();
 		if (collider_parent is HarvestableBase 
 			and collider_parent.player_in_range):
 			currently_mining = collider_parent;
+			

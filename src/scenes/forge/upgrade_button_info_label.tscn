@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="1_q42oe"]
 [ext_resource type="Script" uid="uid://detm8xjy0nw0w" path="res://src/scripts/upgrade_button_info_label.gd" id="2_gut0l"]
-[ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="3_xci4c"]
+[ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scripts/gui_item_list_displayer.tscn" id="3_xci4c"]
 
 [node name="InfoLabel" type="MarginContainer"]
 offset_right = 46.0

@@ -35,7 +35,6 @@ var level : int = 0:
 
 # children:
 var _info_label: UpgradeButtonInfoLabel;
-var _gui_item_list_displayer: Node;
 
 func setup():
 	if upgrade_properties == null:

@@ -1,17 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2l67njsqn515"]
+[gd_scene load_steps=4 format=3 uid="uid://b2l67njsqn515"]
 
 [ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_gosno"]
-[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_ujvdm"]
+
+[sub_resource type="Shader" id="Shader_b37ic"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform float flash : hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	vec4 pixel = texture(TEXTURE, UV);
+	COLOR = mix( vec4(1.0,1.0,1.0, pixel.a), pixel, 1.0- flash);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujvdm"]
+resource_local_to_scene = true
+shader = SubResource("Shader_b37ic")
+shader_parameter/flash = 0.0
 
 [node name="OrangeHarvestable" instance=ExtResource("1_gosno")]
 health = 10.0
 
-[node name="Sprite2D" parent="Visuals" index="0"]
-texture = ExtResource("2_ujvdm")
+[node name="Sprite2D" parent="Visuals" index="2"]
+material = SubResource("ShaderMaterial_ujvdm")
 region_rect = Rect2(132, 0, 32, 32)
-
-[node name="MiningRangeShape" parent="MiningRange" index="0"]
-visible = false
-
-[node name="ClickDetection" parent="." index="2"]
-visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=16 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
@@ -6,10 +6,157 @@
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="2_pmh5g"]
 [ext_resource type="PackedScene" uid="uid://dnh5nnknlnh0j" path="res://src/themes/item_drop_base.tscn" id="2_wnspo"]
 [ext_resource type="PackedScene" uid="uid://5dwpbnrebtj5" path="res://src/scenes/mines/harvestables/default_colision_shapes/click_detection_shape.tscn" id="3_os4bl"]
+[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="4_c6o4m"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_wnspo"]
+[ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="7_p14td"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wnspo"]
-load_path = "res://.godot/imported/halfslab_tileset.png-9704e9b01b571c7f94095a45c960e873.ctex"
+[sub_resource type="Gradient" id="Gradient_c6o4m"]
+offsets = PackedFloat32Array(0.729231)
+colors = PackedColorArray(0.051971, 0.051971, 0.051971, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1g1d"]
+resource_local_to_scene = true
+shader = ExtResource("7_p14td")
+shader_parameter/flash = 0.0
+
+[sub_resource type="Animation" id="Animation_p14td"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/DestroyedParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Sprite2D:material:shader_parameter/flash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_c6o4m"]
+resource_name = "destroyed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/DestroyedParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(0.6, 0.6), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Sprite2D:material:shader_parameter/flash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 0.0, 1.0, 0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sprite_gone"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_j1g1d"]
+resource_name = "damage"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:material:shader_parameter/flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1g1d"]
+_data = {
+&"RESET": SubResource("Animation_p14td"),
+&"damage": SubResource("Animation_j1g1d"),
+&"destroyed": SubResource("Animation_c6o4m")
+}
 
 [node name="HarvestableBase" type="Node2D"]
 y_sort_enabled = true
@@ -17,27 +164,64 @@ script = ExtResource("1_u76sd")
 _upgrade_stats = ExtResource("2_c6o4m")
 _drop_base_scene = ExtResource("2_wnspo")
 
+[node name="CollisionShapes" type="Node2D" parent="."]
+visible = false
+
+[node name="MiningRange" type="Area2D" parent="CollisionShapes"]
+
+[node name="MiningRangeShape" parent="CollisionShapes/MiningRange" instance=ExtResource("2_h3lbi")]
+
+[node name="ClickDetection" type="Area2D" parent="CollisionShapes"]
+
+[node name="ClickDetectionShape" parent="CollisionShapes/ClickDetection" instance=ExtResource("3_os4bl")]
+
+[node name="PlayerCollider" type="StaticBody2D" parent="CollisionShapes"]
+
+[node name="ColliderShape" parent="CollisionShapes/PlayerCollider" instance=ExtResource("4_wnspo")]
+
 [node name="Visuals" type="Node2D" parent="."]
 
+[node name="HitParticles" type="CPUParticles2D" parent="Visuals"]
+emitting = false
+amount = 32
+lifetime = 0.3
+explosiveness = 0.8
+lifetime_randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.0
+initial_velocity_max = 112.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_c6o4m")
+
+[node name="DestroyedParticles" type="CPUParticles2D" parent="Visuals"]
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.8
+lifetime_randomness = 0.5
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 96.0
+initial_velocity_max = 112.0
+scale_amount_min = 4.0
+scale_amount_max = 6.0
+color_ramp = SubResource("Gradient_c6o4m")
+
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = SubResource("CompressedTexture2D_wnspo")
+material = SubResource("ShaderMaterial_j1g1d")
+texture = ExtResource("4_c6o4m")
 region_enabled = true
-region_rect = Rect2(192, 0, 32, 32)
-
-[node name="MiningRange" type="Area2D" parent="."]
-
-[node name="MiningRangeShape" parent="MiningRange" instance=ExtResource("2_h3lbi")]
-
-[node name="ClickDetection" type="Area2D" parent="."]
-
-[node name="ClickDetectionShape" parent="ClickDetection" instance=ExtResource("3_os4bl")]
-
-[node name="PlayerCollider" type="StaticBody2D" parent="."]
-
-[node name="ColliderShape" parent="PlayerCollider" instance=ExtResource("4_wnspo")]
+region_rect = Rect2(133, 0, 30, 31)
 
 [node name="GridVectorToPositionConverter" parent="." instance=ExtResource("2_pmh5g")]
 
-[connection signal="body_entered" from="MiningRange" to="." method="_on_mining_range_body_entered"]
-[connection signal="body_exited" from="MiningRange" to="." method="_on_mining_range_body_exited"]
-[connection signal="input_event" from="ClickDetection" to="." method="_on_click_detection_input_event"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j1g1d")
+}
+
+[connection signal="body_entered" from="CollisionShapes/MiningRange" to="." method="_on_mining_range_body_entered"]
+[connection signal="body_exited" from="CollisionShapes/MiningRange" to="." method="_on_mining_range_body_exited"]
+[connection signal="input_event" from="CollisionShapes/ClickDetection" to="." method="_on_click_detection_input_event"]

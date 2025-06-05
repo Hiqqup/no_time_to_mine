@@ -22,7 +22,7 @@ func _ready() -> void:
 	_previous_camera_position = Camera.position;
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if mode == Mode.NORMAL:
 		return;
 	var delta_camera_position = Camera.position - _previous_camera_position;

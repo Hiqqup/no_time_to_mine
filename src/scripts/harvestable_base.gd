@@ -8,19 +8,33 @@ var drop_table: Dictionary[ItemTypes.types, float];
 
 @export var _upgrade_stats: PlayerUpgradeStats;
 @export var _drop_base_scene: PackedScene;
+@onready var _hit_particles: CPUParticles2D = $Visuals/HitParticles
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
+
+
 
 var player_in_range: bool = false;
 var mines;
+var _drop:ItemDropBase;
 
+func after_destroyed_animation():
+	queue_free();	
 
 func get_destroyed():
 	_spawn_drop(_drop_table_float_to_int(drop_table));
 	harvested.emit();
 	Camera.shake(2.5)
-	queue_free();	
+	$CollisionShapes.queue_free();
+	$Visuals/HitParticles.queue_free();
+	_animation_player.play("destroyed");
 
+func sprite_gone():
+	if is_instance_valid(_drop):
+		_drop.visible = true;
 
 func mine_visual_feedback():
+	_hit_particles.emitting = true;
+	_animation_player.play("damage")
 	#temporary
 	var tween =  get_tree().create_tween();
 	var start_scale = Vector2.ONE;
@@ -47,6 +61,8 @@ func _spawn_drop(item_drops: Dictionary[ItemTypes.types, int]):
 	drop.item_drops = item_drops;
 	drop.get_node("GridVectorToPositionConverter").set_grid_vector($GridVectorToPositionConverter.grid_vector)
 	mines.get_node("YSorted/Drops").add_child(drop)
+	_drop = drop;
+	drop.visible = false;
 
 
 func _handle_clicked_on():
@@ -57,18 +73,21 @@ func _handle_clicked_on():
 
 func _ready() -> void:
 	mines = get_tree().get_first_node_in_group("current_mines");
+	_hit_particles.emitting  = false;
+	_hit_particles.one_shot = true
 	
 	# setup a colison body with the same shape as click detection for player
 	# targeting ray to collide with
 	var player_targeting_colision_body := StaticBody2D.new();
 	player_targeting_colision_body.collision_layer = 2; # targeting colision layer
-	player_targeting_colision_body.add_child($ClickDetection/ClickDetectionShape.duplicate());
-	add_child(player_targeting_colision_body)
+	player_targeting_colision_body.add_child($CollisionShapes/ClickDetection/ClickDetectionShape.duplicate());
+	$CollisionShapes.add_child(player_targeting_colision_body)
+
 
 
 
 func _enter_tree() -> void:
-	$MiningRange/MiningRangeShape.scale*= _upgrade_stats.mining_range
+	$CollisionShapes/MiningRange/MiningRangeShape.scale*= _upgrade_stats.mining_range
 
 
 func _on_click_detection_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

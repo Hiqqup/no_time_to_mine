@@ -31,3 +31,5 @@ func setup(level: int,upgrade_props: UpgradeProperties):
 	upgrade_properties = upgrade_props;
 	update_level(level)
 	_skill_name.text = upgrade_properties.skill_name;
+	
+	var _do_nothing = (func(): _yellow = _green; _green = _red);
