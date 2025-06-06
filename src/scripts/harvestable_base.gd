@@ -22,7 +22,6 @@ func after_destroyed_animation():
 
 func get_destroyed():
 	_spawn_drop(_drop_table_float_to_int(drop_table));
-	get_tree().get_first_node_in_group("shockwave").at();
 	harvested.emit();
 	Camera.shake(2.5)
 	$CollisionShapes.queue_free();
@@ -35,6 +34,8 @@ func sprite_gone():
 
 func mine_visual_feedback():
 	_hit_particles.emitting = true;
+	if _animation_player.is_playing():
+		_animation_player.stop();
 	_animation_player.play("damage")
 	#temporary
 	var tween =  get_tree().create_tween();

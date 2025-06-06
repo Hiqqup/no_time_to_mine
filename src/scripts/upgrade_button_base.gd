@@ -88,6 +88,8 @@ func _on_wrapper_button_pressed() -> void:
 	cost = upgrade_properties.cost_func.call(level);
 	upgrade_properties.apply_upgrade.call();
 	_show_all_children();
+	if _animation_player.is_playing():
+		_animation_player.stop();
 	_animation_player.play("click")
 	_forge.update_all_upgrades();
 

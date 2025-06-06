@@ -10,4 +10,4 @@ func change_scene(callable: Callable):
 	_animation_player.play("dissolve");
 	await _animation_player.animation_finished;
 	callable.call();
-	_animation_player.play_backwards("dissolve");
+	_animation_player.play("reverse_dissolve");

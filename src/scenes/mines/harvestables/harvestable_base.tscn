@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=18 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="4_c6o4m"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_wnspo"]
 [ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="7_p14td"]
+[ext_resource type="AudioStream" uid="uid://dwf6e8th7gs17" path="res://assets/sound/harvestable_hit.ogg" id="10_j1g1d"]
+[ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="11_h3tv2"]
 
 [sub_resource type="Gradient" id="Gradient_c6o4m"]
 offsets = PackedFloat32Array(0.729231)
@@ -72,7 +74,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_j1g1d"]
 resource_name = "damage"
-length = 0.1
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,6 +87,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0, 0.0]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/Damage")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_j1g1d")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_c6o4m"]
 resource_name = "destroyed"
@@ -150,6 +167,36 @@ tracks/4/keys = {
 "method": &"sprite_gone"
 }]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/Damage")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("10_j1g1d")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/5/use_blend = true
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio/RockDestroyed")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_h3tv2")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1g1d"]
 _data = {
@@ -221,6 +268,14 @@ region_rect = Rect2(133, 0, 30, 31)
 libraries = {
 &"": SubResource("AnimationLibrary_j1g1d")
 }
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Damage" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -10.0
+
+[node name="RockDestroyed" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -15.0
 
 [connection signal="body_entered" from="CollisionShapes/MiningRange" to="." method="_on_mining_range_body_entered"]
 [connection signal="body_exited" from="CollisionShapes/MiningRange" to="." method="_on_mining_range_body_exited"]

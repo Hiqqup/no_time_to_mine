@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d1i8mon4i40ff"]
+[gd_scene load_steps=25 format=3 uid="uid://d1i8mon4i40ff"]
 
 [ext_resource type="Script" uid="uid://d56qvy3tgwpl" path="res://src/scripts/player.gd" id="1_v4rts"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_0weng"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dg05aloxgf08u" path="res://assets/visuals/procreate/Player/walk_animation/Char_Walk-3.png" id="13_3utme"]
 [ext_resource type="Texture2D" uid="uid://1ow1m2wtxls4" path="res://assets/visuals/procreate/Player/walk_animation/Char_Walk-4.png" id="14_ne33x"]
 [ext_resource type="Texture2D" uid="uid://d0qkbey80g8f4" path="res://assets/visuals/procreate/Player/walk_animation/Char_Walk-5.png" id="15_8pe6j"]
+[ext_resource type="AudioStream" uid="uid://78oxhkkvfusu" path="res://assets/sound/rock_destroyed_player.ogg" id="19_ne33x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gv1p7"]
 animations = [{
@@ -218,6 +219,21 @@ tracks/5/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio/RockDestroyed")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("19_ne33x")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u8duq"]
 _data = {
@@ -352,5 +368,10 @@ polygon = PackedVector2Array(0, 17, -1, 17, -9, 10, -1, 4, 0, 4, 8, 10)
 libraries = {
 &"": SubResource("AnimationLibrary_u8duq")
 }
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="RockDestroyed" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -15.0
 
 [connection signal="pressed" from="CameraIndependet/ResetButton" to="." method="_on_button_pressed"]

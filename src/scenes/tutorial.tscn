@@ -120,16 +120,16 @@ text = " scroll to zoom"
 horizontal_alignment = 1
 
 [node name="RetryGuide" type="MarginContainer" parent="ForgeGuide"]
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -374.0
-offset_top = -312.0
-offset_right = -184.0
-offset_bottom = -257.0
-grow_horizontal = 0
+offset_left = -95.0
+offset_top = -239.0
+offset_right = 95.0
+offset_bottom = -184.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Panel" type="Panel" parent="ForgeGuide/RetryGuide"]
@@ -139,7 +139,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("5_0hv7v")
 text = "select the level 
-you want to try ->"
+you want to try "
 horizontal_alignment = 1
 
 [node name="PurchaseGuide" type="MarginContainer" parent="ForgeGuide"]

@@ -1,11 +1,89 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnh5nnknlnh0j"]
+[gd_scene load_steps=12 format=3 uid="uid://dnh5nnknlnh0j"]
 
 [ext_resource type="Script" uid="uid://bc536tbroruyr" path="res://src/scripts/item_drop_base.gd" id="1_3k8in"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_v2fj2"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_6xcfk"]
+[ext_resource type="Texture2D" uid="uid://ce7rk0kevk1rv" path="res://assets/visuals/procreate/drops_tileset.png" id="4_6xcfk"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_rastk"]
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="5_313jj"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="6_v2son"]
+[ext_resource type="AudioStream" uid="uid://5c3nqaghjxfx" path="res://assets/sound/item_collection.ogg" id="8_rastk"]
+
+[sub_resource type="Animation" id="Animation_313jj"]
+resource_name = "collect"
+length = 0.3
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collection")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_rastk")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v2son"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2son"]
+_data = {
+&"RESET": SubResource("Animation_v2son"),
+&"collect": SubResource("Animation_313jj")
+}
 
 [node name="ItemDropBase" type="Node2D"]
 y_sort_enabled = true
@@ -27,6 +105,12 @@ offset_right = 16.0
 grow_vertical = 0
 theme = ExtResource("3_6xcfk")
 
+[node name="AnimationPreview" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 6)
+texture = ExtResource("4_6xcfk")
+region_enabled = true
+region_rect = Rect2(168, 13, 15, 12)
+
 [node name="CollectionRange" type="Area2D" parent="."]
 
 [node name="CollectionRangeShape" parent="CollectionRange" instance=ExtResource("4_rastk")]
@@ -34,5 +118,13 @@ theme = ExtResource("3_6xcfk")
 [node name="GridVectorToPositionConverter" parent="." instance=ExtResource("5_313jj")]
 
 [node name="GuiItemListDisplayer" parent="." instance=ExtResource("6_v2son")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v2son")
+}
+
+[node name="Collection" type="AudioStreamPlayer" parent="."]
+volume_db = -25.0
 
 [connection signal="body_entered" from="CollectionRange" to="." method="_on_collection_range_body_entered"]

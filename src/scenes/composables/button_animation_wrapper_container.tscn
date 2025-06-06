@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://23tkt68f45bd"]
+[gd_scene load_steps=10 format=3 uid="uid://23tkt68f45bd"]
 
 [ext_resource type="Script" uid="uid://ciqiy07vfoikc" path="res://src/scripts/button_animation_wrapper_container.gd" id="1_py3ym"]
+[ext_resource type="AudioStream" uid="uid://w88pkwcevca4" path="res://assets/sound/buttons/click.ogg" id="2_u0167"]
+[ext_resource type="AudioStream" uid="uid://dscja43mf8u2u" path="res://assets/sound/buttons/denied.ogg" id="3_b2gvn"]
+[ext_resource type="AudioStream" uid="uid://b0b1i2p6c18nt" path="res://assets/sound/buttons/hover.ogg" id="3_py3ym"]
 
 [sub_resource type="Animation" id="Animation_py3ym"]
 length = 0.001
 
 [sub_resource type="Animation" id="Animation_u0167"]
 resource_name = "click"
-length = 0.25
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,10 +23,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, 10), Vector2(0, -5), Vector2(0, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wrapper/Click")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_u0167")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_4b886"]
 resource_name = "denied"
-length = 0.2
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,6 +66,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, -0.174533, 0.174533, 0.174533, 0.0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wrapper/Denied")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_b2gvn")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_b2gvn"]
 resource_name = "hover"
@@ -76,6 +109,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, -0.349066, 0.349066, -0.0872665, 0.0523599, 0.0]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wrapper/Hover")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_py3ym")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4b886"]
 _data = {
@@ -98,3 +146,12 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_4b886")
 }
+
+[node name="Click" type="AudioStreamPlayer" parent="Wrapper"]
+volume_db = -10.0
+
+[node name="Hover" type="AudioStreamPlayer" parent="Wrapper"]
+volume_db = -20.0
+
+[node name="Denied" type="AudioStreamPlayer" parent="Wrapper"]
+volume_db = -15.0
