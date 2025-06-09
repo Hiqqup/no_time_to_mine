@@ -42,7 +42,7 @@ func _ready() -> void:
 	}
 	
 	# Level Sprites
-	
+	levels.tileset_map[LevelTypes.types.TUTORIAL] = first_level_tileset;
 	levels.tileset_map[LevelTypes.types.FIRST] = first_level_tileset;
 	levels.tileset_map[LevelTypes.types.SECOND] = second_level_tileset;
 	levels.tileset_map[LevelTypes.types.THIRD] = third_level_tileset;

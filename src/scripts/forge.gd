@@ -82,8 +82,8 @@ func _load_save_state():
 
 
 func _try_level(level: LevelTypes.types):
-	get_tree().get_first_node_in_group("screen_transition").change_scene(
-	func():
+	var screen_transition = get_tree().get_first_node_in_group("screen_transition")
+	screen_transition.change_scene(func():
 		selected_level = level;
 		visible = false;
 		Camera.location = Camera.CameraLocation.MINES;

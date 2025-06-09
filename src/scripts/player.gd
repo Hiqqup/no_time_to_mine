@@ -4,9 +4,13 @@ extends CharacterBody2D
 signal died;
 
 @export var _upgrade_stats: PlayerUpgradeStats
+@export var _level_types: LevelTypes;
 
-@export var lifetime_bar: TextureProgressBar;
-@export var _walking_particles: CPUParticles2D;
+@onready var _walking_particles: CPUParticles2D = $Visuals/WalkingParticles
+@export var lifetime_bar: TextureProgressBar
+@onready var _eyes: Sprite2D = $Visuals/Eyes
+@onready var _particles: Node2D = $Visuals/Particles
+
 
 var currently_mining: HarvestableBase = null;
 
@@ -18,9 +22,15 @@ var _lifetime:= 0.0;
 
 var do_lifetime_calculation: bool = true;
 
+var _forge:Forge;
+
 func _ready() -> void:
 	lifetime_bar.max_value = _upgrade_stats.max_life_time;
-	
+	_forge = get_tree().get_first_node_in_group("forge");
+	_walking_particles.modulate = _level_types.color_map[_forge.selected_level][2];
+	_particles.modulate = _level_types.color_map[_forge.selected_level][0];
+	_eyes.texture = _level_types.tileset_map[_forge.selected_level]
+
 
 func _physics_process(delta: float) -> void:
 	if not _alive:
@@ -39,13 +49,12 @@ func _physics_process(delta: float) -> void:
 func _die():
 	get_tree().get_first_node_in_group("screen_transition").change_scene(
 	func():
-		var forge: Forge = get_tree().get_first_node_in_group("forge");
-		var forge_storage = forge.get_node("Storage");
+		var forge_storage = _forge.get_node("Storage");
 		var player_storage = $Storage;
 		for i in player_storage.contents.size():
 			forge_storage.contents[i] += player_storage.contents[i];
-		forge.switch_from_mines();
-		forge.update_all_upgrades();
+		_forge.switch_from_mines();
+		_forge.update_all_upgrades();
 		_alive = false;
 		died.emit();
 	)

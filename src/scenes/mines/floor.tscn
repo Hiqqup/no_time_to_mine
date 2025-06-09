@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd1ftd4mp5yyb"]
+[gd_scene load_steps=8 format=3 uid="uid://bd1ftd4mp5yyb"]
 
 [ext_resource type="Script" uid="uid://cblsr1nqyg2nq" path="res://src/scripts/floor.gd" id="2_jet0m"]
 [ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_jikio"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="3_jikio"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sjvbc"]
 load_path = "res://.godot/imported/iso_tileset.png-9af35f17a161a01f80119c908a5f4fde.ctex"
@@ -53,3 +54,4 @@ sources/1 = SubResource("TileSetAtlasSource_5c50m")
 [node name="Floor" type="TileMapLayer"]
 tile_set = SubResource("TileSet_5mqaa")
 script = ExtResource("2_jet0m")
+_level_types = ExtResource("3_jikio")

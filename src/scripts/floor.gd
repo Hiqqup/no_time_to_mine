@@ -4,14 +4,24 @@ extends TileMapLayer
 const _INVISIBLE_COLLIDER_ATLAS_COORIDNATES := Vector2i(7,0);
 const _WHITE_FLOOR_ATLAS_COORIDNATES:= Vector2i(3,0);
 const _ISO_TILESET_SOURCE = 0;
-const _STONE_FLOOR_SOURCE = 1;
-
+var _STONE_FLOOR_SOURCE = 1;
+@export var _level_types: LevelTypes;
 
 
 var platform_radius: int;
 var used: Dictionary[Vector2i, bool]
+var _forge: Forge;
+
+
+func _ready() -> void:
+	_forge =get_tree().get_first_node_in_group("forge");
+
+
 
 func setup(radius: int):
+	tile_set.get_source(1).texture = _level_types.tileset_map[_forge.selected_level];
+	
+	
 	var offsets = [
 		Vector2i(1,1),
 		Vector2i(-1,1),
@@ -40,9 +50,6 @@ func get_random_free_spot():
 		return get_random_free_spot();
 	return random_pos;
 
-
-func _ready() -> void:
-	pass
 
 func _place_boundries()->void:
 	var offsets = [

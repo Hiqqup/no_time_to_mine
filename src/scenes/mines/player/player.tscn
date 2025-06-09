@@ -4,11 +4,12 @@
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_0weng"]
 [ext_resource type="Texture2D" uid="uid://blkuvgc2hc4fi" path="res://assets/visuals/lifetime_bar/background.png" id="2_mb1oq"]
 [ext_resource type="Texture2D" uid="uid://cs48iv23xtbgq" path="res://assets/visuals/lifetime_bar/progress.png" id="3_0weng"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="3_8pe6j"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_d4qqj"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
 [ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="4_3utme"]
-[ext_resource type="Texture2D" uid="uid://yy4t302rrdfm" path="res://assets/visuals/procreate/Eyes.png" id="5_u8duq"]
 [ext_resource type="Texture2D" uid="uid://vwhjg33tprtt" path="res://assets/visuals/procreate/Player/die_animation/Char-1.png" id="8_3utme"]
+[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="8_8pe6j"]
 [ext_resource type="Texture2D" uid="uid://3f1kmtgt1p6" path="res://assets/visuals/procreate/Player/die_animation/Char-2.png" id="9_ne33x"]
 [ext_resource type="Texture2D" uid="uid://bej0j8p2up5xb" path="res://assets/visuals/procreate/Player/die_animation/Char-3.png" id="10_8pe6j"]
 [ext_resource type="Texture2D" uid="uid://cb0rl6xjcloea" path="res://assets/visuals/procreate/Player/die_animation/Char-4.png" id="11_6gjbl"]
@@ -86,10 +87,6 @@ animations = [{
 "name": &"walking",
 "speed": 5.0
 }]
-
-[sub_resource type="Gradient" id="Gradient_u8duq"]
-offsets = PackedFloat32Array(0, 0.407407, 1)
-colors = PackedColorArray(0.964706, 0.803922, 0.14902, 1, 0.964706, 0.803922, 0.14902, 1, 1, 1, 1, 0.2)
 
 [sub_resource type="Animation" id="Animation_30jnj"]
 length = 0.001
@@ -265,11 +262,11 @@ _data = {
 &"die": SubResource("Animation_40n00")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar", "_walking_particles")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar")]
 script = ExtResource("1_v4rts")
 _upgrade_stats = ExtResource("2_0weng")
+_level_types = ExtResource("3_8pe6j")
 lifetime_bar = NodePath("CameraIndependet/LifetimeBar")
-_walking_particles = NodePath("Visuals/WalkingParticles")
 
 [node name="CameraIndependet" type="CanvasLayer" parent="."]
 
@@ -314,9 +311,13 @@ default_color = Color(0, 0, 0, 0.372549)
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Eyes" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("5_u8duq")
+position = Vector2(-0.5, -7)
+texture = ExtResource("8_8pe6j")
+region_enabled = true
+region_rect = Rect2(142, 39, 11, 6)
 
 [node name="WalkingParticles" type="CPUParticles2D" parent="Visuals"]
+modulate = Color(0.164706, 0.145098, 0.0901961, 1)
 position = Vector2(0, 12)
 emitting = false
 lifetime = 0.4
@@ -328,13 +329,13 @@ angular_velocity_min = -40.0
 angular_velocity_max = 40.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
-color = Color(0.301961, 0.207843, 0.196078, 1)
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Visuals"]
 sprite_frames = SubResource("SpriteFrames_gv1p7")
 autoplay = "default"
 
 [node name="Particles" type="Node2D" parent="Visuals"]
+modulate = Color(0.964706, 0.803922, 0.14902, 1)
 
 [node name="SpiritParticles" type="CPUParticles2D" parent="Visuals/Particles"]
 position = Vector2(0, -11)
@@ -351,7 +352,6 @@ initial_velocity_max = 40.0
 angular_velocity_min = -80.0
 angular_velocity_max = 80.0
 scale_amount_max = 2.0
-color_ramp = SubResource("Gradient_u8duq")
 
 [node name="LeftEyeParticles" type="CPUParticles2D" parent="Visuals/Particles"]
 position = Vector2(-4, -8)
@@ -366,7 +366,6 @@ initial_velocity_max = 40.0
 angular_velocity_min = -80.0
 angular_velocity_max = 80.0
 scale_amount_max = 2.0
-color_ramp = SubResource("Gradient_u8duq")
 
 [node name="RightEyeParticles" type="CPUParticles2D" parent="Visuals/Particles"]
 position = Vector2(3, -8)
@@ -381,7 +380,6 @@ initial_velocity_max = 40.0
 angular_velocity_min = -80.0
 angular_velocity_max = 80.0
 scale_amount_max = 2.0
-color_ramp = SubResource("Gradient_u8duq")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 17, -1, 17, -9, 10, -1, 4, 0, 4, 8, 10)

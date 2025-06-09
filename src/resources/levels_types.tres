@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="LevelTypes" load_steps=3 format=3 uid="uid://b715n73g612e0"]
 
 [ext_resource type="Script" uid="uid://calyc3t165mx2" path="res://src/scripts/resources/level.gd" id="1_l5ftb"]
-[ext_resource type="Script" uid="uid://dvivq1ilyn03w" path="res://assets/visuals/procreate/level_types.gd" id="2_3x3m3"]
+[ext_resource type="Script" uid="uid://dvivq1ilyn03w" path="res://src/scripts/resources/level_types.gd" id="2_3x3m3"]
 
 [resource]
 script = ExtResource("2_3x3m3")

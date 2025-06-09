@@ -54,9 +54,10 @@ func _process(delta: float) -> void:
 		_handle_movement_input()
 	if location == CameraLocation.MINES:
 		var player_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
-		var speed = 8
-		global_position.y = lerp(global_position.y, player_position.y, delta*speed)
-		global_position.x = lerp(global_position.x, player_position.x, delta*speed)
+		var speed = 5
+		global_position = global_position.lerp(player_position, delta*speed);
+		print(global_position)
+		print( player_position)
 	if(_dragging and location == CameraLocation.FORGE):
 		var mouse_position = get_viewport().get_mouse_position()
 		position -=( mouse_position - _dragging_start_position)/zoom;
@@ -68,6 +69,10 @@ func _process(delta: float) -> void:
 
 func shake(strength: float):
 	_shake_strength = strength;
+
+
+func set_to_player_position():
+	global_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
 
 
 func reset_zoom():

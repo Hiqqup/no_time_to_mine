@@ -28,8 +28,8 @@ func _ready() -> void:
 
 func _set_colors():
 	var shader_material: ShaderMaterial = material
-	var color_2: Color = _level_types.color_duo_map[_forge.selected_level][0];
-	var color_3: Color = _level_types.color_duo_map[_forge.selected_level][1];
+	var color_2: Color = _level_types.color_map[_forge.selected_level][0];
+	var color_3: Color = _level_types.color_map[_forge.selected_level][1];
 	shader_material.set_shader_parameter("colour_2", color_2)
 	shader_material.set_shader_parameter("colour_3", color_3)
 
