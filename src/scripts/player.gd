@@ -106,7 +106,7 @@ func mine_visual_feedback():
 func _die_feedback():
 	if not _alive:
 		return;
-	Camera.shake(20.0)
+	Camera.shake(40.0)
 	$AnimationPlayer.play("die");
 	_alive = false;
 

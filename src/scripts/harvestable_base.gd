@@ -8,7 +8,7 @@ var drop_table: Dictionary[ItemTypes.types, float];
 
 @export var _upgrade_stats: PlayerUpgradeStats;
 @export var _drop_base_scene: PackedScene;
-@onready var _hit_particles: CPUParticles2D = $Visuals/HitParticles
+@onready var _hit_particles: CPUParticles2D = $Visuals/HitParticlesContainer/HitParticles
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -23,9 +23,9 @@ func after_destroyed_animation():
 func get_destroyed():
 	_spawn_drop(_drop_table_float_to_int(drop_table));
 	harvested.emit();
-	Camera.shake(2.5)
+	Camera.shake(6)
 	$CollisionShapes.queue_free();
-	$Visuals/HitParticles.queue_free();
+	_hit_particles.queue_free();
 	_animation_player.play("destroyed");
 
 func sprite_gone():
@@ -33,6 +33,8 @@ func sprite_gone():
 		_drop.visible = true;
 
 func mine_visual_feedback():
+	if _hit_particles.emitting:
+		$Visuals/HitParticlesContainer.add_child(_hit_particles.duplicate());
 	_hit_particles.emitting = true;
 	if _animation_player.is_playing():
 		_animation_player.stop();

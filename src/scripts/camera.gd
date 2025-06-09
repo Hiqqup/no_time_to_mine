@@ -47,17 +47,18 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if location == CameraLocation.LOCKED_TITLE_SCREEN:
 		return;
-	global_position += velocity;
 	if location == CameraLocation.LOCKED_FORGE:
 		global_position = Vector2.ZERO;
 	if location == CameraLocation.FORGE:
+		global_position += velocity;
 		_handle_movement_input()
 	if location == CameraLocation.MINES:
 		var player_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
 		var speed = 5
 		global_position = global_position.lerp(player_position, delta*speed);
-		print(global_position)
-		print( player_position)
+
+
+		
 	if(_dragging and location == CameraLocation.FORGE):
 		var mouse_position = get_viewport().get_mouse_position()
 		position -=( mouse_position - _dragging_start_position)/zoom;

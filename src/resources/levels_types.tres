@@ -7,4 +7,6 @@
 script = ExtResource("2_3x3m3")
 map = Dictionary[int, ExtResource("1_l5ftb")]({})
 sprite_map = Dictionary[int, Texture]({})
+tileset_map = Dictionary[int, Texture]({})
+color_map = Dictionary[int, Array]({})
 metadata/_custom_type_script = "uid://dvivq1ilyn03w"

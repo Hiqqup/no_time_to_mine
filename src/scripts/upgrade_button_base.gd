@@ -12,6 +12,7 @@ extends SkillTreeButtonBase
 @onready var _button_sprite: TextureRect = $WrapperButton/Visuals/Button;
 @onready var _animation_player: AnimationPlayer = $WrapperButton/ButtonAnimationWrapperContainer/Wrapper/AnimationPlayer;
 @onready var _wrapper_button: TextureButton = $WrapperButton
+@onready var _explosion: CPUParticles2D = $Explosions/Explosion
 
 
 var cost: Dictionary[ItemTypes.types, int]:
@@ -77,10 +78,14 @@ func _ready() -> void:
 	_wrapper_button.pressed.connect(_on_wrapper_button_pressed);
 	
 
-func _on_wrapper_button_pressed() -> void:
+func _on_wrapper_button_pressed() -> void:	
+	Camera.shake(6)
 	if not _check_affordable() or level == upgrade_properties.max_level:
 		_animation_player.play("denied")
 		return;
+	if _explosion.emitting:
+		$Explosions.add_child(_explosion.duplicate())
+	_explosion.emitting = true;
 	_appy_cost()
 	_forge.update_and_generate_storage_display();
 	_forge.purchase_upgrade(upgrade_properties.upgrade_type);

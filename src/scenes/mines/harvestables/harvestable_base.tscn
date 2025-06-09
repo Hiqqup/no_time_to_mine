@@ -228,7 +228,9 @@ visible = false
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="HitParticles" type="CPUParticles2D" parent="Visuals"]
+[node name="HitParticlesContainer" type="Node2D" parent="Visuals"]
+
+[node name="HitParticles" type="CPUParticles2D" parent="Visuals/HitParticlesContainer"]
 emitting = false
 amount = 32
 lifetime = 0.3
