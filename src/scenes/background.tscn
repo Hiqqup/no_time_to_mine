@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://otk24p2k4751"]
+[gd_scene load_steps=5 format=3 uid="uid://otk24p2k4751"]
 
 [ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="1_cep3i"]
 [ext_resource type="Script" uid="uid://drgbpelwr4g21" path="res://src/scripts/background.gd" id="2_5tykl"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="3_6e4gl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5tykl"]
+resource_local_to_scene = true
 shader = ExtResource("1_cep3i")
 shader_parameter/polar_coordinates = false
 shader_parameter/polar_center = Vector2(0.5, 0.5)
@@ -36,3 +38,4 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_5tykl")
+_level_types = ExtResource("3_6e4gl")

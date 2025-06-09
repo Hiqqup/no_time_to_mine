@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://4ex5fmxd3f5i"]
 
-[ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://assets/visuals/procreate/type_populater.tscn" id="1_276xm"]
+[ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://src/scenes/type_populater.tscn" id="1_276xm"]
 [ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_yufto"]
 [ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_276xm"]
 [ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial.tscn" id="3_lcg6w"]

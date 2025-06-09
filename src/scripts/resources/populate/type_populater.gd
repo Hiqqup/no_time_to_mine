@@ -12,9 +12,9 @@ extends Node
 
 @export_category("LevelTextures")
 @export var levels: LevelTypes;
-@export var first_level: Texture;
-@export var second_level: Texture;
-@export var third_level: Texture;
+@export var first_level_tileset: Texture;
+@export var second_level_tileset: Texture;
+@export var third_level_tileset: Texture;
 
 
 func _ready() -> void:
@@ -43,10 +43,11 @@ func _ready() -> void:
 	
 	# Level Sprites
 	
-	levels.sprite_map[LevelTypes.types.FIRST] = first_level;
-	levels.sprite_map[LevelTypes.types.SECOND] = second_level;
-	levels.sprite_map[LevelTypes.types.THIRD] = third_level;
+	levels.tileset_map[LevelTypes.types.FIRST] = first_level_tileset;
+	levels.tileset_map[LevelTypes.types.SECOND] = second_level_tileset;
+	levels.tileset_map[LevelTypes.types.THIRD] = third_level_tileset;
 	
+	levels.setup();
 	# Levels
 	var l : Level
 	

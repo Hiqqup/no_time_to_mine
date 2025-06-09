@@ -1,0 +1,32 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3rpcim20exhr"]
+
+[ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_skt7l"]
+[ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_vrlxb"]
+[ext_resource type="Texture2D" uid="uid://ce7rk0kevk1rv" path="res://assets/visuals/procreate/drops_tileset.png" id="3_8fqf3"]
+[ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="4_tmat3"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/level_1/red_cap_stone.tscn" id="5_0hwek"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/level_1/gold_ore.tscn" id="6_nnbhc"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_8ovfm"]
+[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="8_8fqf3"]
+[ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/Floor-tileset-silver.png" id="9_tmat3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pqkl"]
+atlas = ExtResource("3_8fqf3")
+region = Rect2(136, 12, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heidj"]
+atlas = ExtResource("3_8fqf3")
+region = Rect2(168, 13, 15, 12)
+
+[node name="TypePopulater" type="Node"]
+script = ExtResource("1_skt7l")
+items = ExtResource("2_vrlxb")
+red_cap_stone_drop = SubResource("AtlasTexture_3pqkl")
+gold_ore_drop = SubResource("AtlasTexture_heidj")
+harvestables = ExtResource("4_tmat3")
+red_cap_stone_harvestable = ExtResource("5_0hwek")
+gold_ore_harvestable = ExtResource("6_nnbhc")
+levels = ExtResource("7_8ovfm")
+first_level_tileset = ExtResource("8_8fqf3")
+second_level_tileset = ExtResource("9_tmat3")
+third_level_tileset = ExtResource("8_8fqf3")
