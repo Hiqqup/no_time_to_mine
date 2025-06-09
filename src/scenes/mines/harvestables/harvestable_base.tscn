@@ -95,8 +95,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
+"end_offset": 0.0193748,
+"start_offset": 0.0109459,
 "stream": ExtResource("10_j1g1d")
 }],
 "times": PackedFloat32Array(0)
@@ -176,10 +176,10 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.0,
+"start_offset": 0.0107102,
 "stream": ExtResource("10_j1g1d")
 }],
-"times": PackedFloat32Array(0.0333333)
+"times": PackedFloat32Array(0)
 }
 tracks/5/use_blend = true
 tracks/6/type = "audio"
@@ -191,10 +191,10 @@ tracks/6/loop_wrap = true
 tracks/6/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.0,
+"start_offset": 0.0232831,
 "stream": ExtResource("11_h3tv2")
 }],
-"times": PackedFloat32Array(0.0333333)
+"times": PackedFloat32Array(0)
 }
 tracks/6/use_blend = true
 

@@ -26,4 +26,6 @@ func _on_player_died() -> void:
 
 func _on_harvestabels_layer_emptyed() -> void:
 	_forge.increment_level();
-	$TimeoutCallback.timeout_callback(0.8,  func():player._die_feedback())
+	player.do_lifetime_calculation =false;
+	$LevelComplete.display();
+	$LevelComplete.finished.connect( func():player._die_feedback());

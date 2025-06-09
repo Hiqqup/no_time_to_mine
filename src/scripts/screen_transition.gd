@@ -10,4 +10,5 @@ func change_scene(callable: Callable):
 	_animation_player.play("dissolve");
 	await _animation_player.animation_finished;
 	callable.call();
+	$MidTranisition.play();
 	_animation_player.play("reverse_dissolve");

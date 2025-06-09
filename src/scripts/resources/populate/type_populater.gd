@@ -2,32 +2,31 @@ extends Node
 
 @export_category("Items")
 @export var items: ItemTypes
-@export var orange_drop: Texture;
-@export var black_drop: Texture;
+@export var red_cap_stone_drop: Texture;
+@export var gold_ore_drop: Texture;
 
 @export_category("Harvestables")
 @export var harvestables: HarvestableTypes
-@export var orange_harvestable: PackedScene
-@export var black_harvestable: PackedScene
+@export var red_cap_stone_harvestable: PackedScene
+@export var gold_ore_harvestable: PackedScene
 
-@export_category("Levels")
+@export_category("LevelTextures")
 @export var levels: LevelTypes;
 @export var first_level: Texture;
 @export var second_level: Texture;
 @export var third_level: Texture;
 
 
-
 func _ready() -> void:
 		# Items
-	items.map[ItemTypes.types.RED_CAP_STONE] = orange_drop;
+	items.map[ItemTypes.types.RED_CAP_STONE] = red_cap_stone_drop;
 	
 	#print(items.map)
-	items.map[ItemTypes.types.GOLD_ORE] = black_drop;
+	items.map[ItemTypes.types.GOLD_ORE] = gold_ore_drop;
 	
 	# Harvestables
-	harvestables.map[HarvestableTypes.types.RED_CAP_STONE] = orange_harvestable;
-	harvestables.map[HarvestableTypes.types.GOLD_ORE] = black_harvestable;
+	harvestables.map[HarvestableTypes.types.RED_CAP_STONE] = red_cap_stone_harvestable;
+	harvestables.map[HarvestableTypes.types.GOLD_ORE] = gold_ore_harvestable;
 	
 	
 	# DropTables

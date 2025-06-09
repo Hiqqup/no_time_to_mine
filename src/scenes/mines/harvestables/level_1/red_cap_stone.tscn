@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2l67njsqn515"]
+
+[ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_p8o1h"]
+
+[sub_resource type="Shader" id="Shader_b37ic"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform float flash : hint_range(0.0, 1.0, 0.1) = 0;
+
+void fragment() {
+	vec4 pixel = texture(TEXTURE, UV);
+	COLOR = mix( vec4(1.0,1.0,1.0, pixel.a), pixel, 1.0- flash);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujvdm"]
+resource_local_to_scene = true
+shader = SubResource("Shader_b37ic")
+shader_parameter/flash = 0.0
+
+[node name="OrangeHarvestable" instance=ExtResource("1_p8o1h")]
+health = 10.0
+
+[node name="Sprite2D" parent="Visuals" index="2"]
+material = SubResource("ShaderMaterial_ujvdm")
+region_rect = Rect2(132, 0, 32, 32)

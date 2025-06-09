@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dji7xejgxhg1e"]
 
-[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/biome_1/black_harvestable.tscn" id="1_seflx"]
-[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/biome_1/orange_harvestable.tscn" id="2_knevs"]
+[ext_resource type="PackedScene" uid="uid://n02e2v8cauvx" path="res://src/scenes/mines/harvestables/level_1/gold_ore.tscn" id="1_seflx"]
+[ext_resource type="PackedScene" uid="uid://b2l67njsqn515" path="res://src/scenes/mines/harvestables/level_1/red_cap_stone.tscn" id="2_knevs"]
 [ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scripts/harvestables_layer.gd" id="4_qoljb"]
 [ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="5_knevs"]
 
