@@ -2,10 +2,12 @@ extends Control
 
 @onready var level_list: HBoxContainer = $Scale/PanelContainer/MarginContainer/LevelList
 @export var level_types: LevelTypes;
+@export var animation_wrapper_scene: PackedScene;
 @onready var original_button: TextureButton = $OriginalButton
 
 var _already_displaying: Dictionary[LevelTypes.types, bool];
 var _forge: Forge ; 
+
 
 func _ready() -> void:
 	
@@ -28,6 +30,7 @@ func _generate_button(key: int):
 	new_button.pressed.connect(func(): _forge._try_level(key));
 	new_button.texture_normal = level_types.sprite_map[key];
 	level_list.add_child(new_button);
+	new_button.add_child(animation_wrapper_scene.instantiate());
 	_already_displaying[key] = true;
 	
 

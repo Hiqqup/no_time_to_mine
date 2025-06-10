@@ -18,6 +18,7 @@ grow_vertical = 0
 theme = ExtResource("1_2qdn5")
 script = ExtResource("1_hf7mr")
 level_types = ExtResource("3_2qdn5")
+animation_wrapper_scene = ExtResource("5_jh41p")
 
 [node name="Scale" type="Control" parent="."]
 anchors_preset = 0
@@ -54,5 +55,3 @@ offset_top = -56.0
 offset_right = -5.0
 offset_bottom = -56.0
 texture_normal = ExtResource("4_icoyf")
-
-[node name="ButtonAnimationWrapperContainer" parent="OriginalButton" instance=ExtResource("5_jh41p")]
