@@ -36,14 +36,12 @@ func _generate_button(key: int):
 	new_button.add_child(animation_wrapper);
 	_already_displaying[key] = true;
 	_latest_button_animation_player = animation_wrapper.get_node("Wrapper/AnimationPlayer");
+	print(new_level_unlocked)
 	if new_level_unlocked:
 		animation_wrapper.get_node("Wrapper").visible = false;
 	
 func unlock_level_feedback():
-	$TimeoutCallback.timeout_callback(0.8, func():
-		_latest_button_animation_player.get_parent().visible = true;
-		_latest_button_animation_player.play("level_unlocked")
-		)
+	_latest_button_animation_player.play("level_unlocked")
 
 func update():
 	for key in LevelTypes.types.size():
@@ -52,5 +50,5 @@ func update():
 			and not _already_displaying[key] ):
 			_generate_button(key)
 	if new_level_unlocked:
-		unlock_level_feedback()
 		new_level_unlocked = false;
+		$TimeoutCallback.timeout_callback(0.9, func():unlock_level_feedback());

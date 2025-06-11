@@ -8,6 +8,7 @@ var _forge_guide: CanvasLayer;
 var _retry_guide: Control;
 var _purchase_guide: Control;
 var _player_reset_button: Button;
+var _forge_level_selector: Control;
 
 var _mines: Node2D;
 var _forge: Forge;
@@ -18,6 +19,7 @@ var _mining_guide_displaying: bool = false;
 var _first_upgrade_bought: bool = false;
 var _forge_camera_locked: bool = false;
 var _tutorial_section: TutorialSection = TutorialSection.MINES;
+
 
 enum TutorialSection{
 	MINES,
@@ -44,6 +46,7 @@ func _ready() -> void:
 	
 	_targeting = _player.get_node("Targeting");
 	_player_reset_button = _player.get_node("CameraIndependet/ResetButton");
+	_forge_level_selector = _forge._new_level_selector;
 	_forge_guide = $ForgeGuide;
 	_purchase_guide = $ForgeGuide/PurchaseGuide;
 	_retry_guide = $ForgeGuide/RetryGuide;
@@ -60,6 +63,8 @@ func _ready() -> void:
 	_forge.visible = false;
 	
 	
+	_forge_level_selector._latest_button_animation_player.get_parent().visible = false;
+	
 	Camera.reset_zoom();
 	Camera.location = Camera.CameraLocation.MINES;
 	
@@ -71,6 +76,10 @@ func _ready() -> void:
 	_forge.upgrade_purchased.connect( func():
 		if not _first_upgrade_bought:
 			_fade_in( _retry_guide);
+			_timeout_callback(0.2, func():
+				_forge_level_selector.unlock_level_feedback();
+				);
+			
 			Camera.location = Camera.CameraLocation.FORGE;
 			$ForgeGuide/NavigationGuide/Label.text = "wasd and drag to move around"
 			_fade_out(_purchase_guide)
