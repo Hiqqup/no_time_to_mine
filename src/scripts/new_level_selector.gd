@@ -7,7 +7,9 @@ extends Control
 
 var _already_displaying: Dictionary[LevelTypes.types, bool];
 var _forge: Forge ; 
+var _latest_button_animation_player: AnimationPlayer;
 
+var new_level_unlocked: bool = false;
 
 func _ready() -> void:
 	
@@ -30,9 +32,18 @@ func _generate_button(key: int):
 	new_button.pressed.connect(func(): _forge._try_level(key));
 	new_button.texture_normal = level_types.sprite_map[key];
 	level_list.add_child(new_button);
-	new_button.add_child(animation_wrapper_scene.instantiate());
+	var animation_wrapper = animation_wrapper_scene.instantiate()
+	new_button.add_child(animation_wrapper);
 	_already_displaying[key] = true;
+	_latest_button_animation_player = animation_wrapper.get_node("Wrapper/AnimationPlayer");
+	if new_level_unlocked:
+		animation_wrapper.get_node("Wrapper").visible = false;
 	
+func unlock_level_feedback():
+	$TimeoutCallback.timeout_callback(0.8, func():
+		_latest_button_animation_player.get_parent().visible = true;
+		_latest_button_animation_player.play("level_unlocked")
+		)
 
 func update():
 	for key in LevelTypes.types.size():
@@ -40,4 +51,6 @@ func update():
 			or key > _forge._save_state.max_unlocked_level) 
 			and not _already_displaying[key] ):
 			_generate_button(key)
-	
+	if new_level_unlocked:
+		unlock_level_feedback()
+		new_level_unlocked = false;

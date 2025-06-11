@@ -11,6 +11,7 @@ var _skill_tree_root:UpgradeButtonBase;
 
 var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
 var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
+@onready var _new_level_selector: Control = $CameraIndependent/NewLevelSelector
 
 
 
@@ -46,6 +47,7 @@ func increment_level():
 	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null 
 		and _save_state.max_unlocked_level != LevelTypes.types.TUTORIAL):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
+		_new_level_selector.new_level_unlocked = true;
 
 func update_and_generate_storage_display():
 	$GuiItemListDisplayer.generate_or_update(_vcontainer, $Storage.contents)
@@ -56,8 +58,7 @@ func save_game():
 
 func switch_from_mines():
 	visible = true;
-	#$CameraIndependent/LevelSelector.update();
-	$CameraIndependent/NewLevelSelector.update();
+	_new_level_selector.update();
 	update_and_generate_storage_display();
 	save_game();
 	Camera.location = Camera.CameraLocation.FORGE;
