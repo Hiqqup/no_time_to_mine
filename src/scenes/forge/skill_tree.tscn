@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bktks85fbuoip"]
+[gd_scene load_steps=7 format=3 uid="uid://bktks85fbuoip"]
 
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
 [ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrade_button_base.tscn" id="3_vcrgi"]
+[ext_resource type="Texture2D" uid="uid://0t6a7g4yaj7l" path="res://assets/visuals/procreate/upgrades.png" id="4_uwo2n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru2ph"]
+atlas = ExtResource("4_uwo2n")
+region = Rect2(33, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0exhr"]
+atlas = ExtResource("4_uwo2n")
+region = Rect2(0, 66, 32, 32)
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -12,21 +21,23 @@ offset_bottom = 40.0
 script = ExtResource("1_llldc")
 upgrade_stats = ExtResource("2_vcrgi")
 
-[node name="Damage" parent="." instance=ExtResource("3_vcrgi")]
+[node name="Damage1" parent="." instance=ExtResource("3_vcrgi")]
 layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 40.0
 offset_bottom = 40.0
+sprite = SubResource("AtlasTexture_ru2ph")
 
-[node name="MiningSpeed" parent="Damage" instance=ExtResource("3_vcrgi")]
+[node name="MiningSpeed1" parent="Damage1" instance=ExtResource("3_vcrgi")]
 layout_mode = 0
 offset_left = 125.0
 offset_top = 0.0
 offset_right = 165.0
 offset_bottom = 40.0
+sprite = SubResource("AtlasTexture_0exhr")
 
-[connection signal="mouse_entered" from="Damage" to="Damage" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Damage" to="Damage" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Damage/MiningSpeed" to="Damage/MiningSpeed" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Damage/MiningSpeed" to="Damage/MiningSpeed" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Damage1" to="Damage1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Damage1" to="Damage1" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Damage1/MiningSpeed1" to="Damage1/MiningSpeed1" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Damage1/MiningSpeed1" to="Damage1/MiningSpeed1" method="_on_mouse_exited"]

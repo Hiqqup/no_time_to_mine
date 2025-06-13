@@ -29,6 +29,11 @@ func _on_new_game_pressed() -> void:
 func _on_continue_pressed() -> void:
 	(get_tree().get_first_node_in_group("screen_transition")
 	.change_scene(func():
-		get_parent().add_child(_game_scene.instantiate() );
+		var game_scene = _game_scene.instantiate();
+		var forge: Forge = game_scene.get_node("Forge");
+		if not forge._save_state.tutorial_completed:
+			_reset_game_save_state();
+		else:
+			get_parent().add_child(_game_scene.instantiate() );
 		queue_free();
 		))

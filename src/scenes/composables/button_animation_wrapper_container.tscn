@@ -310,6 +310,7 @@ scale_amount_min = 4.0
 scale_amount_max = 8.0
 
 [node name="Placeholder" type="TextureRect" parent="Wrapper"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

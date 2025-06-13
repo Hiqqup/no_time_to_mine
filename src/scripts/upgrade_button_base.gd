@@ -58,6 +58,7 @@ func update_frame_sprite():
 	_button_sprite.modulate = Color.WHITE;
 	if level == upgrade_properties.max_level:
 		_frame_sprite.modulate = _info_label._yellow
+		_button_sprite.modulate = Color.DARK_GRAY;
 		return;
 	if _check_affordable():
 		_frame_sprite.modulate =  _info_label._green
@@ -104,7 +105,11 @@ func _show_all_children():
 		return
 	for child in get_children():
 		if child is UpgradeButtonBase:
-			child.visible = true;
+			var e: ButtonAnimationWrapper = child.get_node_or_null("ButtonAnimationWrapperContainer")
+			$TimeoutCallback.timeout_callback(0.2, func():
+				child.visible = true;
+				if e: e.play_animation(e.animations.level_unlocked))
+
 	_children_visible = true;
 
 

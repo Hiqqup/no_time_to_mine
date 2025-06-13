@@ -1,25 +1,32 @@
 extends Control
+class_name ButtonAnimationWrapper
 
 
-@onready var animation_player: AnimationPlayer = $Wrapper/AnimationPlayer
-@onready var parent: BaseButton = get_parent();
-@onready var wrapper: Control = $Wrapper
+enum animations{
+	level_unlocked ,
+}
+@onready var _animation_player: AnimationPlayer = $Wrapper/AnimationPlayer
+@onready var _parent: BaseButton = get_parent();
+@onready var _wrapper: Control = $Wrapper
 
 func _ready() -> void:
 	
-	wrapper.size = parent.size
-	wrapper.pivot_offset = wrapper.size/2
-	$Wrapper/Explosion.position = wrapper.size/2;
-	custom_minimum_size = wrapper.size
+	_wrapper.size = _parent.size
+	_wrapper.pivot_offset = _wrapper.size/2
+	$Wrapper/Explosion.position = _wrapper.size/2;
+	custom_minimum_size = _wrapper.size
 	
-	parent.pressed.connect(func():animation_player.play("click"))
-	parent.mouse_entered.connect(func():animation_player.play("hover"))
+	_parent.pressed.connect(func():_animation_player.play("click"))
+	_parent.mouse_entered.connect(func():_animation_player.play("hover"))
 	
 	call_deferred("_handle_parenting")
 	
 	$Wrapper/Placeholder.queue_free();
 
+func play_animation(animation : animations):
+	_animation_player.play(animations.keys()[animation])
+
 
 func _handle_parenting():
-	reparent(parent.get_parent());
-	parent.reparent(wrapper)
+	reparent(_parent.get_parent());
+	_parent.reparent(_wrapper)

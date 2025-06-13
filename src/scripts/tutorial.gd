@@ -63,7 +63,7 @@ func _ready() -> void:
 	_forge.visible = false;
 	
 	
-	_forge_level_selector._latest_button_animation_player.get_parent().visible = false;
+	_forge_level_selector._latest_button_animation_wrapper._wrapper.visible = false;
 	
 	Camera.reset_zoom();
 	Camera.location = Camera.CameraLocation.MINES;
@@ -75,8 +75,8 @@ func _ready() -> void:
 	_forge.selected_level = LevelTypes.types.TUTORIAL;
 	_forge.upgrade_purchased.connect( func():
 		if not _first_upgrade_bought:
-			_fade_in( _retry_guide);
-			_timeout_callback(0.2, func():
+			_timeout_callback(2, func():
+				_fade_in( _retry_guide);
 				_forge_level_selector.unlock_level_feedback();
 				);
 			
