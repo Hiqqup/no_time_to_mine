@@ -7,8 +7,8 @@ extends Node
 
 @export_category("Harvestables")
 @export var harvestables: HarvestableTypes
-@export var red_cap_stone_harvestable: PackedScene
-@export var gold_ore_harvestable: PackedScene
+@export var red_cap_stone_sprite: Texture
+@export var gold_ore_sprite: Texture
 
 @export_category("LevelTextures")
 @export var levels: LevelTypes;
@@ -25,10 +25,10 @@ func _ready() -> void:
 	items.map[ItemTypes.types.GOLD_ORE] = gold_ore_drop;
 	
 	# Harvestables
-	harvestables.map[HarvestableTypes.types.RED_CAP_STONE] = red_cap_stone_harvestable;
-	harvestables.map[HarvestableTypes.types.GOLD_ORE] = gold_ore_harvestable;
-	
-	
+	harvestables.sprite_map[HarvestableTypes.types.RED_CAP_STONE] = red_cap_stone_sprite;
+	harvestables.sprite_map[HarvestableTypes.types.GOLD_ORE] = gold_ore_sprite;
+	harvestables.health_map[HarvestableTypes.types.RED_CAP_STONE] = 10.0;
+	harvestables.health_map[HarvestableTypes.types.GOLD_ORE] = 100.0;
 	# DropTables
 
 	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE] = HarvestableTypes.DropTable.new();

@@ -12,6 +12,10 @@ var drop_table: Dictionary[ItemTypes.types, float];
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 
+var sprite: Texture:
+	set(value):
+		var sprite2D:Sprite2D = $Visuals/Sprite2D
+		sprite2D.texture = value;
 
 var player_in_range: bool = false;
 var mines;

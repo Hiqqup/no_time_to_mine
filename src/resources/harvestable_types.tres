@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="HarvestableTypes" load_steps=3 format=3 uid="uid://ddxldj4la4j5e"]
+[gd_resource type="Resource" script_class="HarvestableTypes" load_steps=4 format=3 uid="uid://ddxldj4la4j5e"]
 
-[ext_resource type="Script" uid="uid://dgs3yw218rwn3" path="res://src/scripts/harvestable_types.gd" id="1_1bow0"]
+[ext_resource type="Script" uid="uid://dgs3yw218rwn3" path="res://src/scripts/resources/harvestable_types.gd" id="1_1bow0"]
+[ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_lcate"]
 
-[sub_resource type="GDScript" id="GDScript_1bow0"]
+[sub_resource type="GDScript" id="GDScript_0bs5d"]
 
 [resource]
 script = ExtResource("1_1bow0")
-map = Dictionary[int, PackedScene]({})
-drop_tables = Dictionary[int, SubResource("GDScript_1bow0")]({})
+sprite_map = Dictionary[int, Texture]({})
+health_map = Dictionary[int, int]({})
+drop_tables = Dictionary[int, SubResource("GDScript_0bs5d")]({})
+harvestable_base_scene = ExtResource("1_lcate")
 metadata/_custom_type_script = "uid://dgs3yw218rwn3"

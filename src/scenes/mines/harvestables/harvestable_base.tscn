@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=19 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
@@ -20,6 +20,10 @@ colors = PackedColorArray(0.051971, 0.051971, 0.051971, 1)
 resource_local_to_scene = true
 shader = ExtResource("7_p14td")
 shader_parameter/flash = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3tv2"]
+atlas = ExtResource("4_c6o4m")
+region = Rect2(132, 11, 31, 20)
 
 [sub_resource type="Animation" id="Animation_p14td"]
 length = 0.001
@@ -212,7 +216,6 @@ _upgrade_stats = ExtResource("2_c6o4m")
 _drop_base_scene = ExtResource("2_wnspo")
 
 [node name="CollisionShapes" type="Node2D" parent="."]
-visible = false
 
 [node name="MiningRange" type="Area2D" parent="CollisionShapes"]
 
@@ -260,9 +263,9 @@ color_ramp = SubResource("Gradient_c6o4m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_j1g1d")
-texture = ExtResource("4_c6o4m")
-region_enabled = true
-region_rect = Rect2(133, 0, 30, 31)
+position = Vector2(0, 5)
+texture = SubResource("AtlasTexture_h3tv2")
+region_rect = Rect2(132, 11, 31, 20)
 
 [node name="GridVectorToPositionConverter" parent="." instance=ExtResource("2_pmh5g")]
 

@@ -16,7 +16,11 @@ enum CameraLocation{
 	LOCKED_FORGE,
 	LOCKED_TITLE_SCREEN,
 }
-var location: CameraLocation = CameraLocation.LOCKED_TITLE_SCREEN;
+var location: CameraLocation = CameraLocation.LOCKED_TITLE_SCREEN :
+	set(value):
+		location = value
+		if value == CameraLocation.FORGE:
+			global_position = Vector2.ZERO
 
 
 func _ready() -> void:
