@@ -4,12 +4,14 @@ extends Control
 
 @onready var damage1: UpgradeButtonBase = $Damage1
 @onready var mining_speed1: UpgradeButtonBase = $Damage1/MiningSpeed1
+@onready var damage_2: UpgradeButtonBase = $Damage1/MiningSpeed1/Damage2
+
 
 func _ready() -> void:
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Damage";
-	u.upgrade_type = UpgradeTypes.types.DAMAGE;
+	u.upgrade_type = UpgradeTypes.types.DAMAGE1;
 	u.max_level = 10;
 	u.apply_upgrade = (func():upgrade_stats.mining_damage += 1.0);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
@@ -29,3 +31,15 @@ func _ready() -> void:
 		ItemTypes.types.GOLD_ORE: 1+level,
 		});
 	mining_speed1.upgrade_properties = u;
+	
+	u = UpgradeProperties.new();
+	u.skill_name = "Damage";
+	u.upgrade_type = UpgradeTypes.types.DAMAGE2;
+	u.max_level = 15;
+	u.apply_upgrade = (func():upgrade_stats.mining_damage += 3.0);
+	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
+		return {
+		ItemTypes.types.RED_CAP_STONE: 1+ floor(0.25* level), 
+		ItemTypes.types.GREEN_CAP_STONE: 1 + floor(0.5* level),
+		});
+	damage_2.upgrade_properties = u;

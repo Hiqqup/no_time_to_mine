@@ -5,8 +5,11 @@ extends Resource
 
 
 enum types{
-	GOLD_ORE,
 	RED_CAP_STONE,
+	GOLD_ORE,
+	
+	GREEN_CAP_STONE,
+	SILVER_ORE,
 }
 
 

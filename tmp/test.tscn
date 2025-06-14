@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1qt263a53371"]
 
-[ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/Floor-tileset-silver.png" id="1_lopwu"]
+[ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/recolored/Floor-tileset-silver.png" id="1_lopwu"]
 [ext_resource type="Script" uid="uid://b6lttigj6x0pj" path="res://tmp/test.gd" id="1_sgvlb"]
 [ext_resource type="PackedScene" uid="uid://6mw7bgmjxo84" path="res://src/scenes/shockwave_effect.tscn" id="3_hdgi6"]
 

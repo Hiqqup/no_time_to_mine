@@ -13,6 +13,9 @@ class DropTable extends Resource:
 enum types{
 	RED_CAP_STONE,
 	GOLD_ORE,
+	
+	GREEN_CAP_STONE,
+	SILVER_ORE,
 }
 
 func get_copy(type : types) ->HarvestableBase:

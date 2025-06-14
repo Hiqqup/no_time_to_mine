@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bir2k4kkmfttj"
-path="res://.godot/imported/Floor-tileset-silver.png-93dd4206a30389cb8c8e3fca9507abee.ctex"
+uid="uid://6rjmxvpmcsty"
+path="res://.godot/imported/drops_tileset_silver.png-8b1269954e6f16bbfb7bbf46992777dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/procreate/Floor-tileset-silver.png"
-dest_files=["res://.godot/imported/Floor-tileset-silver.png-93dd4206a30389cb8c8e3fca9507abee.ctex"]
+source_file="res://assets/visuals/procreate/recolored/drops_tileset_silver.png"
+dest_files=["res://.godot/imported/drops_tileset_silver.png-8b1269954e6f16bbfb7bbf46992777dc.ctex"]
 
 [params]
 

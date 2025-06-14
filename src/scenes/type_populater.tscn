@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3rpcim20exhr"]
+[gd_scene load_steps=17 format=3 uid="uid://c3rpcim20exhr"]
 
 [ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_skt7l"]
 [ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_vrlxb"]
 [ext_resource type="Texture2D" uid="uid://ce7rk0kevk1rv" path="res://assets/visuals/procreate/drops_tileset.png" id="3_8fqf3"]
 [ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="4_tmat3"]
+[ext_resource type="Texture2D" uid="uid://6rjmxvpmcsty" path="res://assets/visuals/procreate/recolored/drops_tileset_silver.png" id="4_vrlxb"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_8ovfm"]
 [ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="8_8fqf3"]
-[ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/Floor-tileset-silver.png" id="9_tmat3"]
+[ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/recolored/Floor-tileset-silver.png" id="9_tmat3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3pqkl"]
 atlas = ExtResource("3_8fqf3")
@@ -14,6 +15,14 @@ region = Rect2(136, 12, 16, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_heidj"]
 atlas = ExtResource("3_8fqf3")
+region = Rect2(168, 13, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fqf3"]
+atlas = ExtResource("4_vrlxb")
+region = Rect2(136, 12, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmat3"]
+atlas = ExtResource("4_vrlxb")
 region = Rect2(168, 13, 15, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_skt7l"]
@@ -24,14 +33,26 @@ region = Rect2(132, 11, 31, 20)
 atlas = ExtResource("8_8fqf3")
 region = Rect2(165, 11, 31, 20)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hwek"]
+atlas = ExtResource("9_tmat3")
+region = Rect2(132, 11, 31, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnbhc"]
+atlas = ExtResource("9_tmat3")
+region = Rect2(165, 11, 31, 20)
+
 [node name="TypePopulater" type="Node"]
 script = ExtResource("1_skt7l")
 items = ExtResource("2_vrlxb")
 red_cap_stone_drop = SubResource("AtlasTexture_3pqkl")
 gold_ore_drop = SubResource("AtlasTexture_heidj")
+green_cap_stone_drop = SubResource("AtlasTexture_8fqf3")
+silver_ore_drop = SubResource("AtlasTexture_tmat3")
 harvestables = ExtResource("4_tmat3")
 red_cap_stone_sprite = SubResource("AtlasTexture_skt7l")
 gold_ore_sprite = SubResource("AtlasTexture_vrlxb")
+green_cap_stone_sprite = SubResource("AtlasTexture_0hwek")
+silver_ore_sprite = SubResource("AtlasTexture_nnbhc")
 levels = ExtResource("7_8ovfm")
 first_level_tileset = ExtResource("8_8fqf3")
 second_level_tileset = ExtResource("9_tmat3")
