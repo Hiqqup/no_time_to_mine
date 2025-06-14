@@ -18,7 +18,6 @@ func generate_or_update_mod_label(
 	item_list: Dictionary[ItemTypes.types, int]):
 	generate_or_update(vcontainer, item_list)
 	for label in _generated_labels:
-		label.add_theme_color_override("font_color", Color.BLACK)
 		if label.text == "1":
 			label.text = ""
 

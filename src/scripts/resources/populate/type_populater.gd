@@ -33,7 +33,7 @@ func _ready() -> void:
 
 	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE] = HarvestableTypes.DropTable.new();
 	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE].table = {
-		ItemTypes.types.RED_CAP_STONE: 1
+		ItemTypes.types.RED_CAP_STONE: 2
 	}
 	
 	harvestables.drop_tables[HarvestableTypes.types.GOLD_ORE] = HarvestableTypes.DropTable.new();

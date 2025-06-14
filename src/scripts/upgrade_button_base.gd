@@ -84,6 +84,8 @@ func _on_wrapper_button_pressed() -> void:
 	if not _check_affordable() or level == upgrade_properties.max_level:
 		_animation_player.play("denied")
 		return;
+	((get_tree().get_first_node_in_group("shockwave") as ShockwaveEffect)
+		.at(Camera.convert_position(global_position)));
 	if _explosion.emitting:
 		$Explosions.add_child(_explosion.duplicate())
 	_explosion.emitting = true;

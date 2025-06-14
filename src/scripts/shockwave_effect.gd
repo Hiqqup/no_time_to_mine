@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+class_name ShockwaveEffect
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -26,6 +26,9 @@ var location: CameraLocation = CameraLocation.LOCKED_TITLE_SCREEN :
 func _ready() -> void:
 	reset_zoom()
 
+func convert_position(pos):
+	var viewport_size = Vector2( get_viewport().size);
+	return ((pos - global_position) *zoom +viewport_size/2);
 
 func _handle_zoom():
 	if zoom.x > GlobalConstants.MIN_ZOOM:

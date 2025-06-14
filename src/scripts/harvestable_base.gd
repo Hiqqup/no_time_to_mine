@@ -25,6 +25,8 @@ func after_destroyed_animation():
 	queue_free();	
 
 func get_destroyed():
+	((get_tree().get_first_node_in_group("shockwave") as ShockwaveEffect)
+		.at(Camera.convert_position(global_position)));
 	_spawn_drop(_drop_table_float_to_int(drop_table));
 	harvested.emit();
 	Camera.shake(6)

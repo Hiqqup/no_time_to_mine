@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://2d3n31s7uoax" path="res://src/scenes/composables/timeout_callback.tscn" id="5_3e2bp"]
 
 [node name="UpgradeButtonBase" groups=["upgrade_button"] instance=ExtResource("1_vahct")]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 script = ExtResource("2_uat7v")
 upgrade_properties = null
 
@@ -33,6 +37,7 @@ mouse_filter = 2
 texture = ExtResource("4_jg7ue")
 
 [node name="Explosions" type="Node2D" parent="." index="3"]
+scale = Vector2(1, 0.985225)
 
 [node name="Explosion" type="CPUParticles2D" parent="Explosions" index="0"]
 position = Vector2(20, 20)
