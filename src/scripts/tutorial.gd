@@ -75,7 +75,7 @@ func _ready() -> void:
 	_forge.selected_level = LevelTypes.types.TUTORIAL;
 	_forge.upgrade_purchased.connect( func():
 		if not _first_upgrade_bought:
-			_timeout_callback(2, func():
+			TimeoutCallback.timeout_callback(2, func():
 				_fade_in( _retry_guide);
 				_forge_level_selector.unlock_level_feedback();
 				);
@@ -83,18 +83,17 @@ func _ready() -> void:
 			Camera.location = Camera.CameraLocation.FORGE;
 			$ForgeGuide/NavigationGuide/Label.text = "wasd and drag to move around"
 			_fade_out(_purchase_guide)
-			_timeout_callback(1, func(): _purchase_guide.queue_free());
+			TimeoutCallback.timeout_callback(1, func(): _purchase_guide.queue_free());
 			_first_upgrade_bought = true;
 		);
 	
-	_timeout_callback(1.0,(func():
+	TimeoutCallback.timeout_callback(1.0,(func():
 		if not _player_moved_once:
 			_fade_in(_movement_guide)
 		));
 
 
-func _timeout_callback(wait_time: float, callback :Callable)->void:
-	$TimeoutCallback.timeout_callback(wait_time, callback)
+
 
 
 
@@ -107,9 +106,9 @@ func _hide_forge():
 	_forge.visible = false;
 
 func _hide_key_display_show_targeting():
-	_timeout_callback(1.5, (func(): _fade_in(_targeting)));
+	TimeoutCallback.timeout_callback(1.5, (func(): _fade_in(_targeting)));
 	if  not _player_mined_once:
-		_timeout_callback(2, func(): 
+		TimeoutCallback.timeout_callback(2, func(): 
 			_fade_in(_mining_guide)
 			_mining_guide_displaying = true;
 			);

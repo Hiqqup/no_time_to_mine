@@ -36,6 +36,7 @@ func update_all_upgrades():
 	for button in buttons:
 		(button as UpgradeButtonBase).update_frame_sprite();
 
+
 func purchase_upgrade(type : UpgradeTypes.types):
 	upgrades_purchased[type] += 1;
 	save_game();
@@ -48,6 +49,7 @@ func increment_level():
 		and _save_state.max_unlocked_level != LevelTypes.types.TUTORIAL):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
 		_new_level_selector.new_level_unlocked = true;
+
 
 func update_and_generate_storage_display():
 	$GuiItemListDisplayer.generate_or_update(_vcontainer, $Storage.contents)

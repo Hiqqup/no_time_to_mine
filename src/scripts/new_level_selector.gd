@@ -41,13 +41,15 @@ func _generate_button(key: int):
 func unlock_level_feedback():
 	var e:ButtonAnimationWrapper = _latest_button_animation_wrapper
 	if e: e.play_animation(e.animations.level_unlocked);
+	UpgradeButtonBase.check_button_list_visibility(
+		get_tree().get_nodes_in_group("upgrade_button"), false)
 
 func update():
 	for key in LevelTypes.types.size():
 		if (not (key == LevelTypes.types.TUTORIAL 
-			or key > _forge._save_state.max_unlocked_level) 
+			or LevelTypes.is_higher(key, _forge._save_state.max_unlocked_level)) 
 			and not _already_displaying[key] ):
 			_generate_button(key)
 	if new_level_unlocked:
 		new_level_unlocked = false;
-		$TimeoutCallback.timeout_callback(0.9, func():unlock_level_feedback());
+		TimeoutCallback.timeout_callback(0.9, func():unlock_level_feedback());

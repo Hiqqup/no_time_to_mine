@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpu4eexbhm1e7"]
+[gd_scene load_steps=8 format=3 uid="uid://bpu4eexbhm1e7"]
 
 [ext_resource type="Script" uid="uid://dv3e1x3knx7hf" path="res://src/scripts/tutorial.gd" id="1_io05x"]
 [ext_resource type="Texture2D" uid="uid://d4jeuxr50sjgg" path="res://assets/visuals/movement_guide.png" id="2_ihko7"]
 [ext_resource type="FontFile" uid="uid://c1vtk4es625tx" path="res://assets/visuals/fonts/EXEPixelPerfect.ttf" id="3_gqjuj"]
 [ext_resource type="Texture2D" uid="uid://b7yibd7vu2s0m" path="res://assets/visuals/mining_guide.png" id="4_l4gex"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="5_0hv7v"]
-[ext_resource type="PackedScene" uid="uid://2d3n31s7uoax" path="res://src/scenes/composables/timeout_callback.tscn" id="5_l4gex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqjuj"]
 atlas = ExtResource("2_ihko7")
@@ -159,5 +158,3 @@ size_flags_horizontal = 4
 theme = ExtResource("5_0hv7v")
 text = "click to purchase upgrade"
 horizontal_alignment = 1
-
-[node name="TimeoutCallback" parent="." instance=ExtResource("5_l4gex")]

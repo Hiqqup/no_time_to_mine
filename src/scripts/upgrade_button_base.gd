@@ -50,6 +50,13 @@ func setup():
 	
 	_info_label.setup(level, upgrade_properties);
 	
+	var parent: UpgradeButtonBase = (get_parent() as UpgradeButtonBase);
+	if parent and parent._children_visible:
+		visible = true;
+	if not_visible_because_max_level():
+		visible = false;
+
+	
 	
 	update_frame_sprite();
 
@@ -101,18 +108,29 @@ func _on_wrapper_button_pressed() -> void:
 	_animation_player.play("click")
 	_forge.update_all_upgrades();
 
+func not_visible_because_max_level():
+	return LevelTypes.is_higher( upgrade_properties.level_unlocked, _forge._save_state.max_unlocked_level)
+	
+
+static func check_button_list_visibility(button_list: Array, sound_on_first_button: bool = true ):
+	var first_child: bool = sound_on_first_button;
+	for child in button_list:
+		if child is UpgradeButtonBase and child.upgrade_properties and not child.visible:
+			TimeoutCallback.timeout_callback(0.2, func():
+				if child.not_visible_because_max_level():
+					return;
+				child.visible = true;
+				if first_child:
+					child._animation_player.play("level_unlocked")
+				else: 
+					child._animation_player.play("level_unlocked_no_sound")
+			)
 
 func _show_all_children():
 	if _children_visible:
 		return
-	for child in get_children():
-		if child is UpgradeButtonBase:
-			var e: ButtonAnimationWrapper = child.get_node_or_null("ButtonAnimationWrapperContainer")
-			$TimeoutCallback.timeout_callback(0.2, func():
-				child.visible = true;
-				if e: e.play_animation(e.animations.level_unlocked))
-
 	_children_visible = true;
+	check_button_list_visibility(get_children());
 
 
 func _on_wrapper_button_mouse_entered() -> void:

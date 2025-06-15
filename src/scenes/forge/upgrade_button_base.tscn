@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://rifrgf41kumm"]
+[gd_scene load_steps=5 format=3 uid="uid://rifrgf41kumm"]
 
 [ext_resource type="PackedScene" uid="uid://dvaws6v1mrd76" path="res://src/scenes/skill_tree_button_base.tscn" id="1_vahct"]
 [ext_resource type="Script" uid="uid://d0nt5c4w6emvj" path="res://src/scripts/upgrade_button_base.gd" id="2_uat7v"]
 [ext_resource type="PackedScene" uid="uid://c4jaifuw7asa6" path="res://src/scenes/forge/upgrade_button_info_label.tscn" id="3_jg7ue"]
 [ext_resource type="Texture2D" uid="uid://cokckhl03f6ji" path="res://assets/visuals/upgrade_frame.png" id="4_jg7ue"]
-[ext_resource type="PackedScene" uid="uid://2d3n31s7uoax" path="res://src/scenes/composables/timeout_callback.tscn" id="5_3e2bp"]
 
 [node name="UpgradeButtonBase" groups=["upgrade_button"] instance=ExtResource("1_vahct")]
 offset_left = -20.0
@@ -53,8 +52,6 @@ initial_velocity_min = 100.0
 initial_velocity_max = 200.0
 scale_amount_min = 4.0
 scale_amount_max = 8.0
-
-[node name="TimeoutCallback" parent="." index="4" instance=ExtResource("5_3e2bp")]
 
 [connection signal="mouse_entered" from="WrapperButton" to="." method="_on_wrapper_button_mouse_entered"]
 [connection signal="mouse_exited" from="WrapperButton" to="." method="_on_wrapper_button_mouse_exited"]

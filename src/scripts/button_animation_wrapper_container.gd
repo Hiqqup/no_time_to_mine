@@ -4,6 +4,9 @@ class_name ButtonAnimationWrapper
 
 enum animations{
 	level_unlocked ,
+	click,
+	hover,
+	denied,
 }
 @onready var _animation_player: AnimationPlayer = $Wrapper/AnimationPlayer
 @onready var _parent: BaseButton = get_parent();

@@ -15,6 +15,9 @@ enum types{
 	THIRD,
 }
 
+static func is_higher( higher, than):
+	return higher > than ;
+
 func setup():
 	for key in tileset_map.keys():
 		var atlas := AtlasTexture.new();

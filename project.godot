@@ -22,6 +22,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 GlobalConstants="*res://src/scripts/global_constants.gd"
 Camera="*res://src/scripts/camera.gd"
+TimeoutCallback="*res://src/scripts/timeout_callback.gd"
 
 [display]
 

@@ -42,4 +42,5 @@ func _ready() -> void:
 		ItemTypes.types.RED_CAP_STONE: 1+ floor(0.25* level), 
 		ItemTypes.types.GREEN_CAP_STONE: 1 + floor(0.5* level),
 		});
+	u.level_unlocked = LevelTypes.types.SECOND;
 	damage_2.upgrade_properties = u;
