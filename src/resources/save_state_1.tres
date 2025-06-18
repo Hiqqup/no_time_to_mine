@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="SaveState" load_steps=2 format=3 uid="uid://hxcjf5jsi4x5"]
+[gd_resource type="Resource" script_class="SaveState" load_steps=2 format=3 uid="uid://b6bigfnv02x8n"]
 
 [ext_resource type="Script" uid="uid://b7y8da7g4j8l" path="res://src/scripts/resources/save_state.gd" id="1_44kjf"]
 
 [resource]
 script = ExtResource("1_44kjf")
 forge_storage = Dictionary[int, int]({
-0: 990,
+0: 998,
 1: 1000,
 2: 0,
 3: 0

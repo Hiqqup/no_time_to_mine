@@ -10,6 +10,7 @@ signal died;
 @export var lifetime_bar: TextureProgressBar
 @onready var _eyes: Sprite2D = $Visuals/Eyes
 @onready var _particles: Node2D = $Visuals/Particles
+@onready var _visuals: Node2D = $Visuals
 
 
 var currently_mining: HarvestableBase = null;
@@ -17,6 +18,7 @@ var currently_mining: HarvestableBase = null;
 
 var _alive: bool = true;
 
+var _walking_time: float  = 0.0;
 var _mine_cooldown: float = 0;
 var _lifetime:= 0.0;
 
@@ -33,6 +35,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	_handle_walking_rotation(delta);
 	if not _alive:
 		return; 
 	_mine_cooldown -= delta;
@@ -45,6 +48,16 @@ func _physics_process(delta: float) -> void:
 	_handle_movement_input()
 	_handle_targeting();
 	move_and_slide();
+
+
+func _handle_walking_rotation(delta: float):
+	if not _walking_particles.emitting:
+		_walking_time = 0;
+		_visuals.rotation = lerp(rotation, 0.0, delta * 10);
+	else:
+		_walking_time += delta;
+		_visuals.rotation = sin(_walking_time * 10)/12;
+
 
 func _die():
 	get_tree().get_first_node_in_group("screen_transition").change_scene(
@@ -108,6 +121,7 @@ func _die_feedback():
 		return;
 	Camera.shake(40.0)
 	$AnimationPlayer.play("die");
+	_walking_particles.emitting = false;
 	_alive = false;
 
 
