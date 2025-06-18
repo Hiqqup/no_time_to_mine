@@ -42,11 +42,11 @@ func _physics_process(delta: float) -> void:
 	if do_lifetime_calculation:
 		_lifetime+= delta;
 		lifetime_bar.value = _lifetime;
-	if _lifetime >= _upgrade_stats.max_life_time:
-		_die_feedback()
 	_try_mine();
 	_handle_movement_input()
 	_handle_targeting();
+	if _lifetime >= _upgrade_stats.max_life_time:
+		_die_feedback()
 	move_and_slide();
 
 
@@ -120,8 +120,8 @@ func _die_feedback():
 	if not _alive:
 		return;
 	Camera.shake(40.0)
-	$AnimationPlayer.play("die");
 	_walking_particles.emitting = false;
+	$AnimationPlayer.play("die");
 	_alive = false;
 
 
