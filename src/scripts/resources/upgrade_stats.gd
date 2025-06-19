@@ -6,3 +6,4 @@ extends Resource
 @export var mining_cooldown_duration:float = 1;
 @export var movement_speed: float = 120.0;
 @export var max_life_time: float = 10.0
+@export var minion_amount: int = 0;

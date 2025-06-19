@@ -2,7 +2,8 @@ extends Resource
 class_name UpgradeTypes
 
 enum types{
-	DAMAGE1,
+	DAMAGE_1,
 	MINING_SPEED,
-	DAMAGE2,
+	DAMAGE_2,
+	MINION_AMOUNT_1
 }
