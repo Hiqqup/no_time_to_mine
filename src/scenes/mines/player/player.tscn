@@ -263,6 +263,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar")]
+collision_layer = 4
 script = ExtResource("1_v4rts")
 _upgrade_stats = ExtResource("2_0weng")
 _level_types = ExtResource("3_8pe6j")
@@ -302,6 +303,8 @@ texture_progress = ExtResource("3_0weng")
 position = Vector2(0, 3)
 collision_mask = 2
 hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Line2D" type="Line2D" parent="Targeting"]
 position = Vector2(0, -0.0192307)

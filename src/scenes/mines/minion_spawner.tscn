@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://twpug1ofoh0v"]
+
+[ext_resource type="Script" uid="uid://briumvl8exxvp" path="res://src/scripts/minion_spawner.gd" id="1_o4etm"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_on7pk"]
+[ext_resource type="PackedScene" uid="uid://bfnowmavbcafn" path="res://src/scenes/mines/minion.tscn" id="3_ppqld"]
+
+[node name="MinionSpawner" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_o4etm")
+_upgrade_stats = ExtResource("2_on7pk")
+_minion_scene = ExtResource("3_ppqld")

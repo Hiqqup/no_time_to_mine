@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3rpcim20exhr"]
+[gd_scene load_steps=19 format=3 uid="uid://c3rpcim20exhr"]
 
 [ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_skt7l"]
 [ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_vrlxb"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://6rjmxvpmcsty" path="res://assets/visuals/procreate/recolored/drops_tileset_silver.png" id="4_vrlxb"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_8ovfm"]
 [ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="8_8fqf3"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="9_0hwek"]
 [ext_resource type="Texture2D" uid="uid://bir2k4kkmfttj" path="res://assets/visuals/procreate/recolored/Floor-tileset-silver.png" id="9_tmat3"]
+[ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_silver.png" id="10_nnbhc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3pqkl"]
 atlas = ExtResource("3_8fqf3")
@@ -54,6 +56,6 @@ gold_ore_sprite = SubResource("AtlasTexture_vrlxb")
 green_cap_stone_sprite = SubResource("AtlasTexture_0hwek")
 silver_ore_sprite = SubResource("AtlasTexture_nnbhc")
 levels = ExtResource("7_8ovfm")
-first_level_tileset = ExtResource("8_8fqf3")
-second_level_tileset = ExtResource("9_tmat3")
-third_level_tileset = ExtResource("8_8fqf3")
+first_level_tileset = ExtResource("9_0hwek")
+second_level_tileset = ExtResource("10_nnbhc")
+third_level_tileset = ExtResource("9_0hwek")
