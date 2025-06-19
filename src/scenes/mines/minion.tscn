@@ -7,28 +7,19 @@
 [node name="Minion" type="CharacterBody2D"]
 collision_layer = 0
 motion_mode = 1
-wall_min_slide_angle = 0.174533
-safe_margin = 0.001
+wall_min_slide_angle = 0.0
+safe_margin = 2.0
 script = ExtResource("1_akf5s")
 _level_types = ExtResource("2_emg0o")
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-position = Vector2(2, -10)
-polygon = PackedVector2Array(0, 17, -4, 17, -12, 10, -4, 4, 0, 4, 8, 10)
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-position = Vector2(2, -9)
+position = Vector2(2, -2)
 texture = ExtResource("1_cxpk1")
 region_enabled = true
 region_rect = Rect2(173, 41, 19, 20)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
-
-[node name="NavigationUpdateTimer" type="Timer" parent="NavigationAgent2D"]
-wait_time = 0.1
-autostart = true
-
-[connection signal="timeout" from="NavigationAgent2D/NavigationUpdateTimer" to="." method="_on_navigation_update_timer_timeout"]
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(1, 11, -1, 11, -7, 10, -1, 9, 1, 9, 7, 10)
