@@ -5,9 +5,9 @@
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="3_jikio"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jikio"]
-vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
+vertices = PackedVector2Array(16, 0, 0, 8, -15.6172, -0.1875, 0, -8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, 0, 0, 8, 16, 0, 0, -8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -15.618, -0.191, 0, 8, 16, 0)])
 agent_radius = 0.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sjvbc"]
