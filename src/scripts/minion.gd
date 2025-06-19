@@ -6,18 +6,21 @@ var _player: Player;
 var _forge : Forge
 var speed: float = 50;
 @onready var _sprite_2d: Sprite2D = $Visuals/Sprite2D
-@onready var _navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 var bounce: Vector2;
 var _walking_time: float 
 @onready var _visuals: Node2D = $Visuals
+var following: CharacterBody2D;
+
+func get_target_position():
+	return (following.global_position + Vector2(0,-1) * 4.0);
 
 func _physics_process(delta: float) -> void:
 	_forge = get_tree().get_first_node_in_group("forge")
 	_sprite_2d.texture = _level_types.tileset_map[_forge.selected_level]
 	
 	var dir:= Vector2.ZERO;
-	if position.distance_to(_navigation_agent_2d.target_position)>4.0:
-		dir = position.direction_to(_player.global_position);
+	if position.distance_to(get_target_position())>6.0:
+		dir = position.direction_to(get_target_position());
 		
 	_handle_walking_rotation(dir != Vector2.ZERO, delta)
 	_apply_bounce_handle_dir(dir)
