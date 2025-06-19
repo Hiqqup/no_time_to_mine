@@ -44,6 +44,8 @@ texture_region_size = Vector2i(32, 32)
 6:0/0/y_sort_origin = -9
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
 6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, 8)
 
 [sub_resource type="TileSet" id="TileSet_qvufr"]
 tile_shape = 1

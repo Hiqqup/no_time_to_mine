@@ -44,6 +44,8 @@ func _generate_one_cell_of_type(type: HarvestableTypes.types):
 
 
 func _remove_from_harvestables_check_empty(base: HarvestableBase):
+	var pos = base.get_node("GridVectorToPositionConverter").grid_vector;
+	floor_layer.set_navigation_cell(pos);
 	_harvestables.erase(base);
 	if _harvestables.is_empty():
 		emptyed.emit();
@@ -60,4 +62,3 @@ func _convert_used_cells():
 		node.get_node("GridVectorToPositionConverter").set_grid_vector(spot);
 		add_child(node);
 		erase_cell(spot);
-		

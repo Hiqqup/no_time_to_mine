@@ -6,6 +6,8 @@
 
 [node name="Minion" type="CharacterBody2D"]
 collision_layer = 0
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_akf5s")
 _level_types = ExtResource("2_emg0o")
 

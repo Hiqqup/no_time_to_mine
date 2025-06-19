@@ -16,6 +16,7 @@ func _ready() -> void:
 	floor_layer.setup(level.platform_radius);
 	d=level.harvestables;
 	harvestable_layer.generate_cells(d)
+	floor_layer.generate_navigation_layer();
 
 
 func _on_player_died() -> void:
