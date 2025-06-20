@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RecolorMap" load_steps=2 format=3 uid="uid://dp3suo88e8as4"]
+
+[ext_resource type="Script" uid="uid://ssfmjwdj1dvu" path="res://misc_scripts/image_conversion/image_recolorer/recolor_map.gd" id="1_68jl3"]
+
+[resource]
+script = ExtResource("1_68jl3")
+color_replacments = Array[Color]([Color(0.447059, 0.34902, 0.337255, 1), Color(0.482353, 0.376471, 0.435294, 1), Color(0.301961, 0.207843, 0.196078, 1), Color(0.329412, 0.231373, 0.294118, 1), Color(0.164706, 0.0980392, 0.0901961, 1), Color(0.192157, 0.117647, 0.156863, 1), Color(0.964706, 0.803922, 0.14902, 1), Color(0.619608, 0.839216, 0.678431, 1), Color(0.733333, 0.498039, 0.341176, 1), Color(0.458824, 0.670588, 0.513726, 1), Color(0.67451, 0.419608, 0.14902, 1), Color(0.317647, 0.47451, 0.403922, 1), Color(0.337255, 0.196078, 0.14902, 1), Color(0.247059, 0.364706, 0.337255, 1), Color(0.2, 0.109804, 0.0901961, 1), Color(0.0941176, 0.176471, 0.168627, 1), Color(0.164706, 0.0980392, 0.0901961, 1), Color(0.152941, 0.0901961, 0.129412, 1), Color(0.133333, 0.0745098, 0.0666667, 1), Color(0.152941, 0.0901961, 0.129412, 1)])

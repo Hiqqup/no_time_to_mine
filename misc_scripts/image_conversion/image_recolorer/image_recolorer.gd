@@ -34,8 +34,8 @@ func _on_button_pressed() -> void:
 	if done:
 		return
 	if color_pair_index >= recolor_map.color_replacments.size()/2.0:
-		var str = input_image.resource_path
-		var save_path = str.substr(0,str.length()-4) + "_recolored.png"
+		var str1 = input_image.resource_path
+		var save_path = str1.substr(0,str1.length()-4) + "_recolored.png"
 		_viewport.get_texture().get_image().save_png(save_path)
 		done = true;
 		$CanvasLayer/Button.visible = false;

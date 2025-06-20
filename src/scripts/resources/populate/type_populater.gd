@@ -6,6 +6,8 @@ extends Node
 @export var gold_ore_drop: Texture;
 @export var green_cap_stone_drop: Texture;
 @export var silver_ore_drop: Texture;
+@export var purple_cap_stone_drop: Texture;
+@export var prismarine_ore_drop: Texture;
 
 @export_category("Harvestables")
 @export var harvestables: HarvestableTypes
@@ -13,6 +15,8 @@ extends Node
 @export var gold_ore_sprite: Texture
 @export var green_cap_stone_sprite: Texture
 @export var silver_ore_sprite: Texture
+@export var purple_cap_stone_sprite: Texture
+@export var prismarine_ore_sprite: Texture
 
 @export_category("LevelTextures")
 @export var levels: LevelTypes;
@@ -27,6 +31,8 @@ func _ready() -> void:
 	items.map[ItemTypes.types.GOLD_ORE] = gold_ore_drop;
 	items.map[ItemTypes.types.GREEN_CAP_STONE] = green_cap_stone_drop;
 	items.map[ItemTypes.types.SILVER_ORE] = silver_ore_drop;
+	items.map[ItemTypes.types.PURPLE_CAP_STONE] = purple_cap_stone_drop;
+	items.map[ItemTypes.types.PRISMARINE_ORE] = prismarine_ore_drop;
 	
 	# Harvestables
 	harvestables.sprite_map[HarvestableTypes.types.RED_CAP_STONE] = red_cap_stone_sprite;
@@ -38,6 +44,11 @@ func _ready() -> void:
 	harvestables.health_map[HarvestableTypes.types.GREEN_CAP_STONE] = 50.0;
 	harvestables.sprite_map[HarvestableTypes.types.SILVER_ORE] = silver_ore_sprite;
 	harvestables.health_map[HarvestableTypes.types.SILVER_ORE] = 140.0;
+	
+	harvestables.sprite_map[HarvestableTypes.types.PURPLE_CAP_STONE] = purple_cap_stone_sprite;
+	harvestables.health_map[HarvestableTypes.types.PURPLE_CAP_STONE] = 50.0;
+	harvestables.sprite_map[HarvestableTypes.types.PRISMARINE_ORE] = prismarine_ore_sprite;
+	harvestables.health_map[HarvestableTypes.types.PRISMARINE_ORE] = 140.0;
 	# DropTables
 
 	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE] = HarvestableTypes.DropTable.new();
@@ -59,6 +70,16 @@ func _ready() -> void:
 	harvestables.drop_tables[HarvestableTypes.types.SILVER_ORE] = HarvestableTypes.DropTable.new();
 	harvestables.drop_tables[HarvestableTypes.types.SILVER_ORE].table = {
 		ItemTypes.types.SILVER_ORE: 1
+	}
+	
+	harvestables.drop_tables[HarvestableTypes.types.PURPLE_CAP_STONE] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[HarvestableTypes.types.PURPLE_CAP_STONE].table = {
+		ItemTypes.types.PURPLE_CAP_STONE: 1
+	}
+	
+	harvestables.drop_tables[HarvestableTypes.types.PRISMARINE_ORE] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[HarvestableTypes.types.PRISMARINE_ORE].table = {
+		ItemTypes.types.PRISMARINE_ORE: 1
 	}
 	
 	# Level Sprites
@@ -99,4 +120,12 @@ func _ready() -> void:
 	}
 	levels.map[LevelTypes.types.SECOND] = l;
 	
+	# THIRD
 	
+	l = Level.new()
+	l.platform_radius = 5
+	l. harvestables = {
+		HarvestableTypes.types.PURPLE_CAP_STONE: 4,
+		HarvestableTypes.types.PRISMARINE_ORE: 1,
+	}
+	levels.map[LevelTypes.types.THIRD] = l;
