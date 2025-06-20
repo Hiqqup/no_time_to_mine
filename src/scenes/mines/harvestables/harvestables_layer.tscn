@@ -1,51 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dji7xejgxhg1e"]
+[gd_scene load_steps=4 format=3 uid="uid://dji7xejgxhg1e"]
 
 [ext_resource type="Script" uid="uid://8u5dawrqhbdy" path="res://src/scripts/harvestables_layer.gd" id="4_qoljb"]
 [ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="5_knevs"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wnspo"]
-load_path = "res://.godot/imported/halfslab_tileset.png-9704e9b01b571c7f94095a45c960e873.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuq1y"]
-texture = SubResource("CompressedTexture2D_wnspo")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 8)
-0:0/0/y_sort_origin = -9
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 8)
-1:0/0/y_sort_origin = -9
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 8)
-2:0/0/y_sort_origin = -9
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 8)
-3:0/0/y_sort_origin = -9
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-3:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-4:0/0 = 0
-4:0/0/texture_origin = Vector2i(0, 8)
-4:0/0/y_sort_origin = -9
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-5:0/0 = 0
-5:0/0/texture_origin = Vector2i(0, 8)
-5:0/0/y_sort_origin = -9
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-5:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-6:0/0 = 0
-6:0/0/texture_origin = Vector2i(0, 8)
-6:0/0/y_sort_origin = -9
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 8, -16, 0, 0, -8, 16, 0)
-6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, 8, -16, 0, -15.8305, -10.0334, 0.520252, -17.0197, 15.6819, -9.58751, 16, 0)
-7:0/0 = 0
-7:0/0/texture_origin = Vector2i(0, 8)
 
 [sub_resource type="TileSet" id="TileSet_qvufr"]
 tile_shape = 1
@@ -54,7 +10,6 @@ tile_offset_axis = 1
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 2
-sources/0 = SubResource("TileSetAtlasSource_fuq1y")
 
 [node name="HarvestablesLayer" type="TileMapLayer"]
 y_sort_enabled = true

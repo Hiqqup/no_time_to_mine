@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="3_rek1o"]
 [ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="4_3utme"]
 [ext_resource type="Texture2D" uid="uid://vwhjg33tprtt" path="res://assets/visuals/procreate/Player/die_animation/Char-1.png" id="8_3utme"]
-[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="8_8pe6j"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="8_8pe6j"]
 [ext_resource type="Texture2D" uid="uid://3f1kmtgt1p6" path="res://assets/visuals/procreate/Player/die_animation/Char-2.png" id="9_ne33x"]
 [ext_resource type="Texture2D" uid="uid://bej0j8p2up5xb" path="res://assets/visuals/procreate/Player/die_animation/Char-3.png" id="10_8pe6j"]
 [ext_resource type="Texture2D" uid="uid://cb0rl6xjcloea" path="res://assets/visuals/procreate/Player/die_animation/Char-4.png" id="11_6gjbl"]

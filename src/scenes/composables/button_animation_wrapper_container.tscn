@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://w88pkwcevca4" path="res://assets/sound/buttons/click.ogg" id="2_u0167"]
 [ext_resource type="AudioStream" uid="uid://dscja43mf8u2u" path="res://assets/sound/buttons/denied.ogg" id="3_b2gvn"]
 [ext_resource type="AudioStream" uid="uid://b0b1i2p6c18nt" path="res://assets/sound/buttons/hover.ogg" id="3_py3ym"]
-[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="5_4b886"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="5_wmtw4"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="6_wmtw4"]
 
 [sub_resource type="Animation" id="Animation_py3ym"]
 length = 0.001
@@ -330,7 +330,7 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmtw4"]
-atlas = ExtResource("5_4b886")
+atlas = ExtResource("6_wmtw4")
 region = Rect2(66, 33, 32, 32)
 
 [node name="ButtonAnimationWrapperContainer" type="Control"]

@@ -1,18 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bktks85fbuoip"]
+[gd_scene load_steps=10 format=3 uid="uid://bktks85fbuoip"]
 
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
 [ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrade_button_base.tscn" id="3_vcrgi"]
-[ext_resource type="Texture2D" uid="uid://0t6a7g4yaj7l" path="res://assets/visuals/procreate/upgrades.png" id="4_uwo2n"]
-[ext_resource type="Texture2D" uid="uid://cnak8kmut5t58" path="res://assets/visuals/procreate/recolored/upgrades_silver.png" id="5_ru2ph"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="4_ru2ph"]
 [ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_silver.png" id="6_0exhr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ru2ph"]
-atlas = ExtResource("4_uwo2n")
+atlas = ExtResource("4_ru2ph")
 region = Rect2(33, 66, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0exhr"]
-atlas = ExtResource("4_uwo2n")
+atlas = ExtResource("4_ru2ph")
 region = Rect2(0, 66, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gmqy"]
@@ -20,7 +19,7 @@ atlas = ExtResource("6_0exhr")
 region = Rect2(66, 66, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
-atlas = ExtResource("5_ru2ph")
+atlas = ExtResource("6_0exhr")
 region = Rect2(33, 66, 32, 32)
 
 [node name="SkillTree" type="Control"]
