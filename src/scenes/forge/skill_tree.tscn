@@ -15,13 +15,13 @@ region = Rect2(33, 66, 32, 32)
 atlas = ExtResource("4_uwo2n")
 region = Rect2(0, 66, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
-atlas = ExtResource("5_ru2ph")
-region = Rect2(33, 66, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gmqy"]
 atlas = ExtResource("6_0exhr")
 region = Rect2(66, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
+atlas = ExtResource("5_ru2ph")
+region = Rect2(33, 66, 32, 32)
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -41,25 +41,25 @@ sprite = SubResource("AtlasTexture_ru2ph")
 
 [node name="MiningSpeed1" parent="Damage1" instance=ExtResource("3_vcrgi")]
 layout_mode = 0
-offset_left = 125.0
-offset_top = 0.0
-offset_right = 165.0
-offset_bottom = 40.0
+offset_left = 129.0
+offset_top = 3.0
+offset_right = 169.0
+offset_bottom = 43.0
 sprite = SubResource("AtlasTexture_0exhr")
 
-[node name="Damage2" parent="Damage1/MiningSpeed1" instance=ExtResource("3_vcrgi")]
-offset_left = 107.0
-offset_top = -66.0
-offset_right = 147.0
-offset_bottom = -26.0
-sprite = SubResource("AtlasTexture_chr1d")
-
-[node name="MinionAmount1" parent="Damage1/MiningSpeed1" instance=ExtResource("3_vcrgi")]
-offset_left = 8.0
-offset_top = -141.0
-offset_right = 48.0
-offset_bottom = -101.0
+[node name="MinionAmount1" parent="Damage1" instance=ExtResource("3_vcrgi")]
+offset_left = -99.0
+offset_top = 2.0
+offset_right = -59.0
+offset_bottom = 42.0
 sprite = SubResource("AtlasTexture_5gmqy")
+
+[node name="Damage2" parent="Damage1" instance=ExtResource("3_vcrgi")]
+offset_left = 4.0
+offset_top = -117.0
+offset_right = 44.0
+offset_bottom = -77.0
+sprite = SubResource("AtlasTexture_chr1d")
 
 [connection signal="mouse_entered" from="Damage1" to="Damage1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Damage1" to="Damage1" method="_on_mouse_exited"]

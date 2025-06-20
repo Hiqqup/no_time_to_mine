@@ -74,7 +74,10 @@ func update_frame_sprite():
 		_frame_sprite.modulate =  _info_label._red
 
 func _ready() -> void:
+	_position_snap();
 	super();
+	
+	
 	_forge = get_tree().get_first_node_in_group("forge")
 	_forge_storage_contents = (_forge.get_node("Storage").contents);
 
@@ -85,6 +88,10 @@ func _ready() -> void:
 	_info_label.visible = false;
 	_wrapper_button.pressed.connect(_on_wrapper_button_pressed);
 	
+func _position_snap():
+	var snap_threshhold: float = 32.0;
+	position = floor(position/ snap_threshhold) * snap_threshhold;
+
 
 func _on_wrapper_button_pressed() -> void:	
 	Camera.shake(6)

@@ -4,8 +4,8 @@ extends Control
 
 @onready var damage1: UpgradeButtonBase = $Damage1
 @onready var mining_speed1: UpgradeButtonBase = $Damage1/MiningSpeed1
-@onready var damage_2: UpgradeButtonBase = $Damage1/MiningSpeed1/Damage2
-@onready var minion_amount_1: UpgradeButtonBase = $Damage1/MiningSpeed1/MinionAmount1
+@onready var damage_2: UpgradeButtonBase = $Damage1/Damage2
+@onready var minion_amount_1: UpgradeButtonBase = $Damage1/MinionAmount1
 
 
 func _ready() -> void:
