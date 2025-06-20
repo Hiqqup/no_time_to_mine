@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bd1ftd4mp5yyb"]
 
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="1_jikio"]
 [ext_resource type="Script" uid="uid://cblsr1nqyg2nq" path="res://src/scripts/floor.gd" id="2_jet0m"]
-[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="2_jikio"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="3_jikio"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jikio"]
@@ -39,7 +39,7 @@ texture_region_size = Vector2i(32, 32)
 0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_jikio")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5c50m"]
-texture = ExtResource("2_jikio")
+texture = ExtResource("1_jikio")
 separation = Vector2i(1, 0)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0

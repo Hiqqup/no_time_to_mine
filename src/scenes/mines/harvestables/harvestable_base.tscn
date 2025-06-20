@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="2_pmh5g"]
 [ext_resource type="PackedScene" uid="uid://dnh5nnknlnh0j" path="res://src/scenes/mines/harvestables/item_drop_base.tscn" id="2_wnspo"]
 [ext_resource type="PackedScene" uid="uid://5dwpbnrebtj5" path="res://src/scenes/mines/harvestables/default_colision_shapes/click_detection_shape.tscn" id="3_os4bl"]
-[ext_resource type="Texture2D" uid="uid://b4u8pncb1wpa3" path="res://assets/visuals/procreate/Floor-tileset.png" id="4_c6o4m"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_wnspo"]
 [ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="7_p14td"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="8_h3tv2"]
 [ext_resource type="AudioStream" uid="uid://dwf6e8th7gs17" path="res://assets/sound/harvestable_hit.ogg" id="10_j1g1d"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="11_h3tv2"]
 
@@ -21,9 +21,9 @@ resource_local_to_scene = true
 shader = ExtResource("7_p14td")
 shader_parameter/flash = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h3tv2"]
-atlas = ExtResource("4_c6o4m")
-region = Rect2(132, 11, 31, 20)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgomb"]
+atlas = ExtResource("8_h3tv2")
+region = Rect2(132, 11, 32, 20)
 
 [sub_resource type="Animation" id="Animation_p14td"]
 length = 0.001
@@ -278,7 +278,7 @@ color_ramp = SubResource("Gradient_c6o4m")
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_j1g1d")
 position = Vector2(0, 5)
-texture = SubResource("AtlasTexture_h3tv2")
+texture = SubResource("AtlasTexture_vgomb")
 region_rect = Rect2(132, 11, 31, 20)
 
 [node name="GridVectorToPositionConverter" parent="." instance=ExtResource("2_pmh5g")]
