@@ -29,6 +29,8 @@ func _ready() -> void:
 func play_animation(animation : animations):
 	_animation_player.play(animations.keys()[animation])
 
+func _not_playing_level_unlocked():
+	return not (_animation_player.is_playing() and _animation_player.current_animation == "level_unlocked")
 
 func _handle_parenting():
 	reparent(_parent.get_parent());
