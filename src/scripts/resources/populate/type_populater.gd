@@ -2,21 +2,10 @@ extends Node
 
 @export_category("Items")
 @export var items: ItemTypes
-@export var red_cap_stone_drop: Texture;
-@export var gold_ore_drop: Texture;
-@export var green_cap_stone_drop: Texture;
-@export var silver_ore_drop: Texture;
-@export var purple_cap_stone_drop: Texture;
-@export var prismarine_ore_drop: Texture;
 
 @export_category("Harvestables")
 @export var harvestables: HarvestableTypes
-@export var red_cap_stone_sprite: Texture
-@export var gold_ore_sprite: Texture
-@export var green_cap_stone_sprite: Texture
-@export var silver_ore_sprite: Texture
-@export var purple_cap_stone_sprite: Texture
-@export var prismarine_ore_sprite: Texture
+
 
 @export_category("LevelTextures")
 @export var levels: LevelTypes;
@@ -24,63 +13,75 @@ extends Node
 @export var second_level_tileset: Texture;
 @export var third_level_tileset: Texture;
 
+const item_stone_region := Rect2(204.0,14.0,16.0,14.0);
+const item_ore_region := Rect2(236.0,15.0,15.0,12.0);
+const harvestable_stone_region:= Rect2(132.0,11.0,31.0,20.0)
+const harvestable_ore_region:=Rect2(165.0,12.0,31.0,19.0)
+
+func _tileset_get_region(tileset: Texture, region:Rect2)->Texture:
+	var atlas := AtlasTexture.new();
+	atlas.atlas = tileset;
+	atlas.region = region;
+	return atlas;
+
+func _setup_harvestable(harvestable: HarvestableTypes.types, sprite: Texture, health:float,drop_item : ItemTypes.types):
+	pass
+	harvestables.sprite_map[harvestable] = sprite;
+	harvestables.health_map[harvestable] = health;
+	harvestables.drop_tables[harvestable] = HarvestableTypes.DropTable.new();
+	harvestables.drop_tables[harvestable].table = {
+		drop_item: 1
+	}
 
 func _ready() -> void:
 		# Items
-	items.map[ItemTypes.types.RED_CAP_STONE] = red_cap_stone_drop;
-	items.map[ItemTypes.types.GOLD_ORE] = gold_ore_drop;
-	items.map[ItemTypes.types.GREEN_CAP_STONE] = green_cap_stone_drop;
-	items.map[ItemTypes.types.SILVER_ORE] = silver_ore_drop;
-	items.map[ItemTypes.types.PURPLE_CAP_STONE] = purple_cap_stone_drop;
-	items.map[ItemTypes.types.PRISMARINE_ORE] = prismarine_ore_drop;
+	items.map[ItemTypes.types.RED_CAP_STONE] = _tileset_get_region(first_level_tileset,item_stone_region);
+	items.map[ItemTypes.types.GOLD_ORE] = _tileset_get_region(first_level_tileset,item_ore_region);
+	items.map[ItemTypes.types.GREEN_CAP_STONE] = _tileset_get_region(second_level_tileset,item_stone_region);
+	items.map[ItemTypes.types.SILVER_ORE] = _tileset_get_region(second_level_tileset,item_ore_region);
+	items.map[ItemTypes.types.PURPLE_CAP_STONE] = _tileset_get_region(third_level_tileset,item_stone_region);
+	items.map[ItemTypes.types.PRISMARINE_ORE] = _tileset_get_region(third_level_tileset,item_ore_region);
 	
 	# Harvestables
-	harvestables.sprite_map[HarvestableTypes.types.RED_CAP_STONE] = red_cap_stone_sprite;
-	harvestables.health_map[HarvestableTypes.types.RED_CAP_STONE] = 10.0;
-	harvestables.sprite_map[HarvestableTypes.types.GOLD_ORE] = gold_ore_sprite;
-	harvestables.health_map[HarvestableTypes.types.GOLD_ORE] = 100.0;
+	_setup_harvestable(
+		HarvestableTypes.types.RED_CAP_STONE,  
+		_tileset_get_region(first_level_tileset,harvestable_stone_region),
+		10.0,
+		ItemTypes.types.RED_CAP_STONE,
+		);
+	_setup_harvestable(
+		HarvestableTypes.types.GOLD_ORE,  
+		_tileset_get_region(first_level_tileset,harvestable_ore_region),
+		100.0,
+		ItemTypes.types.GOLD_ORE,
+		);
 	
-	harvestables.sprite_map[HarvestableTypes.types.GREEN_CAP_STONE] = green_cap_stone_sprite;
-	harvestables.health_map[HarvestableTypes.types.GREEN_CAP_STONE] = 50.0;
-	harvestables.sprite_map[HarvestableTypes.types.SILVER_ORE] = silver_ore_sprite;
-	harvestables.health_map[HarvestableTypes.types.SILVER_ORE] = 140.0;
+	_setup_harvestable(
+		HarvestableTypes.types.GREEN_CAP_STONE,  
+		_tileset_get_region(second_level_tileset,harvestable_stone_region),
+		50.0,
+		ItemTypes.types.GREEN_CAP_STONE,
+		);
+	_setup_harvestable(
+		HarvestableTypes.types.SILVER_ORE,  
+		_tileset_get_region(second_level_tileset,harvestable_ore_region),
+		200.0,
+		ItemTypes.types.SILVER_ORE,
+		);
 	
-	harvestables.sprite_map[HarvestableTypes.types.PURPLE_CAP_STONE] = purple_cap_stone_sprite;
-	harvestables.health_map[HarvestableTypes.types.PURPLE_CAP_STONE] = 50.0;
-	harvestables.sprite_map[HarvestableTypes.types.PRISMARINE_ORE] = prismarine_ore_sprite;
-	harvestables.health_map[HarvestableTypes.types.PRISMARINE_ORE] = 140.0;
-	# DropTables
-
-	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.RED_CAP_STONE].table = {
-		ItemTypes.types.RED_CAP_STONE: 1
-	}
+	_setup_harvestable(
+		HarvestableTypes.types.PURPLE_CAP_STONE,  
+		_tileset_get_region(third_level_tileset,harvestable_stone_region),
+		250.0,
+		ItemTypes.types.PURPLE_CAP_STONE,
+		);
+	_setup_harvestable(
+		HarvestableTypes.types.PRISMARINE_ORE,  
+		_tileset_get_region(third_level_tileset,harvestable_ore_region),
+		400.0,
+		ItemTypes.types.PRISMARINE_ORE,
+		);
 	
-	harvestables.drop_tables[HarvestableTypes.types.GOLD_ORE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.GOLD_ORE].table = {
-		ItemTypes.types.GOLD_ORE: 1
-	}
-	
-	
-	harvestables.drop_tables[HarvestableTypes.types.GREEN_CAP_STONE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.GREEN_CAP_STONE].table = {
-		ItemTypes.types.GREEN_CAP_STONE: 1
-	}
-	
-	harvestables.drop_tables[HarvestableTypes.types.SILVER_ORE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.SILVER_ORE].table = {
-		ItemTypes.types.SILVER_ORE: 1
-	}
-	
-	harvestables.drop_tables[HarvestableTypes.types.PURPLE_CAP_STONE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.PURPLE_CAP_STONE].table = {
-		ItemTypes.types.PURPLE_CAP_STONE: 1
-	}
-	
-	harvestables.drop_tables[HarvestableTypes.types.PRISMARINE_ORE] = HarvestableTypes.DropTable.new();
-	harvestables.drop_tables[HarvestableTypes.types.PRISMARINE_ORE].table = {
-		ItemTypes.types.PRISMARINE_ORE: 1
-	}
 	
 	# Level Sprites
 	levels.tileset_map[LevelTypes.types.TUTORIAL] = first_level_tileset;
