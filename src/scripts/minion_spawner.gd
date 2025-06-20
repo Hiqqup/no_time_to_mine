@@ -14,6 +14,7 @@ func _ready():
 		minion.position += Vector2(1,-1) * pos_offset;
 		minion._player = _player;
 		minion.following = following
+		following.followed_by = minion;
 		following = minion;
 		
 		pos_offset+= 4.0;

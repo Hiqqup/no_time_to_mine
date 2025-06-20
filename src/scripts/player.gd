@@ -15,6 +15,7 @@ signal died;
 
 var currently_mining: HarvestableBase = null;
 
+var followed_by: Minion = null;
 
 var _alive: bool = true;
 
@@ -102,7 +103,9 @@ func _try_mine() -> void:
 		currently_mining.get_destroyed();
 		currently_mining = null;
 	else:
-		mine_visual_feedback()
+		if followed_by:
+			followed_by.set_mining(currently_mining);
+	mine_visual_feedback()
 
 
 func mine_visual_feedback():

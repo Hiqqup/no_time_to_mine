@@ -18,6 +18,7 @@ var sprite: Texture:
 		sprite2D.texture = value;
 
 var player_in_range: bool = false;
+var minions_in_range: Dictionary[Minion, bool];
 var mines;
 var _drop:ItemDropBase;
 
@@ -115,3 +116,16 @@ func _on_mining_range_body_entered(body: Node2D) -> void:
 func _on_mining_range_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_in_range = false;
+
+
+
+
+
+func _on_minion_range_body_exited(body: Node2D) -> void:
+	if body is Minion:
+		minions_in_range.erase(body as Minion);
+
+
+func _on_minion_range_body_entered(body: Node2D) -> void:
+	if body is Minion:
+		minions_in_range[body as Minion] = true;

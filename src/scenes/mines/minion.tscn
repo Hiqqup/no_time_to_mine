@@ -1,16 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfnowmavbcafn"]
+[gd_scene load_steps=5 format=3 uid="uid://bfnowmavbcafn"]
 
 [ext_resource type="Script" uid="uid://cya2p6pwbwkqs" path="res://src/scripts/minion.gd" id="1_akf5s"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="1_cxpk1"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_emg0o"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="3_0a6yw"]
 
 [node name="Minion" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 8
 motion_mode = 1
 wall_min_slide_angle = 0.0
 safe_margin = 2.0
 script = ExtResource("1_akf5s")
 _level_types = ExtResource("2_emg0o")
+_upgrade_stats = ExtResource("3_0a6yw")
 
 [node name="Visuals" type="Node2D" parent="."]
 
