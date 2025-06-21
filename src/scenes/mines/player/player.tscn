@@ -279,7 +279,7 @@ offset_bottom = 56.0
 scale = Vector2(1.8, 1.8)
 size_flags_vertical = 8
 theme = ExtResource("3_d4qqj")
-text = "die"
+text = "crumble"
 
 [node name="ButtonAnimationWrapperContainer" parent="CameraIndependet/ResetButton" instance=ExtResource("4_3utme")]
 

@@ -74,7 +74,7 @@ func update_frame_sprite():
 		_frame_sprite.modulate =  _info_label._red
 
 func _ready() -> void:
-	_position_snap();
+	#_position_snap();
 	super();
 	
 	

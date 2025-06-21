@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://0l20601do1yj"]
+
+[ext_resource type="Script" uid="uid://c05tnnbpmvwst" path="res://src/scripts/orb.gd" id="1_rpcis"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_hkb44"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_iot4f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iot4f"]
+radius = 3.0
+height = 12.0
+
+[node name="Orb" type="CharacterBody2D"]
+collision_mask = 13
+script = ExtResource("1_rpcis")
+_level_types = ExtResource("2_iot4f")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, 7)
+texture = ExtResource("2_hkb44")
+region_enabled = true
+region_rect = Rect2(208, 45, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_iot4f")

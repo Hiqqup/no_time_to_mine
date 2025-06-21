@@ -27,6 +27,7 @@ var do_lifetime_calculation: bool = true;
 
 var _forge:Forge;
 
+
 func _ready() -> void:
 	lifetime_bar.max_value = _upgrade_stats.max_life_time;
 	_forge = get_tree().get_first_node_in_group("forge");
@@ -49,6 +50,7 @@ func _physics_process(delta: float) -> void:
 	if _lifetime >= _upgrade_stats.max_life_time:
 		_die_feedback()
 	move_and_slide();
+
 
 
 func _handle_walking_rotation(delta: float):

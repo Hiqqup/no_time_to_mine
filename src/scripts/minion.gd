@@ -38,7 +38,9 @@ func _physics_process(delta: float) -> void:
 	var dir:Vector2 = _get_dir();
 	
 	_handle_walking_rotation(dir != Vector2.ZERO, delta)
-	_apply_bounce_handle_dir(dir)
+	
+	_apply_bounce()
+	_handle_dir(dir)
 	_mine_cooldown -= delta;
 	_try_mine();
 
@@ -95,15 +97,17 @@ func _get_dir() ->Vector2:
 	return dir
 
 
-func _apply_bounce_handle_dir(dir:Vector2):
-	dir += bounce;
-	bounce*= 0.93
+func _apply_bounce():
+	bounce*= GlobalConstants.BOUNCE_DECAY;
+	velocity += bounce;
+
+func _handle_dir(dir:Vector2):
 	velocity = dir* speed;
 	move_and_slide() 
 	for i in get_slide_collision_count():
 		var collider:Node2D = get_slide_collision(i).get_collider()
 		if collider is StaticBody2D:
-			bounce = collider.global_position.direction_to(global_position) * 2.4;
+			bounce = collider.global_position.direction_to(global_position) * GlobalConstants.BOUNCE_IMPULSE;
 
 func _handle_walking_rotation(walking: bool, delta: float):
 	if walking:

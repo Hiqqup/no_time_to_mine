@@ -6,6 +6,7 @@ extends Control
 @onready var mining_speed1: UpgradeButtonBase = $Damage1/MiningSpeed1
 @onready var damage_2: UpgradeButtonBase = $Damage1/Damage2
 @onready var minion_amount_1: UpgradeButtonBase = $Damage1/MinionAmount1
+@onready var orb_amount_1: UpgradeButtonBase = $Damage1/MinionAmount1/OrbAmount1
 
 
 func _ready() -> void:
@@ -58,3 +59,16 @@ func _ready() -> void:
 		});
 	u.level_unlocked = LevelTypes.types.SECOND;
 	minion_amount_1.upgrade_properties = u;
+	
+	u = UpgradeProperties.new();
+	u.skill_name = "Orb";
+	u.upgrade_type = UpgradeTypes.types.ORB_AMOUNT_1;
+	u.max_level = 1;
+	u.apply_upgrade = (func():upgrade_stats.orb_amount += 1);
+	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
+		return {
+		ItemTypes.types.PURPLE_CAP_STONE: 5, 
+		ItemTypes.types.PRISMARINE_ORE: 3 + 2* level,
+		});
+	u.level_unlocked = LevelTypes.types.THIRD;
+	orb_amount_1.upgrade_properties = u;

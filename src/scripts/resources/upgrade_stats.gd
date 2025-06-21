@@ -9,3 +9,4 @@ var max_life_time: float = 10.0
 var minion_amount: int = 0;
 var minion_mining_cooldown_duration:float = 1.5;
 var minion_mining_damage: float = 2;
+var orb_amount: int = 0;

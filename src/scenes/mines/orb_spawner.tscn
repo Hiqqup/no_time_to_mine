@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpj0vxxgr6tnp"]
+
+[ext_resource type="Script" uid="uid://c0wm7a0e5jh87" path="res://src/scripts/orb_spawner.gd" id="1_obx62"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_ug10k"]
+[ext_resource type="PackedScene" uid="uid://0l20601do1yj" path="res://src/scenes/mines/orb.tscn" id="3_e0rii"]
+
+[node name="OrbSpawner" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_obx62")
+_upgrade_stats = ExtResource("2_ug10k")
+_orb_scene = ExtResource("3_e0rii")
