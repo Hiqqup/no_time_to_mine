@@ -25,3 +25,10 @@ region_rect = Rect2(173, 41, 19, 20)
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -2)
 polygon = PackedVector2Array(1, 11, -1, 11, -7, 10, -1, 9, 1, 9, 7, 10)
+
+[node name="OrbCollider" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OrbCollider"]
+polygon = PackedVector2Array(-7, 8, -6, 3, -5, -2, -1, -5, 1, -5, 5, -2, 6, 3, 7, 8, 5, 8, 5, 5, 3, 5, 2, 6, -2, 6, -3, 5, -5, 5, -5, 8)

@@ -1,15 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://0l20601do1yj"]
+[gd_scene load_steps=7 format=3 uid="uid://0l20601do1yj"]
 
 [ext_resource type="Script" uid="uid://c05tnnbpmvwst" path="res://src/scripts/orb.gd" id="1_rpcis"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_hkb44"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_iot4f"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iot4f"]
-radius = 3.0
-height = 12.0
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iot4f"]
+bounce = 0.7
 
-[node name="Orb" type="CharacterBody2D"]
-collision_mask = 13
+[sub_resource type="CircleShape2D" id="CircleShape2D_bw8ea"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iot4f"]
+radius = 6.08276
+
+[node name="Orb" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 33
+physics_material_override = SubResource("PhysicsMaterial_iot4f")
+gravity_scale = 0.0
 script = ExtResource("1_rpcis")
 _level_types = ExtResource("2_iot4f")
 
@@ -22,6 +30,17 @@ region_enabled = true
 region_rect = Rect2(208, 45, 12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(0, 7)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_iot4f")
+shape = SubResource("CircleShape2D_bw8ea")
+
+[node name="PlayerCollider" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
+position = Vector2(0, 7)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_iot4f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
