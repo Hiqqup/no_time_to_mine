@@ -71,7 +71,8 @@ func _spawn_drop(item_drops: Dictionary[ItemTypes.types, int]):
 	var drop: ItemDropBase= _drop_base_scene.instantiate();
 	drop.item_drops = item_drops;
 	drop.get_node("GridVectorToPositionConverter").set_grid_vector($GridVectorToPositionConverter.grid_vector)
-	mines.get_node("YSorted/Drops").add_child(drop)
+	var drops = mines.get_node("YSorted/Drops")
+	drops.add_child(drop)
 	_drop = drop;
 	drop.visible = false;
 

@@ -263,7 +263,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("lifetime_bar")]
-collision_layer = 36
+collision_layer = 4
 collision_mask = 17
 script = ExtResource("1_v4rts")
 _upgrade_stats = ExtResource("2_0weng")

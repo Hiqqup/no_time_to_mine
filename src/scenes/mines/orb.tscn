@@ -3,23 +3,21 @@
 [ext_resource type="Script" uid="uid://c05tnnbpmvwst" path="res://src/scripts/orb.gd" id="1_rpcis"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_hkb44"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_iot4f"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="3_bw8ea"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iot4f"]
 bounce = 0.7
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bw8ea"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_iot4f"]
-radius = 6.08276
+radius = 5.09902
 
 [node name="Orb" type="RigidBody2D"]
 collision_layer = 0
-collision_mask = 33
 physics_material_override = SubResource("PhysicsMaterial_iot4f")
 gravity_scale = 0.0
 script = ExtResource("1_rpcis")
 _level_types = ExtResource("2_iot4f")
+_upgrade_stats = ExtResource("3_bw8ea")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -33,14 +31,5 @@ region_rect = Rect2(208, 45, 12, 12)
 position = Vector2(0, 7)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_bw8ea")
-
-[node name="PlayerCollider" type="StaticBody2D" parent="."]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollider"]
-position = Vector2(0, 7)
-rotation = 1.5708
-shape = SubResource("CircleShape2D_iot4f")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
