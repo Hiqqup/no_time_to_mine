@@ -39,7 +39,6 @@ func _physics_process(delta: float) -> void:
 	
 	_handle_walking_rotation(dir != Vector2.ZERO, delta)
 	
-	_apply_bounce()
 	_handle_dir(dir)
 	_mine_cooldown -= delta;
 	_try_mine();
@@ -103,10 +102,11 @@ func _apply_bounce():
 
 func _handle_dir(dir:Vector2):
 	velocity = dir* speed;
+	_apply_bounce();
 	move_and_slide() 
 	for i in get_slide_collision_count():
 		var collider:Node2D = get_slide_collision(i).get_collider()
-		if collider is StaticBody2D:
+		if collider.get_parent().get_parent() is HarvestableBase:
 			bounce = collider.global_position.direction_to(global_position) * GlobalConstants.BOUNCE_IMPULSE;
 
 func _handle_walking_rotation(walking: bool, delta: float):

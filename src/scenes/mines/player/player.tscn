@@ -301,7 +301,6 @@ texture_under = ExtResource("2_mb1oq")
 texture_progress = ExtResource("3_0weng")
 
 [node name="Targeting" type="RayCast2D" parent="."]
-position = Vector2(0, 3)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
@@ -317,14 +316,14 @@ default_color = Color(0, 0, 0, 0.372549)
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Eyes" type="Sprite2D" parent="Visuals"]
-position = Vector2(-0.5, -7)
+position = Vector2(-0.5, -10)
 texture = ExtResource("8_8pe6j")
 region_enabled = true
 region_rect = Rect2(142, 39, 11, 6)
 
 [node name="WalkingParticles" type="CPUParticles2D" parent="Visuals"]
 modulate = Color(0.164706, 0.145098, 0.0901961, 1)
-position = Vector2(0, 12)
+position = Vector2(0, 9)
 emitting = false
 lifetime = 0.4
 lifetime_randomness = 0.53
@@ -337,11 +336,13 @@ scale_amount_min = 2.0
 scale_amount_max = 4.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_gv1p7")
 autoplay = "default"
 
 [node name="Particles" type="Node2D" parent="Visuals"]
 modulate = Color(0.964706, 0.803922, 0.14902, 1)
+position = Vector2(0, -3)
 
 [node name="SpiritParticles" type="CPUParticles2D" parent="Visuals/Particles"]
 position = Vector2(0, -11)
@@ -388,6 +389,7 @@ angular_velocity_max = 80.0
 scale_amount_max = 2.0
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -3)
 polygon = PackedVector2Array(0, 17, -1, 17, -9, 10, -1, 4, 0, 4, 8, 10)
 
 [node name="Storage" parent="." instance=ExtResource("3_rek1o")]

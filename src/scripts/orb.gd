@@ -11,7 +11,7 @@ func _ready() -> void:
 	contact_monitor = true;
 	max_contacts_reported = 5;
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if linear_velocity.length() > max_velocity:
 		linear_velocity = max_velocity* linear_velocity.normalized();
 	pass;
