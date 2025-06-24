@@ -12,6 +12,8 @@ signal died;
 @onready var _particles: Node2D = $Visuals/Particles
 @onready var _visuals: Node2D = $Visuals
 
+var mobile_targeting: HarvestableBase = null;
+var mobile_targeting_position: Vector2 = Vector2.ZERO;
 
 var currently_mining: HarvestableBase = null;
 
@@ -79,6 +81,14 @@ func _die():
 func _handle_movement_input():
 	var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");
 	
+	if GlobalConstants.MOBILE() and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		
+		direction = global_position.direction_to(get_global_mouse_position());
+		if mobile_targeting and mobile_targeting.player_in_range:
+			currently_mining = mobile_targeting;
+			direction = Vector2.ZERO;
+			pass
+	
 	if direction == Vector2.ZERO:
 		_walking_particles.emitting = false;
 		$Visuals/Sprite.animation = "standing";
@@ -137,6 +147,10 @@ func _on_button_pressed() -> void:
 func _handle_targeting():
 	var targeting = $Targeting
 	var mouse_position = get_local_mouse_position() 
+	
+	if GlobalConstants.MOBILE():
+		targeting.visible=false;
+		return;
 	
 	var angle = (mouse_position - targeting.position).angle()
 	targeting.rotation = angle - PI/ 2;

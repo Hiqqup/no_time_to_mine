@@ -10,7 +10,7 @@ var drop_table: Dictionary[ItemTypes.types, float];
 @export var _drop_base_scene: PackedScene;
 @onready var _hit_particles: CPUParticles2D = $Visuals/HitParticlesContainer/HitParticles
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
-
+@onready var _player: Player =  get_tree().get_first_node_in_group("current_mines").player;
 
 var sprite: Texture:
 	set(value):
@@ -21,6 +21,8 @@ var player_in_range: bool = false;
 var minions_in_range: Dictionary[Minion, bool];
 var mines;
 var _drop:ItemDropBase;
+
+var mobile_hovering: bool = false;
 
 func after_destroyed_animation():
 	queue_free();	
@@ -78,9 +80,9 @@ func _spawn_drop(item_drops: Dictionary[ItemTypes.types, int]):
 
 
 func _handle_clicked_on():
-	var player: Player =  get_tree().get_first_node_in_group("current_mines").player;
+	
 	if player_in_range :
-		player.currently_mining = self;
+		_player.currently_mining = self; 
 
 
 func _ready() -> void:
@@ -130,3 +132,15 @@ func _on_minion_range_body_exited(body: Node2D) -> void:
 func _on_minion_range_body_entered(body: Node2D) -> void:
 	if body is Minion:
 		minions_in_range[body as Minion] = true;
+
+
+func _on_click_detection_mouse_entered() -> void:
+	if GlobalConstants.MOBILE():
+		mobile_hovering = true;
+		_player.mobile_targeting = self;
+
+
+func _on_click_detection_mouse_exited() -> void:
+	if GlobalConstants.MOBILE():
+		mobile_hovering = false;
+		_player.mobile_targeting = null;

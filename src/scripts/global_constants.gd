@@ -13,5 +13,11 @@ const ORB_BOUNCE_IMPULSE:= 200;
 func COMPILED()->bool:
 	return not OS.has_feature("editor");
 
+func MOBILE()->bool:
+	return (OS.has_feature("mobile") or
+		OS.has_feature("web_ios") or
+		OS.has_feature("web_android"))
+	;
+
 
 const USER_PATH := "user://savegame.tres";
