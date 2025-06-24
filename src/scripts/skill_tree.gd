@@ -54,8 +54,8 @@ func _ready() -> void:
 	u.apply_upgrade = (func():upgrade_stats.minion_amount += 1);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
-		ItemTypes.types.GREEN_CAP_STONE: 5, 
-		ItemTypes.types.SILVER_ORE: 3 + 2* level,
+		ItemTypes.types.GOLD_ORE: 2, 
+		ItemTypes.types.SILVER_ORE: 1 + 2* level,
 		});
 	u.level_unlocked = LevelTypes.types.SECOND;
 	minion_amount_1.upgrade_properties = u;
@@ -67,8 +67,8 @@ func _ready() -> void:
 	u.apply_upgrade = (func():upgrade_stats.orb_amount += 1);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
-		ItemTypes.types.PURPLE_CAP_STONE: 5, 
-		ItemTypes.types.PRISMARINE_ORE: 3 + 2* level,
+		ItemTypes.types.PURPLE_CAP_STONE: 1, 
+		ItemTypes.types.PRISMARINE_ORE: 1 + 2* level,
 		});
 	u.level_unlocked = LevelTypes.types.THIRD;
 	orb_amount_1.upgrade_properties = u;

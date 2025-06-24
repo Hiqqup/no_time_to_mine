@@ -9,6 +9,7 @@ var _retry_guide: Control;
 var _purchase_guide: Control;
 var _player_reset_button: Button;
 var _forge_level_selector: Control;
+var _mobile_guide: Node2D;
 
 var _mines: Node2D;
 var _forge: Forge;
@@ -22,6 +23,7 @@ var _tutorial_section: TutorialSection = TutorialSection.MINES;
 
 
 enum TutorialSection{
+	MINES_MOBILE,
 	MINES,
 	FORGE,
 	NONE
@@ -35,6 +37,7 @@ func _ready() -> void:
 	
 	_movement_guide = $PlayerMovementGuide
 	_mining_guide = $MiningGuide
+	_mobile_guide = $MobileGuide
 	_player= _mines.get_node("YSorted/Player")
 
 
@@ -61,6 +64,7 @@ func _ready() -> void:
 	_purchase_guide.visible = false;
 	_retry_guide.visible = false;
 	_forge.visible = false;
+	_mobile_guide.visible = false;
 	
 	
 	_forge_level_selector._latest_button_animation_wrapper._wrapper.visible = false;
@@ -70,6 +74,7 @@ func _ready() -> void:
 	
 	_movement_guide.reparent(_player);
 	_mining_guide.reparent(_player);
+	_mobile_guide.reparent(_player);
 	_purchase_guide.reparent(_forge._skill_tree_root);
 	
 	_forge.selected_level = LevelTypes.types.TUTORIAL;
@@ -89,8 +94,15 @@ func _ready() -> void:
 	
 	TimeoutCallback.timeout_callback(1.0,(func():
 		if not _player_moved_once:
-			_fade_in(_movement_guide)
+			if not GlobalConstants.MOBILE():
+				_fade_in(_movement_guide)
+			else:
+				_fade_in(_mobile_guide)
+				print(_mobile_guide)
 		));
+	
+	if GlobalConstants.MOBILE():
+		_tutorial_section = TutorialSection.MINES_MOBILE;
 
 
 
@@ -146,6 +158,11 @@ func _setup_forge_guide():
 
 func  _process(_delta: float) -> void:
 	#print(_player_mined_once)
+	if _tutorial_section == TutorialSection.MINES_MOBILE:
+		if _check_player_storage_empty():
+			_set_to_normal_mine();
+			_fade_out(_mobile_guide);
+	
 	if _tutorial_section == TutorialSection.MINES:
 		var direction: Vector2 = Input.get_vector("player_move_left","player_move_right","player_move_up","player_move_down");
 		if not _player_moved_once and direction != Vector2.ZERO:
