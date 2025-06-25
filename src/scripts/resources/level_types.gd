@@ -18,6 +18,22 @@ enum types{
 static func is_higher( higher, than):
 	return higher > than ;
 
+
+func increase_size(level_type: LevelTypes.types):
+	var level: Level = map[level_type];
+	level.platform_radius += 1;
+	var givable = level.platform_radius * 4;
+	var sum = 0;
+	for key in level.harvestables.keys():
+		sum += level.harvestables[key];
+	for key in level.harvestables.keys():
+		level.harvestables[key] += int (float(level.harvestables[key])/ float(sum)
+		 * givable  * 0.5)
+	
+	map[level_type] = level;
+	
+
+
 func setup():
 	for key in tileset_map.keys():
 		var atlas := AtlasTexture.new();

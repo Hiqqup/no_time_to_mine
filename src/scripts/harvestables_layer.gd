@@ -51,6 +51,8 @@ func _remove_from_harvestables_check_empty(base: HarvestableBase):
 		emptyed.emit();
 
 
+
+
 func _convert_used_cells():
 	var used = get_used_cells();
 	for spot in used:

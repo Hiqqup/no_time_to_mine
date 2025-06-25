@@ -6,6 +6,7 @@ signal upgrade_purchased
 @export var _mine_scene: PackedScene
 @export var _vcontainer: VBoxContainer;
 @export var _save_state: SaveState;
+@export var _level_types: LevelTypes;
 
 var _skill_tree_root:UpgradeButtonBase;
 
@@ -19,6 +20,8 @@ func _enter_tree() -> void:
 	_load_save_state();
 
 func _ready() -> void:
+	_resize_levels();
+
 	visibility_changed.connect(func(): 
 		$CameraIndependent.visible = visible
 		$BackgourndLayer.visible = visible;
@@ -30,6 +33,10 @@ func _ready() -> void:
 	update_and_generate_storage_display()
 
 
+func _resize_levels():
+	for key in _save_state.times_level_completed.keys():
+			for i in _save_state.times_level_completed[key]:
+				_level_types.increase_size(key);
 
 func update_all_upgrades():
 	var buttons = get_tree().get_nodes_in_group("upgrade_button");
@@ -82,6 +89,10 @@ func _load_save_state():
 			_save_state.upgrades_purchased = upgrades_purchased;
 	else:
 		upgrades_purchased = _save_state.upgrades_purchased;
+	
+	if (_save_state.times_level_completed == {}):
+		for key in LevelTypes.types.size():
+			_save_state.times_level_completed[key] = 0;
 
 
 func _try_level(level: LevelTypes.types):
