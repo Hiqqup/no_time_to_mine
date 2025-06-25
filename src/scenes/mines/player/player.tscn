@@ -311,7 +311,7 @@ position = Vector2(0, -0.0192307)
 scale = Vector2(1, 0.980769)
 points = PackedVector2Array(0, 0, 0, 50)
 width = 1.0
-default_color = Color(0, 0, 0, 0.372549)
+default_color = Color(0, 0, 0, 0.4)
 
 [node name="Visuals" type="Node2D" parent="."]
 

@@ -145,20 +145,33 @@ func _on_button_pressed() -> void:
 	#temporary end
 
 func _handle_targeting():
-	var targeting = $Targeting
+	var targeting:RayCast2D = $Targeting
 	var mouse_position = get_local_mouse_position() 
 	
 	if GlobalConstants.MOBILE():
 		targeting.visible=false;
 		return;
 	
+	var collider_parent: HarvestableBase;
+	if (targeting.is_colliding() 
+		and targeting.get_collider()):
+		collider_parent = (targeting.get_collider().get_parent().get_parent() as HarvestableBase);
+	var targeting_line: Line2D = $Targeting/Line2D;
+	
+	if collider_parent and collider_parent.player_in_range:
+		targeting_line.default_color = Color(Color.WHITE, 0.4);
+	else:
+		targeting_line.default_color = Color(Color.BLACK, 0.4);
+	if collider_parent:
+		# scale by projection on targeting line
+		var pl_to_hv:Vector2 = collider_parent.global_position-targeting.global_position
+		var phi = pl_to_hv.angle() - (targeting.rotation + PI/2);
+		targeting_line.points[1].y = cos(phi)* pl_to_hv.length();
+	else:
+		targeting_line.points[1].y = 50;
+		
 	var angle = (mouse_position - targeting.position).angle()
 	targeting.rotation = angle - PI/ 2;
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) 
-		and targeting.is_colliding() 
-		and targeting.get_collider()):
-		var collider_parent = targeting.get_collider().get_parent().get_parent();
-		if (collider_parent is HarvestableBase 
-			and collider_parent.player_in_range):
-			currently_mining = collider_parent;
-			
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+		and collider_parent and collider_parent.player_in_range):
+		currently_mining = collider_parent;

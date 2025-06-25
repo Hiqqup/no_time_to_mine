@@ -33,6 +33,10 @@ func _ready() -> void:
 	update_and_generate_storage_display()
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("forge_try_again") and visible:
+		_try_level(selected_level);
+
 func _resize_levels():
 	for key in _save_state.times_level_completed.keys():
 			for i in _save_state.times_level_completed[key]:
