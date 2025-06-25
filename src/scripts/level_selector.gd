@@ -6,6 +6,7 @@ extends Control
 
 var _already_displaying: Dictionary[LevelTypes.types, bool];
 var _forge: Forge ; 
+var _buttons : Dictionary[LevelTypes.types, Button];
 
 func _ready() -> void:
 	_forge = get_tree().get_first_node_in_group("forge");
@@ -13,13 +14,14 @@ func _ready() -> void:
 		_already_displaying[key] = false;
 	update();
 
-func _generate_button(key: int):
+func _generate_button(key: LevelTypes.types):
 	var new_button: Button = original_button.duplicate();
 	new_button.pressed.connect(func(): _forge._try_level(key));
 	new_button.visible = true;
 	new_button.text = LevelTypes.types.keys()[key];
 	level_list.add_child(new_button);
 	_already_displaying[key] = true;
+	_buttons[key] = new_button; 
 	
 
 func update():

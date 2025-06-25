@@ -11,11 +11,16 @@ var drop_table: Dictionary[ItemTypes.types, float];
 @onready var _hit_particles: CPUParticles2D = $Visuals/HitParticlesContainer/HitParticles
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _player: Player =  get_tree().get_first_node_in_group("current_mines").player;
-
+@onready var selected_outline: Sprite2D = $Visuals/SelectedOutline
 var sprite: Texture:
 	set(value):
 		var sprite2D:Sprite2D = $Visuals/Sprite2D
 		sprite2D.texture = value;
+		$Visuals/SelectedOutline.texture = VisualUtility.add_transparent_border(value)
+		
+
+
+
 
 var player_in_range: bool = false;
 var minions_in_range: Dictionary[Minion, bool];
@@ -90,6 +95,7 @@ func _ready() -> void:
 	_hit_particles.emitting  = false;
 	_hit_particles.one_shot = true
 	
+	selected_outline.visible = false;
 	# setup a colison body with the same shape as click detection for player
 	# targeting ray to collide with
 	var player_targeting_colision_body := StaticBody2D.new();

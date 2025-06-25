@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=21 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://5dwpbnrebtj5" path="res://src/scenes/mines/harvestables/default_colision_shapes/click_detection_shape.tscn" id="3_os4bl"]
 [ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="4_wnspo"]
 [ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="7_p14td"]
+[ext_resource type="Shader" uid="uid://cl0pstfh205kf" path="res://src/shader/pixel_art_outline.gdshader" id="7_vgomb"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="8_h3tv2"]
 [ext_resource type="AudioStream" uid="uid://dwf6e8th7gs17" path="res://assets/sound/harvestable_hit.ogg" id="10_j1g1d"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="11_h3tv2"]
@@ -16,14 +17,20 @@
 offsets = PackedFloat32Array(0.729231)
 colors = PackedColorArray(0.051971, 0.051971, 0.051971, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3tv2"]
+shader = ExtResource("7_vgomb")
+shader_parameter/outline_color = Color(0.670689, 0.67069, 0.670689, 1)
+shader_parameter/show = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgomb"]
+atlas = ExtResource("8_h3tv2")
+region = Rect2(132, 11, 31, 20)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j1g1d"]
 resource_local_to_scene = true
 shader = ExtResource("7_p14td")
 shader_parameter/flash = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgomb"]
-atlas = ExtResource("8_h3tv2")
-region = Rect2(132, 11, 32, 20)
+shader_parameter/show = false
 
 [sub_resource type="Animation" id="Animation_p14td"]
 length = 0.001
@@ -275,6 +282,12 @@ initial_velocity_max = 112.0
 scale_amount_min = 4.0
 scale_amount_max = 6.0
 color_ramp = SubResource("Gradient_c6o4m")
+
+[node name="SelectedOutline" type="Sprite2D" parent="Visuals"]
+material = SubResource("ShaderMaterial_h3tv2")
+position = Vector2(0, 5)
+texture = SubResource("AtlasTexture_vgomb")
+region_rect = Rect2(0, -2, 31, 25)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_j1g1d")

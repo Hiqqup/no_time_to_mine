@@ -15,6 +15,8 @@ signal died;
 var mobile_targeting: HarvestableBase = null;
 var mobile_targeting_position: Vector2 = Vector2.ZERO;
 
+var previously_targeting: HarvestableBase = null;
+
 var currently_mining: HarvestableBase = null;
 
 var followed_by: Minion = null;
@@ -159,14 +161,19 @@ func _handle_targeting():
 	var targeting_line: Line2D = $Targeting/Line2D;
 	
 	if collider_parent and collider_parent.player_in_range:
-		targeting_line.default_color = Color(Color.WHITE, 0.4);
+		targeting_line.default_color = Color("#ababab");
 	else:
-		targeting_line.default_color = Color(Color.BLACK, 0.4);
+		targeting_line.default_color = Color("#393939");
+	if previously_targeting:
+		previously_targeting.selected_outline.visible = false;
+		previously_targeting = null
 	if collider_parent:
 		# scale by projection on targeting line
-		var pl_to_hv:Vector2 = collider_parent.global_position-targeting.global_position
-		var phi = pl_to_hv.angle() - (targeting.rotation + PI/2);
-		targeting_line.points[1].y = cos(phi)* pl_to_hv.length();
+		var ray_cast_vector:Vector2 =targeting.get_collision_point() - targeting.global_position #collider_parent.global_position-targeting.global_position
+		var phi = ray_cast_vector.angle() - (targeting.rotation + PI/2);
+		targeting_line.points[1].y = cos(phi)* ray_cast_vector.length() + 4.0;
+		collider_parent.selected_outline.visible = true;
+		previously_targeting = collider_parent;
 	else:
 		targeting_line.points[1].y = 50;
 		

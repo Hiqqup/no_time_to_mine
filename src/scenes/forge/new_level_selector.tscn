@@ -48,7 +48,6 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="OriginalButton" type="TextureButton" parent="."]
-visible = false
 layout_mode = 2
 offset_left = -15.0
 offset_top = -56.0
