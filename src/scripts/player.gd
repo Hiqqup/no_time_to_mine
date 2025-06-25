@@ -12,7 +12,13 @@ signal died;
 @onready var _particles: Node2D = $Visuals/Particles
 @onready var _visuals: Node2D = $Visuals
 
-var mobile_targeting: HarvestableBase = null;
+var mobile_targeting: HarvestableBase = null:
+	set(value):
+		if mobile_targeting: 
+			mobile_targeting.selected_outline.visible = false;
+		if value:
+			value.selected_outline.visible = true;
+		mobile_targeting = value;
 var mobile_targeting_position: Vector2 = Vector2.ZERO;
 
 var previously_targeting: HarvestableBase = null;

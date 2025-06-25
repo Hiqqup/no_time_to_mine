@@ -41,6 +41,7 @@ func get_destroyed():
 	$CollisionShapes.queue_free();
 	_hit_particles.queue_free();
 	_animation_player.play("destroyed");
+	selected_outline.visible = false;
 
 func sprite_gone():
 	if is_instance_valid(_drop):
