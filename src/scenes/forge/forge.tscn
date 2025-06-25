@@ -1,16 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://js0scijtcqyj"]
+[gd_scene load_steps=14 format=3 uid="uid://js0scijtcqyj"]
 
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="1_3h2d7"]
 [ext_resource type="Script" uid="uid://kiphvgxfe0pn" path="res://src/scripts/forge.gd" id="1_oc1b2"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_gjnd3"]
 [ext_resource type="PackedScene" uid="uid://bktks85fbuoip" path="res://src/scenes/forge/skill_tree.tscn" id="2_oc1b2"]
-[ext_resource type="Resource" uid="uid://bxx0j4feawguk" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
+[ext_resource type="Resource" uid="uid://dw4lm2fg8krm3" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="4_3sx3x"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="5_wqv3k"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="5_ytak3"]
 [ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="6_kv1sc"]
 [ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="7_1ngb5"]
 [ext_resource type="PackedScene" uid="uid://brqh8uacwf61b" path="res://src/scenes/forge/new_level_selector.tscn" id="10_1ngb5"]
+[ext_resource type="PackedScene" uid="uid://dwilr1ar6551w" path="res://src/scenes/composables/item_list_tooltip.tscn" id="12_88w0x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqv3k"]
 resource_local_to_scene = true
@@ -104,6 +105,8 @@ theme = ExtResource("1_3h2d7")
 [node name="Storage" parent="." instance=ExtResource("4_3sx3x")]
 
 [node name="GuiItemListDisplayer" parent="." instance=ExtResource("5_ytak3")]
+
+[node name="ItemListTooltip" parent="GuiItemListDisplayer" instance=ExtResource("12_88w0x")]
 
 [node name="TmpDebug" type="Label" parent="."]
 layout_mode = 1

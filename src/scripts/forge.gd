@@ -33,7 +33,7 @@ func _ready() -> void:
 	update_and_generate_storage_display()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("forge_try_again") and visible:
 		_try_level(selected_level);
 
