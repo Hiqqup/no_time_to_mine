@@ -20,7 +20,7 @@ var sprite: Texture:
 		
 
 
-
+var _destroyed: bool = false;
 
 var player_in_range: bool = false;
 var minions_in_range: Dictionary[Minion, bool];
@@ -33,6 +33,7 @@ func after_destroyed_animation():
 	queue_free();	
 
 func get_destroyed():
+	_destroyed = true;
 	((get_tree().get_first_node_in_group("shockwave") as ShockwaveEffect)
 		.at(Camera.convert_position(global_position)));
 	_spawn_drop(_drop_table_float_to_int(drop_table));
@@ -41,7 +42,7 @@ func get_destroyed():
 	$CollisionShapes.queue_free();
 	_hit_particles.queue_free();
 	_animation_player.play("destroyed");
-	selected_outline.visible = false;
+	selected_outline.visible = false;;
 
 func sprite_gone():
 	if is_instance_valid(_drop):
@@ -104,6 +105,10 @@ func _ready() -> void:
 	player_targeting_colision_body.add_child($CollisionShapes/ClickDetection/ClickDetectionShape.duplicate());
 	$CollisionShapes.add_child(player_targeting_colision_body)
 
+	selected_outline.visibility_changed.connect(func():
+		if _destroyed:
+			selected_outline.visible = false;
+		)
 
 
 

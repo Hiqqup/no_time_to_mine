@@ -37,4 +37,3 @@ offset_bottom = 2.0
 environment = SubResource("Environment_276xm")
 
 [node name="ShockwaveEffect" parent="." instance=ExtResource("6_lcg6w")]
-visible = false

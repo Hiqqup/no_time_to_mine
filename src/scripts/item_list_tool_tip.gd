@@ -23,31 +23,31 @@ func _update():
 			continue;
 		var hcontainer: HBoxContainer = _item_list._generated_hbox[key];
 		hcontainer.alignment = BoxContainer.ALIGNMENT_BEGIN;
-		var tr:TextureRect = _item_list._generated_sprites[key];
-		tr.texture = VisualUtility.add_transparent_border(tr.texture);
+		var trect:TextureRect = _item_list._generated_sprites[key];
+		trect.texture = VisualUtility.add_transparent_border(trect.texture);
 		
 		
 		var tooltip: PanelContainer = _tooltip_base.duplicate();
 		var tooltip_label :  Label = Label.new();
 		tooltip.add_child(tooltip_label);
 		tooltip_label.text = ItemTypes.types.keys()[key];
-		tr.add_child(tooltip);
+		trect.add_child(tooltip);
 		
 		call_deferred("_update_tooltip", tooltip);
 		
 		_generated_tooltips[key] = tooltip;
 		
 		var shader_material: ShaderMaterial = ShaderMaterial.new();
-		tr.material = shader_material;
+		trect.material = shader_material;
 		shader_material.shader = _outline_shader
 		shader_material.set_shader_parameter("outline_color",Color.WHITE);
 		shader_material.set_shader_parameter("show",false);
 		
-		tr.mouse_entered.connect(func(): 
+		trect.mouse_entered.connect(func(): 
 			shader_material.set_shader_parameter("show",true)
 			tooltip.visible = true;
 			);
-		tr.mouse_exited.connect(func(): 
+		trect.mouse_exited.connect(func(): 
 			shader_material.set_shader_parameter("show",false)
 			tooltip.visible = false;
 			);
@@ -60,4 +60,4 @@ func _update_tooltip(tooltip: PanelContainer):
 	tooltip.position.x = _item_list._vcontainer.size.x + 10;
 	tooltip.pivot_offset.y = tooltip.size.y/2;
 	tooltip.scale = Vector2.ONE * 0.5;
-	print("updated")
+	#print("updated")

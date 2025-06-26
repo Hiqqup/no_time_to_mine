@@ -98,7 +98,7 @@ func _ready() -> void:
 				_fade_in(_movement_guide)
 			else:
 				_fade_in(_mobile_guide)
-				print(_mobile_guide)
+				#print(_mobile_guide)
 		));
 	
 	if GlobalConstants.MOBILE():
