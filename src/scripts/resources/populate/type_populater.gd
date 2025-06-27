@@ -37,10 +37,10 @@ func _ready() -> void:
 		# Items
 	items.map[ItemTypes.types.RED_CAP_STONE] = _tileset_get_region(first_level_tileset,item_stone_region);
 	items.map[ItemTypes.types.GOLD_ORE] = _tileset_get_region(first_level_tileset,item_ore_region);
-	items.map[ItemTypes.types.GREEN_CAP_STONE] = _tileset_get_region(second_level_tileset,item_stone_region);
-	items.map[ItemTypes.types.SILVER_ORE] = _tileset_get_region(second_level_tileset,item_ore_region);
-	items.map[ItemTypes.types.PURPLE_CAP_STONE] = _tileset_get_region(third_level_tileset,item_stone_region);
-	items.map[ItemTypes.types.PRISMARINE_ORE] = _tileset_get_region(third_level_tileset,item_ore_region);
+	items.map[ItemTypes.types.YELLOW_CAP_STONE] = _tileset_get_region(second_level_tileset,item_stone_region);
+	items.map[ItemTypes.types.PLATINUM_ORE] = _tileset_get_region(second_level_tileset,item_ore_region);
+	items.map[ItemTypes.types.GREEN_CAP_STONE] = _tileset_get_region(third_level_tileset,item_stone_region);
+	items.map[ItemTypes.types.SULPHUR_ORE] = _tileset_get_region(third_level_tileset,item_ore_region);
 	
 	# Harvestables
 	_setup_harvestable(
@@ -52,34 +52,34 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.GOLD_ORE,  
 		_tileset_get_region(first_level_tileset,harvestable_ore_region),
-		100.0,
+		50.0,
 		ItemTypes.types.GOLD_ORE,
 		);
 	
 	_setup_harvestable(
-		HarvestableTypes.types.GREEN_CAP_STONE,  
+		HarvestableTypes.types.YELLOW_CAP_STONE,  
 		_tileset_get_region(second_level_tileset,harvestable_stone_region),
 		50.0,
-		ItemTypes.types.GREEN_CAP_STONE,
+		ItemTypes.types.YELLOW_CAP_STONE,
 		);
 	_setup_harvestable(
-		HarvestableTypes.types.SILVER_ORE,  
+		HarvestableTypes.types.PLATINUM_ORE,  
 		_tileset_get_region(second_level_tileset,harvestable_ore_region),
 		200.0,
-		ItemTypes.types.SILVER_ORE,
+		ItemTypes.types.PLATINUM_ORE,
 		);
 	
 	_setup_harvestable(
-		HarvestableTypes.types.PURPLE_CAP_STONE,  
+		HarvestableTypes.types.GREEN_CAP_STONE,  
 		_tileset_get_region(third_level_tileset,harvestable_stone_region),
 		250.0,
-		ItemTypes.types.PURPLE_CAP_STONE,
+		ItemTypes.types.GREEN_CAP_STONE,
 		);
 	_setup_harvestable(
-		HarvestableTypes.types.PRISMARINE_ORE,  
+		HarvestableTypes.types.SULPHUR_ORE,  
 		_tileset_get_region(third_level_tileset,harvestable_ore_region),
 		400.0,
-		ItemTypes.types.PRISMARINE_ORE,
+		ItemTypes.types.SULPHUR_ORE,
 		);
 	
 	
@@ -116,8 +116,8 @@ func _ready() -> void:
 	l = Level.new()
 	l.platform_radius = 5
 	l. harvestables = {
-		HarvestableTypes.types.GREEN_CAP_STONE: 4,
-		HarvestableTypes.types.SILVER_ORE: 1,
+		HarvestableTypes.types.YELLOW_CAP_STONE: 4,
+		HarvestableTypes.types.PLATINUM_ORE: 1,
 	}
 	levels.map[LevelTypes.types.SECOND] = l;
 	
@@ -126,7 +126,7 @@ func _ready() -> void:
 	l = Level.new()
 	l.platform_radius = 5
 	l. harvestables = {
-		HarvestableTypes.types.PURPLE_CAP_STONE: 4,
-		HarvestableTypes.types.PRISMARINE_ORE: 1,
+		HarvestableTypes.types.GREEN_CAP_STONE: 4,
+		HarvestableTypes.types.SULPHUR_ORE: 1,
 	}
 	levels.map[LevelTypes.types.THIRD] = l;

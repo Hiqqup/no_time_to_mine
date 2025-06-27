@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqc2ga3xmpk0n"
-path="res://.godot/imported/tileset_silver.png-3a83d93ab40be1e01a45e53271ec894d.ctex"
+uid="uid://d2o24skxu770l"
+path="res://.godot/imported/tileset_malachite.png-ea9a99a051eaf070fe6f644d028ee0a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/procreate/recolored/tileset_silver.png"
-dest_files=["res://.godot/imported/tileset_silver.png-3a83d93ab40be1e01a45e53271ec894d.ctex"]
+source_file="res://assets/visuals/procreate/recolored/tileset_malachite.png"
+dest_files=["res://.godot/imported/tileset_malachite.png-ea9a99a051eaf070fe6f644d028ee0a5.ctex"]
 
 [params]
 

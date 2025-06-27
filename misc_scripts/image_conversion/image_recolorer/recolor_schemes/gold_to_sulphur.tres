@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RecolorMap" load_steps=2 format=3 uid="uid://cd8obry23xt13"]
+
+[ext_resource type="Script" uid="uid://ssfmjwdj1dvu" path="res://misc_scripts/image_conversion/image_recolorer/recolor_map.gd" id="1_y306n"]
+
+[resource]
+script = ExtResource("1_y306n")
+color_replacments = Array[Color]([Color(0.447059, 0.34902, 0.337255, 1), Color(0.329412, 0.415686, 0.301961, 1), Color(0.301961, 0.207843, 0.196078, 1), Color(0.188235, 0.27451, 0.164706, 1), Color(0.164706, 0.0980392, 0.0901961, 1), Color(0.0823529, 0.145098, 0.0666667, 1), Color(0.964706, 0.803922, 0.14902, 1), Color(0.952941, 0.917647, 0.521569, 1), Color(0.733333, 0.498039, 0.341176, 1), Color(0.901961, 0.752941, 0.352941, 1), Color(0.67451, 0.419608, 0.14902, 1), Color(0.6, 0.537255, 0.235294, 1), Color(0.337255, 0.196078, 0.14902, 1), Color(0.364706, 0.290196, 0.0901961, 1), Color(0.2, 0.109804, 0.0901961, 1), Color(0.188235, 0.133333, 0.0196078, 1), Color(0.164706, 0.0980392, 0.0901961, 1), Color(0.0823529, 0.145098, 0.0666667, 1), Color(0.133333, 0.0745098, 0.0666667, 1), Color(0.0627451, 0.113725, 0.0470588, 1)])
+metadata/_custom_type_script = "uid://ssfmjwdj1dvu"

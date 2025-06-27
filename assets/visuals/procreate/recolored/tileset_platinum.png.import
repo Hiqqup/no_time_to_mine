@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2o24skxu770l"
-path="res://.godot/imported/tileset_prismarine.png-07fc4466beee5465293e9e1825c626cc.ctex"
+uid="uid://dqc2ga3xmpk0n"
+path="res://.godot/imported/tileset_platinum.png-2fb70e6b771ed1d97352c46bb3bb32b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/procreate/recolored/tileset_prismarine.png"
-dest_files=["res://.godot/imported/tileset_prismarine.png-07fc4466beee5465293e9e1825c626cc.ctex"]
+source_file="res://assets/visuals/procreate/recolored/tileset_platinum.png"
+dest_files=["res://.godot/imported/tileset_platinum.png-2fb70e6b771ed1d97352c46bb3bb32b2.ctex"]
 
 [params]
 

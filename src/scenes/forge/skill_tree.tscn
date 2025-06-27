@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bktks85fbuoip"]
+[gd_scene load_steps=14 format=3 uid="uid://bktks85fbuoip"]
 
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
 [ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrade_button_base.tscn" id="3_vcrgi"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="4_ru2ph"]
-[ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_silver.png" id="6_0exhr"]
-[ext_resource type="Texture2D" uid="uid://d2o24skxu770l" path="res://assets/visuals/procreate/recolored/tileset_prismarine.png" id="6_chr1d"]
+[ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_platinum.png" id="6_0exhr"]
+[ext_resource type="Texture2D" uid="uid://xl5i2g5ngohm" path="res://assets/visuals/procreate/recolored/tileset_sulphur.png" id="6_chr1d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ru2ph"]
 atlas = ExtResource("4_ru2ph")
@@ -15,6 +15,10 @@ region = Rect2(33, 66, 32, 32)
 atlas = ExtResource("4_ru2ph")
 region = Rect2(0, 66, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_weg5u"]
+atlas = ExtResource("6_0exhr")
+region = Rect2(0, 66, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gmqy"]
 atlas = ExtResource("6_0exhr")
 region = Rect2(66, 66, 32, 32)
@@ -22,6 +26,10 @@ region = Rect2(66, 66, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtwfv"]
 atlas = ExtResource("6_chr1d")
 region = Rect2(99, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tphb"]
+atlas = ExtResource("6_0exhr")
+region = Rect2(33, 99, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
 atlas = ExtResource("6_0exhr")
@@ -51,25 +59,39 @@ offset_right = 152.0
 offset_bottom = 40.0
 sprite = SubResource("AtlasTexture_0exhr")
 
+[node name="MiningSpeed2" parent="Damage1/MiningSpeed1" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_weg5u")
+
 [node name="MinionAmount1" parent="Damage1" instance=ExtResource("3_vcrgi")]
-offset_left = -120.0
-offset_top = 4.0
-offset_right = -80.0
-offset_bottom = 44.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -88.0
+offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_5gmqy")
 
 [node name="OrbAmount1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
-offset_left = -108.0
-offset_top = 1.0
-offset_right = -68.0
-offset_bottom = 41.0
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_xtwfv")
 
+[node name="MinionDamage1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = -128.0
+offset_top = 0.0
+offset_right = -88.0
+offset_bottom = 40.0
+sprite = SubResource("AtlasTexture_0tphb")
+
 [node name="Damage2" parent="Damage1" instance=ExtResource("3_vcrgi")]
-offset_left = 2.0
-offset_top = -124.0
-offset_right = 42.0
-offset_bottom = -84.0
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_chr1d")
 
 [connection signal="mouse_entered" from="Damage1" to="Damage1" method="_on_mouse_entered"]

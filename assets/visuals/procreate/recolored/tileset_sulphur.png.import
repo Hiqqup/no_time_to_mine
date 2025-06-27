@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu71h4qthjuh1"
-path="res://.godot/imported/tileset_recolored.png-78f3b95ee3b810e275c871085ab1d295.ctex"
+uid="uid://xl5i2g5ngohm"
+path="res://.godot/imported/tileset_sulphur.png-eb22a38fddfc2126a2b983931aeb876a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/procreate/tileset_recolored.png"
-dest_files=["res://.godot/imported/tileset_recolored.png-78f3b95ee3b810e275c871085ab1d295.ctex"]
+source_file="res://assets/visuals/procreate/recolored/tileset_sulphur.png"
+dest_files=["res://.godot/imported/tileset_sulphur.png-eb22a38fddfc2126a2b983931aeb876a.ctex"]
 
 [params]
 

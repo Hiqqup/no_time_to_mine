@@ -4,9 +4,9 @@
 [ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_vrlxb"]
 [ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="4_tmat3"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_8ovfm"]
+[ext_resource type="Texture2D" uid="uid://xl5i2g5ngohm" path="res://assets/visuals/procreate/recolored/tileset_sulphur.png" id="7_skt7l"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="9_0hwek"]
-[ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_silver.png" id="10_nnbhc"]
-[ext_resource type="Texture2D" uid="uid://d2o24skxu770l" path="res://assets/visuals/procreate/recolored/tileset_prismarine.png" id="11_0hwek"]
+[ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_platinum.png" id="10_nnbhc"]
 
 [node name="TypePopulater" type="Node"]
 script = ExtResource("1_skt7l")
@@ -15,4 +15,4 @@ harvestables = ExtResource("4_tmat3")
 levels = ExtResource("7_8ovfm")
 first_level_tileset = ExtResource("9_0hwek")
 second_level_tileset = ExtResource("10_nnbhc")
-third_level_tileset = ExtResource("11_0hwek")
+third_level_tileset = ExtResource("7_skt7l")

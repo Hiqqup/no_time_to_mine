@@ -11,6 +11,7 @@ var _sprite: Sprite2D
 
 
 func _ready() -> void:
+	$placeholder.queue_free();
 	_viewport = $SubViewport;
 	$ViewportDiplay.texture = _viewport.get_texture();
 	_viewport.transparent_bg = true;
