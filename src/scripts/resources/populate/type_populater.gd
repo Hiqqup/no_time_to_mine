@@ -59,13 +59,13 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.YELLOW_CAP_STONE,  
 		_tileset_get_region(second_level_tileset,harvestable_stone_region),
-		50.0,
+		25.0,
 		ItemTypes.types.YELLOW_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.PLATINUM_ORE,  
 		_tileset_get_region(second_level_tileset,harvestable_ore_region),
-		200.0,
+		150.0,
 		ItemTypes.types.PLATINUM_ORE,
 		);
 	

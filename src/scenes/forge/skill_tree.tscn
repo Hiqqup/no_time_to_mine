@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bktks85fbuoip"]
+[gd_scene load_steps=19 format=3 uid="uid://bktks85fbuoip"]
 
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
@@ -19,21 +19,41 @@ region = Rect2(0, 66, 32, 32)
 atlas = ExtResource("6_0exhr")
 region = Rect2(0, 66, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6knj"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(0, 66, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gmqy"]
 atlas = ExtResource("6_0exhr")
 region = Rect2(66, 66, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtwfv"]
-atlas = ExtResource("6_chr1d")
-region = Rect2(99, 66, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0tphb"]
 atlas = ExtResource("6_0exhr")
 region = Rect2(33, 99, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fmd2"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(33, 99, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dta6w"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(66, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxx7t"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(66, 99, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
 atlas = ExtResource("6_0exhr")
 region = Rect2(33, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4alfs"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(33, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtwfv"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(99, 66, 32, 32)
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -66,19 +86,19 @@ offset_right = 40.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_weg5u")
 
+[node name="MiningSpeed3" parent="Damage1/MiningSpeed1/MiningSpeed2" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_s6knj")
+
 [node name="MinionAmount1" parent="Damage1" instance=ExtResource("3_vcrgi")]
 offset_left = -128.0
 offset_top = -128.0
 offset_right = -88.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_5gmqy")
-
-[node name="OrbAmount1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
-offset_left = 0.0
-offset_top = -128.0
-offset_right = 40.0
-offset_bottom = -88.0
-sprite = SubResource("AtlasTexture_xtwfv")
 
 [node name="MinionDamage1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
 offset_left = -128.0
@@ -87,12 +107,47 @@ offset_right = -88.0
 offset_bottom = 40.0
 sprite = SubResource("AtlasTexture_0tphb")
 
+[node name="MinionDamage2" parent="Damage1/MinionAmount1/MinionDamage1" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_2fmd2")
+
+[node name="MinionAmount2" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_dta6w")
+
+[node name="MinionSpeed1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = -256.0
+offset_top = -128.0
+offset_right = -216.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_uxx7t")
+
 [node name="Damage2" parent="Damage1" instance=ExtResource("3_vcrgi")]
 offset_left = 0.0
 offset_top = -128.0
 offset_right = 40.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_chr1d")
+
+[node name="Damage3" parent="Damage1/Damage2" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_4alfs")
+
+[node name="OrbAmount1" parent="Damage1/Damage2/Damage3" instance=ExtResource("3_vcrgi")]
+offset_left = 240.0
+offset_top = 0.0
+offset_right = 280.0
+offset_bottom = 40.0
+sprite = SubResource("AtlasTexture_xtwfv")
 
 [connection signal="mouse_entered" from="Damage1" to="Damage1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Damage1" to="Damage1" method="_on_mouse_exited"]
