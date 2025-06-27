@@ -42,7 +42,4 @@ Todos:
 Gruppe 05
 
 walkin sound effect
-liebe für stahl
-material tooltip
-balancing schrauben
-restart game on spacebar
+zoom for mobile

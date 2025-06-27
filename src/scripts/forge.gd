@@ -13,7 +13,7 @@ var _skill_tree_root:UpgradeButtonBase;
 var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
 var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
 @onready var _new_level_selector: Control = $CameraIndependent/NewLevelSelector
-
+var doing_tutorial: bool = false;
 
 
 func _enter_tree() -> void:
@@ -57,7 +57,7 @@ func increment_level():
 	if selected_level != _save_state.max_unlocked_level:
 		return;
 	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null 
-		and _save_state.max_unlocked_level != LevelTypes.types.TUTORIAL):
+		and not doing_tutorial):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
 		_new_level_selector.new_level_unlocked = true;
 

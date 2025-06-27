@@ -47,6 +47,7 @@ func _ready() -> void:
 		queue_free();
 		return
 	
+	
 	_targeting = _player.get_node("Targeting");
 	_player_reset_button = _player.get_node("CameraIndependet/ResetButton");
 	_forge_level_selector = _forge._new_level_selector;
@@ -55,6 +56,7 @@ func _ready() -> void:
 	_retry_guide = $ForgeGuide/RetryGuide;
 	
 	_player.do_lifetime_calculation = false;
+	_forge.doing_tutorial = true;
 	_player.lifetime_bar.visible = false;
 	_player_reset_button.visible = false;
 	_targeting.visible = false;
@@ -179,6 +181,7 @@ func  _process(_delta: float) -> void:
 			and _check_player_storage_empty()):
 			_set_to_normal_mine();
 	if _tutorial_section == TutorialSection.FORGE:
+		_forge.doing_tutorial = false;
 		if _check_for_new_forge():
 			_forge._save_state.tutorial_completed = true;
 			_forge.save_game();
