@@ -48,6 +48,8 @@ func setup():
 	for i in level:
 		upgrade_properties.apply_upgrade.call();
 	
+
+	
 	_info_label.setup(level, upgrade_properties);
 	
 	var parent: UpgradeButtonBase = (get_parent() as UpgradeButtonBase);
@@ -55,6 +57,9 @@ func setup():
 		visible = true;
 	if not_visible_because_max_level():
 		visible = false;
+	
+	if level == upgrade_properties.max_level:
+		_info_label.visibility_changed.connect(_info_label._update_scale, CONNECT_ONE_SHOT);
 
 	
 	

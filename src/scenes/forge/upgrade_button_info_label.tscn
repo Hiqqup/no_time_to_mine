@@ -7,6 +7,7 @@
 [node name="InfoLabel" type="MarginContainer"]
 offset_right = 46.0
 offset_bottom = 44.0
+pivot_offset = Vector2(23, 0)
 mouse_filter = 2
 theme = ExtResource("1_q42oe")
 script = ExtResource("2_gut0l")

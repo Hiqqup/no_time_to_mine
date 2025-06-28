@@ -51,7 +51,7 @@ func level2():
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
 		ItemTypes.types.RED_CAP_STONE: 1+ floor( level), 
-		ItemTypes.types.YELLOW_CAP_STONE: 2 + floor(2* level),
+		ItemTypes.types.YELLOW_CAP_STONE: 2 + floor( level),
 		});
 	u.level_unlocked = LevelTypes.types.SECOND;
 	damage_2.upgrade_properties = u;
@@ -94,19 +94,7 @@ func level2():
 		});
 	u.level_unlocked = LevelTypes.types.SECOND;
 	minion_damage_1.upgrade_properties = u;
-	
-	u = UpgradeProperties.new();
-	u.skill_name = "MinionSpeed"
-	u.upgrade_type = UpgradeTypes.types.MINING_SPEED_1;
-	u.max_level = 3
-	u.apply_upgrade = (func():upgrade_stats.minion_mining_cooldown_duration *= 0.9);
-	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
-		return {
-		ItemTypes.types.GREEN_CAP_STONE: 5 + level,
-		ItemTypes.types.SULPHUR_ORE: 3 + level,
-		});
-	u.level_unlocked = LevelTypes.types.SECOND;
-	minion_speed_1.upgrade_properties = u;
+
 
 func level3():
 	var u: UpgradeProperties;
@@ -160,8 +148,23 @@ func level3():
 		ItemTypes.types.SULPHUR_ORE: 1, 
 		ItemTypes.types.GREEN_CAP_STONE: 1 + floor(1* level),
 		});
-	u.level_unlocked = LevelTypes.types.SECOND;
+	u.level_unlocked = LevelTypes.types.THIRD;
 	minion_damage_2.upgrade_properties = u;
+	
+	u = UpgradeProperties.new();
+	u.skill_name = "MinionSpeed"
+	u.upgrade_type = UpgradeTypes.types.MINION_SPEED_1;
+	u.max_level = 3
+	u.apply_upgrade = (func():upgrade_stats.minion_mining_cooldown_duration *= 0.9);
+	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
+		return {
+		ItemTypes.types.GREEN_CAP_STONE: 5 + level,
+		ItemTypes.types.SULPHUR_ORE: 3 + level,
+		});
+	u.level_unlocked = LevelTypes.types.THIRD;
+	minion_speed_1.upgrade_properties = u;
+
+
 
 func _ready() -> void:
 	var u: UpgradeProperties;
