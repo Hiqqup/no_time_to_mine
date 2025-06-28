@@ -5,15 +5,15 @@ extends Control
 @onready var damage1: UpgradeButtonBase = $Damage1
 @onready var mining_speed_1: UpgradeButtonBase = $Damage1/MiningSpeed1
 @onready var damage_2: UpgradeButtonBase = $Damage1/Damage2
-@onready var minion_amount_1: UpgradeButtonBase = $Damage1/MinionAmount1
+@onready var minion_amount_1: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1
 @onready var orb_amount_1: UpgradeButtonBase = $Damage1/Damage2/Damage3/OrbAmount1
 @onready var mining_speed_2: UpgradeButtonBase = $Damage1/MiningSpeed1/MiningSpeed2
-@onready var minion_damage_1: UpgradeButtonBase = $Damage1/MinionAmount1/MinionDamage1
+@onready var minion_damage_1: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionDamage1
 @onready var damage_3: UpgradeButtonBase = $Damage1/Damage2/Damage3
 @onready var mining_speed_3: UpgradeButtonBase = $Damage1/MiningSpeed1/MiningSpeed2/MiningSpeed3
-@onready var minion_amount_2: UpgradeButtonBase = $Damage1/MinionAmount1/MinionAmount2
-@onready var minion_damage_2: UpgradeButtonBase = $Damage1/MinionAmount1/MinionDamage1/MinionDamage2
-@onready var minion_speed_1: UpgradeButtonBase = $Damage1/MinionAmount1/MinionSpeed1
+@onready var minion_amount_2: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionAmount2
+@onready var minion_damage_2: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionDamage1/MinionDamage2
+@onready var minion_speed_1: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionSpeed1
 
 
 func level1():
@@ -70,7 +70,7 @@ func level2():
 	mining_speed_2.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "Minions";
+	u.skill_name = "MinionAmount";
 	u.upgrade_type = UpgradeTypes.types.MINION_AMOUNT_1;
 	u.max_level = 1;
 	u.apply_upgrade = (func():upgrade_stats.minion_amount += 1);
@@ -113,7 +113,7 @@ func level3():
 	damage_3.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "Minions";
+	u.skill_name = "MinionAmount";
 	u.upgrade_type = UpgradeTypes.types.MINION_AMOUNT_2;
 	u.max_level = 1;
 	u.apply_upgrade = (func():upgrade_stats.minion_amount += 1);

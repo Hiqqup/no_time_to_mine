@@ -23,6 +23,18 @@ region = Rect2(0, 66, 32, 32)
 atlas = ExtResource("6_chr1d")
 region = Rect2(0, 66, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
+atlas = ExtResource("6_0exhr")
+region = Rect2(33, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4alfs"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(33, 66, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtwfv"]
+atlas = ExtResource("6_chr1d")
+region = Rect2(99, 66, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gmqy"]
 atlas = ExtResource("6_0exhr")
 region = Rect2(66, 66, 32, 32)
@@ -42,18 +54,6 @@ region = Rect2(66, 66, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxx7t"]
 atlas = ExtResource("6_chr1d")
 region = Rect2(66, 99, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_chr1d"]
-atlas = ExtResource("6_0exhr")
-region = Rect2(33, 66, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4alfs"]
-atlas = ExtResource("6_chr1d")
-region = Rect2(33, 66, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtwfv"]
-atlas = ExtResource("6_chr1d")
-region = Rect2(99, 66, 32, 32)
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -93,41 +93,6 @@ offset_right = 168.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_s6knj")
 
-[node name="MinionAmount1" parent="Damage1" instance=ExtResource("3_vcrgi")]
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -88.0
-offset_bottom = -88.0
-sprite = SubResource("AtlasTexture_5gmqy")
-
-[node name="MinionDamage1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
-offset_left = -128.0
-offset_top = 0.0
-offset_right = -88.0
-offset_bottom = 40.0
-sprite = SubResource("AtlasTexture_0tphb")
-
-[node name="MinionDamage2" parent="Damage1/MinionAmount1/MinionDamage1" instance=ExtResource("3_vcrgi")]
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -88.0
-offset_bottom = -88.0
-sprite = SubResource("AtlasTexture_2fmd2")
-
-[node name="MinionAmount2" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
-offset_left = 0.0
-offset_top = -128.0
-offset_right = 40.0
-offset_bottom = -88.0
-sprite = SubResource("AtlasTexture_dta6w")
-
-[node name="MinionSpeed1" parent="Damage1/MinionAmount1" instance=ExtResource("3_vcrgi")]
-offset_left = -128.0
-offset_top = -128.0
-offset_right = -88.0
-offset_bottom = -88.0
-sprite = SubResource("AtlasTexture_uxx7t")
-
 [node name="Damage2" parent="Damage1" instance=ExtResource("3_vcrgi")]
 offset_left = 0.0
 offset_top = -128.0
@@ -148,6 +113,41 @@ offset_top = 0.0
 offset_right = 168.0
 offset_bottom = 40.0
 sprite = SubResource("AtlasTexture_xtwfv")
+
+[node name="MinionAmount1" parent="Damage1/Damage2" instance=ExtResource("3_vcrgi")]
+offset_left = -128.0
+offset_top = 0.0
+offset_right = -88.0
+offset_bottom = 40.0
+sprite = SubResource("AtlasTexture_5gmqy")
+
+[node name="MinionDamage1" parent="Damage1/Damage2/MinionAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = -128.0
+offset_top = 0.0
+offset_right = -88.0
+offset_bottom = 40.0
+sprite = SubResource("AtlasTexture_0tphb")
+
+[node name="MinionDamage2" parent="Damage1/Damage2/MinionAmount1/MinionDamage1" instance=ExtResource("3_vcrgi")]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -88.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_2fmd2")
+
+[node name="MinionAmount2" parent="Damage1/Damage2/MinionAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_dta6w")
+
+[node name="MinionSpeed1" parent="Damage1/Damage2/MinionAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -88.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_uxx7t")
 
 [connection signal="mouse_entered" from="Damage1" to="Damage1" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Damage1" to="Damage1" method="_on_mouse_exited"]

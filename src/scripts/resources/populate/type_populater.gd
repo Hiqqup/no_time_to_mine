@@ -12,6 +12,9 @@ extends Node
 @export var first_level_tileset: Texture;
 @export var second_level_tileset: Texture;
 @export var third_level_tileset: Texture;
+@export var fourth_level_tileset: Texture;
+@export var fifth_level_tileset: Texture;
+@export var sixth_level_tileset: Texture;
 
 const item_stone_region := Rect2(204.0,14.0,16.0,14.0);
 const item_ore_region := Rect2(236.0,15.0,15.0,12.0);
@@ -41,6 +44,8 @@ func _ready() -> void:
 	items.map[ItemTypes.types.PLATINUM_ORE] = _tileset_get_region(second_level_tileset,item_ore_region);
 	items.map[ItemTypes.types.GREEN_CAP_STONE] = _tileset_get_region(third_level_tileset,item_stone_region);
 	items.map[ItemTypes.types.SULPHUR_ORE] = _tileset_get_region(third_level_tileset,item_ore_region);
+	items.map[ItemTypes.types.CYAN_CAP_STONE] = _tileset_get_region(fourth_level_tileset,item_stone_region);
+	items.map[ItemTypes.types.EMERALD_ORE] = _tileset_get_region(fourth_level_tileset,item_ore_region);
 	
 	# Harvestables
 	_setup_harvestable(
@@ -82,12 +87,26 @@ func _ready() -> void:
 		ItemTypes.types.SULPHUR_ORE,
 		);
 	
+	_setup_harvestable(
+		HarvestableTypes.types.CYAN_CAP_STONE,  
+		_tileset_get_region(fourth_level_tileset,harvestable_stone_region),
+		250.0,
+		ItemTypes.types.CYAN_CAP_STONE,
+		);
+	_setup_harvestable(
+		HarvestableTypes.types.EMERALD_ORE,  
+		_tileset_get_region(fourth_level_tileset,harvestable_ore_region),
+		300.0,
+		ItemTypes.types.EMERALD_ORE,
+		);
+	
 	
 	# Level Sprites
 	levels.tileset_map[LevelTypes.types.TUTORIAL] = first_level_tileset;
 	levels.tileset_map[LevelTypes.types.FIRST] = first_level_tileset;
 	levels.tileset_map[LevelTypes.types.SECOND] = second_level_tileset;
 	levels.tileset_map[LevelTypes.types.THIRD] = third_level_tileset;
+	levels.tileset_map[LevelTypes.types.FOURTH] = fourth_level_tileset;
 	
 	levels.setup();
 	# Levels
@@ -130,3 +149,12 @@ func _ready() -> void:
 		HarvestableTypes.types.SULPHUR_ORE: 1,
 	}
 	levels.map[LevelTypes.types.THIRD] = l;
+	
+	# FOURTH
+	l = Level.new()
+	l.platform_radius = 5
+	l. harvestables = {
+		HarvestableTypes.types.CYAN_CAP_STONE: 4,
+		HarvestableTypes.types.EMERALD_ORE: 1,
+	}
+	levels.map[LevelTypes.types.FOURTH] = l;

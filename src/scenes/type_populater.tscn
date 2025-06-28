@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3rpcim20exhr"]
+[gd_scene load_steps=9 format=3 uid="uid://c3rpcim20exhr"]
 
 [ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_skt7l"]
 [ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_vrlxb"]
 [ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="4_tmat3"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_8ovfm"]
 [ext_resource type="Texture2D" uid="uid://xl5i2g5ngohm" path="res://assets/visuals/procreate/recolored/tileset_sulphur.png" id="7_skt7l"]
+[ext_resource type="Texture2D" uid="uid://cu71h4qthjuh1" path="res://assets/visuals/procreate/recolored/tileset_emerald.png" id="8_vrlxb"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="9_0hwek"]
 [ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_platinum.png" id="10_nnbhc"]
 
@@ -16,3 +17,4 @@ levels = ExtResource("7_8ovfm")
 first_level_tileset = ExtResource("9_0hwek")
 second_level_tileset = ExtResource("10_nnbhc")
 third_level_tileset = ExtResource("7_skt7l")
+fourth_level_tileset = ExtResource("8_vrlxb")
