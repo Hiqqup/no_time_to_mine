@@ -3,6 +3,9 @@ extends Control
 
 @export var _game_scene: PackedScene
 
+func _play_music(_game_scene):
+	TimeoutCallback.timeout_callback(0.2, func(): _game_scene.music.playing = true);
+	
 
 func _reset_game_save_state():
 	var game_scene = _game_scene.instantiate();
@@ -15,13 +18,16 @@ func _reset_game_save_state():
 	forge._save_state = new_save_state;
 	forge.save_game();
 	get_parent().add_child(game_scene );
+	return game_scene;
 
 
 func _on_new_game_pressed() -> void:
 	(get_tree().get_first_node_in_group("screen_transition")
 	.change_scene(func():
-		_reset_game_save_state();
+		var game_scene =_reset_game_save_state();
+		_play_music(game_scene);
 		queue_free();
+		
 		))
 
 
@@ -32,8 +38,9 @@ func _on_continue_pressed() -> void:
 		var game_scene = _game_scene.instantiate();
 		var forge: Forge = game_scene.get_node("Forge");
 		if not forge._save_state.tutorial_completed:
-			_reset_game_save_state();
+			game_scene = _reset_game_save_state();
 		else:
-			get_parent().add_child(_game_scene.instantiate() );
+			get_parent().add_child(game_scene );
+		_play_music(game_scene);
 		queue_free();
 		))

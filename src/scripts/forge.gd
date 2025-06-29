@@ -73,6 +73,7 @@ func save_game():
 	#print(_save_state.resource_path);
 
 func switch_from_mines():
+	(AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0) as AudioEffectLowPassFilter).cutoff_hz = 100
 	visible = true;
 	_new_level_selector.update();
 	update_and_generate_storage_display();
@@ -102,8 +103,20 @@ func _load_save_state():
 			_save_state.times_level_completed[key] = 0;
 
 
+func _tween_music_up():
+	var tween: Tween = create_tween();
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(
+		(AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0) as AudioEffectLowPassFilter),
+		"cutoff_hz",
+		15000,
+		0.5
+		)
+		
+
 func _try_level(level: LevelTypes.types):
 	var screen_transition = get_tree().get_first_node_in_group("screen_transition")
+	_tween_music_up();
 	screen_transition.change_scene(func():
 		selected_level = level;
 		visible = false;

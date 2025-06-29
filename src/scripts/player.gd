@@ -71,8 +71,19 @@ func _handle_walking_rotation(delta: float):
 		_walking_time += delta;
 		_visuals.rotation = sin(_walking_time * 10)/12;
 
+func _tween_music_down():
+	var tween: Tween = create_tween();
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.tween_property(
+		(AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0) as AudioEffectLowPassFilter),
+		"cutoff_hz",
+		GlobalConstants.LOW_PASS_FILTER_HZ,
+		0.7
+		)
+	
 
 func _die():
+	_tween_music_down()
 	get_tree().get_first_node_in_group("screen_transition").change_scene(
 	func():
 		var forge_storage = _forge.get_node("Storage");

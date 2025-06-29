@@ -17,6 +17,12 @@ func _ready() -> void:
 	for type in ItemTypes.types.size():
 		_already_displaying[type] = false;
 
+func _add_orderd(_hbox: HBoxContainer, type: ItemTypes.types):
+	var key = ItemTypes.types.find_key(type - 1)
+	if (key and _generated_hbox.has(key)):
+		_generated_hbox[key].add_sibling(_hbox);
+	else:
+		_vcontainer.add_child(_hbox);
 
 func generate_or_update_mod_label(
 	vcontainer: VBoxContainer, 
@@ -53,7 +59,9 @@ func generate_or_update(
 				label.name = label_name
 				label.text = str(item_list[type]);
 				hcontainer.add_child(label)
-				vcontainer.add_child(hcontainer)
+				#_add_orderd(hcontainer, type);
+				_vcontainer.add_child(hcontainer);
+				
 			else:
 				var label = vcontainer.get_node(str(type) + "/"+label_name);
 				label.text = str(item_list[type]);
