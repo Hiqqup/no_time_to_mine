@@ -92,39 +92,39 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.YELLOW_CAP_STONE,  
 		_tileset_get_region(second_level_tileset,harvestable_stone_region),
-			25.0,
+			36.0,
 		ItemTypes.types.YELLOW_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.PLATINUM_ORE,  
 		_tileset_get_region(second_level_tileset,harvestable_ore_region),
-		50.0,
+		180.0,
 		ItemTypes.types.PLATINUM_ORE,
 		);
 	
 	_setup_harvestable(
 		HarvestableTypes.types.GREEN_CAP_STONE,  
 		_tileset_get_region(third_level_tileset,harvestable_stone_region),
-		250.0,
+		120.0,
 		ItemTypes.types.GREEN_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.SULPHUR_ORE,  
 		_tileset_get_region(third_level_tileset,harvestable_ore_region),
-		300.0,
+		600.0,
 		ItemTypes.types.SULPHUR_ORE,
 		);
 	
 	_setup_harvestable(
 		HarvestableTypes.types.MAGENTA_CAP_STONE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_stone_region),
-		1,
+		1,#340,
 		ItemTypes.types.MAGENTA_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.MALACHITE_ORE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_ore_region),
-		1,
+		1,#1700,
 		ItemTypes.types.MALACHITE_ORE,
 		);
 	

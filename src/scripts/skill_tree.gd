@@ -5,15 +5,15 @@ extends Control
 @onready var damage1: UpgradeButtonBase = $Damage1
 @onready var mining_speed_1: UpgradeButtonBase = $Damage1/MiningSpeed1
 @onready var damage_2: UpgradeButtonBase = $Damage1/Damage2
-@onready var minion_amount_1: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1
-@onready var orb_amount_1: UpgradeButtonBase = $Damage1/Damage2/Damage3/OrbAmount1
+@onready var minion_amount_1: UpgradeButtonBase = $Damage1/MinionAmount1
+@onready var orb_amount_1: UpgradeButtonBase = $Damage1/Damage2/OrbAmount1
 @onready var mining_speed_2: UpgradeButtonBase = $Damage1/MiningSpeed1/MiningSpeed2
-@onready var minion_damage_1: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionDamage1
+@onready var minion_damage_1: UpgradeButtonBase = $Damage1/MinionAmount1/MinionDamage1
 @onready var damage_3: UpgradeButtonBase = $Damage1/Damage2/Damage3
 @onready var mining_speed_3: UpgradeButtonBase = $Damage1/MiningSpeed1/MiningSpeed2/MiningSpeed3
-@onready var minion_amount_2: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionAmount2
-@onready var minion_damage_2: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionDamage1/MinionDamage2
-@onready var minion_speed_1: UpgradeButtonBase = $Damage1/Damage2/MinionAmount1/MinionSpeed1
+@onready var minion_amount_2: UpgradeButtonBase = $Damage1/MinionAmount1/MinionAmount2
+@onready var minion_damage_2: UpgradeButtonBase = $Damage1/MinionAmount1/MinionDamage1/MinionDamage2
+@onready var minion_speed_1: UpgradeButtonBase = $Damage1/MinionAmount1/MinionSpeed1
 
 
 func level1():
@@ -142,7 +142,7 @@ func level3():
 	u.skill_name = "MinionDamage";
 	u.upgrade_type = UpgradeTypes.types.MINION_DAMAGE_2;
 	u.max_level = 10;
-	u.apply_upgrade = (func():upgrade_stats.minion_mining_damage += 2);
+	u.apply_upgrade = (func():upgrade_stats.minion_mining_damage += 3);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
 		ItemTypes.types.SULPHUR_ORE: 1, 

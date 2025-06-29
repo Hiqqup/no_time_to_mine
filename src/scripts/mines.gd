@@ -26,8 +26,6 @@ func _on_player_died() -> void:
 
 
 func _on_harvestabels_layer_emptyed() -> void:
-	levels.increase_size(_forge.selected_level);
-	_forge._save_state.times_level_completed[_forge.selected_level] +=1;
 	_forge.increment_level();
 	player.do_lifetime_calculation =false;
 	$LevelComplete.display();

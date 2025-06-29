@@ -123,24 +123,30 @@ func _on_wrapper_button_pressed() -> void:
 func not_visible_because_max_level():
 	return LevelTypes.is_higher( upgrade_properties.level_unlocked, _forge._save_state.max_unlocked_level)
 
-static func check_level_unlocking(child, first_child:bool):
-	if child is UpgradeButtonBase and child.upgrade_properties and not child.visible:
-			TimeoutCallback.timeout_callback(0.2, func():
-				if (child.not_visible_because_max_level() or
-					(child._parent and not child._parent._children_visible)
-				):
-					return;
-				child.visible = true;
-				if first_child:
-					child._animation_player.play("level_unlocked")
-				else: 
-					child._animation_player.play("level_unlocked_no_sound")
-			)
+
+
 
 static func check_button_list_visibility(button_list: Array, sound_on_first_button: bool = true ):
 	var first_child: bool = sound_on_first_button;
+
+	var to_show: Array[UpgradeButtonBase];
 	for child in button_list:
-		check_level_unlocking(child,first_child);
+			if (child is UpgradeButtonBase and
+			 child.upgrade_properties and
+			 not child.visible and 
+			 not child.not_visible_because_max_level() and 
+			 child._parent and 
+			 child._parent._children_visible):
+				to_show.push_back(child);
+	
+	for i in to_show.size():
+		TimeoutCallback.timeout_callback(0.5 * i + 1, func(child = to_show[i]):
+			child.visible = true;
+			if Camera.location == Camera.CameraLocation.FORGE:
+				child._animation_player.play("level_unlocked")
+			else: 
+				child._animation_player.play("level_unlocked_no_sound")
+		);
 
 func _show_all_children():
 	if _children_visible:
