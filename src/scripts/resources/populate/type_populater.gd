@@ -74,6 +74,8 @@ func _ready() -> void:
 	_map_item(ItemTypes.types.MALACHITE_ORE, fourth_level_tileset);
 	_map_item(ItemTypes.types.CYAN_CAP_STONE, fifth_level_tileset);
 	_map_item(ItemTypes.types.AMETHYST_ORE, fifth_level_tileset);
+	_map_item(ItemTypes.types.PURPLE_CAP_STONE, sixth_level_tileset);
+	_map_item(ItemTypes.types.RUBY_ORE, sixth_level_tileset);
 	
 	# Harvestables
 	_setup_harvestable(
@@ -140,6 +142,19 @@ func _ready() -> void:
 		1.0,
 		ItemTypes.types.AMETHYST_ORE,
 		);
+		
+	_setup_harvestable(
+		HarvestableTypes.types.PURPLE_CAP_STONE,  
+		_tileset_get_region(sixth_level_tileset,harvestable_stone_region),
+		1.0,
+		ItemTypes.types.PURPLE_CAP_STONE,
+		);
+	_setup_harvestable(
+		HarvestableTypes.types.RUBY_ORE,  
+		_tileset_get_region(sixth_level_tileset,harvestable_ore_region),
+		1.0,
+		ItemTypes.types.RUBY_ORE,
+		);
 	
 	
 	# Level Sprites
@@ -149,6 +164,7 @@ func _ready() -> void:
 	levels.tileset_map[LevelTypes.types.THIRD] = third_level_tileset;
 	levels.tileset_map[LevelTypes.types.FOURTH] = fourth_level_tileset;
 	levels.tileset_map[LevelTypes.types.FIFTH] = fifth_level_tileset;
+	levels.tileset_map[LevelTypes.types.SIXTH] = sixth_level_tileset;
 	
 	levels.setup();
 	# Levels
@@ -167,4 +183,4 @@ func _ready() -> void:
 	_classic_level(LevelTypes.types.THIRD, HarvestableTypes.types.GREEN_CAP_STONE, HarvestableTypes.types.SULPHUR_ORE);
 	_classic_level(LevelTypes.types.FOURTH, HarvestableTypes.types.MAGENTA_CAP_STONE, HarvestableTypes.types.MALACHITE_ORE);
 	_classic_level(LevelTypes.types.FIFTH, HarvestableTypes.types.CYAN_CAP_STONE, HarvestableTypes.types.AMETHYST_ORE);
-	
+	_classic_level(LevelTypes.types.SIXTH, HarvestableTypes.types.PURPLE_CAP_STONE, HarvestableTypes.types.RUBY_ORE);

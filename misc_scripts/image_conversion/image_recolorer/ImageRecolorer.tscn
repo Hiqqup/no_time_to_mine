@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce701uc33yrf4" path="res://misc_scripts/image_conversion/image_recolorer/image_recolorer.gd" id="1_jjs0o"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_6naxh"]
-[ext_resource type="Resource" uid="uid://cd8obry23xt13" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_sulphur.tres" id="3_6naxh"]
+[ext_resource type="Resource" uid="uid://bx2r57snrpqvh" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_ruby.tres" id="3_6naxh"]
 [ext_resource type="Shader" uid="uid://dppbl3mdcn443" path="res://misc_scripts/image_conversion/image_recolorer/recolor.gdshader" id="3_f2sqo"]
 
 [node name="ImageRecolorer" type="Node"]
