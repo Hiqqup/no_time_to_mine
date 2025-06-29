@@ -63,7 +63,7 @@ func increment_level():
 
 
 func update_and_generate_storage_display():
-	$GuiItemListDisplayer.generate_or_update(_vcontainer, $Storage.contents)
+	$GuiItemListDisplayer.generate_or_update(_vcontainer, $Storage.contents,true);
 
 func save_game():
 	ResourceSaver.save(_save_state, _save_state.resource_path);

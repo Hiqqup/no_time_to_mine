@@ -29,7 +29,10 @@ func generate_or_update_mod_label(
 
 func generate_or_update(
 	vcontainer: VBoxContainer, 
-	item_list: Dictionary[ItemTypes.types, int]):
+	item_list: Dictionary[ItemTypes.types, int],
+	outline: bool = false,
+	
+	):
 	
 	_vcontainer = vcontainer
 	const label_name:="Label"
@@ -42,7 +45,7 @@ func generate_or_update(
 				hcontainer.name = str(type);
 				hcontainer.alignment = BoxContainer.ALIGNMENT_CENTER;
 				_generated_hbox[type] = hcontainer;
-				var texture_rect: TextureRect = item_sprites.get_copy_texture_rect(type);
+				var texture_rect: TextureRect = item_sprites.get_copy_texture_rect(type, outline);
 				_generated_sprites[type] = texture_rect;
 				hcontainer.add_child(texture_rect);
 				var label = Label.new();

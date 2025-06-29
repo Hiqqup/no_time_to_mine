@@ -20,14 +20,14 @@ enum types{
 	GREEN_CAP_STONE,
 	SULPHUR_ORE,
 	
-	CYAN_CAP_STONE,
-	EMERALD_ORE,
-	
-	BLUE_CAP_STONE,
-	AQUAMARINE_ORE,
-	
 	MAGENTA_CAP_STONE,
 	MALACHITE_ORE,
+	
+	CYAN_CAP_STONE,
+	AMETHYST_ORE,
+	
+	PURPLE_CAP_STONE,
+	RUBY_ORE,
 }
 
 func get_copy(type : types) ->HarvestableBase:

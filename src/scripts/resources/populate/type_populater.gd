@@ -1,4 +1,5 @@
 extends Node
+@export var tmp: Texture;
 
 @export_category("Items")
 @export var items: ItemTypes
@@ -16,6 +17,8 @@ extends Node
 @export var fifth_level_tileset: Texture;
 @export var sixth_level_tileset: Texture;
 
+const outlined_item_stone_region := Rect2(265.0,13.0,18.0,16.0);
+const outlined_item_ore_region := Rect2(297.0,14.0,17.0,14.0);
 const item_stone_region := Rect2(204.0,14.0,16.0,14.0);
 const item_ore_region := Rect2(236.0,15.0,15.0,12.0);
 const harvestable_stone_region:= Rect2(132.0,11.0,31.0,20.0)
@@ -36,16 +39,41 @@ func _setup_harvestable(harvestable: HarvestableTypes.types, sprite: Texture, he
 		drop_item: 1
 	}
 
+func _map_item(item_type: ItemTypes.types, level_tileset: Texture):
+	var str_sp = (ItemTypes.types.keys()[item_type] as String).split("_")
+	var region: Rect2
+	var outlined_region: Rect2
+	if str_sp[str_sp.size() - 1] == "STONE":
+		region = item_stone_region
+		outlined_region = outlined_item_stone_region
+	elif  str_sp[str_sp.size() - 1] == "ORE":
+		region = item_ore_region;
+		outlined_region = outlined_item_ore_region
+	items.map[item_type] = _tileset_get_region(level_tileset,region);
+	items.outlined_map[item_type] = _tileset_get_region(level_tileset,outlined_region);
+	
+func _classic_level(level: LevelTypes.types, stone:HarvestableTypes.types, ore: HarvestableTypes.types ):
+	var l := Level.new()
+	l.platform_radius = 5
+	l. harvestables = {
+		stone: 4,
+		ore: 1,
+	}
+	levels.map[level] = l;
+
+
 func _ready() -> void:
 		# Items
-	items.map[ItemTypes.types.RED_CAP_STONE] = _tileset_get_region(first_level_tileset,item_stone_region);
-	items.map[ItemTypes.types.GOLD_ORE] = _tileset_get_region(first_level_tileset,item_ore_region);
-	items.map[ItemTypes.types.YELLOW_CAP_STONE] = _tileset_get_region(second_level_tileset,item_stone_region);
-	items.map[ItemTypes.types.PLATINUM_ORE] = _tileset_get_region(second_level_tileset,item_ore_region);
-	items.map[ItemTypes.types.GREEN_CAP_STONE] = _tileset_get_region(third_level_tileset,item_stone_region);
-	items.map[ItemTypes.types.SULPHUR_ORE] = _tileset_get_region(third_level_tileset,item_ore_region);
-	items.map[ItemTypes.types.CYAN_CAP_STONE] = _tileset_get_region(fourth_level_tileset,item_stone_region);
-	items.map[ItemTypes.types.EMERALD_ORE] = _tileset_get_region(fourth_level_tileset,item_ore_region);
+	_map_item(ItemTypes.types.RED_CAP_STONE, first_level_tileset);
+	_map_item(ItemTypes.types.GOLD_ORE, first_level_tileset);
+	_map_item(ItemTypes.types.YELLOW_CAP_STONE, second_level_tileset);
+	_map_item(ItemTypes.types.PLATINUM_ORE, second_level_tileset);
+	_map_item(ItemTypes.types.GREEN_CAP_STONE, third_level_tileset);
+	_map_item(ItemTypes.types.SULPHUR_ORE, third_level_tileset);
+	_map_item(ItemTypes.types.MAGENTA_CAP_STONE, fourth_level_tileset);
+	_map_item(ItemTypes.types.MALACHITE_ORE, fourth_level_tileset);
+	_map_item(ItemTypes.types.CYAN_CAP_STONE, fifth_level_tileset);
+	_map_item(ItemTypes.types.AMETHYST_ORE, fifth_level_tileset);
 	
 	# Harvestables
 	_setup_harvestable(
@@ -88,16 +116,29 @@ func _ready() -> void:
 		);
 	
 	_setup_harvestable(
-		HarvestableTypes.types.CYAN_CAP_STONE,  
+		HarvestableTypes.types.MAGENTA_CAP_STONE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_stone_region),
-		250.0,
+		1,
+		ItemTypes.types.MAGENTA_CAP_STONE,
+		);
+	_setup_harvestable(
+		HarvestableTypes.types.MALACHITE_ORE,  
+		_tileset_get_region(fourth_level_tileset,harvestable_ore_region),
+		1,
+		ItemTypes.types.MALACHITE_ORE,
+		);
+	
+	_setup_harvestable(
+		HarvestableTypes.types.CYAN_CAP_STONE,  
+		_tileset_get_region(fifth_level_tileset,harvestable_stone_region),
+		1.0,
 		ItemTypes.types.CYAN_CAP_STONE,
 		);
 	_setup_harvestable(
-		HarvestableTypes.types.EMERALD_ORE,  
-		_tileset_get_region(fourth_level_tileset,harvestable_ore_region),
-		300.0,
-		ItemTypes.types.EMERALD_ORE,
+		HarvestableTypes.types.AMETHYST_ORE,  
+		_tileset_get_region(fifth_level_tileset,harvestable_ore_region),
+		1.0,
+		ItemTypes.types.AMETHYST_ORE,
 		);
 	
 	
@@ -107,6 +148,7 @@ func _ready() -> void:
 	levels.tileset_map[LevelTypes.types.SECOND] = second_level_tileset;
 	levels.tileset_map[LevelTypes.types.THIRD] = third_level_tileset;
 	levels.tileset_map[LevelTypes.types.FOURTH] = fourth_level_tileset;
+	levels.tileset_map[LevelTypes.types.FIFTH] = fifth_level_tileset;
 	
 	levels.setup();
 	# Levels
@@ -120,41 +162,9 @@ func _ready() -> void:
 	}
 	levels.map[LevelTypes.types.TUTORIAL] = l;
 	
-	# FIRST
-	l = Level.new()
-	l.platform_radius = 5
-	l. harvestables = {
-		HarvestableTypes.types.RED_CAP_STONE: 4,
-		HarvestableTypes.types.GOLD_ORE: 1,
-	}
-	levels.map[LevelTypes.types.FIRST] = l;
+	_classic_level(LevelTypes.types.FIRST, HarvestableTypes.types.RED_CAP_STONE, HarvestableTypes.types.GOLD_ORE);
+	_classic_level(LevelTypes.types.SECOND, HarvestableTypes.types.YELLOW_CAP_STONE, HarvestableTypes.types.PLATINUM_ORE);
+	_classic_level(LevelTypes.types.THIRD, HarvestableTypes.types.GREEN_CAP_STONE, HarvestableTypes.types.SULPHUR_ORE);
+	_classic_level(LevelTypes.types.FOURTH, HarvestableTypes.types.MAGENTA_CAP_STONE, HarvestableTypes.types.MALACHITE_ORE);
+	_classic_level(LevelTypes.types.FIFTH, HarvestableTypes.types.CYAN_CAP_STONE, HarvestableTypes.types.AMETHYST_ORE);
 	
-
-	
-	# SECOND
-	l = Level.new()
-	l.platform_radius = 5
-	l. harvestables = {
-		HarvestableTypes.types.YELLOW_CAP_STONE: 4,
-		HarvestableTypes.types.PLATINUM_ORE: 1,
-	}
-	levels.map[LevelTypes.types.SECOND] = l;
-	
-	# THIRD
-	
-	l = Level.new()
-	l.platform_radius = 5
-	l. harvestables = {
-		HarvestableTypes.types.GREEN_CAP_STONE: 4,
-		HarvestableTypes.types.SULPHUR_ORE: 1,
-	}
-	levels.map[LevelTypes.types.THIRD] = l;
-	
-	# FOURTH
-	l = Level.new()
-	l.platform_radius = 5
-	l. harvestables = {
-		HarvestableTypes.types.CYAN_CAP_STONE: 4,
-		HarvestableTypes.types.EMERALD_ORE: 1,
-	}
-	levels.map[LevelTypes.types.FOURTH] = l;

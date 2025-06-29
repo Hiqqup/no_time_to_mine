@@ -15,7 +15,7 @@ var upgrade_properties: UpgradeProperties;
 @onready var _cost_container: BoxContainer = $MarginContainer/VBoxContainer/Cost;
 
 func generate_cost_display(cost: Dictionary[ItemTypes.types, int]):
-	_gui_item_list_displayer.generate_or_update(_cost_container, cost);
+	_gui_item_list_displayer.generate_or_update(_cost_container, cost, true);
 	_update_scale()
 
 func remove_cost_display():
