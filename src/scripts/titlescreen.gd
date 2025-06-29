@@ -3,8 +3,8 @@ extends Control
 
 @export var _game_scene: PackedScene
 
-func _play_music(_game_scene):
-	TimeoutCallback.timeout_callback(0.2, func(): _game_scene.music.playing = true);
+func _play_music(game_scene):
+	TimeoutCallback.timeout_callback(0.2, func(): game_scene.music.playing = true);
 	
 
 func _reset_game_save_state():

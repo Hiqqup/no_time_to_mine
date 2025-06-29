@@ -42,7 +42,7 @@ func unlock_level_feedback():
 	var e:ButtonAnimationWrapper = _latest_button_animation_wrapper
 	if e: e.play_animation(e.animations.level_unlocked);
 	UpgradeButtonBase.check_button_list_visibility(
-		get_tree().get_nodes_in_group("upgrade_button"), false)
+		get_tree().get_nodes_in_group("upgrade_button"))
 
 func update():
 	for key in LevelTypes.types.size():

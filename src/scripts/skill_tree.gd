@@ -57,7 +57,7 @@ func level2():
 	damage_2.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "MiningSpeed"
+	u.skill_name = "Mining Speed"
 	u.upgrade_type = UpgradeTypes.types.MINING_SPEED_2;
 	u.max_level = 1
 	u.apply_upgrade = (func():upgrade_stats.mining_cooldown_duration *= 0.9);
@@ -70,7 +70,7 @@ func level2():
 	mining_speed_2.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "MinionAmount";
+	u.skill_name = "Minion Amount";
 	u.upgrade_type = UpgradeTypes.types.MINION_AMOUNT_1;
 	u.max_level = 1;
 	u.apply_upgrade = (func():upgrade_stats.minion_amount += 1);
@@ -83,7 +83,7 @@ func level2():
 	minion_amount_1.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "MinionDamage";
+	u.skill_name = "Minion Damage";
 	u.upgrade_type = UpgradeTypes.types.MINION_DAMAGE_1;
 	u.max_level = 10;
 	u.apply_upgrade = (func():upgrade_stats.minion_mining_damage += 2);
@@ -113,7 +113,7 @@ func level3():
 	damage_3.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "MinionAmount";
+	u.skill_name = "Minion Amount";
 	u.upgrade_type = UpgradeTypes.types.MINION_AMOUNT_2;
 	u.max_level = 1;
 	u.apply_upgrade = (func():upgrade_stats.minion_amount += 1);
@@ -139,7 +139,7 @@ func level3():
 	mining_speed_3.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "MinionDamage";
+	u.skill_name = "Minion Damage";
 	u.upgrade_type = UpgradeTypes.types.MINION_DAMAGE_2;
 	u.max_level = 10;
 	u.apply_upgrade = (func():upgrade_stats.minion_mining_damage += 3);
@@ -152,7 +152,7 @@ func level3():
 	minion_damage_2.upgrade_properties = u;
 	
 	u = UpgradeProperties.new();
-	u.skill_name = "MinionSpeed"
+	u.skill_name = "Minion Speed"
 	u.upgrade_type = UpgradeTypes.types.MINION_SPEED_1;
 	u.max_level = 3
 	u.apply_upgrade = (func():upgrade_stats.minion_mining_cooldown_duration *= 0.9);

@@ -7,21 +7,25 @@ class_name Orb;
 @onready var _forge: Forge = get_tree().get_first_node_in_group("forge");
 
 
-const max_velocity = 100;
+var max_velocity = 100;
+var max_distance: float
 func _ready() -> void:
 	_sprite_2d.texture = _level_types.tileset_map[_forge.selected_level]; 
 	linear_velocity = Vector2(1,-0.5);
 	contact_monitor = true;
 	max_contacts_reported = 1
-
+	max_distance = _level_types.map[_forge.selected_level].platform_radius * 32 + 10;
 
 func _physics_process(_delta: float) -> void:
 	linear_velocity = max_velocity* linear_velocity.normalized();
-
+	if global_position.length()> max_distance:
+		global_position = Vector2.ZERO;
 
 
 
 func _on_body_entered(body: Node) -> void:
+	if max_velocity > 500:
+		max_velocity += _upgrade_stats.orb_scaling;
 	var base: HarvestableBase = (body.get_parent().get_parent() as HarvestableBase);
 	
 	if base :

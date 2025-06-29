@@ -126,8 +126,7 @@ func not_visible_because_max_level():
 
 
 
-static func check_button_list_visibility(button_list: Array, sound_on_first_button: bool = true ):
-	var first_child: bool = sound_on_first_button;
+static func check_button_list_visibility(button_list: Array ):
 
 	var to_show: Array[UpgradeButtonBase];
 	for child in button_list:

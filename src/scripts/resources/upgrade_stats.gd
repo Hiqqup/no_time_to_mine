@@ -11,3 +11,4 @@ var minion_mining_cooldown_duration:float = 1.5;
 var minion_mining_damage: float = 5.0;
 var orb_amount: int = 0;
 var orb_damage: float = 10.0;
+var orb_scaling: float = 0;

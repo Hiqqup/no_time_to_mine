@@ -9,6 +9,10 @@ var _updated: Dictionary[ItemTypes.types, bool]
 func _ready() -> void:
 	_item_list.updated.connect(_update);
 
+func _format_string(string: String):
+	string = " ".join(string.split("_")).capitalize();
+	return string;
+
 func _update():
 	for key in _item_list._already_displaying.keys():
 		if not _item_list._already_displaying[key]:
@@ -30,7 +34,7 @@ func _update():
 		var tooltip: PanelContainer = _tooltip_base.duplicate();
 		var tooltip_label :  Label = Label.new();
 		tooltip.add_child(tooltip_label);
-		tooltip_label.text = ItemTypes.types.keys()[key];
+		tooltip_label.text = _format_string(ItemTypes.types.keys()[key]);
 		trect.add_child(tooltip);
 		
 		call_deferred("_update_tooltip", tooltip);
