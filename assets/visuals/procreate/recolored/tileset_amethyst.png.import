@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu71h4qthjuh1"
-path="res://.godot/imported/tileset_emerald.png-27763c0cb2f441dde356021438f90747.ctex"
+uid="uid://dt3ft7876bwvn"
+path="res://.godot/imported/tileset_amethyst.png-21fc7d9f335c9416857a4297332ec77f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/procreate/recolored/tileset_emerald.png"
-dest_files=["res://.godot/imported/tileset_emerald.png-27763c0cb2f441dde356021438f90747.ctex"]
+source_file="res://assets/visuals/procreate/recolored/tileset_amethyst.png"
+dest_files=["res://.godot/imported/tileset_amethyst.png-21fc7d9f335c9416857a4297332ec77f.ctex"]
 
 [params]
 
