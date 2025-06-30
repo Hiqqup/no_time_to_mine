@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://kiphvgxfe0pn" path="res://src/scripts/forge.gd" id="1_oc1b2"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_gjnd3"]
 [ext_resource type="PackedScene" uid="uid://bktks85fbuoip" path="res://src/scenes/forge/skill_tree.tscn" id="2_oc1b2"]
-[ext_resource type="Resource" uid="uid://dg5l73gs3tee6" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
+[ext_resource type="Resource" uid="uid://jp0x5aea0wll" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="4_3sx3x"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="5_wqv3k"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="5_ytak3"]

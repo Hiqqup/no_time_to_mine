@@ -1,0 +1,14 @@
+[gd_scene load_steps=8 format=3 uid="uid://c81ooe5wqv62r"]
+
+[ext_resource type="Script" uid="uid://d1yhdsad0jt3k" path="res://misc_scripts/image_conversion/image_recolorer/recolor_multiple.gd" id="1_soi1k"]
+[ext_resource type="PackedScene" uid="uid://bwd0rw2sk5jvl" path="res://misc_scripts/image_conversion/image_recolorer/ImageRecolorer.tscn" id="2_e7al3"]
+[ext_resource type="Resource" uid="uid://bdn4l4rxkx17l" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_amethyst.tres" id="3_uuium"]
+[ext_resource type="Resource" uid="uid://dp3suo88e8as4" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_malachite.tres" id="4_avm48"]
+[ext_resource type="Resource" uid="uid://dnkajnl4wnd7y" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_platinum.tres" id="5_rnfut"]
+[ext_resource type="Resource" uid="uid://bx2r57snrpqvh" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_ruby.tres" id="6_bw40x"]
+[ext_resource type="Resource" uid="uid://cd8obry23xt13" path="res://misc_scripts/image_conversion/image_recolorer/recolor_schemes/gold_to_sulphur.tres" id="7_hvtqn"]
+
+[node name="RecolorMultiple" type="Node"]
+script = ExtResource("1_soi1k")
+recolor_scene = ExtResource("2_e7al3")
+schemes = [ExtResource("3_uuium"), ExtResource("4_avm48"), ExtResource("5_rnfut"), ExtResource("6_bw40x"), ExtResource("7_hvtqn")]
