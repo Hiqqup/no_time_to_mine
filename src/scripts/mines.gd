@@ -6,6 +6,7 @@ class_name Mines
 @export var floor_layer: Node;
 
 @export var levels: LevelTypes
+@onready var collector_spawner: CollectorSpawner = $YSorted/CollectorSpawner
 
 var _forge: Forge
 

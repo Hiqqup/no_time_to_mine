@@ -24,7 +24,7 @@ var _destroyed: bool = false;
 
 var player_in_range: bool = false;
 var minions_in_range: Dictionary[Minion, bool];
-var mines;
+var mines: Mines;
 var _drop:ItemDropBase;
 
 var mobile_hovering: bool = false;
@@ -84,7 +84,7 @@ func _spawn_drop(item_drops: Dictionary[ItemTypes.types, int]):
 	drops.add_child(drop)
 	_drop = drop;
 	drop.visible = false;
-
+	mines.collector_spawner._set_untargeted_item(drop);
 
 func _handle_clicked_on():
 	

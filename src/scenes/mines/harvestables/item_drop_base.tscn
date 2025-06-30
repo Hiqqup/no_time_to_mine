@@ -113,7 +113,7 @@ region_rect = Rect2(236, 15, 15, 12)
 
 [node name="CollectionRange" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 68
 
 [node name="CollectionRangeShape" parent="CollectionRange" instance=ExtResource("4_rastk")]
 

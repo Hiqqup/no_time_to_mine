@@ -1,17 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://oha8mtvda0k5"]
+[gd_scene load_steps=5 format=3 uid="uid://oha8mtvda0k5"]
 
 [ext_resource type="Script" uid="uid://de0wchn3blk7t" path="res://src/scripts/collector.gd" id="1_wsoj1"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_288jy"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_mg3xh"]
 
-[node name="Collector" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mg3xh"]
+radius = 3.16228
+
+[node name="Collector" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 0
 script = ExtResource("1_wsoj1")
 _level_types = ExtResource("2_288jy")
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-position = Vector2(0, 2)
+position = Vector2(-0.5, 2)
 texture = ExtResource("2_mg3xh")
 region_enabled = true
 region_rect = Rect2(268, 40, 22, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_mg3xh")

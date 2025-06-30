@@ -4,7 +4,9 @@ extends Control
 @export var _game_scene: PackedScene
 
 func _play_music(game_scene):
-	TimeoutCallback.timeout_callback(0.2, func(): game_scene.music.playing = GlobalConstants.COMPILED());
+	TimeoutCallback.timeout_callback(0.2, func():
+		game_scene.music.playing = GlobalConstants.MUSIC or GlobalConstants.COMPILED()
+		);
 	
 
 func _reset_game_save_state():
