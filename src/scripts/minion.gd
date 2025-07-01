@@ -15,7 +15,7 @@ var followed_by: Minion = null;
 var currently_mining: HarvestableBase = null;
 
 var _mine_cooldown: float;
-
+@onready var _mining_cooldown_this_run: float = _upgrade_stats.minion_mining_cooldown_duration;
 
 func set_mining(base: HarvestableBase):
 	currently_mining = base;
@@ -54,10 +54,12 @@ func _try_mine() -> void:
 		return;
 	currently_mining.health -= _upgrade_stats.minion_mining_damage;
 	currently_mining.mine_visual_feedback();
-	_mine_cooldown = _upgrade_stats.minion_mining_cooldown_duration;
+	_mine_cooldown = _mining_cooldown_this_run;
 	if(currently_mining.health <= 0):
 		currently_mining.get_destroyed();
 		currently_mining = null;
+		speed *= _upgrade_stats.minion_scaling;
+		_mining_cooldown_this_run *= 1/ _upgrade_stats.minion_scaling;
 	mine_visual_feedback()
 
 func _queue_back_up(root: CharacterBody2D):

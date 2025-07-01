@@ -67,6 +67,8 @@ func setup():
 
 
 func update_frame_sprite():
+	if not upgrade_properties:
+		return;
 	_button_sprite.modulate = Color.WHITE;
 	if level == upgrade_properties.max_level:
 		_frame_sprite.modulate = _info_label._yellow
