@@ -2,6 +2,8 @@ extends MarginContainer
 class_name UpgradeButtonInfoLabel
 
 var upgrade_properties: UpgradeProperties;
+@onready var _parent: UpgradeButtonBase = get_parent() ;
+
 
 @export_category("frame colors")
 @export var _yellow: Color;
@@ -19,13 +21,15 @@ func generate_cost_display(cost: Dictionary[ItemTypes.types, int]):
 	_update_scale()
 
 func remove_cost_display():
-	_cost_container.queue_free();
+	_cost_container.visible = false;
 	_update_scale();
 
 func update_level(level: int):
-	if not upgrade_properties:
-		return;
-	_skill_progress.text = str(level) + "/" + str(upgrade_properties.max_level)
+	var max_level = _parent.get_max_level();
+	_skill_progress.text = str(level) + "/" + str(max_level)
+	if level < max_level:
+		_cost_container.visible = true;
+	_update_scale();
 
 func _update_scale():
 	await get_tree().process_frame;

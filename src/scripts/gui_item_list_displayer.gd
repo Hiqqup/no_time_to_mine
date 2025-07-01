@@ -26,6 +26,11 @@ func generate_or_update_mod_label(
 		if _generated_labels[key].text == "1":
 			_generated_labels[key].text = ""
 
+func _remove_item(type: ItemTypes.types):
+	_vcontainer.get_node(str(type)).queue_free();
+	_already_displaying[type] = false
+	_generated_sprites.erase(type);
+	
 
 func generate_or_update(
 	vcontainer: VBoxContainer, 
@@ -37,30 +42,32 @@ func generate_or_update(
 	_vcontainer = vcontainer
 	const label_name:="Label"
 	var item_sprites = _item_sprite_mapper;
-	for type in item_list.keys():
-		if item_list[type] > 0:
-			if not _already_displaying[type]:
-				var hcontainer = HBoxContainer.new();
-				_already_displaying[type] = true;
-				hcontainer.name = str(type);
-				hcontainer.alignment = BoxContainer.ALIGNMENT_CENTER;
-				_generated_hbox[type] = hcontainer;
-				var texture_rect: TextureRect = item_sprites.get_copy_texture_rect(type, outline);
-				_generated_sprites[type] = texture_rect;
-				hcontainer.add_child(texture_rect);
-				var label = Label.new();
-				_generated_labels[type] = label;
-				label.name = label_name
-				label.text = str(item_list[type]);
-				hcontainer.add_child(label)
-				_vcontainer.add_child(hcontainer);
-				_vcontainer.move_child(hcontainer, min(type, _vcontainer.get_child_count()));
-				
-			else:
-				var label = vcontainer.get_node(str(type) + "/"+label_name);
-				label.text = str(item_list[type]);
-		if item_list[type] == 0 and _already_displaying[type]:
-			vcontainer.get_node(str(type)).queue_free();
-			_already_displaying[type] = false
-			_generated_sprites.erase(type);
+	for type in ItemTypes.types.size():
+		if item_list.has(type):
+			if item_list[type] > 0:
+				if not _already_displaying[type]:
+					var hcontainer = HBoxContainer.new();
+					_already_displaying[type] = true;
+					hcontainer.name = str(type);
+					hcontainer.alignment = BoxContainer.ALIGNMENT_CENTER;
+					_generated_hbox[type] = hcontainer;
+					var texture_rect: TextureRect = item_sprites.get_copy_texture_rect(type, outline);
+					_generated_sprites[type] = texture_rect;
+					hcontainer.add_child(texture_rect);
+					var label = Label.new();
+					_generated_labels[type] = label;
+					label.name = label_name
+					label.text = str(item_list[type]);
+					hcontainer.add_child(label)
+					_vcontainer.add_child(hcontainer);
+					_vcontainer.move_child(hcontainer, min(type, _vcontainer.get_child_count()));
+					
+				else:
+					var label = vcontainer.get_node(str(type) + "/"+label_name);
+					label.text = str(item_list[type]);
+		if ((not item_list.has(type) or item_list[type] == 0) and 
+			(_already_displaying.has(type) and _already_displaying[type] )):
+				vcontainer.get_node(str(type)).queue_free();
+				_already_displaying[type] = false
+				_generated_sprites.erase(type);
 	updated.emit();

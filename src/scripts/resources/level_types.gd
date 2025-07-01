@@ -48,10 +48,12 @@ func setup():
 		var image_texure:=ImageTexture.create_from_image(
 			 (tileset_map[key] as CompressedTexture2D).get_image());
 		
-		var color_0 =image_texure.get_image().get_pixel(41,3);
-		var color_1 =image_texure.get_image().get_pixel(42,3);
-		var color_2 =image_texure.get_image().get_pixel(33,9);
+		var color_0 =image_texure.get_image().get_pixel(41,3); #yellow
+		var color_1 =image_texure.get_image().get_pixel(42,3); #redcap
+		var color_2 =image_texure.get_image().get_pixel(33,9); #brown
+		var color_3 =image_texure.get_image().get_pixel(40,4); #beige
 		color_map[key] = [];
 		color_map[key].push_back(color_0)# color 0: for background
 		color_map[key].push_back(color_1)# color 1: for background
 		color_map[key].push_back(color_2)# color 2: walking particle modulate
+		color_map[key].push_back(color_3)# color 3: upgrade frame

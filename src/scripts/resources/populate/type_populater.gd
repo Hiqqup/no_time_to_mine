@@ -94,65 +94,65 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.YELLOW_CAP_STONE,  
 		_tileset_get_region(second_level_tileset,harvestable_stone_region),
-			36.0,
+			20.0,
 		ItemTypes.types.YELLOW_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.PLATINUM_ORE,  
 		_tileset_get_region(second_level_tileset,harvestable_ore_region),
-		180.0,
+		60.0,
 		ItemTypes.types.PLATINUM_ORE,
 		);
 	
 	_setup_harvestable(
 		HarvestableTypes.types.GREEN_CAP_STONE,  
 		_tileset_get_region(third_level_tileset,harvestable_stone_region),
-		120.0,
+		30.0,
 		ItemTypes.types.GREEN_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.SULPHUR_ORE,  
 		_tileset_get_region(third_level_tileset,harvestable_ore_region),
-		600.0,
+		70.0,
 		ItemTypes.types.SULPHUR_ORE,
 		);
 	
 	_setup_harvestable(
 		HarvestableTypes.types.MAGENTA_CAP_STONE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_stone_region),
-		340,
+		40,
 		ItemTypes.types.MAGENTA_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.MALACHITE_ORE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_ore_region),
-		1700,
+		80,
 		ItemTypes.types.MALACHITE_ORE,
 		);
 	
 	_setup_harvestable(
 		HarvestableTypes.types.CYAN_CAP_STONE,  
 		_tileset_get_region(fifth_level_tileset,harvestable_stone_region),
-		1.0,
+		50,
 		ItemTypes.types.CYAN_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.AMETHYST_ORE,  
 		_tileset_get_region(fifth_level_tileset,harvestable_ore_region),
-		1.0,
+		90,
 		ItemTypes.types.AMETHYST_ORE,
 		);
 		
 	_setup_harvestable(
 		HarvestableTypes.types.PURPLE_CAP_STONE,  
 		_tileset_get_region(sixth_level_tileset,harvestable_stone_region),
-		1.0,
+		60,
 		ItemTypes.types.PURPLE_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.RUBY_ORE,  
 		_tileset_get_region(sixth_level_tileset,harvestable_ore_region),
-		1.0,
+		100,
 		ItemTypes.types.RUBY_ORE,
 		);
 	

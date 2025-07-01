@@ -2,7 +2,7 @@ class_name UpgradeButtonBase
 extends SkillTreeButtonBase
 
 
-
+@export var _level_types:LevelTypes;
 @export var upgrade_properties: UpgradeProperties:
 	set(val):
 		upgrade_properties = val;
@@ -23,6 +23,7 @@ var _forge_storage_contents: Dictionary[ItemTypes.types, int];
 var _forge: Forge;
 var _children_visible: bool = false;
 
+
 var level : int = 0:
 	set(value):
 		if value != 0:
@@ -30,14 +31,24 @@ var level : int = 0:
 			modulate = Color.WHITE;
 		level = value;
 		_info_label.update_level(level);
-		if value == upgrade_properties.max_level:
+		if upgrade_properties:
+			var lt: LevelTypes.types = upgrade_properties.get_level.call(level)
+			(_button_sprite.texture as AtlasTexture
+			).atlas = _level_types.tileset_map[lt];
+			_info_label._green = _level_types.color_map[lt][0];
+			_info_label._yellow = _level_types.color_map[lt][3];
+		if value == get_max_level():
 			_info_label.remove_cost_display();
 
 
 # children:
 var _info_label: UpgradeButtonInfoLabel;
 
+func get_max_level()->int:
+	return upgrade_properties.max_level.call(_forge._save_state.max_unlocked_level)
+
 func setup():
+
 	if upgrade_properties == null:
 		#print("missing upgrade poperties")
 		return;
@@ -46,7 +57,7 @@ func setup():
 	cost = upgrade_properties.cost_func.call(level);
 
 	for i in level:
-		upgrade_properties.apply_upgrade.call();
+		upgrade_properties.apply_upgrade.call(level);
 	
 
 	
@@ -58,7 +69,7 @@ func setup():
 	if not_visible_because_max_level():
 		visible = false;
 	
-	if level == upgrade_properties.max_level:
+	if level == get_max_level():
 		_info_label.visibility_changed.connect(_info_label._update_scale, CONNECT_ONE_SHOT);
 
 	
@@ -68,7 +79,7 @@ func setup():
 
 func update_frame_sprite():
 	_button_sprite.modulate = Color.WHITE;
-	if level == upgrade_properties.max_level:
+	if level == get_max_level():
 		_frame_sprite.modulate = _info_label._yellow
 		_button_sprite.modulate = Color.DARK_GRAY;
 		return;
@@ -79,6 +90,7 @@ func update_frame_sprite():
 		_frame_sprite.modulate =  _info_label._red
 
 func _ready() -> void:
+
 	#_position_snap();
 	super();
 	
@@ -88,6 +100,7 @@ func _ready() -> void:
 
 	# get children:
 	_info_label = $InfoLabel;
+	
 	
 	visible = false;
 	_info_label.visible = false;
@@ -100,7 +113,7 @@ func _position_snap():
 
 func _on_wrapper_button_pressed() -> void:	
 	Camera.shake(6)
-	if not _check_affordable() or level == upgrade_properties.max_level:
+	if not _check_affordable() or level == get_max_level():
 		_animation_player.play("denied")
 		return;
 	((get_tree().get_first_node_in_group("shockwave") as ShockwaveEffect)
@@ -113,7 +126,7 @@ func _on_wrapper_button_pressed() -> void:
 	_forge.purchase_upgrade(upgrade_properties.upgrade_type);
 	level += 1;
 	cost = upgrade_properties.cost_func.call(level);
-	upgrade_properties.apply_upgrade.call();
+	upgrade_properties.apply_upgrade.call(level);
 	_show_all_children();
 	if _animation_player.is_playing():
 		_animation_player.stop();
@@ -137,6 +150,10 @@ static func check_button_list_visibility(button_list: Array ):
 			 child._parent and 
 			 child._parent._children_visible):
 				to_show.push_back(child);
+			if (child is UpgradeButtonBase and child.visible):
+				
+				var pt = str(child.level) + "/" + str(child.get_max_level());
+				(child as UpgradeButtonBase)._info_label._skill_progress.text= pt
 	
 	for i in to_show.size():
 		TimeoutCallback.timeout_callback(0.5 * i + 1, func(child = to_show[i]):

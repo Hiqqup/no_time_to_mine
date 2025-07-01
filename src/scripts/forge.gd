@@ -27,7 +27,7 @@ func _ready() -> void:
 		$BackgourndLayer.visible = visible;
 		)
 	
-	_skill_tree_root = $SkillTree/Damage1;
+	_skill_tree_root = $SkillTree/Damage;
 	_skill_tree_root.visible = true;
 	
 	update_and_generate_storage_display()
