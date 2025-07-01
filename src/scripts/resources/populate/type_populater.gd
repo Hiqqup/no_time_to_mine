@@ -120,13 +120,13 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.MAGENTA_CAP_STONE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_stone_region),
-		340,
+		1,#340,
 		ItemTypes.types.MAGENTA_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.MALACHITE_ORE,  
 		_tileset_get_region(fourth_level_tileset,harvestable_ore_region),
-		1700,
+		1,#1700,
 		ItemTypes.types.MALACHITE_ORE,
 		);
 	

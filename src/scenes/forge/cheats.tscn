@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://kmcy5k8l3377"]
+
+[ext_resource type="Script" uid="uid://ymynedc15y2w" path="res://src/scripts/cheats.gd" id="1_t1sge"]
+
+[node name="Cheats" type="CanvasLayer"]
+script = ExtResource("1_t1sge")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_bottom = 66.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="GetResources" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "get resources
+"
+
+[node name="ResetUpgrades" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "reset upgrades"

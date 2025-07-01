@@ -1,4 +1,5 @@
 extends Node
+class_name Storage
 
 var contents: Dictionary[ItemTypes.types, int]
 
