@@ -4,7 +4,6 @@ class_name CollectorSpawner
 @export var _upgrade_stats: PlayerUpgradeStats;
 @export var _player: Player;
 @export var _collector_scene: PackedScene;
-@export var _level_types: LevelTypes;
 
 
 var _untargeted_item: Array[ItemDropBase];
