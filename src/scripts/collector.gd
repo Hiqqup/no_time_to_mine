@@ -5,20 +5,25 @@ class_name Collector
 @onready var _forge: Forge = get_tree().get_first_node_in_group("forge");
 var _time_counter:float = 0.0;
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@export var _upgrade_stats: PlayerUpgradeStats;
 
 var targeting: ItemDropBase;
 var player: Player;
 var spawner: CollectorSpawner
-
-
+var speed: float =50;
+func scale_speed():
+	speed += _upgrade_stats.collector_scaling
 
 func _process(delta: float) -> void:
 	_time_counter += delta;
 	$Visuals.position.y = sin(_time_counter*4) * 2.0;
 	if targeting:
-		var dir =collision_shape_2d.global_position.direction_to(targeting.global_position);
-		velocity = dir * 20;
-		move_and_slide()
+		var dir =  targeting.global_position -collision_shape_2d.global_position;
+		if dir.length() > speed *delta:
+			position += dir.normalized() * speed  * delta
+		else:
+			position += dir;
+		
 
 
 func _ready() -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oha8mtvda0k5"]
+[gd_scene load_steps=6 format=3 uid="uid://oha8mtvda0k5"]
 
 [ext_resource type="Script" uid="uid://de0wchn3blk7t" path="res://src/scripts/collector.gd" id="1_wsoj1"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_288jy"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_mg3xh"]
+[ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="3_288jy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg3xh"]
 radius = 3.16228
@@ -12,6 +13,7 @@ collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_wsoj1")
 _level_types = ExtResource("2_288jy")
+_upgrade_stats = ExtResource("3_288jy")
 
 [node name="Visuals" type="Node2D" parent="."]
 

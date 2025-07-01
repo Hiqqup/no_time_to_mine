@@ -4,7 +4,8 @@ extends Node2D
 @export var upgrade_stats: PlayerUpgradeStats;
 
 var item_drops :Dictionary[ItemTypes.types, int];
-
+@onready var _mines:Mines = get_tree().get_first_node_in_group("current_mines");
+		
 var _time_counter: float = 0.0;
 var targeted_by :Collector= null;
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	$Visuals/AnimationPreview.queue_free();
 	$GuiItemListDisplayer.generate_or_update_mod_label(
 		$Visuals/GreenToBlueWrapper/VBoxContainer,item_drops);
+	_mines.collector_spawner._set_untargeted_item(self);
 func _enter_tree() -> void:
 	$CollectionRange/CollectionRangeShape.scale*= upgrade_stats.mining_range
 
@@ -26,15 +28,17 @@ func _collect_item(player: Player):
 	$AnimationPlayer.play("collect")
 	if targeted_by:
 		targeted_by.spawner._set_unbusy_colletor(targeted_by);
+	if _mines.collector_spawner._untargeted_item.has(self):
+		_mines.collector_spawner._untargeted_item.erase(self);
 	await $AnimationPlayer.animation_finished
+	
 	queue_free()
 
 func _on_collection_range_body_entered(body: Node2D) -> void:
 	if body is Player:
-		var mines:Mines = get_tree().get_first_node_in_group("current_mines");
-		mines.collector_spawner._untargeted_item.erase(self);
 		_collect_item(body)
 	if body is Collector:
 		_collect_item(body.player);
+		body.scale_speed();
 		
 		

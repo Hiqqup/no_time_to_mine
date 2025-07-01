@@ -4,24 +4,26 @@ class_name CollectorSpawner
 @export var _upgrade_stats: PlayerUpgradeStats;
 @export var _player: Player;
 @export var _collector_scene: PackedScene;
-@export var _level_types: LevelTypes;
 
 
 var _untargeted_item: Array[ItemDropBase];
 var _unbusy_collector: Array[Collector];
 
 func _set_untargeted_item(drop: ItemDropBase):
+		#drop.modulate = Color.BLACK;
 		_untargeted_item.push_back(drop);
 		_check_for_work();
 
 func _set_unbusy_colletor(collector: Collector):
 	_unbusy_collector.push_back(collector);
+
 	_check_for_work()
 
 func _check_for_work():
 	if not _unbusy_collector.is_empty() and not _untargeted_item.is_empty():
 		var collector: Collector = _unbusy_collector.pop_back();
 		var item: ItemDropBase = _untargeted_item.pop_back();
+		#item.modulate = Color.RED;
 		item.targeted_by = collector;
 		collector.targeting = item; 
 

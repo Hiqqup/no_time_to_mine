@@ -24,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if max_velocity > 500:
+	if max_velocity < 500:
 		max_velocity += _upgrade_stats.orb_scaling;
 	var base: HarvestableBase = (body.get_parent().get_parent() as HarvestableBase);
 	
