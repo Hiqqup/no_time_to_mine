@@ -125,7 +125,7 @@ func damage(level_unlocked: LevelTypes.types):
 	u.apply_upgrade = (func():upgrade_stats.mining_damage += float(level_unlocked));
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
-		stone_map[level_unlocked-1]: 1+ floor(2* level), 
+		stone_map[level_unlocked-1]: 1+ floor(1* level), 
 		stone_map[level_unlocked]: 2 + floor(0.25 *  level),
 		});
 	if level_unlocked == LevelTypes.types.FIRST:
