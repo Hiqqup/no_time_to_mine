@@ -146,7 +146,7 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.PURPLE_CAP_STONE,  
 		_tileset_get_region(sixth_level_tileset,harvestable_stone_region),
-		100,
+		1000,
 		ItemTypes.types.PURPLE_CAP_STONE,
 		);
 	_setup_harvestable(

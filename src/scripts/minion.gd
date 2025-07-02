@@ -52,14 +52,14 @@ func _try_mine() -> void:
 		return;
 	if not currently_mining.minions_in_range.has(self):
 		return;
+	speed *= _upgrade_stats.minion_scaling;
+	_mining_cooldown_this_run *= 1/ _upgrade_stats.minion_scaling;
 	currently_mining.health -= _upgrade_stats.minion_mining_damage;
 	currently_mining.mine_visual_feedback();
 	_mine_cooldown = _mining_cooldown_this_run;
 	if(currently_mining.health <= 0):
 		currently_mining.get_destroyed();
 		currently_mining = null;
-		speed *= _upgrade_stats.minion_scaling;
-		_mining_cooldown_this_run *= 1/ _upgrade_stats.minion_scaling;
 	mine_visual_feedback()
 
 func _queue_back_up(root: CharacterBody2D):

@@ -30,25 +30,36 @@ func convert_position(pos):
 	var viewport_size = Vector2( get_viewport().size);
 	return ((pos - global_position) *zoom +viewport_size/2);
 
-func _handle_zoom():
+func _zoom_out():
 	if zoom.x > GlobalConstants.MIN_ZOOM:
 		zoom -= Vector2.ONE * _SCROLL_FACTOR ;
+
+func _zoom_in():
+	zoom+= Vector2.ONE * _SCROLL_FACTOR;
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if location == CameraLocation.LOCKED_TITLE_SCREEN:
 		return;
+	if GlobalConstants.COMPILED() and event is InputEventMagnifyGesture:
+		if event.factor > 1.0:
+			_zoom_in();
+		else:
+			_zoom_out();
+		return;
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
-			_handle_zoom();
-			
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
-			zoom+= Vector2.ONE * _SCROLL_FACTOR;
+		if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed):
+			_zoom_out();
+		if (event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed):
+			_zoom_in()
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not _dragging:
 			_dragging = true;
 			_dragging_start_position = event.position
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and _dragging:
 			_dragging = false;
+	
+	
+	
 
 
 func _process(delta: float) -> void:
