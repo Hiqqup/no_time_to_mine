@@ -120,9 +120,9 @@ func damage(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Damage";
-	u.upgrade_type = UpgradeTypes.types.get("DAMAGE_" + str(level_unlocked));
+	u.upgrade_type = UpgradeTypes.types.get("DAMAGE_" + str(level_unlocked- LevelTypes.types.FIRST +1));
 	u.max_level = 10;
-	u.apply_upgrade = (func():upgrade_stats.mining_damage += float(level_unlocked));
+	u.apply_upgrade = (func():upgrade_stats.mining_damage += float(level_unlocked- LevelTypes.types.FIRST +1));
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
 		stone_map[level_unlocked-1]: 1+ floor(1* level), 
@@ -140,9 +140,9 @@ func mining_speed(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Mining Speed"
-	u.upgrade_type = UpgradeTypes.types.get("MINING_SPEED_" + str(level_unlocked));
+	u.upgrade_type = UpgradeTypes.types.get("MINING_SPEED_" + str(level_unlocked- LevelTypes.types.FIRST +1));
 	u.max_level = 3
-	u.apply_upgrade = (func():upgrade_stats.mining_cooldown_duration -= 0.05);
+	u.apply_upgrade = (func():upgrade_stats.mining_cooldown_duration -= 0.04);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
 			stone_map[level_unlocked]: 2,
@@ -154,7 +154,7 @@ func minion_amount(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Minion Amount"
-	u.upgrade_type = UpgradeTypes.types.get("MINION_AMOUNT_" + str(level_unlocked-1));
+	u.upgrade_type = UpgradeTypes.types.get("MINION_AMOUNT_" + str(level_unlocked-1 - LevelTypes.types.FIRST +1));
 	u.max_level = 1
 	u.apply_upgrade = (func():upgrade_stats.minion_amount +=  1);
 	u.cost_func  = (func (_level:int) -> Dictionary[ItemTypes.types, int]:
@@ -168,9 +168,9 @@ func minion_damage(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Minion Damage"
-	u.upgrade_type = UpgradeTypes.types.get("MINION_DAMAGE_" + str(level_unlocked-1));
+	u.upgrade_type = UpgradeTypes.types.get("MINION_DAMAGE_" + str(level_unlocked-1 - LevelTypes.types.FIRST +1));
 	u.max_level = 10
-	u.apply_upgrade = (func():upgrade_stats.minion_mining_damage +=  1.5*float(level_unlocked));
+	u.apply_upgrade = (func():upgrade_stats.minion_mining_damage +=  1.5*float(level_unlocked - LevelTypes.types.FIRST +1));
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
 			ore_map[level_unlocked -1]: 1, 
@@ -182,7 +182,7 @@ func minion_scaling(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Minion Scaling"
-	u.upgrade_type = UpgradeTypes.types.get("MINION_SCALING_" + str(level_unlocked-2));
+	u.upgrade_type = UpgradeTypes.types.get("MINION_SCALING_" + str(level_unlocked-2 - LevelTypes.types.FIRST +1));
 	u.max_level = 3
 	u.apply_upgrade = (func():
 		upgrade_stats.minion_mining_cooldown_duration -= 0.1
@@ -199,7 +199,7 @@ func collector_amount(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Collector Amount"
-	u.upgrade_type = UpgradeTypes.types.get("COLLECTOR_AMOUNT_" + str(level_unlocked-3));
+	u.upgrade_type = UpgradeTypes.types.get("COLLECTOR_AMOUNT_" + str(level_unlocked-3 - LevelTypes.types.FIRST +1));
 	u.max_level = 1
 	u.apply_upgrade = (func():upgrade_stats.collector_amount +=  1);
 	u.cost_func  = (func (_level:int) -> Dictionary[ItemTypes.types, int]:
@@ -213,7 +213,7 @@ func orb_scaling(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Orb Scaling"
-	u.upgrade_type = UpgradeTypes.types.get("ORB_SCALING_" + str(level_unlocked-3));
+	u.upgrade_type = UpgradeTypes.types.get("ORB_SCALING_" + str(level_unlocked-3 - LevelTypes.types.FIRST +1));
 	u.max_level = 3
 	u.apply_upgrade = (func():upgrade_stats.orb_scaling +=  2.0);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
@@ -228,7 +228,7 @@ func collector_scaling(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Collector Scaling"
-	u.upgrade_type = UpgradeTypes.types.get("COLLECTOR_SCALING_" + str(level_unlocked-4));
+	u.upgrade_type = UpgradeTypes.types.get("COLLECTOR_SCALING_" + str(level_unlocked-4- LevelTypes.types.FIRST +1));
 	u.max_level = 5
 	u.apply_upgrade = (func():upgrade_stats.collector_scaling +=  2.0);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
@@ -243,9 +243,9 @@ func orb_damage(level_unlocked: LevelTypes.types):
 	var u: UpgradeProperties;
 	u = UpgradeProperties.new();
 	u.skill_name = "Orb Damage";
-	u.upgrade_type = UpgradeTypes.types.get("ORB_DAMAGE_" + str(level_unlocked - 3));
+	u.upgrade_type = UpgradeTypes.types.get("ORB_DAMAGE_" + str(level_unlocked - 3 - LevelTypes.types.FIRST +1));
 	u.max_level = 10;
-	u.apply_upgrade = (func():upgrade_stats.orb_damage += 2*float(level_unlocked));
+	u.apply_upgrade = (func():upgrade_stats.orb_damage += 2*float(level_unlocked- LevelTypes.types.FIRST +1));
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
 		stone_map[level_unlocked]: 1+ floor(1* level), 

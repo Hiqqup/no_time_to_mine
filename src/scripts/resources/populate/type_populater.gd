@@ -165,6 +165,7 @@ func _ready() -> void:
 	levels.tileset_map[LevelTypes.types.FOURTH] = fourth_level_tileset;
 	levels.tileset_map[LevelTypes.types.FIFTH] = fifth_level_tileset;
 	levels.tileset_map[LevelTypes.types.SIXTH] = sixth_level_tileset;
+	levels.tileset_map[LevelTypes.types.BOSS] = first_level_tileset;
 	
 	levels.setup();
 	# Levels
@@ -184,3 +185,10 @@ func _ready() -> void:
 	_classic_level(LevelTypes.types.FOURTH, HarvestableTypes.types.MAGENTA_CAP_STONE, HarvestableTypes.types.MALACHITE_ORE);
 	_classic_level(LevelTypes.types.FIFTH, HarvestableTypes.types.CYAN_CAP_STONE, HarvestableTypes.types.AMETHYST_ORE);
 	_classic_level(LevelTypes.types.SIXTH, HarvestableTypes.types.PURPLE_CAP_STONE, HarvestableTypes.types.RUBY_ORE);
+	
+	
+	
+	l = Level.new()
+	l.platform_radius = 6
+	l. harvestables = {}
+	levels.map[LevelTypes.types.BOSS] = l;

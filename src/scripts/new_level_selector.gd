@@ -39,7 +39,8 @@ func _generate_button(key: int):
 		_latest_button_animation_wrapper._wrapper.visible = false;
 	
 func unlock_level_feedback():
-	_forge._last_level_button.add_gem(_forge._save_state.max_unlocked_level-1);
+	if _forge._save_state.max_unlocked_level != LevelTypes.types.FIRST:
+		_forge._last_level_button.add_gem(_forge._save_state.max_unlocked_level-1);
 	var e:ButtonAnimationWrapper = _latest_button_animation_wrapper
 	if e: e.play_animation(e.animations.level_unlocked);
 	UpgradeButtonBase.check_button_list_visibility(
@@ -47,7 +48,7 @@ func unlock_level_feedback():
 
 func update():
 	for key in LevelTypes.types.size():
-		if (not (key == LevelTypes.types.TUTORIAL 
+		if (not (key in LevelTypes.not_playable
 			or LevelTypes.is_higher(key, _forge._save_state.max_unlocked_level)) 
 			and not _already_displaying[key] ):
 			_generate_button(key)

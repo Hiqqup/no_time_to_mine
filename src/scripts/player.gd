@@ -37,6 +37,7 @@ var do_lifetime_calculation: bool = true;
 
 var _forge:Forge;
 
+var go_back_to_forge: bool = true;
 
 func _ready() -> void:
 	lifetime_bar.max_value = _upgrade_stats.max_life_time;
@@ -83,6 +84,8 @@ func _tween_music_down():
 	
 
 func _die():
+	if not go_back_to_forge:
+		return;
 	_tween_music_down()
 	get_tree().get_first_node_in_group("screen_transition").change_scene(
 	func():

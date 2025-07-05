@@ -112,6 +112,8 @@ func _ready() -> void:
 
 
 func _enter_tree() -> void:
+	if  self is EndbossHarvestable:
+		return;
 	$CollisionShapes/MiningRange/MiningRangeShape.scale*= _upgrade_stats.mining_range
 
 

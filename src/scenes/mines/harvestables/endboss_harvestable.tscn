@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2y57ebldpity"]
+
+[ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_1udyq"]
+[ext_resource type="Script" uid="uid://p1bk7gu6rnic" path="res://src/scripts/endboss_harvestable.gd" id="2_31w1o"]
+[ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="2_hwk7d"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_wvb12"]
+[ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="3_xrcto"]
+[ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="4_31w1o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrcto"]
+atlas = ExtResource("2_wvb12")
+region = Rect2(200, 135, 94, 56)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yfmhu"]
+resource_local_to_scene = true
+shader = ExtResource("4_31w1o")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
+shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvb12"]
+resource_local_to_scene = true
+shader = ExtResource("2_hwk7d")
+shader_parameter/flash = 0.0
+shader_parameter/show = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31w1o"]
+atlas = ExtResource("2_wvb12")
+region = Rect2(200, 135, 94, 56)
+
+[node name="EndbossHarvestable" instance=ExtResource("1_1udyq")]
+script = ExtResource("2_31w1o")
+_upgrade_stats = null
+_drop_base_scene = null
+
+[node name="CollisionShapes" parent="." index="0"]
+position = Vector2(-3.57628e-07, -15)
+scale = Vector2(3, 3)
+
+[node name="CollisionPolygon2D" parent="CollisionShapes/MinionRange" index="0"]
+position = Vector2(0, 9)
+
+[node name="HitParticles" parent="Visuals/HitParticlesContainer" index="0"]
+initial_velocity_min = 192.0
+initial_velocity_max = 224.0
+scale_amount_min = 2.0
+scale_amount_max = 8.0
+
+[node name="SelectedOutline" parent="Visuals" index="2"]
+texture = SubResource("AtlasTexture_xrcto")
+
+[node name="Background" parent="Visuals" index="3" instance=ExtResource("3_xrcto")]
+z_index = 0
+material = SubResource("ShaderMaterial_yfmhu")
+offset_left = -33.0
+offset_top = -9.0
+offset_right = 33.0
+offset_bottom = 20.0
+
+[node name="Sprite2D" parent="Visuals" index="4"]
+material = SubResource("ShaderMaterial_wvb12")
+texture = SubResource("AtlasTexture_31w1o")

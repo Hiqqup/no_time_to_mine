@@ -9,6 +9,7 @@ var i: Level;
 
 
 enum types{
+	BOSS,
 	TUTORIAL,
 	FIRST,
 	SECOND,
@@ -18,7 +19,7 @@ enum types{
 	SIXTH,
 	
 }
-
+static var not_playable: Array[LevelTypes.types] = [LevelTypes.types.TUTORIAL, LevelTypes.types.BOSS]
 static func is_higher( higher, than):
 	return higher > than ;
 

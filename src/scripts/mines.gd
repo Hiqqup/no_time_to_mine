@@ -1,23 +1,29 @@
 extends Node2D
 class_name Mines
-	
 @export var player: Player;
 @export var harvestable_layer: Node;
 @export var floor_layer: Node;
 
 @export var levels: LevelTypes
+@export var _endboss_scene: PackedScene
 @onready var collector_spawner: CollectorSpawner = $YSorted/CollectorSpawner
 
 var _forge: Forge
 
+func _enter_tree() -> void:
+	_forge = get_tree().get_first_node_in_group("forge");
+	if _forge.selected_level == LevelTypes.types.BOSS:
+		add_child(_endboss_scene.instantiate());
+
 func _ready() -> void:
 	var d : Dictionary[HarvestableTypes.types, int]
-	_forge = get_tree().get_first_node_in_group("forge");
 	var level: Level = levels.map[_forge.selected_level];
 	floor_layer.setup(level.platform_radius);
 	d=level.harvestables;
 	harvestable_layer.generate_cells(d)
 	floor_layer.generate_navigation_layer();
+	
+
 
 
 func _on_player_died() -> void:

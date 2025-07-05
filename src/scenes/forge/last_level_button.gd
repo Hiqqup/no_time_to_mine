@@ -40,7 +40,7 @@ func _ready() -> void:
 	
 	for i in LevelTypes.types.size():
 		if (LevelTypes.is_higher(_forge._save_state.max_unlocked_level  , i) and 
-			i != LevelTypes.types.TUTORIAL
+			not i in LevelTypes.not_playable
 		):
 			add_gem(i, false);
 
@@ -62,4 +62,6 @@ func _try_last_level():
 		_animation_player.play("denied")
 		Camera.shake(6)
 		return;
+	Camera.shake(20);
+	_forge._try_level(LevelTypes.types.BOSS);
 	

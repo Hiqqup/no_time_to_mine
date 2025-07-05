@@ -84,6 +84,9 @@ func mine_visual_feedback():
 
 func _get_dir() ->Vector2:
 	var dir:= Vector2.ZERO;
+	if not following:
+		currently_mining = null;
+		return dir;
 	var target_position: Vector2= following.global_position;
 	var stop_distance: float = 6.0;
 	

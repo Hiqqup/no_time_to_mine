@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=22 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
@@ -31,6 +31,10 @@ resource_local_to_scene = true
 shader = ExtResource("7_p14td")
 shader_parameter/flash = 0.0
 shader_parameter/show = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ixwa"]
+atlas = ExtResource("8_h3tv2")
+region = Rect2(132, 11, 31, 20)
 
 [sub_resource type="Animation" id="Animation_p14td"]
 length = 0.001
@@ -225,7 +229,6 @@ _drop_base_scene = ExtResource("2_wnspo")
 [node name="CollisionShapes" type="Node2D" parent="."]
 
 [node name="MiningRange" type="Area2D" parent="CollisionShapes"]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -259,6 +262,7 @@ polygon = PackedVector2Array(-32, -1, 0, 15, 32, -1, 0, -17)
 emitting = false
 amount = 32
 lifetime = 0.3
+one_shot = true
 explosiveness = 0.8
 lifetime_randomness = 0.5
 spread = 180.0
@@ -292,7 +296,7 @@ region_rect = Rect2(0, -2, 31, 25)
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 material = SubResource("ShaderMaterial_j1g1d")
 position = Vector2(0, 5)
-texture = SubResource("AtlasTexture_vgomb")
+texture = SubResource("AtlasTexture_4ixwa")
 region_rect = Rect2(132, 11, 31, 20)
 
 [node name="GridVectorToPositionConverter" parent="." instance=ExtResource("2_pmh5g")]
