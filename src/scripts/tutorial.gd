@@ -70,6 +70,11 @@ func _ready() -> void:
 	
 	
 	_forge_level_selector._latest_button_animation_wrapper._wrapper.visible = false;
+	_forge._last_level_button._animation_wrapper.visible = false;
+	
+	_forge._last_level_button._info_label._skill_name.text = ("Destroy all rocks on a level
+to go back to the source...")
+	_forge._last_level_button._info_label._update_scale()
 	
 	Camera.reset_zoom();
 	Camera.location = Camera.CameraLocation.MINES;
@@ -85,6 +90,7 @@ func _ready() -> void:
 			TimeoutCallback.timeout_callback(2, func():
 				_fade_in( _retry_guide);
 				_forge_level_selector.unlock_level_feedback();
+				_forge._last_level_button.pan_camera_to_and_unlock()
 				);
 			
 			Camera.location = Camera.CameraLocation.FORGE;
@@ -183,6 +189,8 @@ func  _process(_delta: float) -> void:
 	if _tutorial_section == TutorialSection.FORGE:
 		_forge.doing_tutorial = false;
 		if _check_for_new_forge():
+			_forge._last_level_button._info_label._skill_name.text = "Back to the source..."
+			_forge._last_level_button._info_label._update_scale()
 			_forge._save_state.tutorial_completed = true;
 			_forge.save_game();
 			queue_free();

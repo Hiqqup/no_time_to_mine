@@ -33,6 +33,10 @@ func _ready() -> void:
 	
 	update_and_generate_storage_display()
 	
+	if _save_state.times_level_completed[LevelTypes.types.size()-1]>0:
+		_last_level_button.boss_unlocked = true;
+		_last_level_button.add_gem(LevelTypes.types.size() -1, false);
+	
 
 
 
@@ -65,7 +69,7 @@ func increment_level():
 	if selected_level != _save_state.max_unlocked_level:
 		return;
 	if selected_level == LevelTypes.types.size() - 1:
-		_last_level_button.boss_unlocked = true;
+		_last_level_button.unlock();
 	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
 		_new_level_selector.new_level_unlocked = true;
@@ -107,6 +111,8 @@ func _load_save_state():
 	if (_save_state.times_level_completed == {}):
 		for key in LevelTypes.types.size():
 			_save_state.times_level_completed[key] = 0;
+	
+
 
 
 func _tween_music_up():
