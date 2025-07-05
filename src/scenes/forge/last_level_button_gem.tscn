@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://t1x5iqth5hd3"]
+
+[ext_resource type="Script" uid="uid://dmwysbkvyibjr" path="res://src/scripts/last_level_button_gem.gd" id="1_fldbn"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_gjs2d"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_gk8pi"]
+[ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="3_gjs2d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk8pi"]
+atlas = ExtResource("2_gk8pi")
+region = Rect2(208, 45, 12, 12)
+
+[node name="LastLevelButtonGem" type="TextureButton"]
+offset_right = 14.5
+offset_bottom = 14.5
+script = ExtResource("1_fldbn")
+_level_types = ExtResource("2_gjs2d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gk8pi")
+
+[node name="ButtonAnimationWrapperContainer" parent="." instance=ExtResource("3_gjs2d")]

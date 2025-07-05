@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dofhfhcgxhdjh"]
+
+[ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrade_button_base.tscn" id="1_a18jm"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="1_r4dyd"]
+[ext_resource type="Script" uid="uid://brunhjlo5pheb" path="res://src/scenes/forge/last_level_button.gd" id="2_r4dyd"]
+[ext_resource type="PackedScene" uid="uid://t1x5iqth5hd3" path="res://src/scenes/forge/last_level_button_gem.tscn" id="3_bkhdb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h4qr"]
+atlas = ExtResource("1_r4dyd")
+region = Rect2(306, 121, 64, 66)
+
+[node name="LastLevelButton" instance=ExtResource("1_a18jm")]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_r4dyd")
+_gem_scene = ExtResource("3_bkhdb")
+
+[node name="InfoLabel" parent="." index="1"]
+offset_bottom = -10.0
+
+[node name="WrapperButton" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visuals" parent="WrapperButton" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" parent="WrapperButton/Visuals" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0h4qr")
+stretch_mode = 0
+
+[node name="Frame" parent="WrapperButton/Visuals" index="1"]
+visible = false

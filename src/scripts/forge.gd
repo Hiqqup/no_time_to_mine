@@ -13,6 +13,7 @@ var _skill_tree_root:UpgradeButtonBase;
 var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
 var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
 @onready var _new_level_selector: Control = $CameraIndependent/NewLevelSelector
+@onready var _last_level_button: LastLevelButton = $SkillTree/LastLevelButton
 var doing_tutorial: bool = false;
 
 
@@ -31,9 +32,12 @@ func _ready() -> void:
 	_skill_tree_root.visible = true;
 	
 	update_and_generate_storage_display()
+	
+
 
 
 func _process(_delta: float) -> void:
+	#print(LevelTypes.types.SIXTH == LevelTypes.types.size()-1)
 	if Input.is_action_just_pressed("forge_try_again") and visible:
 		_try_level(selected_level);
 
@@ -60,6 +64,8 @@ func increment_level():
 	_save_state.times_level_completed[selected_level] +=1;
 	if selected_level != _save_state.max_unlocked_level:
 		return;
+	if selected_level == LevelTypes.types.size() - 1:
+		_last_level_button.boss_unlocked = true;
 	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)
 		_new_level_selector.new_level_unlocked = true;

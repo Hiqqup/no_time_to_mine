@@ -18,3 +18,10 @@ func _ready() -> void:
 				_forge._save_state.upgrades_purchased[key] = 0;
 			_forge.save_game();
 			)
+
+
+func _on_reset_levels_pressed() -> void:
+	_forge._save_state.max_unlocked_level = LevelTypes.types.FIRST;
+	for key in _forge._save_state.times_level_completed.keys():
+		_forge._save_state.times_level_completed[key] = 0;
+	_forge.save_game();

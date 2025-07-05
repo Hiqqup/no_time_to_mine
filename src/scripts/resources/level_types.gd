@@ -16,6 +16,7 @@ enum types{
 	FOURTH,
 	FIFTH,
 	SIXTH,
+	
 }
 
 static func is_higher( higher, than):

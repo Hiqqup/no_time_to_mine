@@ -37,5 +37,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource("2_x3jif")
+stretch_mode = 5
 
 [node name="ButtonAnimationWrapperContainer" parent="WrapperButton" instance=ExtResource("3_x3jif")]

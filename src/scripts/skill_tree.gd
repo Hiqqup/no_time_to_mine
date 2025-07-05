@@ -184,11 +184,14 @@ func minion_scaling(level_unlocked: LevelTypes.types):
 	u.skill_name = "Minion Scaling"
 	u.upgrade_type = UpgradeTypes.types.get("MINION_SCALING_" + str(level_unlocked-2));
 	u.max_level = 3
-	u.apply_upgrade = (func():upgrade_stats.minion_scaling +=  0.1);
+	u.apply_upgrade = (func():
+		upgrade_stats.minion_mining_cooldown_duration -= 0.1
+		upgrade_stats.minion_walking_speed += 4
+		);
 	u.cost_func  = (func (level:int) -> Dictionary[ItemTypes.types, int]:
 		return {
-			stone_map[level_unlocked -1]: 5 + level , 
-			ore_map[level_unlocked]: 1 + level,
+			stone_map[level_unlocked -1]: 2 + level , 
+			ore_map[level_unlocked]: 1 ,
 		});
 	u.level_unlocked = level_unlocked;
 	minion_scaling_node_map[level_unlocked].upgrade_properties = u;

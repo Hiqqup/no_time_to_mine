@@ -5,7 +5,7 @@ class_name Minion
 @export var _upgrade_stats: PlayerUpgradeStats;
 var _player: Player;
 var _forge : Forge
-var speed: float = 50;
+@onready var speed: float = _upgrade_stats.minion_walking_speed;
 @onready var _sprite_2d: Sprite2D = $Visuals/Sprite2D
 var bounce: Vector2;
 var _walking_time: float 
@@ -52,7 +52,7 @@ func _try_mine() -> void:
 		return;
 	if not currently_mining.minions_in_range.has(self):
 		return;
-	speed *= _upgrade_stats.minion_scaling;
+	#speed *= _upgrade_stats.minion_scaling;
 	_mining_cooldown_this_run *= 1/ _upgrade_stats.minion_scaling;
 	currently_mining.health -= _upgrade_stats.minion_mining_damage;
 	currently_mining.mine_visual_feedback();

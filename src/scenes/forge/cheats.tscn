@@ -24,3 +24,10 @@ text = "get resources
 [node name="ResetUpgrades" type="Button" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "reset upgrades"
+
+[node name="ResetLevels" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "reset levels
+"
+
+[connection signal="pressed" from="PanelContainer/HBoxContainer/ResetLevels" to="." method="_on_reset_levels_pressed"]

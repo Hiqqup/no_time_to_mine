@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=4 uid="uid://cdlc2mnvsxrts"]
+
+[ext_resource type="PackedScene" uid="uid://bd1ftd4mp5yyb" path="res://src/scenes/mines/floor.tscn" id="1_aq671"]
+[ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="2_aq6nw"]
+[ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="3_72ek2"]
+[ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="4_6l7pj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dy03n"]
+resource_local_to_scene = true
+shader = ExtResource("3_72ek2")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
+shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aq671"]
+resource_local_to_scene = true
+shader = ExtResource("3_72ek2")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
+shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
+
+[node name="StartingCutscene" type="Node2D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_aq671")]
+tile_map_data = PackedByteArray("AAD6//v/AQABAAAAAAD6//z/AQAAAAAAAAD6//3/AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wQAAQAAAAAAAAD6/wUAAQABAAAAAAD7//v/AQABAAAAAAD7//z/AQACAAAAAAD7//3/AQAAAAAAAAD7//7/AQAAAAAAAAD7////AQAAAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wQAAQAAAAAAAAD7/wUAAQABAAAAAAD8//v/AQABAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQACAAAAAAD8/wEAAQAAAAAAAAD8/wMAAQADAAAAAAD8/wQAAQAAAAAAAAD8/wUAAQABAAAAAAD9//v/AQABAAAAAAD9//z/AQAAAAAAAAD9//3/AQAAAAAAAAD9//7/AQADAAAAAAD9/wEAAQAAAAAAAAD9/wMAAQAAAAAAAAD9/wQAAQAAAAAAAAD9/wUAAQABAAAAAAD+//v/AQABAAAAAAD+//z/AQACAAAAAAD+//3/AQAAAAAAAAD+//7/AQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD+/wMAAQADAAAAAAD+/wQAAQADAAAAAAD+/wUAAQABAAAAAAD///v/AQABAAAAAAD///z/AQAAAAAAAAD///3/AQAAAAAAAAD///7/AQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQACAAAAAAD//wQAAQADAAAAAAD//wUAAQABAAAAAAAAAPv/AQABAAAAAAAAAPz/AQAAAAAAAAAAAP3/AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQABAAAAAAABAPv/AQABAAAAAAABAPz/AQACAAAAAAABAP3/AQAAAAAAAAABAP7/AQAAAAAAAAABAP//AQAAAAAAAAABAAAAAQADAAAAAAABAAEAAQAAAAAAAAABAAIAAQACAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQABAAAAAAACAPv/AQABAAAAAAACAPz/AQAAAAAAAAACAP3/AQACAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAACAAQAAQAAAAAAAAACAAUAAQABAAAAAAADAPv/AQABAAAAAAADAPz/AQAAAAAAAAADAP3/AQADAAAAAAADAP7/AQAAAAAAAAADAP//AQACAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQABAAAAAAAEAPv/AQABAAAAAAAEAPz/AQAAAAAAAAAEAP3/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQADAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQABAAAAAAD9/wAAAQAAAAAAAAD9////AQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAD+////AQAAAAAAAAD/////AQAAAAAAAAD//wEAAQAAAAAAAAD//wAAAQAAAAAAAAD+/wAAAQAAAAAAAAD7/wMAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wIAAQACAAAAAAA=")
+script = null
+
+[node name="Background" parent="." instance=ExtResource("2_aq6nw")]
+material = SubResource("ShaderMaterial_dy03n")
+offset_left = -473.0
+offset_top = -292.0
+offset_right = 537.0
+offset_bottom = 276.0
+
+[node name="e" parent="." instance=ExtResource("2_aq6nw")]
+z_index = 0
+material = SubResource("ShaderMaterial_aq671")
+offset_left = -26.0
+offset_top = -19.0
+offset_right = 25.0
+offset_bottom = 17.0
+
+[node name="Tileset" type="Sprite2D" parent="."]
+texture = ExtResource("4_6l7pj")
+region_enabled = true
+region_rect = Rect2(200, 135, 94, 56)
+
+[node name="SpiritParticles" type="CPUParticles2D" parent="."]
+modulate = Color(0.964706, 0.803922, 0.14902, 1)
+position = Vector2(-94, -7.99999)
+rotation = -2.44346
+scale = Vector2(0.994154, 1.00358)
+amount = 32
+lifetime = 0.5
+lifetime_randomness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+angular_velocity_min = -80.0
+angular_velocity_max = 80.0
+scale_amount_max = 2.0
