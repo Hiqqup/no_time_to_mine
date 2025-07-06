@@ -55,8 +55,9 @@ func _physics_process(delta: float) -> void:
 	if do_lifetime_calculation:
 		_lifetime+= delta;
 		lifetime_bar.value = _lifetime;
-	_try_mine();
+	
 	_handle_movement_input()
+	_try_mine();
 	_handle_targeting();
 	if _lifetime >= _upgrade_stats.max_life_time:
 		_die_feedback()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2y57ebldpity"]
+[gd_scene load_steps=12 format=3 uid="uid://b2y57ebldpity"]
 
 [ext_resource type="PackedScene" uid="uid://dk6ps468q2o3x" path="res://src/scenes/mines/harvestables/harvestable_base.tscn" id="1_1udyq"]
 [ext_resource type="Script" uid="uid://p1bk7gu6rnic" path="res://src/scripts/endboss_harvestable.gd" id="2_31w1o"]
 [ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="2_hwk7d"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="2_wvb12"]
 [ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="3_xrcto"]
+[ext_resource type="PackedScene" uid="uid://cidaurohm7uy1" path="res://src/scenes/mines/harvestables/default_colision_shapes/collider_shape.tscn" id="3_yfmhu"]
 [ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="4_31w1o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xrcto"]
@@ -48,7 +49,22 @@ _drop_base_scene = null
 position = Vector2(-3.57628e-07, -15)
 scale = Vector2(3, 3)
 
+[node name="MiningRangeShape" parent="CollisionShapes/MiningRange" index="0"]
+visible = false
+
+[node name="ClickDetectionShape" parent="CollisionShapes/ClickDetection" index="0"]
+polygon = PackedVector2Array(-17.9206, 8.87843, 0, 16.7704, 17.9206, 8.87843, 17.921, 6.027, 0, -3.865, -17.921, 6.027)
+
+[node name="SpiritDetector" type="Area2D" parent="CollisionShapes" index="3"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="ColliderShape" parent="CollisionShapes/SpiritDetector" index="0" instance=ExtResource("3_yfmhu")]
+position = Vector2(0, 7)
+scale = Vector2(0.5, 0.5)
+
 [node name="CollisionPolygon2D" parent="CollisionShapes/MinionRange" index="0"]
+visible = false
 position = Vector2(0, 9)
 
 [node name="HitParticles" parent="Visuals/HitParticlesContainer" index="0"]
@@ -60,14 +76,24 @@ scale_amount_max = 8.0
 [node name="SelectedOutline" parent="Visuals" index="2"]
 texture = SubResource("AtlasTexture_xrcto")
 
-[node name="Background" parent="Visuals" index="3" instance=ExtResource("3_xrcto")]
+[node name="ColorRect" type="ColorRect" parent="Visuals" index="3"]
+offset_left = -32.0
+offset_top = -9.0
+offset_right = 33.0
+offset_bottom = 20.0
+mouse_filter = 2
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="Background" parent="Visuals" index="4" instance=ExtResource("3_xrcto")]
 z_index = 0
 material = SubResource("ShaderMaterial_yfmhu")
-offset_left = -33.0
+offset_left = -32.0
 offset_top = -9.0
 offset_right = 33.0
 offset_bottom = 20.0
 
-[node name="Sprite2D" parent="Visuals" index="4"]
+[node name="Sprite2D" parent="Visuals" index="5"]
 material = SubResource("ShaderMaterial_wvb12")
 texture = SubResource("AtlasTexture_31w1o")
+
+[connection signal="body_entered" from="CollisionShapes/SpiritDetector" to="." method="_on_spirit_detector_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bktks85fbuoip"]
+[gd_scene load_steps=50 format=3 uid="uid://bktks85fbuoip"]
 
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
@@ -87,6 +87,14 @@ region = Rect2(66, 132, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dm221"]
 atlas = ExtResource("8_5gmqy")
 region = Rect2(66, 132, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qao10"]
+atlas = ExtResource("8_xtwfv")
+region = Rect2(33, 132, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8olf"]
+atlas = ExtResource("8_5gmqy")
+region = Rect2(33, 132, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3050"]
 atlas = ExtResource("7_chr1d")
@@ -289,9 +297,9 @@ offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_jwt84")
 
 [node name="CollectorScaling1" parent="Damage1/Damage2/Damage3/CollectorAmount1" instance=ExtResource("3_vcrgi")]
-offset_left = 0.0
+offset_left = -128.0
 offset_top = -128.0
-offset_right = 40.0
+offset_right = -88.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_ykedm")
 
@@ -301,6 +309,20 @@ offset_top = -128.0
 offset_right = 40.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_dm221")
+
+[node name="CollectorAmount2" parent="Damage1/Damage2/Damage3/CollectorAmount1" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_qao10")
+
+[node name="CollectorAmount3" parent="Damage1/Damage2/Damage3/CollectorAmount1/CollectorAmount2" instance=ExtResource("3_vcrgi")]
+offset_left = 0.0
+offset_top = -128.0
+offset_right = 40.0
+offset_bottom = -88.0
+sprite = SubResource("AtlasTexture_h8olf")
 
 [node name="Damage4" parent="Damage1/Damage2/Damage3" instance=ExtResource("3_vcrgi")]
 offset_left = 0.0
@@ -352,9 +374,9 @@ offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_0e5ab")
 
 [node name="MinionDamage4" parent="Damage1/MinionAmount1/MinionDamage1/MinionDamage2/MinionDamage3" instance=ExtResource("3_vcrgi")]
-offset_left = 0.0
+offset_left = -128.0
 offset_top = -128.0
-offset_right = 40.0
+offset_right = -88.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_ihkek")
 
@@ -380,9 +402,9 @@ offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_yj8mi")
 
 [node name="MinionAmount4" parent="Damage1/MinionAmount1/MinionAmount2/MinionAmount3" instance=ExtResource("3_vcrgi")]
-offset_left = 0.0
+offset_left = -128.0
 offset_top = -128.0
-offset_right = 40.0
+offset_right = -88.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_7race")
 
@@ -408,9 +430,9 @@ offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_mdr4d")
 
 [node name="MinionScaling3" parent="Damage1/MinionAmount1/MinionScaling1/MinionScaling2" instance=ExtResource("3_vcrgi")]
-offset_left = 0.0
+offset_left = -128.0
 offset_top = -128.0
-offset_right = 40.0
+offset_right = -88.0
 offset_bottom = -88.0
 sprite = SubResource("AtlasTexture_nthtv")
 

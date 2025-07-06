@@ -9,7 +9,7 @@ const MIN_ZOOM:= 1.9;
 const BOUNCE_DECAY:=0.93;
 const BOUNCE_IMPULSE:= 2.4 * 50;
 const ORB_BOUNCE_IMPULSE:= 200;
-const LOW_PASS_FILTER_HZ = 100;
+const LOW_PASS_FILTER_HZ = 400;
 const MUSIC = false;
 
 func COMPILED()->bool:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://dky0ceij6vicy"]
+[gd_scene load_steps=6 format=4 uid="uid://dky0ceij6vicy"]
 
 [ext_resource type="Script" uid="uid://cw7cfygj7hpdq" path="res://src/scripts/endboss.gd" id="1_rk3rl"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_821rc"]
 [ext_resource type="PackedScene" uid="uid://bd1ftd4mp5yyb" path="res://src/scenes/mines/floor.tscn" id="3_237ru"]
 [ext_resource type="PackedScene" uid="uid://b2y57ebldpity" path="res://src/scenes/mines/harvestables/endboss_harvestable.tscn" id="4_w26gq"]
+[ext_resource type="PackedScene" uid="uid://d1i8mon4i40ff" path="res://src/scenes/mines/player/player.tscn" id="5_wqojf"]
 
 [node name="Endboss" type="Node2D"]
 script = ExtResource("1_rk3rl")
@@ -15,3 +16,7 @@ tile_map_data = PackedByteArray("AAD4//j/AQABAAAAAAAIAAgAAQABAAAAAAD4//n/AQAAAAA
 [node name="EndbossHarvestable" parent="." instance=ExtResource("4_w26gq")]
 position = Vector2(6, 1)
 health = 1e+06
+
+[node name="InvisiblePlayer" parent="." instance=ExtResource("5_wqojf")]
+visible = false
+position = Vector2(256, -73)

@@ -1,9 +1,11 @@
 extends Control
 
 
-const INFINITE_UPGRADES: int = 9999;
+const INFINITE_UPGRADES: int = 10000;
 @export var upgrade_stats: PlayerUpgradeStats;
 
+@onready var collector_amount_2: UpgradeButtonBase = $Damage1/Damage2/Damage3/CollectorAmount1/CollectorAmount2
+@onready var collector_amount_3: UpgradeButtonBase = $Damage1/Damage2/Damage3/CollectorAmount1/CollectorAmount2/CollectorAmount3
 @onready var damage_1: UpgradeButtonBase = $Damage1
 @onready var mining_speed_1: UpgradeButtonBase = $Damage1/MiningSpeed1
 @onready var damage_2: UpgradeButtonBase = $Damage1/Damage2
@@ -81,6 +83,8 @@ const INFINITE_UPGRADES: int = 9999;
 }
 @onready var collector_amount_node_map: Dictionary[LevelTypes.types, UpgradeButtonBase] = {
 	LevelTypes.types.FOURTH: collector_amount_1,
+	LevelTypes.types.FIFTH: collector_amount_2,
+	LevelTypes.types.SIXTH: collector_amount_3,
 }
 @onready var orb_scaling_node_map: Dictionary[LevelTypes.types, UpgradeButtonBase] = {
 	LevelTypes.types.FOURTH: orb_scaling_1,
@@ -323,6 +327,7 @@ func _ready() -> void:
 	orb_scaling(lu)
 	collector_scaling(lu);
 	orb_damage(lu);
+	collector_amount(lu);
 	lu =LevelTypes.types.SIXTH
 	damage(lu);
 	mining_speed(lu);
@@ -332,5 +337,6 @@ func _ready() -> void:
 	orb_scaling(lu)
 	collector_scaling(lu);
 	orb_damage(lu);
+	collector_amount(lu);
 	
 	

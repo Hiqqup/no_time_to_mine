@@ -22,7 +22,8 @@ func set_mining(base: HarvestableBase):
 	_mine_cooldown =  _upgrade_stats.minion_mining_cooldown_duration;
 	if followed_by:
 		followed_by.following = following;
-	following.followed_by = followed_by;
+	if following:
+		following.followed_by = followed_by;
 	followed_by = null;
 	
 	base.harvested.connect(func():
@@ -85,7 +86,7 @@ func mine_visual_feedback():
 func _get_dir() ->Vector2:
 	var dir:= Vector2.ZERO;
 	if not following:
-		currently_mining = null;
+		currently_mining = null
 		return dir;
 	var target_position: Vector2= following.global_position;
 	var stop_distance: float = 6.0;
