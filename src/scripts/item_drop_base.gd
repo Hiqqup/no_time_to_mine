@@ -28,6 +28,7 @@ func _collect_item(player: Player):
 	$AnimationPlayer.play("collect")
 	if targeted_by:
 		targeted_by.spawner._set_unbusy_colletor(targeted_by);
+		targeted_by = null
 	if _mines.collector_spawner._untargeted_item.has(self):
 		_mines.collector_spawner._untargeted_item.erase(self);
 	await $AnimationPlayer.animation_finished

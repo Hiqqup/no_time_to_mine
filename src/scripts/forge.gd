@@ -68,7 +68,7 @@ func increment_level():
 	_save_state.times_level_completed[selected_level] +=1;
 	if selected_level != _save_state.max_unlocked_level:
 		return;
-	if selected_level == LevelTypes.types.size() - 1:
+	if selected_level == LevelTypes.types.size() - 1 and _save_state.times_level_completed[LevelTypes.types.size() - 1] == 1 :
 		_last_level_button.unlock();
 	if (LevelTypes.types.find_key(_save_state.max_unlocked_level + 1) != null):
 		_save_state.max_unlocked_level = ((_save_state.max_unlocked_level +1) as LevelTypes.types)

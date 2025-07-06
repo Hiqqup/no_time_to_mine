@@ -16,10 +16,11 @@ func _set_untargeted_item(drop: ItemDropBase):
 
 func _set_unbusy_colletor(collector: Collector):
 	_unbusy_collector.push_back(collector);
-
 	_check_for_work()
 
 func _check_for_work():
+	if _unbusy_collector.size() > 1:
+		print(_unbusy_collector)
 	if not _unbusy_collector.is_empty() and not _untargeted_item.is_empty():
 		var collector: Collector = _unbusy_collector.pop_back();
 		var item: ItemDropBase = _untargeted_item.pop_back();
