@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dk6ps468q2o3x"]
+[gd_scene load_steps=24 format=3 uid="uid://dk6ps468q2o3x"]
 
 [ext_resource type="Script" uid="uid://d378o2dat3fn4" path="res://src/scripts/harvestable_base.gd" id="1_u76sd"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_c6o4m"]
@@ -13,9 +13,13 @@
 [ext_resource type="AudioStream" uid="uid://dwf6e8th7gs17" path="res://assets/sound/harvestable_hit.ogg" id="10_j1g1d"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="11_h3tv2"]
 
+[sub_resource type="Gradient" id="Gradient_vgomb"]
+offsets = PackedFloat32Array(0.729231)
+colors = PackedColorArray(0, 0, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_c6o4m"]
 offsets = PackedFloat32Array(0.729231)
-colors = PackedColorArray(0.051971, 0.051971, 0.051971, 1)
+colors = PackedColorArray(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3tv2"]
 shader = ExtResource("7_vgomb")
@@ -213,11 +217,81 @@ tracks/6/keys = {
 }
 tracks/6/use_blend = true
 
+[sub_resource type="Animation" id="Animation_vgomb"]
+resource_name = "destroyed_no_sprite_gone"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/DestroyedParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(0.6, 0.6), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:material:shader_parameter/flash")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 0.0, 1.0, 0.0]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/Damage")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0107102,
+"stream": ExtResource("10_j1g1d")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/RockDestroyed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0232831,
+"stream": ExtResource("11_h3tv2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1g1d"]
 _data = {
 &"RESET": SubResource("Animation_p14td"),
 &"damage": SubResource("Animation_j1g1d"),
-&"destroyed": SubResource("Animation_c6o4m")
+&"destroyed": SubResource("Animation_c6o4m"),
+&"destroyed_no_sprite_gone": SubResource("Animation_vgomb")
 }
 
 [node name="HarvestableBase" type="Node2D"]
@@ -270,7 +344,7 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 96.0
 initial_velocity_max = 112.0
 scale_amount_max = 4.0
-color_ramp = SubResource("Gradient_c6o4m")
+color_ramp = SubResource("Gradient_vgomb")
 
 [node name="DestroyedParticles" type="CPUParticles2D" parent="Visuals"]
 emitting = false

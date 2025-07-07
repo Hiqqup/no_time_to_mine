@@ -14,7 +14,6 @@ var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
 var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
 @onready var _new_level_selector: Control = $CameraIndependent/NewLevelSelector
 @onready var _last_level_button: LastLevelButton = $SkillTree/LastLevelButton
-var doing_tutorial: bool = false;
 
 
 func _enter_tree() -> void:
@@ -35,6 +34,7 @@ func _ready() -> void:
 	
 	if _save_state.times_level_completed[LevelTypes.types.size()-1]>0:
 		_last_level_button.boss_unlocked = true;
+		print(_last_level_button.boss_unlocked)
 		_last_level_button.add_gem(LevelTypes.types.size() -1, false);
 	
 
@@ -62,8 +62,6 @@ func purchase_upgrade(type : UpgradeTypes.types):
 	upgrade_purchased.emit();
 
 func increment_level():
-	if doing_tutorial:
-		return;
 	_level_types.increase_size(selected_level);
 	_save_state.times_level_completed[selected_level] +=1;
 	if selected_level != _save_state.max_unlocked_level:

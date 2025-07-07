@@ -7,11 +7,11 @@ var _mining_guide: Node2D;
 var _forge_guide: CanvasLayer;
 var _retry_guide: Control;
 var _purchase_guide: Control;
-var _player_reset_button: Button;
+var _player_reset_button: Control;
 var _forge_level_selector: Control;
 var _mobile_guide: Node2D;
 
-var _mines: Node2D;
+var _mines: Mines;
 var _forge: Forge;
 
 var _player_moved_once: bool = false;
@@ -19,10 +19,11 @@ var _player_mined_once: bool = false;
 var _mining_guide_displaying: bool = false;
 var _first_upgrade_bought: bool = false;
 var _forge_camera_locked: bool = false;
-var _tutorial_section: TutorialSection = TutorialSection.MINES;
+var _tutorial_section: TutorialSection = TutorialSection.STARTING_CUTSCENE;
 
 
 enum TutorialSection{
+	STARTING_CUTSCENE,
 	MINES_MOBILE,
 	MINES,
 	FORGE,
@@ -33,13 +34,21 @@ func _ready() -> void:
 	_forge = get_tree().get_first_node_in_group("forge")
 	_mines = get_tree().get_first_node_in_group("current_mines");
 
-	
-	
 	_movement_guide = $PlayerMovementGuide
 	_mining_guide = $MiningGuide
 	_mobile_guide = $MobileGuide
-	_player= _mines.get_node("YSorted/Player")
-
+	_forge_guide = $ForgeGuide;
+	_purchase_guide = $ForgeGuide/PurchaseGuide;
+	_retry_guide = $ForgeGuide/RetryGuide;
+	
+	_movement_guide.visible = false;
+	_mining_guide.visible = false;
+	_forge_guide.visible = false;
+	_purchase_guide.visible = false;
+	_retry_guide.visible = false;
+	_forge.visible = false;
+	_mobile_guide.visible = false;
+	
 
 	if _forge._save_state.tutorial_completed:
 		_mines.queue_free();
@@ -48,25 +57,56 @@ func _ready() -> void:
 		return
 	
 	
+	_forge.selected_level = LevelTypes.types.BOSS;
+	_mines.player.visible = false;
+	_mines.player.get_node("CameraIndependet/ResetButton").visible = false;
+	_mines.player._alive = false;
+	_mines.player.position.x =  20000;
+	_mines.player.do_lifetime_calculation = false;
+	_mines.ready.connect(func():
+		var endboss_scene: EndbossScene = _mines.get_node("Endboss");
+		var ebhso : CanvasItem =  endboss_scene.endboss_harvestable.selected_outline
+		ebhso.visible = false;
+		ebhso.visibility_changed.connect(func():
+			ebhso.visible = false;
+			)
+		endboss_scene.animate_spirits()
+		endboss_scene.spirits_out.connect( func():
+			
+			var screen_transition = get_tree().get_first_node_in_group("screen_transition")
+			screen_transition.change_scene(func():
+				_forge.selected_level = LevelTypes.types.TUTORIAL
+				_mines.queue_free();
+				_mines = _forge._mine_scene.instantiate();
+				get_parent().add_child(_mines);
+				for i in _mines.get_node("YSorted/HarvestabelsLayer").get_children():
+					var base :HarvestableBase = i;
+					base.mines = _mines;
+					base._player = _mines.player;
+				Camera.location = Camera.CameraLocation.MINES;
+				Camera.reset_zoom();
+				Camera.global_position = _mines.player.global_position
+				_tutorial_section = TutorialSection.MINES;
+				_start_tutorial()
+			)
+		)
+	)
+
+func _start_tutorial():
+
+	
+	_player= _mines.player
+	
 	_targeting = _player.get_node("Targeting");
 	_player_reset_button = _player.get_node("CameraIndependet/ResetButton");
 	_forge_level_selector = _forge._new_level_selector;
-	_forge_guide = $ForgeGuide;
-	_purchase_guide = $ForgeGuide/PurchaseGuide;
-	_retry_guide = $ForgeGuide/RetryGuide;
+
 	
 	_player.do_lifetime_calculation = false;
-	_forge.doing_tutorial = true;
 	_player.lifetime_bar.visible = false;
 	_player_reset_button.visible = false;
 	_targeting.visible = false;
-	_movement_guide.visible = false;
-	_mining_guide.visible = false;
-	_forge_guide.visible = false;
-	_purchase_guide.visible = false;
-	_retry_guide.visible = false;
 	_forge.visible = false;
-	_mobile_guide.visible = false;
 	
 	
 	_forge_level_selector._latest_button_animation_wrapper._wrapper.visible = false;
@@ -84,23 +124,15 @@ to go back to the source...")
 	_mobile_guide.reparent(_player);
 	_purchase_guide.reparent(_forge._skill_tree_root);
 	
-	_forge.selected_level = LevelTypes.types.TUTORIAL;
-	_forge.upgrade_purchased.connect( func():
-		if not _first_upgrade_bought:
-			TimeoutCallback.timeout_callback(2, func():
-				_fade_in( _retry_guide);
-				_forge_level_selector.unlock_level_feedback();
-				_forge._last_level_button.pan_camera_to_and_unlock()
-				);
-			
-			Camera.location = Camera.CameraLocation.FORGE;
-			$ForgeGuide/NavigationGuide/Label.text = "wasd and drag to move around"
-			_fade_out(_purchase_guide)
-			TimeoutCallback.timeout_callback(1, func(): _purchase_guide.queue_free());
-			_first_upgrade_bought = true;
-		);
+	_forge.upgrade_purchased.connect(_handle_first_upgrade_bought);
 	
-	TimeoutCallback.timeout_callback(1.0,(func():
+	
+	_forge.selected_level = LevelTypes.types.TUTORIAL;
+	_tutorial_section = TutorialSection.MINES
+	if GlobalConstants.MOBILE():
+		_tutorial_section = TutorialSection.MINES_MOBILE;
+	
+	TimeoutCallback.timeout_callback(8.0,(func():
 		if not _player_moved_once:
 			if not GlobalConstants.MOBILE():
 				_fade_in(_movement_guide)
@@ -109,12 +141,20 @@ to go back to the source...")
 				#print(_mobile_guide)
 		));
 	
-	if GlobalConstants.MOBILE():
-		_tutorial_section = TutorialSection.MINES_MOBILE;
 
-
-
-
+func _handle_first_upgrade_bought():
+	if not _first_upgrade_bought:
+		TimeoutCallback.timeout_callback(2, func():
+			_fade_in( _retry_guide);
+			_forge_level_selector.unlock_level_feedback();
+			_forge._last_level_button.pan_camera_to_and_unlock()
+			);
+		
+		Camera.location = Camera.CameraLocation.FORGE;
+		$ForgeGuide/NavigationGuide/Label.text = "wasd and drag to move around"
+		_fade_out(_purchase_guide)
+		TimeoutCallback.timeout_callback(1, func(): _purchase_guide.queue_free());
+		_first_upgrade_bought = true;
 
 
 func _fade_in(node):
@@ -187,7 +227,6 @@ func  _process(_delta: float) -> void:
 			and _check_player_storage_empty()):
 			_set_to_normal_mine();
 	if _tutorial_section == TutorialSection.FORGE:
-		_forge.doing_tutorial = false;
 		if _check_for_new_forge():
 			_forge._last_level_button._info_label._skill_name.text = "Back to the source..."
 			_forge._last_level_button._info_label._update_scale()

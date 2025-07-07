@@ -6,6 +6,7 @@ class_name LastLevelButton
 @onready var _animation_wrapper: Control = $WrapperButton/ButtonAnimationWrapperContainer/Wrapper
 @onready var boss_unlocked:bool = false :
 	set(value):
+		boss_unlocked = value
 		if value:
 			_visuals.modulate = Color.WHITE;
 		else:
@@ -58,7 +59,7 @@ func pan_camera_to_and_unlock():
 
 
 func _try_last_level():
-	if boss_unlocked:
+	if not boss_unlocked:
 		_animation_player.play("denied")
 		Camera.shake(6)
 		return;

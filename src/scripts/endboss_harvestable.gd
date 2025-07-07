@@ -1,7 +1,7 @@
 extends HarvestableBase
 class_name EndbossHarvestable
-@onready var background: ColorRect = $Visuals/Background
 @onready var player_collider_shape: CollisionPolygon2D = $CollisionShapes/PlayerCollider/ColliderShape
+@onready var well_content: ColorRect = $Visuals/WellContent
 @onready var parent: EndbossScene = get_parent();
 const STARTING_HEALTH = 99999999.0
 var broken: bool = false;
@@ -35,7 +35,7 @@ func mine_visual_feedback():
 			if i is CanvasItem:
 				_fade_out(i)
 		TimeoutCallback.timeout_callback(0.7,func():
-			create_tween().tween_property(background,"modulate",Color(Color.WHITE,0.0),1.5)#.set_trans(Tween.TRANS_CIRC);
+			create_tween().tween_property(well_content,"modulate",Color(Color.WHITE,0.0),1.5)#.set_trans(Tween.TRANS_CIRC);
 			)
 		TimeoutCallback.timeout_callback(0.7 + 1.5, func():
 			player_collider_shape.disabled = true
@@ -43,6 +43,8 @@ func mine_visual_feedback():
 
 			parent.invisible_player.global_position = spirit_particles.global_position
 			spirit_particles.reparent(parent.invisible_player)
+			create_tween().tween_property(parent.invisible_player, "modulate", Color.WHITE, 2);
+			(well_content.material as ShaderMaterial).set_shader_parameter("colour_2", Color.WHITE);
 			)
 		
 		for i in parent._mines.get_node("YSorted/MinionSpawner").get_children():
@@ -68,10 +70,11 @@ func _on_spirit_detector_body_entered(body: Node2D) -> void:
 		create_tween().tween_property(spirit_particles,"global_position", global_position, 1)
 		create_tween().tween_property(spirit_particles,"modulate",Color(Color.WHITE,0.0),1.5)#.set_trans(Tween.TRANS_CIRC);	
 		TimeoutCallback.timeout_callback(1, func():
-			create_tween().tween_property(background,"modulate",Color(Color.WHITE,1.0),1.5)#.set_trans(Tween.TRANS_CIRC);
+			create_tween().tween_property(well_content,"modulate",Color(Color.WHITE,1.0),1.5)#.set_trans(Tween.TRANS_CIRC);
 			)
 		TimeoutCallback.timeout_callback(3, func():
 			parent._mines.player.go_back_to_forge = true;
 			parent._mines.player._die();
 			#roll credits here
 			)
+			

@@ -30,4 +30,10 @@ layout_mode = 2
 text = "reset levels
 "
 
+[node name="UpgradesAndLevels" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "get all upgrades
+unlock all levels"
+
 [connection signal="pressed" from="PanelContainer/HBoxContainer/ResetLevels" to="." method="_on_reset_levels_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/UpgradesAndLevels" to="." method="_on_upgrades_and_levels_pressed"]

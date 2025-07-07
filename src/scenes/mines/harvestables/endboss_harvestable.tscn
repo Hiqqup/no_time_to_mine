@@ -73,6 +73,10 @@ initial_velocity_max = 224.0
 scale_amount_min = 2.0
 scale_amount_max = 8.0
 
+[node name="DestroyedParticles" parent="Visuals" index="1"]
+initial_velocity_min = 288.0
+initial_velocity_max = 336.0
+
 [node name="SelectedOutline" parent="Visuals" index="2"]
 texture = SubResource("AtlasTexture_xrcto")
 
@@ -84,7 +88,7 @@ offset_bottom = 20.0
 mouse_filter = 2
 color = Color(0.12549, 0.12549, 0.12549, 1)
 
-[node name="Background" parent="Visuals" index="4" instance=ExtResource("3_xrcto")]
+[node name="WellContent" parent="Visuals" index="4" instance=ExtResource("3_xrcto")]
 z_index = 0
 material = SubResource("ShaderMaterial_yfmhu")
 offset_left = -32.0

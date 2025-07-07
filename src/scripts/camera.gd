@@ -71,7 +71,8 @@ func _process(delta: float) -> void:
 		global_position += velocity;
 		_handle_movement_input()
 	if location == CameraLocation.MINES:
-		var player_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
+		var mines = get_tree().get_first_node_in_group("current_mines")
+		var player_position = mines.player.global_position;
 		var speed = 5
 		global_position = global_position.lerp(player_position, delta*speed);
 
