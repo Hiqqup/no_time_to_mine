@@ -1,4 +1,5 @@
 extends Node2D
+@onready var _shattered_player: StartingCutsceneShatteredPlayer = $ShatteredPlayer
 
 var _movement_guide : Node2D;
 var _targeting: Node2D;
@@ -48,7 +49,7 @@ func _ready() -> void:
 	_retry_guide.visible = false;
 	_forge.visible = false;
 	_mobile_guide.visible = false;
-	
+	_shattered_player.visible = false;
 
 	if _forge._save_state.tutorial_completed:
 		_mines.queue_free();
@@ -63,42 +64,71 @@ func _ready() -> void:
 	_mines.player._alive = false;
 	_mines.player.position.x =  20000;
 	_mines.player.do_lifetime_calculation = false;
-	_mines.ready.connect(func():
-		var endboss_scene: EndbossScene = _mines.get_node("Endboss");
-		var ebhso : CanvasItem =  endboss_scene.endboss_harvestable.selected_outline
+	_mines.ready.connect(_setup_starting_cutscene)
+	
+
+func _setup_starting_cutscene():
+	var endboss_scene: EndbossScene = _mines.get_node("Endboss");
+	var ebhso : CanvasItem =  endboss_scene.endboss_harvestable.selected_outline
+	Camera.global_position = ebhso.global_position
+	ebhso.visible = false;
+	ebhso.visibility_changed.connect(func():
 		ebhso.visible = false;
-		ebhso.visibility_changed.connect(func():
-			ebhso.visible = false;
-			)
-		endboss_scene.animate_spirits()
-		endboss_scene.spirits_out.connect( func():
-			
-			var screen_transition = get_tree().get_first_node_in_group("screen_transition")
-			screen_transition.change_scene(func():
-				_forge.selected_level = LevelTypes.types.TUTORIAL
-				_mines.queue_free();
-				_mines = _forge._mine_scene.instantiate();
-				get_parent().add_child(_mines);
-				for i in _mines.get_node("YSorted/HarvestabelsLayer").get_children():
-					var base :HarvestableBase = i;
-					base.mines = _mines;
-					base._player = _mines.player;
-				Camera.location = Camera.CameraLocation.MINES;
-				Camera.reset_zoom();
-				Camera.global_position = _mines.player.global_position
-				_tutorial_section = TutorialSection.MINES;
-				_start_tutorial()
-			)
+		)
+	endboss_scene.animate_spirits()
+	endboss_scene.spirits_out.connect( func():
+		
+		var screen_transition = get_tree().get_first_node_in_group("screen_transition")
+		screen_transition.change_scene(func():
+			_forge.selected_level = LevelTypes.types.TUTORIAL
+			_mines.queue_free();
+			_mines = _forge._mine_scene.instantiate();
+			get_parent().add_child(_mines);
+			for i in _mines.get_node("YSorted/HarvestabelsLayer").get_children():
+				var base :HarvestableBase = i;
+				base.mines = _mines;
+				base._player = _mines.player;
+			Camera.location = Camera.CameraLocation.MINES;
+			Camera.reset_zoom();
+			Camera.global_position = _mines.player.global_position
+			_shard_cutscene_tutorial()
 		)
 	)
+
+func _shard_cutscene_tutorial():
+	
+	_player= _mines.player
+	_player.visible = false;
+	_player._alive = false
+	for i in _player.get_node("CameraIndependet").get_children():
+		i.visible = false;
+	
+	#tmp
+	#_player.go_back_to_forge = false;
+	#_player._die_feedback()
+	#tmp
+	
+	
+	_shattered_player.reparent(_mines.harvestable_layer)
+	_shattered_player.position = _player.position + Vector2(0,6)
+	_shattered_player.spread_shards(_mines.floor_layer)
+	_shattered_player.visible  = true;
+
+	
+	_shattered_player.player_alive.connect(func():
+		_shattered_player.visible = false;
+		_player.visible = true;
+		_player._alive = true
+		
+		_start_tutorial();
+		)
 
 func _start_tutorial():
 
 	
-	_player= _mines.player
-	
+	_tutorial_section = TutorialSection.MINES;
 	_targeting = _player.get_node("Targeting");
-	_player_reset_button = _player.get_node("CameraIndependet/ResetButton");
+	_player_reset_button = _player.get_node("CameraIndependet/ButtonAnimationWrapperContainer");
 	_forge_level_selector = _forge._new_level_selector;
 
 	
@@ -116,8 +146,8 @@ func _start_tutorial():
 to go back to the source...")
 	_forge._last_level_button._info_label._update_scale()
 	
-	Camera.reset_zoom();
-	Camera.location = Camera.CameraLocation.MINES;
+	#Camera.reset_zoom();
+	#Camera.location = Camera.CameraLocation.MINES;
 	
 	_movement_guide.reparent(_player);
 	_mining_guide.reparent(_player);
@@ -132,7 +162,7 @@ to go back to the source...")
 	if GlobalConstants.MOBILE():
 		_tutorial_section = TutorialSection.MINES_MOBILE;
 	
-	TimeoutCallback.timeout_callback(8.0,(func():
+	TimeoutCallback.timeout_callback(2.0,(func():
 		if not _player_moved_once:
 			if not GlobalConstants.MOBILE():
 				_fade_in(_movement_guide)

@@ -42,7 +42,8 @@ func animate_spirits():
 			create_tween().tween_property(path_follow, "progress", 450, 10);
 				
 			)
-	TimeoutCallback.timeout_callback(5 + 2 * 5, func():
+	TimeoutCallback.timeout_callback(5 + 2 * 5
+	, func():
 		spirits_out.emit()
 		)
 		

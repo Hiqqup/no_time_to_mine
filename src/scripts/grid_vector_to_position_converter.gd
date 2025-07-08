@@ -1,4 +1,5 @@
 extends Node
+class_name GridVectorConverter
 
 var grid_vector: Vector2i = Vector2i.ZERO
 

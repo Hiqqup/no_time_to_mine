@@ -94,13 +94,13 @@ func _ready() -> void:
 	_setup_harvestable(
 		HarvestableTypes.types.YELLOW_CAP_STONE,  
 		_tileset_get_region(second_level_tileset,harvestable_stone_region),
-			36.0,
+			20.0,
 		ItemTypes.types.YELLOW_CAP_STONE,
 		);
 	_setup_harvestable(
 		HarvestableTypes.types.PLATINUM_ORE,  
 		_tileset_get_region(second_level_tileset,harvestable_ore_region),
-		180.0,
+		100,
 		ItemTypes.types.PLATINUM_ORE,
 		);
 	
@@ -189,6 +189,6 @@ func _ready() -> void:
 	
 	
 	l = Level.new()
-	l.platform_radius = 6
+	l.platform_radius = 5
 	l. harvestables = {}
 	levels.map[LevelTypes.types.BOSS] = l;

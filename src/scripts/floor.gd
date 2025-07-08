@@ -44,6 +44,20 @@ func setup(radius: int):
 				set_cell(Vector2i(i,j) * offset, _STONE_FLOOR_SOURCE, atlas_cords)
 				used[Vector2i(i,j) * offset] = false
 	used[Vector2i.ZERO ] =true; # the player is there
+	
+	if _forge.selected_level == LevelTypes.types.TUTORIAL:
+		for i in [
+			Vector2i(0,1),
+			Vector2i(0,-1),
+			Vector2i(1,1),
+			Vector2i(1,-1),
+			Vector2i(-1,1),
+			Vector2i(-1,-1),
+			Vector2i(1,0),
+			Vector2i(-1,0),
+		]:
+			used[i ] =true;
+	
 	_place_boundries();
 
 

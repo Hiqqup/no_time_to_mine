@@ -28,6 +28,7 @@ func _ready() -> void:
 	pass;
 
 func generate_cells(amount: Dictionary[HarvestableTypes.types, int]):
+	#print("harvestables:")
 	for type in amount.keys():
 		for i in amount[type]:
 			_generate_one_cell_of_type(type);
@@ -41,6 +42,7 @@ func _generate_one_cell_of_type(type: HarvestableTypes.types):
 	base.harvested.connect(func(): _remove_from_harvestables_check_empty(base));
 	base.get_node("GridVectorToPositionConverter").set_grid_vector(pos);
 	add_child(base);
+	#print(base.global_position)
 
 
 func _remove_from_harvestables_check_empty(base: HarvestableBase):

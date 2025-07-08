@@ -19,7 +19,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_c6o4m"]
 offsets = PackedFloat32Array(0.729231)
-colors = PackedColorArray(1, 1, 1, 1)
+colors = PackedColorArray(0.670588, 0.670588, 0.670588, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3tv2"]
 shader = ExtResource("7_vgomb")
@@ -357,8 +357,8 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 96.0
 initial_velocity_max = 112.0
-scale_amount_min = 4.0
-scale_amount_max = 6.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
 color_ramp = SubResource("Gradient_c6o4m")
 
 [node name="SelectedOutline" type="Sprite2D" parent="Visuals"]
