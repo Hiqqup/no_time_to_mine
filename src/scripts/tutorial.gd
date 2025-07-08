@@ -137,6 +137,8 @@ func _shard_cutscene_tutorial():
 func _start_tutorial():
 	_fade_out(skip_starting_cutscene);
 	
+	_play_music(_forge.get_parent())
+	
 	_player= _mines.player
 	_tutorial_section = TutorialSection.MINES;
 	_targeting = _player.get_node("Targeting");
@@ -248,6 +250,10 @@ func _setup_forge_guide():
 	_forge_guide.visible = true;
 	_fade_in(_purchase_guide);
 	
+func _play_music(game_scene):
+	TimeoutCallback.timeout_callback(0.2, func():
+		game_scene.music.playing = GlobalConstants.MUSIC or GlobalConstants.COMPILED()
+		);
 
 func  _process(_delta: float) -> void:
 	
