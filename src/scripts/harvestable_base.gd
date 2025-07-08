@@ -19,6 +19,7 @@ var sprite: Texture:
 		$Visuals/SelectedOutline.texture = VisualUtility.add_transparent_border(value)
 		
 
+var disconnect_minion_queue: Array[Callable] = []
 
 var _destroyed: bool = false;
 
@@ -37,6 +38,10 @@ func get_destroyed():
 	((get_tree().get_first_node_in_group("shockwave") as ShockwaveEffect)
 		.at(Camera.convert_position(global_position)));
 	_spawn_drop(_drop_table_float_to_int(drop_table));
+	
+	for i in disconnect_minion_queue.size():
+		disconnect_minion_queue.pop_back().call();
+	
 	harvested.emit();
 	Camera.shake(6)
 	$CollisionShapes.queue_free();

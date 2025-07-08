@@ -26,7 +26,7 @@ func set_mining(base: HarvestableBase):
 		following.followed_by = followed_by;
 	followed_by = null;
 	
-	base.harvested.connect(func():
+	base.disconnect_minion_queue.push_back(func():
 		_queue_back_up(_player);
 		currently_mining = null;
 		)
