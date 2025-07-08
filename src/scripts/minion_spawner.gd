@@ -17,5 +17,12 @@ func _ready():
 		following.followed_by = minion;
 		following = minion;
 		
+		
 		pos_offset+= 4.0;
 		add_child(minion);
+		
+		if minion._upgrade_stats.minion_auto_targeting:
+			var forge : Forge = get_tree().get_first_node_in_group("forge")
+			(minion as Minion).auto_target_ray.target_position = Vector2(forge._level_types.map[forge.selected_level].platform_radius * 32.0 , 0);
+		else:
+			minion.auto_target_ray.queue_free();

@@ -42,6 +42,7 @@ const INFINITE_UPGRADES: int = 10000;
 @onready var orb_damage_1: UpgradeButtonBase = $Damage1/Damage2/OrbAmount1/OrbDamage1
 @onready var orb_damage_2: UpgradeButtonBase = $Damage1/Damage2/OrbAmount1/OrbDamage1/OrbDamage2
 @onready var orb_damage_3: UpgradeButtonBase = $Damage1/Damage2/OrbAmount1/OrbDamage1/OrbDamage2/OrbDamage3
+@onready var minion_auto_targeting: UpgradeButtonBase = $Damage1/MinionAmount1/MinionAmount2/MinionAmount3/MinionAutoTargeting
 
 
 @onready var damage_node_map: Dictionary[LevelTypes.types, UpgradeButtonBase] = {
@@ -319,6 +320,20 @@ func _ready() -> void:
 	orb_damage(lu);
 	#MINION_AUTO_TARGET_1,
 	lu =LevelTypes.types.FIFTH
+	if true: #Minion Auto Targeting
+		u = UpgradeProperties.new();
+		u.skill_name = "Minion Auto Targeting";
+		u.upgrade_type = UpgradeTypes.types.MINION_AUTO_TARGET_1;
+		u.max_level = 1;
+		u.apply_upgrade = (func():upgrade_stats.minion_auto_targeting = true);
+		u.cost_func  = (func (_level:int) -> Dictionary[ItemTypes.types, int]:
+			return {
+			ItemTypes.types.CYAN_CAP_STONE: 3, 
+			ItemTypes.types.AMETHYST_ORE: 3,
+			});
+		u.level_unlocked = lu;
+		minion_auto_targeting.upgrade_properties = u;
+	
 	damage(lu);
 	mining_speed(lu);
 	minion_amount(lu);

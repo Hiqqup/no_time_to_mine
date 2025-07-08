@@ -13,6 +13,8 @@ var _walking_time: float
 var following: CharacterBody2D;
 var followed_by: Minion = null;
 var currently_mining: HarvestableBase = null;
+@onready var auto_target_ray: RayCast2D = $AutoTargetRay
+
 
 var _mine_cooldown: float;
 @onready var _mining_cooldown_this_run: float = _upgrade_stats.minion_mining_cooldown_duration;
@@ -31,8 +33,25 @@ func set_mining(base: HarvestableBase):
 		currently_mining = null;
 		)
 
+func _handle_auto_targeting(delta: float):
+	if currently_mining:
+		return;
+	auto_target_ray.rotation += delta;
+	if not auto_target_ray.is_colliding():
+		return
+	var collider: StaticBody2D =auto_target_ray.get_collider() 
+	if not collider:
+		return;
+	var base: HarvestableBase = collider.get_parent().get_parent();
+	if base.auto_targeted:
+		return;
+	set_mining(base)
+	base.auto_targeted = true;
 
 func _physics_process(delta: float) -> void:
+	if _upgrade_stats.minion_auto_targeting:
+		_handle_auto_targeting(delta);
+	
 	_forge = get_tree().get_first_node_in_group("forge")
 	_sprite_2d.texture = _level_types.tileset_map[_forge.selected_level]
 	

@@ -17,3 +17,4 @@ var orb_scaling: float = 0;
 var collector_amount: int = 0;
 var collector_speed: float = 120;
 var collector_scaling: float = 0.0;
+var minion_auto_targeting :bool = false;

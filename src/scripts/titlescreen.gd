@@ -26,7 +26,7 @@ func _reset_game_save_state():
 func _on_new_game_pressed() -> void:
 	(get_tree().get_first_node_in_group("screen_transition")
 	.change_scene(func():
-		var game_scene =_reset_game_save_state();
+		var _game_scene =_reset_game_save_state();
 		#_play_music(game_scene);
 		queue_free();
 		

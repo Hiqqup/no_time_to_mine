@@ -25,3 +25,7 @@ region_rect = Rect2(173, 41, 19, 20)
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -2)
 polygon = PackedVector2Array(1, 11, -1, 11, -7, 10, -1, 9, 1, 9, 7, 10)
+
+[node name="AutoTargetRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 128

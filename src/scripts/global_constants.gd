@@ -10,7 +10,7 @@ const BOUNCE_DECAY:=0.93;
 const BOUNCE_IMPULSE:= 2.4 * 50;
 const ORB_BOUNCE_IMPULSE:= 200;
 const LOW_PASS_FILTER_HZ = 400;
-const MUSIC = true;
+const MUSIC = false;
 
 func COMPILED()->bool:
 	return not OS.has_feature("editor");

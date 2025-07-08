@@ -5,7 +5,7 @@ signal harvested;
 
 @export var health: float;
 var drop_table: Dictionary[ItemTypes.types, float];
-
+var auto_targeted : bool = false;
 @export var _upgrade_stats: PlayerUpgradeStats;
 @export var _drop_base_scene: PackedScene;
 @onready var _hit_particles: CPUParticles2D = $Visuals/HitParticlesContainer/HitParticles
