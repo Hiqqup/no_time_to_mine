@@ -9,7 +9,6 @@ signal upgrade_purchased
 @export var _level_types: LevelTypes;
 
 var _skill_tree_root:UpgradeButtonBase;
-
 var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
 var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
 @onready var _new_level_selector: Control = $CameraIndependent/NewLevelSelector
@@ -42,7 +41,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	#print(LevelTypes.types.SIXTH == LevelTypes.types.size()-1)
-	if Input.is_action_just_pressed("forge_try_again") and visible:
+	if Input.is_action_just_pressed("forge_try_again") and visible and _save_state.tutorial_completed:
 		_try_level(selected_level);
 
 func _resize_levels():

@@ -36,24 +36,24 @@ func spread_shards(floor_layer: MineFloor):
 		floor_layer.used[pos] = true
 	_spirit_collect_shards()
 
-func _get_tween_duration(from:Node2D, to: Node2D):
-	var distance:float = from.global_position.distance_to(to.global_position);
+func _get_tween_duration(from: Vector2, to: Vector2):
+	var distance:float = from.distance_to(to);
 	var tween_duration:float = distance * SPIRIT_SPEED_FACTOR / 600
 	return tween_duration
 
 func _spirit_to_shard_recursive(shards_copy: Array[Node2D]):
 	var shard: Node2D = shards_copy.pop_back();
-	var tween_duration:float = _get_tween_duration(spirit_particles,shard);
+	var tween_duration:float = _get_tween_duration(spirit_particles.global_position,shard.global_position);
 	create_tween().tween_property(spirit_particles, "global_position", shard.global_position, tween_duration)
 	TimeoutCallback.timeout_callback(tween_duration, func():
-		var tween_duration_2 = _get_tween_duration(shard,_animated_sprite_2d)
+		var tween_duration_2 = _get_tween_duration(shard.position,_shard_positions[shard])
 		create_tween().tween_property(shard, "position", _shard_positions[shard], tween_duration_2)
 		)
 	if not shards_copy.is_empty():
 		TimeoutCallback.timeout_callback(tween_duration + SPIRIT_HOLD_DURATION, _spirit_to_shard_recursive.bind(shards_copy));
 	else:
 		TimeoutCallback.timeout_callback(tween_duration + SPIRIT_HOLD_DURATION, func():
-			var tween_duration_2 = _get_tween_duration(spirit_particles,_animated_sprite_2d)
+			var tween_duration_2 = _get_tween_duration(spirit_particles.global_position,_animated_sprite_2d.global_position)
 			create_tween().tween_property(spirit_particles, "global_position", _animated_sprite_2d.global_position, tween_duration_2)
 			TimeoutCallback.timeout_callback(tween_duration_2 + SPIRIT_HOLD_DURATION, func():
 				_shard_container.visible = false;

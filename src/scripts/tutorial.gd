@@ -14,6 +14,7 @@ var _mobile_guide: Node2D;
 
 var _mines: Mines;
 var _forge: Forge;
+@onready var skip_starting_cutscene: Button = $CameraIndependet/SkipStartingCutscene
 
 var _player_moved_once: bool = false;
 var _player_mined_once: bool = false;
@@ -21,6 +22,7 @@ var _mining_guide_displaying: bool = false;
 var _first_upgrade_bought: bool = false;
 var _forge_camera_locked: bool = false;
 var _tutorial_section: TutorialSection = TutorialSection.STARTING_CUTSCENE;
+var _skipped_cutscene: bool = false
 
 
 enum TutorialSection{
@@ -50,7 +52,7 @@ func _ready() -> void:
 	_forge.visible = false;
 	_mobile_guide.visible = false;
 	_shattered_player.visible = false;
-
+	
 	if _forge._save_state.tutorial_completed:
 		_mines.queue_free();
 		_forge.switch_from_mines();
@@ -77,23 +79,32 @@ func _setup_starting_cutscene():
 		)
 	endboss_scene.animate_spirits()
 	endboss_scene.spirits_out.connect( func():
+		if _skipped_cutscene:
+			return
+		_transition_from_boss_to_tutorial_level();
 		
-		var screen_transition = get_tree().get_first_node_in_group("screen_transition")
-		screen_transition.change_scene(func():
-			_forge.selected_level = LevelTypes.types.TUTORIAL
-			_mines.queue_free();
-			_mines = _forge._mine_scene.instantiate();
-			get_parent().add_child(_mines);
-			for i in _mines.get_node("YSorted/HarvestabelsLayer").get_children():
-				var base :HarvestableBase = i;
-				base.mines = _mines;
-				base._player = _mines.player;
-			Camera.location = Camera.CameraLocation.MINES;
-			Camera.reset_zoom();
-			Camera.global_position = _mines.player.global_position
-			_shard_cutscene_tutorial()
-		)
 	)
+
+func _transition_from_boss_to_tutorial_level():
+	var screen_transition = get_tree().get_first_node_in_group("screen_transition")
+	screen_transition.change_scene(func():
+		_forge.selected_level = LevelTypes.types.TUTORIAL
+		_mines.queue_free();
+		_mines = _forge._mine_scene.instantiate();
+		get_parent().add_child(_mines);
+		for i in _mines.get_node("YSorted/HarvestabelsLayer").get_children():
+			var base :HarvestableBase = i;
+			base.mines = _mines;
+			base._player = _mines.player;
+		Camera.location = Camera.CameraLocation.MINES;
+		Camera.reset_zoom();
+		Camera.global_position = _mines.player.global_position
+		if _skipped_cutscene:
+			_start_tutorial()
+		else:
+			_shard_cutscene_tutorial()
+	)
+	
 
 func _shard_cutscene_tutorial():
 	
@@ -124,11 +135,15 @@ func _shard_cutscene_tutorial():
 		)
 
 func _start_tutorial():
-
+	_fade_out(skip_starting_cutscene);
 	
+	_player= _mines.player
 	_tutorial_section = TutorialSection.MINES;
 	_targeting = _player.get_node("Targeting");
-	_player_reset_button = _player.get_node("CameraIndependet/ButtonAnimationWrapperContainer");
+	if not _skipped_cutscene:
+		_player_reset_button = _player.get_node("CameraIndependet/ButtonAnimationWrapperContainer");
+	else:
+		_player_reset_button = _player.get_node("CameraIndependet/ResetButton");
 	_forge_level_selector = _forge._new_level_selector;
 
 	
@@ -235,6 +250,10 @@ func _setup_forge_guide():
 	
 
 func  _process(_delta: float) -> void:
+	
+	if _tutorial_section == TutorialSection.STARTING_CUTSCENE and Input.is_action_just_pressed("forge_try_again") :
+		_on_skip_starting_cutscene_pressed();
+	
 	#print(_player_mined_once)
 	if _tutorial_section == TutorialSection.MINES_MOBILE:
 		if _check_player_storage_empty():
@@ -263,3 +282,11 @@ func  _process(_delta: float) -> void:
 			_forge._save_state.tutorial_completed = true;
 			_forge.save_game();
 			queue_free();
+
+
+func _on_skip_starting_cutscene_pressed() -> void:
+	if _skipped_cutscene:
+		return;
+	_skipped_cutscene=  true;
+	_transition_from_boss_to_tutorial_level();
+	
