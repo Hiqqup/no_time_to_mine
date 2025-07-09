@@ -4,6 +4,8 @@ extends Camera2D
 const _SCROLL_FACTOR = 0.1;
 const _SHAKE_FADE: float = 10.0;
 
+var  options:Dictionary[TitleScreenOptions.option_type, bool]
+
 var _dragging: bool = false;
 var _dragging_start_position: Vector2;
 var _shake_strength: float = 0.0;
@@ -88,6 +90,8 @@ func _process(delta: float) -> void:
 	
 
 func shake(strength: float):
+	if not options[TitleScreenOptions.option_type.screen_shake]:
+		return;
 	_shake_strength = strength;
 
 

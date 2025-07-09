@@ -10,17 +10,24 @@ const BOUNCE_DECAY:=0.93;
 const BOUNCE_IMPULSE:= 2.4 * 50;
 const ORB_BOUNCE_IMPULSE:= 200;
 const LOW_PASS_FILTER_HZ = 400;
-const MUSIC = false;
+const MUSIC = true;
 
 func COMPILED()->bool:
 	return not OS.has_feature("editor");
 
 func MOBILE()->bool:
+	if Camera.options.has(TitleScreenOptions.option_type.mobile_controls):
+		return  Camera.options[TitleScreenOptions.option_type.mobile_controls];
 	#return true;
 	return (OS.has_feature("mobile") or
 		OS.has_feature("web_ios") or
-		OS.has_feature("web_android"))
+		OS.has_feature("web_android") or
+		OS.has_feature("android") or 
+		OS.has_feature("ios") or 
+		OS.has_feature("android")  
+		)
 	;
 
 
 const USER_PATH := "user://savegame.tres";
+const OPTIONS_PATH := "user://options.tres";

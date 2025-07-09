@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://h6kjdc8gvtgs"]
+
+[ext_resource type="Script" uid="uid://wyjwsbx5gwkh" path="res://src/scripts/titlescreen.gd" id="1_do2c8"]
+[ext_resource type="PackedScene" uid="uid://4ex5fmxd3f5i" path="res://src/scenes/game.tscn" id="2_twdxa"]
+[ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_ymqwc"]
+[ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="4_rklo2"]
+[ext_resource type="PackedScene" uid="uid://cy1lh412ccugu" path="res://src/scenes/titlescreen/options.tscn" id="6_3gf6w"]
+
+[node name="Titlescreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_do2c8")
+_game_scene = ExtResource("2_twdxa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Titlescreen" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -54.0
+offset_right = 212.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Titlescreen"]
+layout_mode = 2
+theme = ExtResource("3_ymqwc")
+theme_override_font_sizes/font_size = 64
+text = "No Time to Mine"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Titlescreen"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer/Titlescreen/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ymqwc")
+text = "Continue
+"
+icon_alignment = 1
+
+[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/Titlescreen/HBoxContainer/Continue" instance=ExtResource("4_rklo2")]
+
+[node name="NewGame" type="Button" parent="CanvasLayer/Titlescreen/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ymqwc")
+text = "New Game
+"
+icon_alignment = 1
+
+[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/Titlescreen/HBoxContainer/NewGame" instance=ExtResource("4_rklo2")]
+
+[node name="Options" type="Button" parent="CanvasLayer/Titlescreen/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ymqwc")
+text = "Options"
+icon_alignment = 1
+
+[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/Titlescreen/HBoxContainer/Options" instance=ExtResource("4_rklo2")]
+
+[node name="Options" parent="CanvasLayer" instance=ExtResource("6_3gf6w")]
+visible = false
+scale = Vector2(4, 4)
+
+[connection signal="pressed" from="CanvasLayer/Titlescreen/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Titlescreen/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Titlescreen/HBoxContainer/Options" to="." method="_on_options_pressed"]

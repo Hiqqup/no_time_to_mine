@@ -252,7 +252,7 @@ func _setup_forge_guide():
 	
 func _play_music(game_scene):
 	TimeoutCallback.timeout_callback(0.2, func():
-		game_scene.music.playing = GlobalConstants.MUSIC or GlobalConstants.COMPILED()
+		game_scene.music.playing = true
 		);
 
 func  _process(_delta: float) -> void:

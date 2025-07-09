@@ -4,20 +4,9 @@ extends CanvasLayer
 @onready var _forge: Forge= get_tree().get_first_node_in_group("forge");
 
 func _ready() -> void:
-	if GlobalConstants.COMPILED():
-		visible = false;
+	if not Camera.options[TitleScreenOptions.option_type.cheats]:
 		queue_free()
-	else:
-		get_resources.pressed.connect(func():
-			for key in _forge._save_state.forge_storage.keys():
-				_forge._save_state.forge_storage[key] = 9999;
-			_forge.save_game();
-			)
-		reset_upgrades.pressed.connect(func():
-			for key in _forge._save_state.upgrades_purchased.keys():
-				_forge._save_state.upgrades_purchased[key] = 0;
-			_forge.save_game();
-			)
+		return
 
 
 func _on_reset_levels_pressed() -> void:
@@ -32,3 +21,15 @@ func _on_upgrades_and_levels_pressed() -> void:
 	_forge._save_state.upgrades_purchased = s.upgrades_purchased.duplicate();
 	_forge._save_state.max_unlocked_level = s.max_unlocked_level;
 	_forge.save_game()
+
+
+func _on_get_resources_pressed() -> void:
+	for key in _forge._save_state.forge_storage.keys():
+		_forge._save_state.forge_storage[key] = 9999;
+	_forge.save_game();
+
+
+func _on_reset_upgrades_pressed() -> void:
+	for key in _forge._save_state.upgrades_purchased.keys():
+		_forge._save_state.upgrades_purchased[key] = 0;
+	_forge.save_game();

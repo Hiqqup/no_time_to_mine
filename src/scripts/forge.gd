@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 	if _save_state.times_level_completed[LevelTypes.types.size()-1]>0:
 		_last_level_button.boss_unlocked = true;
-		print(_last_level_button.boss_unlocked)
+		#print(_last_level_button.boss_unlocked)
 		_last_level_button.add_gem(LevelTypes.types.size() -1, false);
 	
 
