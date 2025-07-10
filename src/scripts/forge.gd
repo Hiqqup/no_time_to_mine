@@ -61,6 +61,7 @@ func purchase_upgrade(type : UpgradeTypes.types):
 	upgrade_purchased.emit();
 
 func increment_level():
+	print(selected_level)
 	_level_types.increase_size(selected_level);
 	_save_state.times_level_completed[selected_level] +=1;
 	if selected_level != _save_state.max_unlocked_level:

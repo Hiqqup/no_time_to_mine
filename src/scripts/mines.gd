@@ -10,6 +10,7 @@ class_name Mines
 
 var _forge: Forge
 
+var _generated_from_level: LevelTypes.types;
 func _ready() -> void:
 
 	_forge = get_tree().get_first_node_in_group("forge");
@@ -17,6 +18,7 @@ func _ready() -> void:
 		add_child(_endboss_scene.instantiate());
 
 	var d : Dictionary[HarvestableTypes.types, int]
+	_generated_from_level = _forge.selected_level;
 	var level: Level = levels.map[_forge.selected_level];
 	floor_layer.setup(level.platform_radius);
 	d=level.harvestables;
@@ -33,7 +35,7 @@ func _on_player_died() -> void:
 
 
 func _on_harvestabels_layer_emptyed() -> void:
-	if _forge.selected_level == LevelTypes.types.TUTORIAL:
+	if _generated_from_level == LevelTypes.types.TUTORIAL:
 		return;
 	_forge.increment_level();
 	player.do_lifetime_calculation =false;

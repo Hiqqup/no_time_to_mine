@@ -63,6 +63,7 @@ func _ready() -> void:
 	_forge.selected_level = LevelTypes.types.BOSS;
 	_mines.player.visible = false;
 	_mines.player.get_node("CameraIndependet/ResetButton").visible = false;
+	_mines.player.lifetime_bar.visible = false
 	_mines.player._alive = false;
 	_mines.player.position.x =  20000;
 	_mines.player.do_lifetime_calculation = false;
