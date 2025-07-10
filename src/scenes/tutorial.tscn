@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpu4eexbhm1e7"]
+[gd_scene load_steps=11 format=3 uid="uid://bpu4eexbhm1e7"]
 
 [ext_resource type="Script" uid="uid://dv3e1x3knx7hf" path="res://src/scripts/tutorial.gd" id="1_io05x"]
 [ext_resource type="Texture2D" uid="uid://d4jeuxr50sjgg" path="res://assets/visuals/movement_guide.png" id="2_ihko7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="5_0hv7v"]
 [ext_resource type="PackedScene" uid="uid://da65q5tsirhh5" path="res://src/scenes/mines/player/shattered_player.tscn" id="6_0hv7v"]
 [ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="7_2edpq"]
+[ext_resource type="AudioStream" uid="uid://baxjn4fnm2de0" path="res://assets/music/whispers.mp3" id="8_of7b0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqjuj"]
 atlas = ExtResource("2_ihko7")
@@ -204,5 +205,9 @@ theme = ExtResource("5_0hv7v")
 text = "skip"
 
 [node name="ButtonAnimationWrapperContainer" parent="CameraIndependet/SkipStartingCutscene" instance=ExtResource("7_2edpq")]
+
+[node name="Whispers" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_of7b0")
+autoplay = true
 
 [connection signal="pressed" from="CameraIndependet/SkipStartingCutscene" to="." method="_on_skip_starting_cutscene_pressed"]

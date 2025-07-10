@@ -138,6 +138,7 @@ func _shard_cutscene_tutorial():
 func _start_tutorial():
 	_fade_out(skip_starting_cutscene);
 	
+	$Whispers.playing = false;
 	_play_music(_forge.get_parent())
 	
 	_player= _mines.player

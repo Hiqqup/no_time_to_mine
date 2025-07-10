@@ -60,7 +60,7 @@ func _spirit_to_shard_recursive(shards_copy: Array[Node2D]):
 				_shard_container.visible = false;
 				_animated_sprite_2d.visible = true;
 				_animated_sprite_2d.play("reverse_die")
-				TimeoutCallback.timeout_callback(0.65, $ReverseDie.play)
+				TimeoutCallback.timeout_callback(0.67, $ReverseDie.play)
 				create_tween().tween_property(spirit_particles,"modulate",Color(Color.WHITE,0.0),1.2)
 				TimeoutCallback.timeout_callback(1.0, func():
 					_animated_sprite_2d.animation = "alive";
