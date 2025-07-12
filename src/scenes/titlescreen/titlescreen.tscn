@@ -1,10 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://h6kjdc8gvtgs"]
+[gd_scene load_steps=9 format=3 uid="uid://h6kjdc8gvtgs"]
 
 [ext_resource type="Script" uid="uid://wyjwsbx5gwkh" path="res://src/scripts/titlescreen.gd" id="1_do2c8"]
 [ext_resource type="PackedScene" uid="uid://4ex5fmxd3f5i" path="res://src/scenes/game.tscn" id="2_twdxa"]
+[ext_resource type="Texture2D" uid="uid://cphjnjkpt8lbb" path="res://assets/non-pixelart/titlescreen.png" id="3_3gf6w"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_ymqwc"]
+[ext_resource type="Texture2D" uid="uid://wmp0hq16ot2q" path="res://assets/non-pixelart/no time to mine.png" id="4_ff2ga"]
 [ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="4_rklo2"]
 [ext_resource type="PackedScene" uid="uid://cy1lh412ccugu" path="res://src/scenes/titlescreen/options.tscn" id="6_3gf6w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff2ga"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.2378, 0.24563, 0.29, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
 
 [node name="Titlescreen" type="Control"]
 layout_mode = 3
@@ -14,66 +28,93 @@ _game_scene = ExtResource("2_twdxa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Titlescreen" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -54.0
-offset_right = 212.0
-offset_bottom = 54.0
+[node name="StrechtDown" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2866.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 25
-alignment = 1
+color = Color(0.109804, 0.117647, 0.176471, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer/Titlescreen"]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3gf6w")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Title" type="TextureRect" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 30.0
+offset_right = 894.0
+offset_bottom = 349.0
+texture = ExtResource("4_ff2ga")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BackgroundDim" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.643137)
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = -1
+offset_left = 70.0
+offset_top = 450.0
+offset_right = 142.0
+offset_bottom = 132.0
+scale = Vector2(3, 3)
 theme = ExtResource("3_ymqwc")
-theme_override_font_sizes/font_size = 64
-text = "No Time to Mine"
-horizontal_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ff2ga")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Titlescreen"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Continue" type="Button" parent="CanvasLayer/Titlescreen/HBoxContainer"]
+[node name="Continue" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ymqwc")
 text = "Continue
 "
 icon_alignment = 1
 
-[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/Titlescreen/HBoxContainer/Continue" instance=ExtResource("4_rklo2")]
+[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer/Continue" instance=ExtResource("4_rklo2")]
 
-[node name="NewGame" type="Button" parent="CanvasLayer/Titlescreen/HBoxContainer"]
+[node name="NewGame" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ymqwc")
 text = "New Game
 "
 icon_alignment = 1
 
-[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/Titlescreen/HBoxContainer/NewGame" instance=ExtResource("4_rklo2")]
+[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer/NewGame" instance=ExtResource("4_rklo2")]
 
-[node name="Options" type="Button" parent="CanvasLayer/Titlescreen/HBoxContainer"]
+[node name="Options" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_ymqwc")
 text = "Options"
 icon_alignment = 1
 
-[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/Titlescreen/HBoxContainer/Options" instance=ExtResource("4_rklo2")]
+[node name="ButtonAnimationWrapperContainer" parent="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer/Options" instance=ExtResource("4_rklo2")]
 
 [node name="Options" parent="CanvasLayer" instance=ExtResource("6_3gf6w")]
 visible = false
 scale = Vector2(4, 4)
 
-[connection signal="pressed" from="CanvasLayer/Titlescreen/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Titlescreen/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/Titlescreen/HBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/HBoxContainer/Options" to="." method="_on_options_pressed"]

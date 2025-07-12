@@ -1,13 +1,15 @@
 extends Control
-
 @onready var _options: TitleScreenOptions = $CanvasLayer/Options
-@onready var _titlescreen_container: VBoxContainer = $CanvasLayer/Titlescreen
+
+#@onready var _options: TitleScreenOptions = $CanvasLayer/Options
+#@onready var _titlescreen_container: VBoxContainer = $CanvasLayer/Titlescreen
 
 @export var _game_scene: PackedScene
 
 
 func _ready():
-	_titlescreen_container.pivot_offset = _titlescreen_container.size/2
+	#_titlescreen_container.pivot_offset = _titlescreen_container.size/2
+	pass
 
 func _play_music(game_scene):
 	TimeoutCallback.timeout_callback(0.2, func():
@@ -54,12 +56,18 @@ func _on_continue_pressed() -> void:
 			_play_music(game_scene);
 		queue_free();
 		))
-@onready var titlescreen: VBoxContainer = $CanvasLayer/Titlescreen
-@onready var options: Control = $CanvasLayer/Options
+#@onready var titlescreen: VBoxContainer = $CanvasLayer/Titlescreen
+#@onready var options: Control = $CanvasLayer/Options
+@onready var panel_container: PanelContainer = $CanvasLayer/PanelContainer
+@onready var background_dim: ColorRect = $CanvasLayer/BackgroundDim
+@onready var title: TextureRect = $CanvasLayer/TextureRect/Title
 
 func toggle_settings():
-	titlescreen.visible = not titlescreen.visible
-	options.visible = not options.visible
+	
+	title.visible = not title.visible
+	background_dim.visible = not background_dim.visible
+	panel_container.visible = not panel_container.visible
+	_options.visible = not _options.visible
 	
 
 func _on_options_pressed() -> void:

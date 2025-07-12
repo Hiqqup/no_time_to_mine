@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy1lh412ccugu"]
+[gd_scene load_steps=5 format=3 uid="uid://cy1lh412ccugu"]
 
 [ext_resource type="Script" uid="uid://6a244i0img1h" path="res://src/scenes/titlescreen/options.gd" id="1_ran48"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="1_w0u4l"]
 [ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="2_7fo6r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fo6r"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.2378, 0.24563, 0.29, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 1
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -30,6 +42,7 @@ offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_w0u4l")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7fo6r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2

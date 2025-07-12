@@ -23,13 +23,13 @@ func _ready() -> void:
 	position = background_size / -2;
 	_previous_camera_position = Camera.position;
 	
-	_set_colors();
+	_set_colors(_forge.selected_level);
 
 
-func _set_colors():
+func _set_colors(_color: LevelTypes.types):
 	var shader_material: ShaderMaterial = material
-	var color_2: Color = _level_types.color_map[_forge.selected_level][0];
-	var color_3: Color = _level_types.color_map[_forge.selected_level][1];
+	var color_2: Color = _level_types.color_map[_color][0];
+	var color_3: Color = _level_types.color_map[_color][1];
 	shader_material.set_shader_parameter("colour_2", color_2)
 	shader_material.set_shader_parameter("colour_3", color_3)
 

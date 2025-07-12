@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://ennxfdpuufhh"]
+
+[ext_resource type="Script" uid="uid://ddm15ta65mapw" path="res://misc_scripts/background_screenshotter/background_screenshotter.gd" id="1_gs21v"]
+[ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="2_77l47"]
+[ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="3_da20m"]
+[ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://src/scenes/type_populater.tscn" id="4_77l47"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyf02"]
+resource_local_to_scene = true
+shader = ExtResource("3_da20m")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
+shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 70000.0
+
+[node name="BackgroundScreenshotter" type="Node2D"]
+script = ExtResource("1_gs21v")
+_size = Vector2(4961, 2791)
+_color = 2
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Background" parent="SubViewport" instance=ExtResource("2_77l47")]
+material = SubResource("ShaderMaterial_pyf02")
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ViewportPreview" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="CanvasLayer"]
+offset_right = 44.0
+offset_bottom = 31.0
+text = "Save
+"
+
+[node name="TypePopulater" parent="." instance=ExtResource("4_77l47")]
+
+[connection signal="pressed" from="CanvasLayer/Save" to="." method="_on_save_pressed"]
