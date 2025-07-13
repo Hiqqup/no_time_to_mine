@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3 uid="uid://b53eugc5jl4xk"]
+
+[ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="1_2u31r"]
+[ext_resource type="Script" uid="uid://dwjaerqgms6w8" path="res://src/scripts/credits.gd" id="1_4pfk6"]
+[ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="2_4pfk6"]
+[ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_hltgj"]
+[ext_resource type="Texture2D" uid="uid://wmp0hq16ot2q" path="res://assets/non-pixelart/no time to mine.png" id="4_din7c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2r8g"]
+resource_local_to_scene = true
+shader = ExtResource("2_4pfk6")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
+shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_4pfk6")
+
+[node name="Background" parent="." instance=ExtResource("1_2u31r")]
+material = SubResource("ShaderMaterial_v2r8g")
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -154.5
+offset_right = 350.0
+offset_bottom = 154.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_hltgj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+texture = ExtResource("4_din7c")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="DescGame" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 64
+text = "Game made by:"
+horizontal_alignment = 1
+
+[node name="H1Game" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 128
+text = "Hiqqup"
+horizontal_alignment = 1
+
+[node name="DescGame2" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 64
+text = "Music made by:"
+horizontal_alignment = 1
+
+[node name="H1Game3" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 128
+text = "Drusba"
+horizontal_alignment = 1
+
+[node name="DescGame3" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 64
+text = "Thanks for help with poster:"
+horizontal_alignment = 1
+
+[node name="H1Game4" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 128
+text = "Lenny :P"
+horizontal_alignment = 1
+
+[node name="DescGame4" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 64
+text = "Also thanks to the playtesters:"
+horizontal_alignment = 1
+
+[node name="H1Game5" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_hltgj")
+theme_override_font_sizes/font_size = 32
+text = "Elias, Maya, Antonio, Kersteen, 
+and ayone who answered the Survey"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -16.0
+offset_right = 51.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+text = "go back
+"

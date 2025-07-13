@@ -3,6 +3,7 @@ class_name EndbossHarvestable
 @onready var player_collider_shape: CollisionPolygon2D = $CollisionShapes/PlayerCollider/ColliderShape
 @onready var well_content: ColorRect = $Visuals/WellContent
 @onready var parent: EndbossScene = get_parent();
+@export var _credit_scene: PackedScene;
 const STARTING_HEALTH = 99999999.0
 var broken: bool = false;
 var spirit_particles : CPUParticles2D 
@@ -77,8 +78,19 @@ func _on_spirit_detector_body_entered(body: Node2D) -> void:
 			create_tween().tween_property(well_content,"modulate",Color(Color.WHITE,1.0),1.5)#.set_trans(Tween.TRANS_CIRC);
 			)
 		TimeoutCallback.timeout_callback(3, func():
-			old_player.go_back_to_forge = true;
-			old_player._die();
+			#old_player.go_back_to_forge = true;
+			#old_player._die();
 			#roll credits here
+			var screen_transition = get_tree().get_first_node_in_group("screen_transition")
+
+			screen_transition.change_scene(func():
+				var credits: CreditScene = _credit_scene.instantiate();
+				credits.quit.connect(func():
+					old_player.go_back_to_forge = true;
+					old_player._die();
+					)
+				parent.get_parent().add_child(credits);
+				parent.visible = false;
+			)
 			)
 			
