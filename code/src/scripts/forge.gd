@@ -81,6 +81,7 @@ func save_game():
 	#print(_save_state.resource_path);
 
 func switch_from_mines():
+	
 	(AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0) as AudioEffectLowPassFilter).cutoff_hz = GlobalConstants.LOW_PASS_FILTER_HZ
 	visible = true;
 	_new_level_selector.update();
