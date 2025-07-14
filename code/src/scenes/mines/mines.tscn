@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bd1ftd4mp5yyb" path="res://src/scenes/mines/floor.tscn" id="2_hxspv"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_wonyy"]
 [ext_resource type="PackedScene" uid="uid://d1i8mon4i40ff" path="res://src/scenes/mines/player/player.tscn" id="2_wu3x7"]
-[ext_resource type="PackedScene" uid="uid://dky0ceij6vicy" path="res://src/scenes/endboss.tscn" id="3_20x32"]
+[ext_resource type="PackedScene" uid="uid://dky0ceij6vicy" path="res://src/scenes/forge/last_level/endboss.tscn" id="3_20x32"]
 [ext_resource type="PackedScene" uid="uid://twpug1ofoh0v" path="res://src/scenes/mines/minion_spawner.tscn" id="5_gxwpu"]
 [ext_resource type="PackedScene" uid="uid://dpj0vxxgr6tnp" path="res://src/scenes/mines/orb_spawner.tscn" id="5_pohl2"]
 [ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="7_kcaqh"]

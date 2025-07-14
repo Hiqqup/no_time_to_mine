@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwilr1ar6551w"]
 
-[ext_resource type="Script" uid="uid://dh3ky44pjqjl1" path="res://src/scripts/item_list_tool_tip.gd" id="1_o6km0"]
+[ext_resource type="Script" uid="uid://dh3ky44pjqjl1" path="res://src/scripts/item_list_tooltip.gd" id="1_o6km0"]
 [ext_resource type="Shader" uid="uid://cl0pstfh205kf" path="res://src/shader/pixel_art_outline.gdshader" id="2_6mhso"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_i701i"]
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://4ex5fmxd3f5i"]
 
 [ext_resource type="PackedScene" uid="uid://c3rpcim20exhr" path="res://src/scenes/type_populater.tscn" id="1_276xm"]
-[ext_resource type="Script" uid="uid://c5s6s6yhu2oey" path="res://src/scenes/game.gd" id="1_gh3at"]
+[ext_resource type="Script" uid="uid://c5s6s6yhu2oey" path="res://src/scripts/game.gd" id="1_gh3at"]
 [ext_resource type="PackedScene" uid="uid://js0scijtcqyj" path="res://src/scenes/forge/forge.tscn" id="1_yufto"]
 [ext_resource type="PackedScene" uid="uid://dhca7hfn0n75e" path="res://src/scenes/camera.tscn" id="2_276xm"]
-[ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial.tscn" id="3_lcg6w"]
+[ext_resource type="PackedScene" uid="uid://bpu4eexbhm1e7" path="res://src/scenes/tutorial/tutorial.tscn" id="3_lcg6w"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="4_gh3at"]
-[ext_resource type="PackedScene" uid="uid://6mw7bgmjxo84" path="res://src/scenes/shockwave_effect.tscn" id="6_lcg6w"]
+[ext_resource type="PackedScene" uid="uid://6mw7bgmjxo84" path="res://src/scenes/effects/shockwave_effect.tscn" id="6_lcg6w"]
 [ext_resource type="AudioStream" uid="uid://cja2ya5s10gcb" path="res://assets/music/Eerie Ass Loop.mp3" id="8_flib5"]
 
 [sub_resource type="Environment" id="Environment_276xm"]

@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c2maj7pk20c2v" path="res://src/scripts/skill_tree.gd" id="1_llldc"]
 [ext_resource type="Resource" uid="uid://ckfbt77vgwqy3" path="res://src/resources/upgrade_stats.tres" id="2_vcrgi"]
-[ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrade_button_base.tscn" id="3_vcrgi"]
+[ext_resource type="PackedScene" uid="uid://rifrgf41kumm" path="res://src/scenes/forge/upgrades/upgrade_button_base.tscn" id="3_vcrgi"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="4_ru2ph"]
 [ext_resource type="Texture2D" uid="uid://dqc2ga3xmpk0n" path="res://assets/visuals/procreate/recolored/tileset_platinum.png" id="6_0exhr"]
 [ext_resource type="Texture2D" uid="uid://xl5i2g5ngohm" path="res://assets/visuals/procreate/recolored/tileset_sulphur.png" id="6_chr1d"]
 [ext_resource type="Texture2D" uid="uid://d2o24skxu770l" path="res://assets/visuals/procreate/recolored/tileset_malachite.png" id="7_chr1d"]
 [ext_resource type="Texture2D" uid="uid://c6p7bhqiorncn" path="res://assets/visuals/procreate/recolored/tileset_ruby.png" id="8_5gmqy"]
 [ext_resource type="Texture2D" uid="uid://dt3ft7876bwvn" path="res://assets/visuals/procreate/recolored/tileset_amethyst.png" id="8_xtwfv"]
-[ext_resource type="PackedScene" uid="uid://dofhfhcgxhdjh" path="res://src/scenes/forge/last_level_button.tscn" id="10_weg5u"]
+[ext_resource type="PackedScene" uid="uid://dofhfhcgxhdjh" path="res://src/scenes/forge/last_level/last_level_button.tscn" id="10_weg5u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ru2ph"]
 atlas = ExtResource("4_ru2ph")

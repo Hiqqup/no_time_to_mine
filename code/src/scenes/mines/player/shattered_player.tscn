@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://da65q5tsirhh5"]
 
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="1_4o027"]
-[ext_resource type="Script" uid="uid://b8bfj6o6s64pn" path="res://src/scenes/mines/player/shattered_player.gd" id="1_ncb65"]
+[ext_resource type="Script" uid="uid://b8bfj6o6s64pn" path="res://src/scripts/shattered_player.gd" id="1_ncb65"]
 [ext_resource type="Texture2D" uid="uid://cnm4npohe58b1" path="res://assets/visuals/procreate/Player/die_animation/Char-5.png" id="1_pl7v7"]
 [ext_resource type="PackedScene" uid="uid://c2igyp8fdxcft" path="res://src/scenes/composables/grid_vector_to_position_converter.tscn" id="2_2sogt"]
 [ext_resource type="Texture2D" uid="uid://cb0rl6xjcloea" path="res://assets/visuals/procreate/Player/die_animation/Char-4.png" id="2_ncb65"]

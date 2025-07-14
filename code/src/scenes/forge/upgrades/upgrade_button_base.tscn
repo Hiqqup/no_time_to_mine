@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://rifrgf41kumm"]
 
-[ext_resource type="PackedScene" uid="uid://dvaws6v1mrd76" path="res://src/scenes/skill_tree_button_base.tscn" id="1_vahct"]
+[ext_resource type="PackedScene" uid="uid://dvaws6v1mrd76" path="res://src/scenes/forge/upgrades/skill_tree_button_base.tscn" id="1_vahct"]
 [ext_resource type="Script" uid="uid://d0nt5c4w6emvj" path="res://src/scripts/upgrade_button_base.gd" id="2_uat7v"]
-[ext_resource type="PackedScene" uid="uid://c4jaifuw7asa6" path="res://src/scenes/forge/upgrade_button_info_label.tscn" id="3_jg7ue"]
+[ext_resource type="PackedScene" uid="uid://c4jaifuw7asa6" path="res://src/scenes/forge/upgrades/upgrade_button_info_label.tscn" id="3_jg7ue"]
 [ext_resource type="Texture2D" uid="uid://cokckhl03f6ji" path="res://assets/visuals/upgrade_frame.png" id="4_jg7ue"]
 
 [node name="UpgradeButtonBase" groups=["upgrade_button"] instance=ExtResource("1_vahct")]

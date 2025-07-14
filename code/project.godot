@@ -18,6 +18,10 @@ config/name="gamelab_summer_2025"
 run/main_scene="uid://spyc82xpyw3c"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 GlobalConstants="*res://src/scripts/global_constants.gd"

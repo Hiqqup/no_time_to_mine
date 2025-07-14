@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c3rpcim20exhr"]
 
-[ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/resources/populate/type_populater.gd" id="1_skt7l"]
+[ext_resource type="Script" uid="uid://br4udbt52bsd0" path="res://src/scripts/type_populater.gd" id="1_skt7l"]
 [ext_resource type="Resource" uid="uid://583tc2mf1eco" path="res://src/resources/item_types.tres" id="2_vrlxb"]
 [ext_resource type="Resource" uid="uid://ddxldj4la4j5e" path="res://src/resources/harvestable_types.tres" id="4_tmat3"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="7_8ovfm"]
