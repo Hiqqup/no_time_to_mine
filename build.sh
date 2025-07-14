@@ -25,11 +25,11 @@ zip_files(){
 }
 
 compile_web
-#compile_windows
-#compile_linux
+compile_windows
+compile_linux
 
-#zip_files "web"
-#zip_files "windows"
-#zip_files "linux"
+zip_files "web"
+zip_files "windows"
+zip_files "linux"
 
 

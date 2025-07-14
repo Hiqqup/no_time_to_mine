@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	#print(AudioServer.get_bus_index("Music"))
-	(AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0) as AudioEffectLowPassFilter).cutoff_hz = GlobalConstants.LOW_PASS_FILTER_HZ
+	#(AudioServer.get_bus_effect(AudioServer.get_bus_index("Music"), 0) as AudioEffectLowPassFilter).cutoff_hz = GlobalConstants.LOW_PASS_FILTER_HZ
 	
 	
 	shockwave_effect.visible = Camera.options[TitleScreenOptions.option_type.shockwave_effect];
