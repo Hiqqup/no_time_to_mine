@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_albhv"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="3_bf8lm"]
 [ext_resource type="Shader" uid="uid://ih1u0j0dyfum" path="res://src/shader/flash_white.gdshader" id="3_joeqh"]
-[ext_resource type="AudioStream" uid="uid://w88pkwcevca4" path="res://assets/sound/buttons/click.ogg" id="4_j4et0"]
+[ext_resource type="AudioStream" uid="uid://w88pkwcevca4" path="res://assets/sound/button_click.ogg" id="4_j4et0"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="5_bf8lm"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="6_j4et0"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://23tkt68f45bd"]
 
 [ext_resource type="Script" uid="uid://ciqiy07vfoikc" path="res://src/scripts/button_animation_wrapper_container.gd" id="1_py3ym"]
-[ext_resource type="AudioStream" uid="uid://w88pkwcevca4" path="res://assets/sound/buttons/click.ogg" id="2_u0167"]
-[ext_resource type="AudioStream" uid="uid://dscja43mf8u2u" path="res://assets/sound/buttons/denied.ogg" id="3_b2gvn"]
-[ext_resource type="AudioStream" uid="uid://b0b1i2p6c18nt" path="res://assets/sound/buttons/hover.ogg" id="3_py3ym"]
+[ext_resource type="AudioStream" uid="uid://w88pkwcevca4" path="res://assets/sound/button_click.ogg" id="2_u0167"]
+[ext_resource type="AudioStream" uid="uid://dscja43mf8u2u" path="res://assets/sound/button_denied.ogg" id="3_b2gvn"]
+[ext_resource type="AudioStream" uid="uid://b0b1i2p6c18nt" path="res://assets/sound/button_hover.ogg" id="3_py3ym"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="5_wmtw4"]
 [ext_resource type="Texture2D" uid="uid://dvmbkh5nfrj13" path="res://assets/visuals/procreate/tileset.png" id="6_wmtw4"]
 

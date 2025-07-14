@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvfkdwa6wx4on" path="res://src/scripts/screen_transition.gd" id="1_upaj7"]
 [ext_resource type="Shader" uid="uid://nl03n0j2w0jw" path="res://src/shader/screen_transition_burn.gdshader" id="2_5tp0c"]
-[ext_resource type="AudioStream" uid="uid://di58lmci8lyws" path="res://assets/sound/screen_transition/screen_transition.ogg" id="3_8o7p2"]
-[ext_resource type="AudioStream" uid="uid://cimv0c5nh6w6w" path="res://assets/sound/screen_transition/reverse_screen_transition.ogg" id="4_o70le"]
+[ext_resource type="AudioStream" uid="uid://di58lmci8lyws" path="res://assets/sound/screen_transition.ogg" id="3_8o7p2"]
+[ext_resource type="AudioStream" uid="uid://cimv0c5nh6w6w" path="res://assets/sound/reverse_screen_transition.ogg" id="4_o70le"]
 [ext_resource type="AudioStream" uid="uid://dy4kqe4x4d6kl" path="res://assets/sound/harvestable_destoryed.ogg" id="5_toyhp"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5tp0c"]
