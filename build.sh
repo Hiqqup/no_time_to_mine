@@ -2,6 +2,10 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PROJECT_DIR="${SCRIPT_DIR}/code"
 
 
+compile_android(){
+    cd ${PROJECT_DIR}
+    godot --export-debug "Android" dist/android/android.apk
+}
 compile_windows(){
     cd ${PROJECT_DIR}
     godot --export-release "Windows Desktop" dist/windows/windows.exe
@@ -25,11 +29,13 @@ zip_files(){
 }
 
 compile_web
-compile_windows
-compile_linux
-
 zip_files "web"
+compile_windows
 zip_files "windows"
+compile_linux
 zip_files "linux"
+compile_android
+zip_files "android"
+
 
 

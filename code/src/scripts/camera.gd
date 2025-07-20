@@ -43,12 +43,18 @@ func _zoom_in():
 func _unhandled_input(event: InputEvent) -> void:
 	if location == CameraLocation.LOCKED_TITLE_SCREEN:
 		return;
-	if GlobalConstants.COMPILED() and event is InputEventMagnifyGesture:
+	
+			
+	if event is InputEventMagnifyGesture:
+			
 		if event.factor > 1.0:
 			_zoom_in();
 		else:
 			_zoom_out();
 		return;
+	if event is InputEventPanGesture and location  == CameraLocation.FORGE:
+		global_position+= event.delta;
+		
 	if event is InputEventMouseButton:
 		if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed):
 			_zoom_out();

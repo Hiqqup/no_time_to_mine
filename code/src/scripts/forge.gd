@@ -13,6 +13,7 @@ var upgrades_purchased: Dictionary[UpgradeTypes.types, int];
 var selected_level: LevelTypes.types = LevelTypes.types.FIRST;
 @onready var _new_level_selector: Control = $CameraIndependent/NewLevelSelector
 @onready var _last_level_button: LastLevelButton = $SkillTree/LastLevelButton
+@onready var tmp_debug: Label = $TmpDebug
 
 
 func _enter_tree() -> void:
