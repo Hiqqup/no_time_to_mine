@@ -14,9 +14,18 @@ warnings/check_invalid_track_paths=false
 
 [application]
 
-config/name="gamelab_summer_2025"
+config/name="No Time to Mine"
+config/description="Step into the enchanting, yet eerie world of No Time to Mine, where you embody a small stone golem on an urgent quest. With a uniquely short lifespan, your goal is to gather as many precious stones as possible to unlock vital upgrades. Each collected resource fuels your progression through an intricate skill tree, granting new abilities and revealing the secrets of the shifting landscape. Death isn't the end, but a transformative rebirth, allowing you to return stronger, smarter, and ready to delve deeper into the dreamlike biomes.
+
+Immerse yourself in a world realized with a captivating, \"dreamy eerie\" mood. Encounter mysterious companions who join your timeless pursuit. No Time to Mine offers an immersive experience, inviting players to lose themselves in its unique artistic style and the addictive thrill of constant growth and relentless progress. Prepare to be drawn in by its charm and challenging cycle of life, death, and relentless progress.
+"
 run/main_scene="uid://spyc82xpyw3c"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://c4ojac5s07g7y"
+config/icon="uid://dnb25kmwha1"
+config/macos_native_icon="uid://5ul0ikogsvq2"
+config/windows_native_icon="uid://5ul0ikogsvq2"
 
 [audio]
 
