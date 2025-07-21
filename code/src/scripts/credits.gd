@@ -1,8 +1,8 @@
 extends CanvasLayer
 class_name CreditScene
 signal quit
-@onready var button: Button = $PanelContainer/VBoxContainer/Control/Button
-@onready var control: Control = $PanelContainer/VBoxContainer/Control
+@onready var button: Button = $VBoxContainer/Control/Button
+@onready var control: Control = $VBoxContainer/Control
 
 func _ready() -> void:
 	button.pivot_offset = button.size/2;
