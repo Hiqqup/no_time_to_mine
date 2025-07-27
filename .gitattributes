@@ -10,3 +10,4 @@
 builds/** filter=lfs diff=lfs merge=lfs -text
 poster/** filter=lfs diff=lfs merge=lfs -text
 trailer/** filter=lfs diff=lfs merge=lfs -text
+presentation/** filter=lfs diff=lfs merge=lfs -text

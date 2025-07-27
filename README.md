@@ -13,4 +13,9 @@ Immerse yourself in a world realized with a captivating, "dreamy eerie" mood. En
 Inspired by [Forager](https://store.steampowered.com/app/751780/Forager/) and [Nodebuster](https://store.steampowered.com/app/3107330/Nodebuster/)
 Genres: [Survival](https://store.steampowered.com/tag/browse/#global_1662) [Exploration](https://store.steampowered.com/tag/browse/#global_3834) [Casual](https://store.steampowered.com/tag/browse/#global_597) [Isometric](https://store.steampowered.com/tag/browse/#global_5851)
 
+I also made a [Presentation]( https://docs.google.com/presentation/d/1DBPYOUnq9GIEHhsxxJBRT7G63KT6K8Cu9c1mO7DtMkE/edit?usp=sharing) if you want to see how it was made.
+
 Wue-Campus Gruppe 05
+
+
+
