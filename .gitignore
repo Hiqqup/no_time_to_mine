@@ -5,3 +5,4 @@ node_modules
 src/resources/save_state_1.tres
 dist
 code/misc_scripts/background_screenshotter/shot.png
+builds

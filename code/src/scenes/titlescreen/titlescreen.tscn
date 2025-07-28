@@ -39,7 +39,7 @@ anchor_bottom = 1.0
 offset_bottom = 2866.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.290196, 0.341176, 0.478431, 1)
+color = Color(0.211765, 0.215686, 0.215686, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
