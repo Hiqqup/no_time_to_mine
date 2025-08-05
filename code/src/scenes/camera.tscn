@@ -5,11 +5,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_71qyq"]
 shader = ExtResource("2_sjpbw")
-shader_parameter/polar_coordinates = false
-shader_parameter/polar_center = Vector2(0.5, 0.5)
-shader_parameter/polar_zoom = 1.0
-shader_parameter/polar_repeat = 1.0
-shader_parameter/spin_rotation = 0.0
 shader_parameter/spin_speed = 1.0
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
@@ -17,7 +12,6 @@ shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
 shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
 shader_parameter/contrast = 2.0
 shader_parameter/lighting = 0.4
-shader_parameter/spin_amount = 0.36
 shader_parameter/pixel_filter = 700.0
 
 [node name="Camera" type="Camera2D"]

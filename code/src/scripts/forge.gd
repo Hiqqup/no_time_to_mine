@@ -20,6 +20,10 @@ func _enter_tree() -> void:
 	_load_save_state();
 
 func _ready() -> void:
+	
+	if GlobalConstants.MOBILE():
+		_new_level_selector.scale *= GlobalConstants.SCALE_BUTTONS_MOBILE;
+	
 	_resize_levels();
 
 	visibility_changed.connect(func(): 
@@ -135,6 +139,7 @@ func _try_level(level: LevelTypes.types):
 		visible = false;
 		Camera.location = Camera.CameraLocation.MINES;
 		Camera.reset_zoom();
+		Camera.reset_zoom_mobile();
 		var mines = _mine_scene.instantiate();
 		get_parent().add_child(mines);
 	)

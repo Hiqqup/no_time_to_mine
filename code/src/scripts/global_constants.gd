@@ -11,6 +11,7 @@ const BOUNCE_IMPULSE:= 2.4 * 50;
 const ORB_BOUNCE_IMPULSE:= 200;
 const LOW_PASS_FILTER_HZ = 400;
 const MUSIC = true;
+const SCALE_BUTTONS_MOBILE: float =1.5;
 
 func COMPILED()->bool:
 	return not OS.has_feature("editor");

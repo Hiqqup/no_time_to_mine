@@ -5,6 +5,7 @@ signal died;
 
 @export var _upgrade_stats: PlayerUpgradeStats
 @export var _level_types: LevelTypes;
+@onready var reset_button: Button = $CameraIndependet/ResetButton
 
 @onready var _walking_particles: CPUParticles2D = $Visuals/WalkingParticles
 @export var lifetime_bar: TextureProgressBar
@@ -45,6 +46,9 @@ func _ready() -> void:
 	_walking_particles.modulate = _level_types.color_map[_forge.selected_level][2];
 	_particles.modulate = _level_types.color_map[_forge.selected_level][0];
 	_eyes.texture = _level_types.tileset_map[_forge.selected_level]
+	
+	if GlobalConstants.MOBILE():
+		reset_button.scale *= GlobalConstants.SCALE_BUTTONS_MOBILE;
 
 
 func _physics_process(delta: float) -> void:

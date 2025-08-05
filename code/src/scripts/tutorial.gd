@@ -36,6 +36,8 @@ enum TutorialSection{
 func _ready() -> void:
 	_forge = get_tree().get_first_node_in_group("forge")
 	_mines = get_tree().get_first_node_in_group("current_mines");
+	
+
 
 	_movement_guide = $PlayerMovementGuide
 	_mining_guide = $MiningGuide
@@ -43,6 +45,16 @@ func _ready() -> void:
 	_forge_guide = $ForgeGuide;
 	_purchase_guide = $ForgeGuide/PurchaseGuide;
 	_retry_guide = $ForgeGuide/RetryGuide;
+	
+	
+	if GlobalConstants.MOBILE():
+		skip_starting_cutscene.scale *= GlobalConstants.SCALE_BUTTONS_MOBILE;
+		_retry_guide.reparent( _forge._new_level_selector)
+		_retry_guide.position +=Vector2(-30, -80);
+		var nav = $ForgeGuide/NavigationGuide
+		nav.visible  = false;
+		nav.visibility_changed.connect(func(): nav.visible = false);
+
 	
 	_movement_guide.visible = false;
 	_mining_guide.visible = false;
@@ -99,6 +111,8 @@ func _transition_from_boss_to_tutorial_level():
 			base._player = _mines.player;
 		Camera.location = Camera.CameraLocation.MINES;
 		Camera.reset_zoom();
+		Camera.reset_zoom_mobile();
+		
 		Camera.global_position = _mines.player.global_position
 		if _skipped_cutscene:
 			_start_tutorial()

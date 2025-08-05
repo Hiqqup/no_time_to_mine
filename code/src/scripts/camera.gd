@@ -46,11 +46,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 			
 	if event is InputEventMagnifyGesture:
-			
-		if event.factor > 1.0:
-			_zoom_in();
-		else:
-			_zoom_out();
+		zoom*= event.factor
+		zoom = Vector2.ONE * max(zoom.x, GlobalConstants.MIN_ZOOM)
+		#if event.factor > 1.0:
+		#	_zoom_in();[]
+		#else:
+		#	_zoom_out();
+		print(zoom)
 		return;
 	if event is InputEventPanGesture and location  == CameraLocation.FORGE:
 		global_position+= event.delta;
@@ -104,6 +106,10 @@ func shake(strength: float):
 func set_to_player_position():
 	global_position =  get_tree().get_first_node_in_group("current_mines").player.global_position;
 
+
+func reset_zoom_mobile():
+	if GlobalConstants.MOBILE():
+		Camera.zoom = Vector2.ONE * 7;
 
 func reset_zoom():
 	zoom = Vector2.ONE * 4;
