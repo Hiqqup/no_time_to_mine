@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://kiphvgxfe0pn" path="res://src/scripts/forge.gd" id="1_oc1b2"]
 [ext_resource type="PackedScene" uid="uid://mq0wb5hf2lra" path="res://src/scenes/mines/mines.tscn" id="2_gjnd3"]
 [ext_resource type="PackedScene" uid="uid://bktks85fbuoip" path="res://src/scenes/forge/skill_tree.tscn" id="2_oc1b2"]
-[ext_resource type="Resource" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
+[ext_resource type="Resource" uid="uid://bxmwwwqu38dk6" path="res://src/resources/save_state_1.tres" id="3_fjp4y"]
 [ext_resource type="PackedScene" uid="uid://3inm7ms7ivqf" path="res://src/scenes/mines/player/storage.tscn" id="4_3sx3x"]
 [ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="5_wqv3k"]
 [ext_resource type="PackedScene" uid="uid://yrnc5t2rwa3j" path="res://src/scenes/composables/gui_item_list_displayer.tscn" id="5_ytak3"]
@@ -17,11 +17,6 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqv3k"]
 resource_local_to_scene = true
 shader = ExtResource("7_1ngb5")
-shader_parameter/polar_coordinates = false
-shader_parameter/polar_center = Vector2(0.5, 0.5)
-shader_parameter/polar_zoom = 1.0
-shader_parameter/polar_repeat = 1.0
-shader_parameter/spin_rotation = 0.0
 shader_parameter/spin_speed = 1.0
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
@@ -29,7 +24,6 @@ shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
 shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
 shader_parameter/contrast = 2.0
 shader_parameter/lighting = 0.4
-shader_parameter/spin_amount = 0.36
 shader_parameter/pixel_filter = 700.0
 
 [node name="Forge" type="Control" node_paths=PackedStringArray("_vcontainer") groups=["forge"]]

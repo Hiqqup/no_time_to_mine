@@ -62,7 +62,7 @@ func purchase_upgrade(type : UpgradeTypes.types):
 	upgrade_purchased.emit();
 
 func increment_level():
-	print(selected_level)
+	#print(selected_level)
 	_level_types.increase_size(selected_level);
 	_save_state.times_level_completed[selected_level] +=1;
 	if selected_level != _save_state.max_unlocked_level:
@@ -89,7 +89,8 @@ func switch_from_mines():
 	update_and_generate_storage_display();
 	save_game();
 	Camera.location = Camera.CameraLocation.FORGE;
-
+	$BackgourndLayer/Background._set_colors(_save_state.max_unlocked_level)
+	
 
 func _load_save_state():
 	if GlobalConstants.COMPILED():

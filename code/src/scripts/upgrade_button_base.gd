@@ -2,7 +2,7 @@ class_name UpgradeButtonBase
 extends SkillTreeButtonBase
 
 
-
+@export var level_types: LevelTypes
 @export var upgrade_properties: UpgradeProperties:
 	set(val):
 		upgrade_properties = val;
@@ -43,14 +43,20 @@ func setup():
 		return;
 	level = _forge.upgrades_purchased[upgrade_properties.upgrade_type];
 	
+	
 	cost = upgrade_properties.cost_func.call(level);
 
 	for i in level:
 		upgrade_properties.apply_upgrade.call();
 	
-
 	
 	_info_label.setup(level, upgrade_properties);
+	
+	#setup frame colors:
+	
+	
+	_info_label._yellow = level_types.color_map[upgrade_properties.level_unlocked][3];
+	_info_label._green = level_types.color_map[upgrade_properties.level_unlocked][0];
 	
 	var parent: UpgradeButtonBase = (get_parent() as UpgradeButtonBase);
 	if parent and parent._children_visible:

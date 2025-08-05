@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://jtkbd6lykgy8"]
+[gd_scene load_steps=14 format=3 uid="uid://jtkbd6lykgy8"]
 
 [ext_resource type="Script" uid="uid://dvfkdwa6wx4on" path="res://src/scripts/screen_transition.gd" id="1_upaj7"]
+[ext_resource type="Resource" uid="uid://b715n73g612e0" path="res://src/resources/levels_types.tres" id="2_1t0nw"]
 [ext_resource type="Shader" uid="uid://nl03n0j2w0jw" path="res://src/shader/screen_transition_burn.gdshader" id="2_5tp0c"]
 [ext_resource type="AudioStream" uid="uid://di58lmci8lyws" path="res://assets/sound/screen_transition.ogg" id="3_8o7p2"]
 [ext_resource type="AudioStream" uid="uid://cimv0c5nh6w6w" path="res://assets/sound/reverse_screen_transition.ogg" id="4_o70le"]
@@ -120,6 +121,7 @@ _data = {
 [node name="ScreenTransition" type="CanvasLayer" node_paths=PackedStringArray("_animation_player") groups=["screen_transition"]]
 layer = 16
 script = ExtResource("1_upaj7")
+level_types = ExtResource("2_1t0nw")
 _animation_player = NodePath("AnimationPlayer")
 
 [node name="Burn" type="ColorRect" parent="."]

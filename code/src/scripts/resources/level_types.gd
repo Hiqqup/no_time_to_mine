@@ -53,7 +53,9 @@ func setup():
 		var color_0 =image_texure.get_image().get_pixel(41,3);
 		var color_1 =image_texure.get_image().get_pixel(42,3);
 		var color_2 =image_texure.get_image().get_pixel(33,9);
+		var color_3 =image_texure.get_image().get_pixel(40,4);
 		color_map[key] = [];
 		color_map[key].push_back(color_0)# color 0: for background
 		color_map[key].push_back(color_1)# color 1: for background
 		color_map[key].push_back(color_2)# color 2: walking particle modulate
+		color_map[key].push_back(color_3)# color 3: maxed out frame
