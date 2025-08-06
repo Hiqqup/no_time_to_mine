@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlxsh3t5koe0r"]
+
+[ext_resource type="Texture2D" uid="uid://dac0xnormtwrf" path="res://assets/non-pixelart/titlescreen/titlescreen-1.png" id="1_8gisk"]
+[ext_resource type="Script" uid="uid://ciet5ndlvfsgj" path="res://src/scripts/paralax_titlescreen.gd" id="1_rvrcr"]
+[ext_resource type="Texture2D" uid="uid://caxmd6x3h6nxv" path="res://assets/non-pixelart/titlescreen/titlescreen-2.png" id="2_fh0y5"]
+[ext_resource type="Texture2D" uid="uid://dcmqie7ngm833" path="res://assets/non-pixelart/titlescreen/titlescreen-3.png" id="3_rvrcr"]
+[ext_resource type="Texture2D" uid="uid://d1kvgyolkys4i" path="res://assets/non-pixelart/titlescreen/titlescreen-4.png" id="4_2tnt1"]
+[ext_resource type="Texture2D" uid="uid://dygobch3fb52o" path="res://assets/non-pixelart/titlescreen/titlescreen-5.png" id="5_rm3ct"]
+[ext_resource type="Script" uid="uid://jsv74olf722h" path="res://src/scenes/titlescreen/light_effect.gd" id="6_fh0y5"]
+[ext_resource type="PackedScene" uid="uid://otk24p2k4751" path="res://src/scenes/background.tscn" id="6_wrcj3"]
+[ext_resource type="Shader" uid="uid://cebiqw3agqr6t" path="res://src/shader/background.gdshader" id="7_l0tfe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpw6j"]
+resource_local_to_scene = true
+shader = ExtResource("7_l0tfe")
+shader_parameter/spin_speed = 4.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.298039, 0.298039, 0.298039, 1)
+shader_parameter/colour_2 = Color(0.964706, 0.803922, 0.14902, 1)
+shader_parameter/colour_3 = Color(0.447059, 0.34902, 0.337255, 1)
+shader_parameter/contrast = -0.5
+shader_parameter/lighting = 0.4
+shader_parameter/pixel_filter = 700.0
+
+[node name="ParalaxTitlescreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rvrcr")
+
+[node name="Background" parent="." instance=ExtResource("6_wrcj3")]
+z_index = 0
+material = SubResource("ShaderMaterial_xpw6j")
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 3042.0
+offset_bottom = 1711.0
+
+[node name="StrechtDown" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1392.0
+offset_right = 3052.0
+offset_bottom = 6698.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.215686, 0.215686, 1)
+
+[node name="River" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_8gisk")
+
+[node name="Player" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 4961.0
+offset_bottom = 2891.0
+pivot_offset = Vector2(2202, 1970)
+texture = ExtResource("2_fh0y5")
+
+[node name="LeftMountain" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 4961.0
+offset_bottom = 2791.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(485, 1707)
+texture = ExtResource("3_rvrcr")
+
+[node name="RightMountain" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 4961.0
+offset_bottom = 2791.0
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(4740, 1840)
+texture = ExtResource("4_2tnt1")
+
+[node name="Light effect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_rm3ct")
+script = ExtResource("6_fh0y5")

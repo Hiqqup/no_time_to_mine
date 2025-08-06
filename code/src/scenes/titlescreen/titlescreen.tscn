@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wyjwsbx5gwkh" path="res://src/scripts/titlescreen.gd" id="1_do2c8"]
 [ext_resource type="PackedScene" uid="uid://4ex5fmxd3f5i" path="res://src/scenes/game.tscn" id="2_twdxa"]
-[ext_resource type="Texture2D" uid="uid://cphjnjkpt8lbb" path="res://assets/non-pixelart/titlescreen.png" id="3_3gf6w"]
+[ext_resource type="PackedScene" uid="uid://dlxsh3t5koe0r" path="res://src/scenes/titlescreen/paralax_titlescreen.tscn" id="3_ff2ga"]
 [ext_resource type="Theme" uid="uid://fh5k8xpv38ul" path="res://src/themes/gui_theme.tres" id="3_ymqwc"]
 [ext_resource type="Texture2D" uid="uid://wmp0hq16ot2q" path="res://assets/non-pixelart/no time to mine.png" id="4_ff2ga"]
 [ext_resource type="PackedScene" uid="uid://23tkt68f45bd" path="res://src/scenes/composables/button_animation_wrapper_container.tscn" id="4_rklo2"]
@@ -32,27 +32,10 @@ _game_scene = ExtResource("2_twdxa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StrechtDown" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 2866.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.211765, 0.215686, 0.215686, 1)
+[node name="ParalaxTitlescreen" parent="CanvasLayer" instance=ExtResource("3_ff2ga")]
+scale = Vector2(0.388, 0.388)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_3gf6w")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="Title" type="TextureRect" parent="CanvasLayer/TextureRect"]
-layout_mode = 0
+[node name="Title" type="TextureRect" parent="CanvasLayer"]
 offset_left = 26.0
 offset_top = 30.0
 offset_right = 894.0
