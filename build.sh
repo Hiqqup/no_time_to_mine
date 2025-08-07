@@ -1,41 +1,40 @@
+PREVIOUS_DIR=$(pwd)
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PROJECT_DIR="${SCRIPT_DIR}/code"
 
+cd ${SCRIPT_DIR}
 
-compile_android(){
+
+
+compile_for(){
+    #windows needs extra consideraion because it has a space
+    TEMPLATE_NAME="$1"
+    if [ "$TEMPLATE_NAME" == "Windows" ]; then
+        TEMPLATE_NAME='Windows Desktop'
+    fi
+
     cd ${PROJECT_DIR}
-    godot --export-debug "Android" dist/android/android.apk
-}
-compile_windows(){
-    cd ${PROJECT_DIR}
-    godot --export-release "Windows Desktop" dist/windows/windows.exe
-}
-compile_web(){
-    cd ${PROJECT_DIR}
-    godot --export-release "Web" dist/web/index.html
-}
-compile_linux(){
-    cd ${PROJECT_DIR}
-    godot --export-release "Linux" dist/linux/linux.x86_64
+    COMPILE_PATH="dist/$1"
+    mkdir ${COMPILE_PATH} -p
+    godot --export-debug "$TEMPLATE_NAME" "${COMPILE_PATH}/$2"
+    zip_files "$1"
 }
 
 zip_files(){
-    PLATFORM="$1"
-    cd ${PROJECT_DIR}/dist/${PLATFORM}
-    ZIP_PATH="../../../builds/${PLATFORM}.zip" 
+    cd ${PROJECT_DIR}/dist/"$1"
+    ZIP_PATH="../../../builds/$1.zip" 
     FILES="*"
+    mkdir  ../../../builds/ -p
     rm ${ZIP_PATH}
     zip ${ZIP_PATH} ${FILES}
 }
 
-compile_web
-zip_files "web"
-compile_windows
-zip_files "windows"
-compile_linux
-zip_files "linux"
-compile_android
-zip_files "android"
+compile_for "Web" "index.html"
+compile_for 'Windows' "no_time_to_mine.exe"
+compile_for "Linux" "no_time_to_mine.x86_64"
+compile_for "Android" "no_time_to_mine.apk"
+
+cd ${PREVIOUS_DIR}
 
 
 
