@@ -15,7 +15,6 @@ Genres: [Survival](https://store.steampowered.com/tag/browse/#global_1662) [Expl
 
 I also made a [Presentation]( https://docs.google.com/presentation/d/1DBPYOUnq9GIEHhsxxJBRT7G63KT6K8Cu9c1mO7DtMkE/edit?usp=sharing) if you want to see how it was made.
 
-Wue-Campus Gruppe 05
-
+Also for the background i used: [Balatro Background Shader](https://godotshaders.com/shader/balatro-background-shader/)
 
 
