@@ -3,7 +3,7 @@
 ## Trailer
 https://youtu.be/rBGoRgpmopY?si=jImH1-RqS-QIlnEU
 
-## Play 
+## Download 
 
 Play in the browser or download at:
 
