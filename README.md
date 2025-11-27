@@ -1,4 +1,14 @@
 #  No Time to Mine
+
+## Trailer
+https://youtu.be/rBGoRgpmopY?si=jImH1-RqS-QIlnEU
+
+## Play 
+
+Play in the browser or download at:
+
+https://hiqqup.itch.io/no-time-to-mine
+
 ## Description
 Step into the enchanting, yet eerie world of No Time to Mine, where you embody a small stone golem on an urgent quest. With a uniquely short lifespan, your goal is to gather as many precious stones as possible to unlock vital upgrades. Each collected resource fuels your progression through an intricate skill tree, granting new abilities and revealing the secrets of the shifting landscape. Death isn't the end, but a transformative rebirth, allowing you to return stronger, smarter, and ready to delve deeper into the dreamlike biomes.
 
